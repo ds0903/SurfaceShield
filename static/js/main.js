@@ -1,3 +1,11 @@
+// Header shrink on scroll
+const header = document.querySelector('.site-header');
+if (header) {
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+}
+
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const mainNav = document.getElementById('mainNav');

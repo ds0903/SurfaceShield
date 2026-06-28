@@ -43,6 +43,7 @@ img { max-width: 100%; display: block; }
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: box-shadow 0.3s;
 }
 
 .header-inner {
@@ -51,7 +52,35 @@ img { max-width: 100%; display: block; }
     gap: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
+    transition: padding 0.35s ease;
 }
+
+/* SCROLLED STATE */
+.site-header.scrolled {
+    box-shadow: 0 2px 20px rgba(26,58,107,0.18);
+}
+
+.site-header.scrolled .header-inner {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.site-header.scrolled .logo-img {
+    height: 48px;
+}
+
+.site-header.scrolled .main-nav a {
+    font-size: 10px;
+    padding: 4px 10px;
+}
+
+.site-header.scrolled .btn-request {
+    padding: 8px 12px;
+    font-size: 10px;
+}
+
+.logo-img { transition: height 0.35s ease; }
+.main-nav a { transition: color 0.2s, font-size 0.35s ease, padding 0.35s ease; }
 
 /* LOGO */
 .logo {
@@ -137,22 +166,28 @@ img { max-width: 100%; display: block; }
 .btn-request {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: var(--accent);
+    gap: 10px;
+    background: #0f2150;
     color: var(--white);
-    padding: 10px 14px;
-    border-radius: 6px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #3a6abf;
+    box-shadow: 0 0 12px rgba(58,106,191,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.3;
     text-align: left;
     flex-shrink: 0;
-    transition: background 0.2s;
+    transition: all 0.25s;
     white-space: nowrap;
 }
 
-.btn-request:hover { background: var(--navy); }
+.btn-request:hover {
+    background: #162d6e;
+    box-shadow: 0 0 20px rgba(58,106,191,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
+    border-color: #5a8adf;
+}
 .btn-request i { font-size: 18px; }
 
 /* HAMBURGER */
@@ -330,8 +365,8 @@ img { max-width: 100%; display: block; }
 }
 
 .img-restoration { background-image: url("/media/img_restoration.png"); background-color: #c0a080; }
-.img-exterior    { background-image: url("/media/img_exterior.png");    background-color: #8aaccc; background-position: center 65%; }
-.img-auto        { background-image: url("/media/img_auto.png");        background-color: #3a3a4a; background-position: center 55%; }
+.img-exterior    { background-image: url("/media/img_exterior.png");    background-color: #8aaccc; background-size: 110%; background-position: 45% 65%; }
+.img-auto        { background-image: url("/media/img_auto.png");        background-color: #3a3a4a; background-size: 110%; background-position: center 55%; }
 .img-interior    { background-image: url("/media/img_interior.png");    background-color: #b8a890; }
 
 .service-card-img-wrap {
@@ -640,8 +675,53 @@ img { max-width: 100%; display: block; }
     align-items: start;
 }
 
-.logo-footer .logo-main { color: white; }
-.logo-footer .logo-sub  { color: rgba(255,255,255,0.6); }
+.footer-brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.footer-s {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #2d5aa0, #4a9eff);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: white;
+    border: 2px solid rgba(74,158,255,0.5);
+}
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.footer-brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.footer-brand-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 4px;
+}
 
 .footer-col h4 {
     font-family: 'Montserrat', sans-serif;
