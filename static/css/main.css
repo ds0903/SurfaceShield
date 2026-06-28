@@ -951,7 +951,7 @@ img { max-width: 100%; display: block; }
 .ri-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 620px;
+    min-height: 496px;
 }
 
 .ri-left {
@@ -963,7 +963,7 @@ img { max-width: 100%; display: block; }
     background-position: center;
     display: flex;
     align-items: center;
-    padding: 60px 50px;
+    padding: 40px 40px;
 }
 
 .ri-left-content { max-width: 420px; }
@@ -971,7 +971,7 @@ img { max-width: 100%; display: block; }
 .ri-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 38px;
     line-height: 1.0;
     color: white;
     margin-bottom: 12px;
@@ -1016,26 +1016,26 @@ img { max-width: 100%; display: block; }
     background: #f4f6fa;
     display: flex;
     align-items: center;
-    padding: 50px 44px;
+    padding: 30px 35px;
 }
 
 .ri-form-card {
     background: white;
     border-radius: 10px;
-    padding: 36px 32px;
+    padding: 24px 28px;
     box-shadow: 0 4px 32px rgba(26,58,107,0.12);
     width: 100%;
 }
 
 .ri-form-card .form-group {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .ri-form-card .form-group input,
 .ri-form-card .form-group select,
 .ri-form-card .form-group textarea {
     width: 100%;
-    padding: 11px 14px;
+    padding: 8px 12px;
     border: 1.5px solid var(--border);
     border-radius: 6px;
     font-size: 13px;
