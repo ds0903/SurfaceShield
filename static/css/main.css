@@ -62,35 +62,10 @@ img { max-width: 100%; display: block; }
     text-decoration: none;
 }
 
-.logo-icon {
-    width: 52px;
-    height: 52px;
-}
-
-.logo-icon svg { width: 100%; height: 100%; }
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-}
-
-.logo-main {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 17px;
-    color: var(--navy);
-    letter-spacing: 1px;
-    line-height: 1.1;
-}
-
-.logo-sub {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 10px;
-    color: var(--blue);
-    letter-spacing: 3px;
-    margin-top: 3px;
+.logo-img {
+    height: 70px;
+    width: auto;
+    display: block;
 }
 
 /* NAV */
@@ -115,7 +90,7 @@ img { max-width: 100%; display: block; }
 .main-nav a {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.4px;
     color: var(--text);
     padding: 6px 14px;
@@ -132,7 +107,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-top {
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-light);
     letter-spacing: 0.3px;
@@ -208,21 +183,14 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-panels {
-    display: flex;
     height: 100%;
-}
-
-.hero-panel {
-    flex: 1;
+    background-image: url("/media/home_main.png");
     background-size: cover;
     background-position: center;
-    filter: brightness(0.55);
+    filter: brightness(0.60);
 }
 
-.panel-house   { background-image: url("../img/hero-house.jpg");    background-color: #3a5a8a; }
-.panel-building{ background-image: url("../img/hero-building.jpg"); background-color: #2a4a7a; }
-.panel-car     { background-image: url("../img/hero-car.jpg");      background-color: #1a3a6a; }
-.panel-interior{ background-image: url("../img/hero-interior.jpg"); background-color: #2e4a7e; }
+.hero-panel { display: none; }
 
 .hero-overlay {
     position: absolute;
@@ -354,18 +322,24 @@ img { max-width: 100%; display: block; }
 }
 
 .service-card-img {
-    height: 160px;
+    height: 190px;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
 }
 
-.img-restoration { background-image: url("../img/restoration.jpg"); background-color: #c0a080; }
-.img-exterior    { background-image: url("../img/exterior.jpg");    background-color: #8aaccc; }
-.img-auto        { background-image: url("../img/auto.jpg");        background-color: #3a3a4a; }
-.img-interior    { background-image: url("../img/interior.jpg");    background-color: #b8a890; }
+.img-restoration { background-image: url("/media/img_restoration.png"); background-color: #c0a080; }
+.img-exterior    { background-image: url("/media/img_exterior.png");    background-color: #8aaccc; background-position: center 65%; }
+.img-auto        { background-image: url("/media/img_auto.png");        background-color: #3a3a4a; background-position: center 55%; }
+.img-interior    { background-image: url("/media/img_interior.png");    background-color: #b8a890; }
+
+.service-card-img-wrap {
+    position: relative;
+}
 
 .service-card-body {
-    padding: 20px 16px 24px;
+    padding: 40px 16px 24px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -378,11 +352,14 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: -44px auto 12px;
-    position: relative;
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
     border: 3px solid white;
     font-size: 22px;
     color: white;
+    z-index: 2;
 }
 
 .shield-red    { background: var(--red); }
@@ -556,10 +533,10 @@ img { max-width: 100%; display: block; }
     cursor: pointer;
 }
 
-.tile-residential    { background-image: url("../img/residential.jpg");    background-color: #8aaccc; }
-.tile-commercial     { background-image: url("../img/commercial.jpg");     background-color: #2a4a7a; }
-.tile-automotive     { background-image: url("../img/automotive.jpg");     background-color: #2a2a3a; }
-.tile-interior-spaces{ background-image: url("../img/interior-spaces.jpg");background-color: #b8a890; }
+.tile-residential    { background-image: url("/media/tile_residential.png");     background-color: #8aaccc; }
+.tile-commercial     { background-image: url("/media/tile_commercial.png");      background-color: #2a4a7a; }
+.tile-automotive     { background-image: url("/media/tile_automotive.png");      background-color: #2a2a3a; }
+.tile-interior-spaces{ background-image: url("/media/tile_interior_spaces.png"); background-color: #b8a890; }
 
 .tile-overlay {
     position: absolute;
@@ -898,7 +875,7 @@ img { max-width: 100%; display: block; }
     background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 60%, #0d1b3e 100%);
     background-image:
         linear-gradient(to bottom, rgba(10,20,50,0.80) 0%, rgba(10,20,50,0.65) 100%),
-        url("../img/hero-car.jpg");
+        url("/media/img_auto.png");
     background-size: cover;
     background-position: center;
     display: flex;
