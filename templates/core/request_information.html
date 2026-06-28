@@ -21,8 +21,22 @@
 
     <div class="ri-right">
         <div class="ri-form-card">
+
+            {% if messages %}
+            <div class="form-messages">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
             <form method="post" novalidate>
                 {% csrf_token %}
+                <input type="hidden" name="form_start" value="{{ form_start }}">
+                <!-- Honeypot -->
+                <div style="display:none;">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
 
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Full Name *" required>
@@ -31,20 +45,20 @@
                     <input type="tel" name="phone" placeholder="Phone Number *" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address *" required>
+                    <input type="email" name="email" placeholder="Email Address">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="address" placeholder="Property Address *">
+                    <input type="text" name="address" placeholder="Property Address">
                 </div>
                 <div class="form-row-3">
                     <div class="form-group">
-                        <input type="text" name="city" placeholder="City *">
+                        <input type="text" name="city" placeholder="City">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="state" placeholder="State *" maxlength="2">
+                        <input type="text" name="state" placeholder="State" maxlength="2">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="zip" placeholder="Zip Code *" maxlength="10">
+                        <input type="text" name="zip" placeholder="Zip Code" maxlength="10">
                     </div>
                 </div>
                 <div class="form-group">
@@ -71,6 +85,17 @@
                     <textarea name="message" placeholder="Message / Details&#10;Tell us more about your project..." rows="4"></textarea>
                 </div>
 
+                {% if turnstile_site_key %}
+                <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}" style="margin-bottom:12px;"></div>
+                {% endif %}
+
+                <div class="form-group ri-subscribe">
+                    <label class="ri-checkbox-label">
+                        <input type="checkbox" name="subscribe">
+                        <span>Subscribe to our newsletter for tips and updates</span>
+                    </label>
+                </div>
+
                 <button type="submit" class="btn-ri-submit">
                     SUBMIT INFORMATION <i class="fas fa-paper-plane"></i>
                 </button>
@@ -91,22 +116,10 @@
                 </div>
             </div>
             <div class="ri-ins-badges">
-                <div class="ri-ins-badge">
-                    <i class="fas fa-search"></i>
-                    <span>INSPECTION<br>& ASSESSMENT</span>
-                </div>
-                <div class="ri-ins-badge">
-                    <i class="fas fa-handshake"></i>
-                    <span>CLAIM<br>ASSISTANCE</span>
-                </div>
-                <div class="ri-ins-badge">
-                    <i class="fas fa-credit-card"></i>
-                    <span>DIRECT BILLING<br>AVAILABLE</span>
-                </div>
-                <div class="ri-ins-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>RESTORATION<br>YOU CAN RELY ON</span>
-                </div>
+                <div class="ri-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>&amp; ASSESSMENT</span></div>
+                <div class="ri-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
+                <div class="ri-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
+                <div class="ri-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
             </div>
         </div>
     </div>

@@ -752,17 +752,24 @@ img { max-width: 100%; display: block; }
 .contact-list li {
     display: flex;
     gap: 10px;
-    align-items: flex-start;
+    align-items: center;
     color: rgba(255,255,255,0.75);
     font-size: 13px;
     margin-bottom: 10px;
+    min-height: 20px;
+}
+
+.contact-list li a {
+    display: flex;
+    align-items: center;
 }
 
 .contact-list i {
     color: var(--accent);
-    font-size: 13px;
-    margin-top: 2px;
+    font-size: 14px;
     flex-shrink: 0;
+    width: 16px;
+    text-align: center;
 }
 
 .social-links {
@@ -1288,6 +1295,174 @@ img { max-width: 100%; display: block; }
     .hero-tagline h2 { font-size: 18px; }
     .protecting-tiles { grid-template-columns: 1fr 1fr; }
     .tile { height: 140px; }
+}
+
+/* ===== ABOUT PAGE ===== */
+.about-hero {
+    position: relative;
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 60%, #0a1428 100%);
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+}
+.about-hero-overlay {
+    position: absolute; inset: 0;
+    background: rgba(10,20,50,0.5);
+}
+.about-hero-content {
+    position: relative; z-index: 1;
+    padding: 60px 24px;
+}
+.about-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 3px; color: var(--accent);
+    margin-bottom: 12px;
+}
+.about-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 38px;
+    color: white; line-height: 1.15;
+    margin-bottom: 12px;
+}
+.about-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+}
+.about-founder-section {
+    background: var(--light-bg);
+    padding: 60px 0;
+}
+.about-founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    align-items: start;
+}
+.about-founder-card {
+    background: white;
+    border-radius: 14px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+.about-founder-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+}
+.about-founder-initials {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 28px; color: white;
+}
+.about-founder-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 18px;
+    color: var(--navy); margin-bottom: 4px;
+}
+.about-founder-title { font-size: 13px; color: var(--text-light); margin-bottom: 2px; }
+.about-founder-company { font-size: 13px; font-weight: 700; color: var(--accent); }
+.about-contact-list {
+    display: flex; flex-direction: column;
+    gap: 12px; width: 100%; text-align: left;
+    margin-top: 8px;
+}
+.about-contact-list li {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--text-light);
+}
+.about-contact-list i {
+    color: var(--accent); font-size: 14px;
+    width: 18px; text-align: center; flex-shrink: 0;
+}
+.about-contact-list a { color: var(--text); transition: color 0.2s; }
+.about-contact-list a:hover { color: var(--accent); }
+.about-mission {
+    background: white;
+    border-radius: 14px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow);
+}
+.about-mission h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 13px;
+    color: var(--navy); letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+.about-mission p {
+    font-size: 14px; color: var(--text-light);
+    line-height: 1.8; margin-bottom: 14px;
+}
+.about-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px; margin-top: 20px;
+}
+.about-badge {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--light-bg); border-radius: 8px;
+    padding: 12px 14px;
+}
+.about-badge i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+.about-badge span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; color: var(--navy); letter-spacing: 0.5px; }
+.about-services {
+    background: var(--white);
+    padding: 60px 0;
+}
+.about-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 22px;
+    color: var(--navy); margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+.text-center { text-align: center; }
+.about-svc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.about-svc-card {
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 12px;
+}
+.about-svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.about-svc-red    { background: linear-gradient(135deg, #c62828, #e53935); }
+.about-svc-blue   { background: linear-gradient(135deg, #1565c0, #1a9ed4); }
+.about-svc-green  { background: linear-gradient(135deg, #1b5e20, #2e7d32); }
+.about-svc-purple { background: linear-gradient(135deg, #4a148c, #7b1fa2); }
+.about-svc-card i { font-size: 32px; opacity: 0.9; }
+.about-svc-card h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px; margin: 0; }
+.about-svc-card h4 strong { display: block; font-size: 15px; letter-spacing: 0.5px; }
+.about-svc-card p { font-size: 12px; opacity: 0.85; margin: 0; }
+
+/* ===== SUBSCRIBE CHECKBOX ===== */
+.ri-subscribe { margin-top: 4px; }
+.ri-checkbox-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text-light);
+    cursor: pointer;
+}
+.ri-checkbox-label input[type="checkbox"] { width: 14px; height: 14px; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+    .about-founder-grid { grid-template-columns: 1fr; }
+    .about-svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-badges { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .about-svc-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== SERVICE PAGES ===== */

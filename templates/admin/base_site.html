@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block footer %}
+{% if not is_popup %}
+<footer class="app-footer" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div>
+        <strong>&copy; {% now 'Y' %} Surface Shield Systems LLC.</strong> All rights reserved.
+    </div>
+    <div style="font-size:12px;color:#aaa;">
+        Website created by <a href="https://t.me/ds0903" target="_blank" style="color:#1a9ed4;text-decoration:none;font-weight:600;">@ds0903</a>
+    </div>
+</footer>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<style>
+.db-wrap { max-width: 1200px; }
+.db-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.db-header-left h1 { margin:0 0 4px; font-size:26px; font-weight:800; color:#1a2340; }
+.db-header-left p { margin:0; color:#999; font-size:13px; }
+.db-date-badge { background:#f0f4ff; color:#1a2340; padding:8px 16px; border-radius:10px; font-size:13px; font-weight:600; }
+.stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:32px; }
+.stat-card { background:#fff; border-radius:14px; padding:22px 22px 18px; box-shadow:0 2px 14px rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:4px; position:relative; overflow:hidden; }
+.stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.stat-card.blue::before  { background:linear-gradient(90deg,#1a9ed4,#63d0f5); }
+.stat-card.green::before { background:linear-gradient(90deg,#28a745,#5cd98a); }
+.stat-card.orange::before{ background:linear-gradient(90deg,#f5a623,#ffd56b); }
+.stat-card.red::before   { background:linear-gradient(90deg,#e53935,#ff7043); }
+.stat-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:10px; }
+.stat-card.blue  .stat-icon { background:#e3f6fd; }
+.stat-card.green .stat-icon { background:#e8f7f0; }
+.stat-card.orange .stat-icon{ background:#fff8e8; }
+.stat-card.red   .stat-icon { background:#fff0f0; }
+.stat-num { font-size:32px; font-weight:800; color:#1a2340; line-height:1; }
+.stat-label { font-size:12px; color:#aaa; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
+.stat-sub { font-size:12px; color:#bbb; margin-top:2px; }
+.stat-sub a { color:#e53935; font-weight:600; text-decoration:none; }
+.db-section-header { display:flex; align-items:center; justify-content:space-between; margin:0 0 14px; }
+.db-section-title { font-size:13px; font-weight:700; color:#1a2340; text-transform:uppercase; letter-spacing:0.8px; display:flex; align-items:center; gap:8px; }
+.db-section-title::before { content:''; width:4px; height:16px; background:#1a9ed4; border-radius:2px; display:inline-block; }
+.db-view-all { font-size:12px; color:#1a9ed4; text-decoration:none; font-weight:600; }
+.db-table-wrap { background:#fff; border-radius:14px; box-shadow:0 2px 14px rgba(0,0,0,0.06); overflow:hidden; }
+.db-table { width:100%; border-collapse:collapse; }
+.db-table thead tr { background:#1a2340; }
+.db-table th { padding:13px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:rgba(255,255,255,0.75); text-align:left; }
+.db-table td { padding:13px 16px; font-size:13px; color:#444; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+.db-table tbody tr:last-child td { border-bottom:none; }
+.db-table tbody tr:hover td { background:#fafbff; }
+.db-table tbody tr.row-unread td { background:#fffdf0; }
+.db-table tbody tr.row-unread:hover td { background:#fff8e0; }
+.db-name-cell { display:flex; align-items:center; gap:10px; }
+.db-avatar { width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,#1a9ed4,#1a2340); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+.db-name-link { color:#1a2340; font-weight:600; text-decoration:none; font-size:13px; }
+.db-name-link:hover { color:#1a9ed4; }
+.db-badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; white-space:nowrap; }
+.db-badge.new   { background:#fff3e0; color:#e65100; }
+.db-badge.read  { background:#f0f0f0; color:#999; }
+.db-badge.sub   { background:#e3f6fd; color:#1a9ed4; }
+.db-badge.svc   { background:#f0f4ff; color:#3f51b5; }
+.db-empty { text-align:center; padding:48px 20px; color:#bbb; font-size:14px; }
+.db-empty-icon { font-size:40px; margin-bottom:10px; }
+</style>
+
+<div class="db-wrap">
+    <div class="db-header">
+        <div class="db-header-left">
+            <h1>Dashboard</h1>
+            <p>Welcome back, <strong>{{ user.username }}</strong>. Here's what's happening.</p>
+        </div>
+        <div class="db-date-badge">&#128197; {% now "M d, Y" %}</div>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card blue">
+            <div class="stat-icon">&#128065;</div>
+            <div class="stat-num">{{ visitors_today }}</div>
+            <div class="stat-label">Visitors Today</div>
+            <div class="stat-sub">{{ visitors_total }} all time</div>
+        </div>
+        <div class="stat-card green">
+            <div class="stat-icon">&#128231;</div>
+            <div class="stat-num">{{ inquiries_today }}</div>
+            <div class="stat-label">New Inquiries Today</div>
+            <div class="stat-sub">{{ inquiries_total }} all time</div>
+        </div>
+        <div class="stat-card orange">
+            <div class="stat-icon">&#128226;</div>
+            <div class="stat-num">{{ subscribers_total }}</div>
+            <div class="stat-label">Subscribers</div>
+            <div class="stat-sub">Opted in for newsletter</div>
+        </div>
+        <div class="stat-card red">
+            <div class="stat-icon">&#128276;</div>
+            <div class="stat-num">{{ unread_inquiries }}</div>
+            <div class="stat-label">Unread Inquiries</div>
+            <div class="stat-sub">
+                {% if unread_inquiries > 0 %}
+                    <a href="/admin/core/contactmessage/?is_read__exact=0">View unread &#8594;</a>
+                {% else %}
+                    All caught up &#10003;
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="db-section-header">
+        <div class="db-section-title">Recent Inquiries</div>
+        <a href="/admin/core/contactmessage/" class="db-view-all">View all &#8594;</a>
+    </div>
+
+    <div class="db-table-wrap">
+        <table class="db-table">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Service</th>
+                    <th>How Heard</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for msg in recent_inquiries %}
+                <tr class="{% if not msg.is_read %}row-unread{% endif %}">
+                    <td>
+                        <div class="db-name-cell">
+                            <div class="db-avatar">{{ msg.name|slice:":2"|upper }}</div>
+                            <a href="/admin/core/contactmessage/{{ msg.id }}/change/" class="db-name-link">{{ msg.name }}</a>
+                        </div>
+                    </td>
+                    <td>{{ msg.phone|default:"—" }}</td>
+                    <td>{{ msg.email|default:"—" }}</td>
+                    <td><span class="db-badge svc">{{ msg.service|default:"—" }}</span></td>
+                    <td>{{ msg.how_heard|default:"—" }}</td>
+                    <td style="white-space:nowrap;color:#999;font-size:12px;">{{ msg.created_at|date:"M d, Y · H:i" }}</td>
+                    <td>
+                        {% if not msg.is_read %}
+                            <span class="db-badge new">&#9679; New</span>
+                        {% else %}
+                            <span class="db-badge read">&#10004; Read</span>
+                        {% endif %}
+                        {% if msg.subscribe %}<span class="db-badge sub" style="margin-left:4px;">&#9993; Sub</span>{% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">
+                        <div class="db-empty">
+                            <div class="db-empty-icon">&#128233;</div>
+                            No inquiries yet
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

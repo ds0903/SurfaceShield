@@ -1,0 +1,78 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<style>
+.sp-wrap { max-width: 900px; }
+.sp-campaign-info { background:#fff; border-radius:12px; padding:24px 28px; box-shadow:0 2px 14px rgba(0,0,0,0.06); margin-bottom:24px; }
+.sp-campaign-info h2 { margin:0 0 8px; font-size:18px; color:#1a2340; }
+.sp-campaign-info p { margin:0; color:#666; font-size:13px; }
+.sp-table-wrap { background:#fff; border-radius:12px; box-shadow:0 2px 14px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:20px; }
+.sp-table { width:100%; border-collapse:collapse; }
+.sp-table thead tr { background:#1a2340; }
+.sp-table th { padding:12px 16px; font-size:11px; font-weight:700; text-transform:uppercase; color:rgba(255,255,255,0.75); text-align:left; }
+.sp-table td { padding:11px 16px; font-size:13px; color:#444; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+.sp-table tbody tr:last-child td { border-bottom:none; }
+.sp-table tbody tr:hover td { background:#fafbff; }
+.sp-actions { display:flex; gap:12px; align-items:center; }
+.sp-btn-send { background:linear-gradient(135deg,#1a9ed4,#1a3a6b); color:#fff; border:none; padding:12px 28px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; }
+.sp-btn-send:hover { opacity:0.9; }
+.sp-btn-back { background:#f0f0f0; color:#555; border:none; padding:12px 20px; border-radius:8px; font-weight:600; font-size:13px; cursor:pointer; text-decoration:none; display:inline-block; }
+.sp-check-all { margin-right:8px; cursor:pointer; }
+.sp-total { background:#f0f4ff; color:#1a2340; padding:6px 14px; border-radius:8px; font-size:13px; font-weight:600; }
+</style>
+
+<div class="sp-wrap">
+    <div class="sp-campaign-info">
+        <h2>&#128231; {{ campaign.subject }}</h2>
+        <p>Select recipients and click Send. Total subscribers: <strong>{{ total }}</strong></p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <input type="checkbox" id="selectAll" class="sp-check-all">
+                <label for="selectAll" style="font-size:13px;font-weight:600;cursor:pointer;">Select All</label>
+                <span class="sp-total">{{ total }} subscribers</span>
+            </div>
+        </div>
+
+        <div class="sp-table-wrap">
+            <table class="sp-table">
+                <thead>
+                    <tr>
+                        <th width="40">#</th>
+                        <th>Email</th>
+                        <th>Since</th>
+                        <th width="60">Send</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sub in subscribers %}
+                    <tr>
+                        <td style="color:#aaa;font-size:12px;">{{ forloop.counter }}</td>
+                        <td>{{ sub.email }}</td>
+                        <td style="color:#aaa;font-size:12px;">{{ sub.subscribed_at|date:"M d, Y" }}</td>
+                        <td><input type="checkbox" name="recipients" value="{{ sub.email }}" class="recipient-checkbox"></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="4" style="text-align:center;padding:32px;color:#aaa;">No active subscribers</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sp-actions">
+            <button type="submit" class="sp-btn-send">&#9993; Send Campaign</button>
+            <a href="/admin/core/newslettercampaign/" class="sp-btn-back">&#8592; Back</a>
+        </div>
+    </form>
+</div>
+
+<script>
+document.getElementById('selectAll').addEventListener('change', function() {
+    document.querySelectorAll('.recipient-checkbox').forEach(cb => cb.checked = this.checked);
+});
+</script>
+{% endblock %}

@@ -15,10 +15,12 @@ class SiteVisit(models.Model):
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=200)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
     service = models.CharField(max_length=100, blank=True)
-    message = models.TextField()
+    how_heard = models.CharField(max_length=100, blank=True)
+    message = models.TextField(blank=True)
+    subscribe = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
 
@@ -36,3 +38,18 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class NewsletterCampaign(models.Model):
+    subject = models.CharField(max_length=300)
+    body = models.TextField()
+    image = models.ImageField(upload_to='newsletter/', blank=True, null=True)
+    sent_at = models.DateTimeField(null=True, blank=True)
+    sent_count = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.subject

@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block extra_css %}{% endblock %}
+    {% if turnstile_site_key %}
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    {% endif %}
 </head>
 <body>
 
@@ -95,10 +98,18 @@
         <div class="footer-col">
             <h4>CONTACT US</h4>
             <ul class="contact-list">
-                <li><i class="fas fa-phone"></i> <a href="tel:2162801855">216-280-1855</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:michael@surfaceshieldsystems.com">michael@surfaceshieldsystems.com</a></li>
-                <li><i class="fas fa-globe"></i> <a href="https://www.surfaceshieldsystems.com" target="_blank" rel="noopener">www.surfaceshieldsystems.com</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/dir/?api=1&destination=26250+Euclid+Avenue+Euclid+Ohio+44132" target="_blank" rel="noopener">26250 Euclid Avenue, 9th Floor<br>Euclid, Ohio 44132</a></li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:2162801855">216-280-1855</a>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:michael@surfaceshieldsystems.com">michael@surfaceshieldsystems.com</a>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=26250+Euclid+Avenue+Euclid+Ohio+44132" target="_blank" rel="noopener">26250 Euclid Avenue, 9th Floor<br>Euclid, Ohio 44132</a>
+                </li>
             </ul>
         </div>
 

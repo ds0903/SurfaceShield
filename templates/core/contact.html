@@ -28,10 +28,6 @@
                         <a href="mailto:michael@surfaceshieldsystems.com">michael@surfaceshieldsystems.com</a>
                     </li>
                     <li>
-                        <i class="fas fa-globe"></i>
-                        <a href="https://www.surfaceshieldsystems.com" target="_blank" rel="noopener">www.surfaceshieldsystems.com</a>
-                    </li>
-                    <li>
                         <i class="fas fa-map-marker-alt"></i>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=26250+Euclid+Avenue+Euclid+Ohio+44132" target="_blank" rel="noopener">26250 Euclid Avenue, 9th Floor<br>Euclid, Ohio 44132</a>
                     </li>
@@ -40,8 +36,22 @@
 
             <!-- FORM -->
             <div class="form-card" style="flex:1;">
+
+                {% if messages %}
+                <div class="form-messages" style="margin-bottom:16px;">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 <form method="post" novalidate>
                     {% csrf_token %}
+                    <input type="hidden" name="form_start" value="{{ form_start }}">
+                    <!-- Honeypot -->
+                    <div style="display:none;">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Name *</label>
@@ -60,7 +70,12 @@
                         <label for="message">Message *</label>
                         <textarea id="message" name="message" required style="min-height:140px;"></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">SEND MESSAGE →</button>
+
+                    {% if turnstile_site_key %}
+                    <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}" style="margin-bottom:12px;"></div>
+                    {% endif %}
+
+                    <button type="submit" class="btn-submit">SEND MESSAGE <i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
 
