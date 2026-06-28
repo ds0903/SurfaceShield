@@ -44,3 +44,4 @@ info.txt
 *.swo
 .coverage
 htmlcov/
+/photo/
