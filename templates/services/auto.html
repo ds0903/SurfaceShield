@@ -1,16 +1,98 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Surface Shield Auto | Detailing & Ceramic Coatings{% endblock %}
+
 {% block content %}
-<section class="page-section">
+
+<section class="svc-hero svc-hero-auto">
+    <div class="svc-hero-overlay"></div>
+    <div class="container svc-hero-content">
+        <p class="svc-hero-label">SURFACE SHIELD</p>
+        <h1 class="svc-hero-title title-green">AUTO</h1>
+        <p class="svc-hero-tagline">PREMIUM CARE. EXCEPTIONAL RESULTS.</p>
+        <p class="svc-hero-desc">Professional detailing and protection services that keep your vehicle looking its best, inside and out. We use premium products, advanced techniques, and attention to detail that drives the difference.</p>
+    </div>
+</section>
+
+<section class="svc-badges">
     <div class="container">
-        <h1 style="color:#22a84b;">Surface Shield Auto</h1>
-        <p class="subtitle">Detailing That Protects. Results That Shine.</p>
-        <div class="form-card" style="max-width:800px;">
-            <p style="line-height:1.8;color:#4a5568;">
-                Interior & exterior detailing, paint correction, ceramic coatings,
-                headlight restoration and fleet services — your vehicle deserves the best.
-            </p>
+        <div class="svc-badges-grid">
+            <div class="svc-badge"><i class="fas fa-user-tie"></i><span>PROFESSIONAL<br>DETAILERS</span></div>
+            <div class="svc-badge"><i class="fas fa-spray-can"></i><span>PREMIUM PRODUCTS<br>& COATINGS</span></div>
+            <div class="svc-badge"><i class="fas fa-shield-alt"></i><span>PROTECTS &<br>ENHANCES</span></div>
+            <div class="svc-badge"><i class="fas fa-star"></i><span>LONG-LASTING<br>RESULTS</span></div>
         </div>
     </div>
 </section>
+
+<section class="svc-services">
+    <div class="container">
+        <h2 class="svc-section-title text-center">OUR AUTO DETAILING SERVICES</h2>
+        <div class="svc-cards-grid svc-cards-5">
+            <div class="svc-card">
+                <i class="fas fa-couch svc-card-icon icon-green"></i>
+                <h4>INTERIOR DETAILING</h4>
+                <p>Deep cleaning of seats, carpets, dashboard, vents, and all interior surfaces.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-car svc-card-icon icon-green"></i>
+                <h4>EXTERIOR DETAILING</h4>
+                <p>Hand-wash, paint decontamination, wax and sealant for a brilliant shine.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-paint-brush svc-card-icon icon-green"></i>
+                <h4>PAINT CORRECTION</h4>
+                <p>Removes swirl marks, scratches, and imperfections to restore a flawless finish.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-gem svc-card-icon icon-green"></i>
+                <h4>CERAMIC COATINGS</h4>
+                <p>Long-lasting protection that repels water, dirt, and contaminants.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-shield-alt svc-card-icon icon-green"></i>
+                <h4>PROTECTION PACKAGES</h4>
+                <p>Customized packages designed to keep your vehicle protected year-round.</p>
+            </div>
+        </div>
+
+        <div class="svc-benefits-grid">
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-green"></i><div><strong>IMPROVED APPEARANCE</strong><p>Look your best on the road.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-green"></i><div><strong>PROTECTS YOUR INVESTMENT</strong><p>Helps maintain value and condition.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-green"></i><div><strong>ECO-FRIENDLY PRODUCTS</strong><p>Safe for your vehicle and the environment.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-green"></i><div><strong>SATISFACTION GUARANTEED</strong><p>We take pride in every detail.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-insurance">
+    <div class="container">
+        <div class="svc-ins-inner">
+            <div class="svc-ins-left">
+                <i class="fas fa-file-invoice-dollar svc-ins-icon"></i>
+                <div>
+                    <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
+                    <p>We work directly with your insurance company to simplify the process and restore what matters most.</p>
+                </div>
+            </div>
+            <div class="svc-ins-badges">
+                <div class="svc-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>& ASSESSMENT</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-cta">
+    <div class="container">
+        <div class="svc-cta-inner">
+            <i class="fas fa-clipboard-list"></i>
+            <div><h3>REQUEST INFORMATION</h3><p>TELL US ABOUT YOUR PROJECT</p></div>
+            <a href="{% url 'request_information' %}" class="btn-svc-cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

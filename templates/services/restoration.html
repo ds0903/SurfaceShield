@@ -1,16 +1,98 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Surface Shield Restoration | Roofing, Siding, Gutters{% endblock %}
+
 {% block content %}
-<section class="page-section">
+
+<!-- HERO -->
+<section class="svc-hero svc-hero-restoration">
+    <div class="svc-hero-overlay"></div>
+    <div class="container svc-hero-content">
+        <p class="svc-hero-label">SURFACE SHIELD</p>
+        <h1 class="svc-hero-title title-red">RESTORATION</h1>
+        <p class="svc-hero-tagline">BUILT STRONG. BUILT TO LAST.</p>
+        <p class="svc-hero-desc">We restore and protect what matters most. From complete roof replacements to exterior renovations, our skilled team delivers high-quality craftsmanship and durable solutions for residential and commercial properties.</p>
+    </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="svc-badges">
     <div class="container">
-        <h1 style="color:#e02020;">Surface Shield Restoration</h1>
-        <p class="subtitle">Roofing. Siding. Gutters. Built to Last.</p>
-        <div class="form-card" style="max-width:800px;">
-            <p style="line-height:1.8;color:#4a5568;">
-                From roof replacement to complete tear-offs, storm damage restoration
-                and insurance claims assistance — we protect your home from top to bottom.
-            </p>
+        <div class="svc-badges-grid">
+            <div class="svc-badge"><i class="fas fa-hard-hat"></i><span>EXPERT<br>CRAFTSMANSHIP</span></div>
+            <div class="svc-badge"><i class="fas fa-cubes"></i><span>PREMIUM<br>MATERIALS</span></div>
+            <div class="svc-badge"><i class="fas fa-file-invoice-dollar"></i><span>INSURANCE CLAIMS<br>SPECIALISTS</span></div>
+            <div class="svc-badge"><i class="fas fa-shield-alt"></i><span>BUILT FOR<br>DURABILITY</span></div>
         </div>
     </div>
 </section>
+
+<!-- SERVICES -->
+<section class="svc-services">
+    <div class="container">
+        <div class="svc-two-col">
+            <div>
+                <h2 class="svc-section-title">ROOFING & EXTERIOR RESTORATION SERVICES</h2>
+                <ul class="svc-checklist checklist-red">
+                    <li><i class="fas fa-check-circle"></i> Complete Roof Replacement</li>
+                    <li><i class="fas fa-check-circle"></i> Complete Tear-Offs</li>
+                    <li><i class="fas fa-check-circle"></i> Roof Repairs</li>
+                    <li><i class="fas fa-check-circle"></i> Wood Replacement</li>
+                    <li><i class="fas fa-check-circle"></i> Siding Installation & Repair</li>
+                    <li><i class="fas fa-check-circle"></i> Gutter Systems</li>
+                    <li><i class="fas fa-check-circle"></i> Storm Damage Restoration</li>
+                    <li><i class="fas fa-check-circle"></i> Insurance Claims Assistance</li>
+                    <li><i class="fas fa-check-circle"></i> Commercial Roofing Solutions</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="svc-section-title">COMMERCIAL ROOFING EXPERTS</h2>
+                <p class="svc-text">We specialize in commercial roofing systems and flat roof solutions for businesses, warehouses, offices, and multi-family buildings.</p>
+                <ul class="svc-checklist checklist-red">
+                    <li><i class="fas fa-check-circle"></i> TPO Roofing</li>
+                    <li><i class="fas fa-check-circle"></i> EPDM Roofing</li>
+                    <li><i class="fas fa-check-circle"></i> Modified Bitumen</li>
+                    <li><i class="fas fa-check-circle"></i> Built-Up Roofing</li>
+                    <li><i class="fas fa-check-circle"></i> Metal Roofing</li>
+                    <li><i class="fas fa-check-circle"></i> Coatings & More</li>
+                </ul>
+                <div class="partner-logos">
+                    <span>GAF</span><span>CertainTeed</span><span>IKO</span><span>Owens Corning</span><span>TAMKO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INSURANCE + CTA -->
+<section class="svc-insurance">
+    <div class="container">
+        <div class="svc-ins-inner">
+            <div class="svc-ins-left">
+                <i class="fas fa-file-invoice-dollar svc-ins-icon"></i>
+                <div>
+                    <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
+                    <p>Our team works directly with your insurance company to simplify the process and restore your property quickly and properly.</p>
+                </div>
+            </div>
+            <div class="svc-ins-badges">
+                <div class="svc-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>& ASSESSMENT</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-cta">
+    <div class="container">
+        <div class="svc-cta-inner">
+            <i class="fas fa-clipboard-list"></i>
+            <div><h3>REQUEST INFORMATION</h3><p>TELL US ABOUT YOUR PROJECT</p></div>
+            <a href="{% url 'request_information' %}" class="btn-svc-cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

@@ -1,16 +1,98 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Surface Shield Interior | Deep Cleaning Services{% endblock %}
+
 {% block content %}
-<section class="page-section">
+
+<section class="svc-hero svc-hero-interior">
+    <div class="svc-hero-overlay"></div>
+    <div class="container svc-hero-content">
+        <p class="svc-hero-label">SURFACE SHIELD</p>
+        <h1 class="svc-hero-title title-purple">INTERIOR</h1>
+        <p class="svc-hero-tagline">DEEP CLEANING. HEALTHIER SPACES. BETTER LIVING.</p>
+        <p class="svc-hero-desc">We provide professional interior cleaning services that improve air quality, extend the life of your surfaces, and create cleaner, healthier environments for your home or business.</p>
+    </div>
+</section>
+
+<section class="svc-badges">
     <div class="container">
-        <h1 style="color:#8b2be2;">Surface Shield Interior</h1>
-        <p class="subtitle">Deep Cleaning. Healthier Spaces. Better Living.</p>
-        <div class="form-card" style="max-width:800px;">
-            <p style="line-height:1.8;color:#4a5568;">
-                Deep cleaning, carpet & upholstery, tile & grout, air duct cleaning
-                and post-construction services — we make spaces healthier.
-            </p>
+        <div class="svc-badges-grid">
+            <div class="svc-badge"><i class="fas fa-lungs"></i><span>HEALTHIER<br>ENVIRONMENTS</span></div>
+            <div class="svc-badge"><i class="fas fa-eye"></i><span>ATTENTION<br>TO DETAIL</span></div>
+            <div class="svc-badge"><i class="fas fa-award"></i><span>TRUSTED &<br>RELIABLE</span></div>
+            <div class="svc-badge"><i class="fas fa-star"></i><span>SATISFACTION<br>GUARANTEED</span></div>
         </div>
     </div>
 </section>
+
+<section class="svc-services">
+    <div class="container">
+        <h2 class="svc-section-title text-center">OUR INTERIOR CLEANING SERVICES</h2>
+        <div class="svc-cards-grid svc-cards-5">
+            <div class="svc-card">
+                <i class="fas fa-broom svc-card-icon icon-purple"></i>
+                <h4>DEEP CLEANING</h4>
+                <p>Thorough top-to-bottom cleaning that removes dirt, dust, allergens, and buildup from every surface.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-sync svc-card-icon icon-purple"></i>
+                <h4>MAINTENANCE CLEANING</h4>
+                <p>Routine care to keep your space fresh, clean, and comfortable all year long.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-hard-hat svc-card-icon icon-purple"></i>
+                <h4>POST-CONSTRUCTION CLEANING</h4>
+                <p>We remove dust, debris, and construction residue to make your new space move-in ready.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-couch svc-card-icon icon-purple"></i>
+                <h4>CARPET & UPHOLSTERY CLEANING</h4>
+                <p>Deep cleaning that eliminates stains, odors, and allergens from carpets, rugs, and furniture.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-th-large svc-card-icon icon-purple"></i>
+                <h4>HARD SURFACE CARE</h4>
+                <p>Specialized cleaning for tile, hardwood, laminate, stone, and other hard floors.</p>
+            </div>
+        </div>
+
+        <div class="svc-benefits-grid">
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-purple"></i><div><strong>IMPROVED AIR QUALITY</strong><p>Remove mold spores, dust, and contaminants.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-purple"></i><div><strong>PROLONGS SURFACE LIFE</strong><p>Proper care extends the life of your investment.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-purple"></i><div><strong>MORE TIME FOR YOU</strong><p>We handle the cleaning so you can enjoy life.</p></div></div>
+            <div class="svc-benefit"><i class="fas fa-check-circle icon-purple"></i><div><strong>CUSTOMIZED CLEANING PLANS</strong><p>We tailor our services to fit your needs and schedule.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-insurance">
+    <div class="container">
+        <div class="svc-ins-inner">
+            <div class="svc-ins-left">
+                <i class="fas fa-file-invoice-dollar svc-ins-icon"></i>
+                <div>
+                    <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
+                    <p>We work directly with your insurance company to simplify the process and restore what matters most.</p>
+                </div>
+            </div>
+            <div class="svc-ins-badges">
+                <div class="svc-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>& ASSESSMENT</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-cta">
+    <div class="container">
+        <div class="svc-cta-inner">
+            <i class="fas fa-clipboard-list"></i>
+            <div><h3>REQUEST INFORMATION</h3><p>TELL US ABOUT YOUR PROJECT</p></div>
+            <a href="{% url 'request_information' %}" class="btn-svc-cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

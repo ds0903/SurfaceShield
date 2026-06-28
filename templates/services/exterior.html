@@ -1,16 +1,106 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Surface Shield Exterior | Pressure Washing & Cleaning{% endblock %}
+
 {% block content %}
-<section class="page-section">
+
+<section class="svc-hero svc-hero-exterior">
+    <div class="svc-hero-overlay"></div>
+    <div class="container svc-hero-content">
+        <p class="svc-hero-label">SURFACE SHIELD</p>
+        <h1 class="svc-hero-title title-blue">EXTERIOR</h1>
+        <p class="svc-hero-tagline">CLEANER EXTERIORS. STRONGER IMPRESSIONS.</p>
+        <p class="svc-hero-desc">We remove dirt, grime, mold, and buildup from every exterior surface using professional soft washing and pressure washing techniques that are safe, effective, and long-lasting.</p>
+    </div>
+</section>
+
+<section class="svc-badges">
     <div class="container">
-        <h1 style="color:#2d5aa0;">Surface Shield Exterior</h1>
-        <p class="subtitle">Cleaner Exteriors. Stronger Impressions.</p>
-        <div class="form-card" style="max-width:800px;">
-            <p style="line-height:1.8;color:#4a5568;">
-                Soft washing, pressure washing, window cleaning, gutter brightening,
-                masonry sealing — we keep your property looking its best.
-            </p>
+        <div class="svc-badges-grid">
+            <div class="svc-badge"><i class="fas fa-broom"></i><span>SAFE & EFFECTIVE<br>CLEANING</span></div>
+            <div class="svc-badge"><i class="fas fa-tools"></i><span>PREMIUM EQUIPMENT<br>& SOLUTIONS</span></div>
+            <div class="svc-badge"><i class="fas fa-home"></i><span>ENHANCED CURB<br>APPEAL</span></div>
+            <div class="svc-badge"><i class="fas fa-shield-alt"></i><span>PROTECTS YOUR<br>INVESTMENT</span></div>
         </div>
     </div>
 </section>
+
+<section class="svc-services">
+    <div class="container">
+        <h2 class="svc-section-title text-center">OUR EXTERIOR CLEANING SERVICES</h2>
+        <div class="svc-cards-grid">
+            <div class="svc-card">
+                <i class="fas fa-house-damage svc-card-icon icon-blue"></i>
+                <h4>ROOF SOFT WASHING</h4>
+                <p>Safely removes algae, moss, lichens, and stains extending the life of your roof.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-home svc-card-icon icon-blue"></i>
+                <h4>HOUSE SOFT WASHING</h4>
+                <p>Gentle cleaning for siding, stucco, brick, and other delicate surfaces.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-tint svc-card-icon icon-blue"></i>
+                <h4>CONCRETE & MASONRY</h4>
+                <p>Pressure washing removes dirt, oil, grime, and stains from driveways, sidewalks, patios, and more.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-water svc-card-icon icon-blue"></i>
+                <h4>GUTTER BRIGHTENING</h4>
+                <p>Restores gutters to like-new condition by removing black streaks and buildup.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-window-maximize svc-card-icon icon-blue"></i>
+                <h4>WINDOW CLEANING</h4>
+                <p>Clean interior & exterior window cleaning for crystal clear views and a polished look.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-border-all svc-card-icon icon-blue"></i>
+                <h4>SCREEN CLEANING</h4>
+                <p>We clean window screens to remove dirt, pollen, and dust for a fresher home.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-tree svc-card-icon icon-blue"></i>
+                <h4>DECK & FENCE CLEANING</h4>
+                <p>Keep your property clean, professional, and welcoming year-round.</p>
+            </div>
+            <div class="svc-card">
+                <i class="fas fa-building svc-card-icon icon-blue"></i>
+                <h4>COMMERCIAL EXTERIORS</h4>
+                <p>Professional exterior cleaning to keep your business property stains to restore your decks and fences.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-insurance">
+    <div class="container">
+        <div class="svc-ins-inner">
+            <div class="svc-ins-left">
+                <i class="fas fa-file-invoice-dollar svc-ins-icon"></i>
+                <div>
+                    <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
+                    <p>We work directly with your insurance company to simplify the process and restore what matters most.</p>
+                </div>
+            </div>
+            <div class="svc-ins-badges">
+                <div class="svc-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>& ASSESSMENT</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
+                <div class="svc-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="svc-cta">
+    <div class="container">
+        <div class="svc-cta-inner">
+            <i class="fas fa-clipboard-list"></i>
+            <div><h3>REQUEST INFORMATION</h3><p>TELL US ABOUT YOUR PROJECT</p></div>
+            <a href="{% url 'request_information' %}" class="btn-svc-cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
