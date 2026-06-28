@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}Request Information | Surface Shield Systems{% endblock %}
+
+{% block content %}
+
+<!-- HERO FORM SECTION -->
+<section class="ri-section">
+    <div class="ri-left">
+        <div class="ri-left-content">
+            <h1 class="ri-title">REQUEST<br>INFORMATION</h1>
+            <p class="ri-subtitle">TELL US ABOUT YOUR PROJECT</p>
+            <p class="ri-desc">Fill out the form below and a member of our team will get back to you shortly.</p>
+            <ul class="ri-perks">
+                <li><i class="fas fa-check-square"></i> Fast Response</li>
+                <li><i class="fas fa-check-square"></i> Helpful Information</li>
+                <li><i class="fas fa-check-square"></i> No Obligation</li>
+                <li><i class="fas fa-check-square"></i> We Work With Insurance Claims</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ri-right">
+        <div class="ri-form-card">
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name *" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number *" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address *" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="address" placeholder="Property Address *">
+                </div>
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <input type="text" name="city" placeholder="City *">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="state" placeholder="State *" maxlength="2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="zip" placeholder="Zip Code *" maxlength="10">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select name="service">
+                        <option value="" disabled selected>Service Interested In *</option>
+                        <option value="restoration">Surface Shield Restoration</option>
+                        <option value="exterior">Surface Shield Exterior</option>
+                        <option value="auto">Surface Shield Auto</option>
+                        <option value="interior">Surface Shield Interior</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="heard_from">
+                        <option value="" disabled selected>How Did You Hear About Us?</option>
+                        <option value="google">Google Search</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="referral">Friend / Referral</option>
+                        <option value="insurance">Insurance Company</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Message / Details&#10;Tell us more about your project..." rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn-ri-submit">
+                    SUBMIT INFORMATION <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- INSURANCE SECTION -->
+<section class="ri-insurance">
+    <div class="container">
+        <div class="ri-ins-inner">
+            <div class="ri-ins-left">
+                <i class="fas fa-file-invoice-dollar ri-ins-icon"></i>
+                <div>
+                    <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
+                    <p>We work directly with your insurance company to simplify the process and restore what matters most.</p>
+                </div>
+            </div>
+            <div class="ri-ins-badges">
+                <div class="ri-ins-badge">
+                    <i class="fas fa-search"></i>
+                    <span>INSPECTION<br>& ASSESSMENT</span>
+                </div>
+                <div class="ri-ins-badge">
+                    <i class="fas fa-handshake"></i>
+                    <span>CLAIM<br>ASSISTANCE</span>
+                </div>
+                <div class="ri-ins-badge">
+                    <i class="fas fa-credit-card"></i>
+                    <span>DIRECT BILLING<br>AVAILABLE</span>
+                </div>
+                <div class="ri-ins-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>RESTORATION<br>YOU CAN RELY ON</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

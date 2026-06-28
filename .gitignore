@@ -1,0 +1,46 @@
+# Django
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+db.sqlite3
+/media/
+staticfiles/
+
+# Environment
+.env
+*.env
+
+# Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Migrations (optional — remove if you want to track them)
+# */migrations/*.py
+# */migrations/__pycache__/
+
+# Misc
+info.txt
+*.swp
+*.swo
+.coverage
+htmlcov/
