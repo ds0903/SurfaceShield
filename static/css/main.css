@@ -251,10 +251,11 @@ img { max-width: 100%; display: block; }
     gap: 12px;
 }
 
-.hero-logo svg {
-    width: 90px;
-    height: 100px;
-    filter: drop-shadow(0 4px 16px rgba(74,158,255,0.5));
+.hero-logo img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 20px rgba(74,158,255,0.6));
 }
 
 .hero-brand-name {
@@ -686,19 +687,11 @@ img { max-width: 100%; display: block; }
     text-decoration: none;
 }
 
-.footer-s {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, #2d5aa0, #4a9eff);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 24px;
-    color: white;
-    border: 2px solid rgba(74,158,255,0.5);
+.footer-logo-img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(74,158,255,0.4));
 }
 
 .footer-brand-text {
