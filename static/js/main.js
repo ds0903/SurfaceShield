@@ -16,6 +16,22 @@ if (hamburger && mainNav) {
     });
 }
 
+// CONTACT US → scroll to footer contacts + highlight
+document.querySelectorAll('.nav-contact-scroll').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById('footer-contact');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+            target.classList.add('highlighted');
+            setTimeout(() => target.classList.remove('highlighted'), 2200);
+        }, 600);
+        // close mobile nav if open
+        if (mainNav) mainNav.classList.remove('open');
+    });
+});
+
 // Auto-dismiss messages
 setTimeout(() => {
     document.querySelectorAll('.alert').forEach(el => {

@@ -19,6 +19,12 @@
 </head>
 <body>
 
+<!-- MOBILE TOP BAR -->
+<div class="mobile-topbar">
+    <a href="tel:2162801855"><i class="fas fa-phone"></i> +1 (216) 280-1855</a>
+    <a href="mailto:michael@surfaceshieldsystems.com"><i class="fas fa-envelope"></i> michael@surfaceshieldsystems.com</a>
+</div>
+
 <!-- HEADER -->
 <header class="site-header">
     <div class="header-inner container">
@@ -34,7 +40,8 @@
                 <li><a href="{% url 'auto' %}" class="{% if request.resolver_match.url_name == 'auto' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">AUTO</span></a></li>
                 <li><a href="{% url 'interior' %}" class="{% if request.resolver_match.url_name == 'interior' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">INTERIOR</span></a></li>
                 <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">ABOUT US</a></li>
-                <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">CONTACT US</a></li>
+                <li><a href="#footer-contact" class="nav-contact-scroll">CONTACT US</a></li>
+                <li class="nav-mobile-request"><a href="{% url 'request_information' %}">REQUEST INFORMATION</a></li>
             </ul>
         </nav>
 
@@ -95,7 +102,7 @@
             </ul>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col" id="footer-contact">
             <h4>CONTACT US</h4>
             <ul class="contact-list">
                 <li>
