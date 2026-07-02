@@ -78,8 +78,8 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 16px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     transition: padding 0.35s ease;
 }
 
