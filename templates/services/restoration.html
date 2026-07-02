@@ -7,11 +7,19 @@
 <!-- HERO -->
 <section class="svc-hero svc-hero-restoration">
     <div class="svc-hero-overlay"></div>
-    <div class="container svc-hero-content">
-        <p class="svc-hero-label">SURFACE SHIELD</p>
-        <h1 class="svc-hero-title title-red">RESTORATION</h1>
-        <p class="svc-hero-tagline">BUILT STRONG. BUILT TO LAST.</p>
-        <p class="svc-hero-desc">We restore and protect what matters most. From complete roof replacements to exterior renovations, our skilled team delivers high-quality craftsmanship and durable solutions for residential and commercial properties.</p>
+    <div class="container resto-hero-inner">
+        <div class="resto-hero-text">
+            <p class="svc-hero-label">SURFACE SHIELD</p>
+            <h1 class="svc-hero-title title-red">RESTORATION</h1>
+            <p class="svc-hero-tagline">BUILT STRONG. BUILT TO LAST.</p>
+            <p class="svc-hero-desc">We restore and protect what matters most. From complete roof replacements to exterior renovations, our skilled team delivers high-quality craftsmanship and durable solutions for residential and commercial properties.</p>
+        </div>
+        <div class="resto-hero-cta">
+            <a href="{% url 'storm_damage' %}" class="svc-ins-learn-btn">
+                <i class="fas fa-cloud-rain" style="font-size:20px;display:block;margin-bottom:8px;"></i>
+                STORM DAMAGE &<br>INSURANCE RESTORATION<br><span style="font-size:10px;opacity:0.85;font-weight:600;">LEARN MORE <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -71,35 +79,37 @@
     </div>
 </section>
 
-<!-- INSURANCE + CTA -->
+<!-- INSURANCE -->
 <section class="svc-insurance">
     <div class="container">
         <div class="svc-ins-inner">
-            <div class="svc-ins-left">
+            <a href="{% url 'storm_damage' %}" class="svc-ins-left svc-ins-left-link">
                 <i class="fas fa-file-invoice-dollar svc-ins-icon"></i>
                 <div>
                     <h3>WE WORK WITH<br>INSURANCE CLAIMS</h3>
                     <p>Our team works directly with your insurance company to simplify the process and restore your property quickly and properly.</p>
+                    <span class="svc-ins-more">Learn about our restoration process <i class="fas fa-arrow-right"></i></span>
                 </div>
-            </div>
+            </a>
             <div class="svc-ins-badges">
                 <div class="svc-ins-badge"><i class="fas fa-search"></i><span>INSPECTION<br>& ASSESSMENT</span></div>
                 <div class="svc-ins-badge"><i class="fas fa-handshake"></i><span>CLAIM<br>ASSISTANCE</span></div>
                 <div class="svc-ins-badge"><i class="fas fa-credit-card"></i><span>DIRECT BILLING<br>AVAILABLE</span></div>
                 <div class="svc-ins-badge"><i class="fas fa-shield-alt"></i><span>RESTORATION<br>YOU CAN RELY ON</span></div>
             </div>
-            <a href="{% url 'storm_damage' %}" class="svc-ins-learn-btn">LEARN MORE ABOUT<br>STORM DAMAGE RESTORATION <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
 
-<section class="svc-cta">
-    <div class="container">
-        <div class="svc-cta-inner">
-            <i class="fas fa-clipboard-list"></i>
-            <div><h3>REQUEST INFORMATION</h3><p>TELL US ABOUT YOUR PROJECT</p></div>
-            <a href="{% url 'request_information' %}" class="btn-svc-cta">GET STARTED <i class="fas fa-arrow-right"></i></a>
+<!-- CTA -->
+<section class="cta-banner">
+    <div class="container cta-inner">
+        <i class="fas fa-clipboard-list cta-icon"></i>
+        <div class="cta-text">
+            <h3>READY TO PROTECT WHAT MATTERS?</h3>
+            <p>Request a consultation today and let our experienced team restore your property.</p>
         </div>
+        <a href="{% url 'request_information' %}" class="btn-cta">REQUEST PROJECT CONSULTATION <i class="fas fa-arrow-right"></i></a>
     </div>
 </section>
 
