@@ -78,8 +78,8 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 16px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     transition: padding 0.35s ease;
 }
 
@@ -94,7 +94,7 @@ img { max-width: 100%; display: block; }
 }
 
 .site-header.scrolled .logo-img {
-    height: 64px;
+    height: 55px;
 }
 
 .site-header.scrolled .main-nav a {
@@ -120,7 +120,7 @@ img { max-width: 100%; display: block; }
 }
 
 .logo-img {
-    height: 120px;
+    height: 70px;
     width: auto;
     display: block;
 }
