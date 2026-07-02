@@ -274,20 +274,102 @@
     </div>
 </section>
 
+<!-- SERVICE AREA + PARTNERS -->
+<section class="area-section">
+    <div class="container area-inner">
+
+        <!-- LEFT: Partners -->
+        <div class="area-partners">
+            <p class="area-label">OUR PARTNERS</p>
+            <h3 class="area-title">WE WORK WITH<br><span class="accent">THE BEST</span></h3>
+            <p class="area-desc">We partner with industry-leading manufacturers and suppliers to deliver premium materials and exceptional results on every project.</p>
+            <div class="partner-logos">
+                <div class="partner-logo-slot">Logo</div>
+                <div class="partner-logo-slot">Logo</div>
+                <div class="partner-logo-slot">Logo</div>
+                <div class="partner-logo-slot">Logo</div>
+                <div class="partner-logo-slot">Logo</div>
+                <div class="partner-logo-slot">Logo</div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Map -->
+        <div class="area-map">
+            <p class="area-map-label">PROUDLY SERVING NORTHEAST OHIO</p>
+            <div class="area-map-wrap">
+                <div id="service-map" style="width:100%;height:100%;"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
     <div class="container">
         <div class="cta-inner">
             <i class="fas fa-clipboard-list cta-icon"></i>
             <div class="cta-text">
-                <h3>READY TO GET STARTED?</h3>
-                <p>Tell us about your project and let our team provide the right solution.</p>
+                <h3>READY TO PROTECT WHAT MATTERS?</h3>
+                <p>Let our team provide the right solution for your property or vehicle.</p>
             </div>
             <a href="{% url 'request_information' %}" class="btn-cta">
-                REQUEST INFORMATION <i class="fas fa-arrow-right"></i>
+                REQUEST PROJECT CONSULTATION <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
 </section>
 
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+    var map = L.map('service-map', { zoomControl: true, scrollWheelZoom: false })
+               .setView([41.35, -81.55], 9);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var serviceArea = [
+        [41.62, -81.48],
+        [41.58, -81.65],
+        [41.53, -81.80],
+        [41.50, -82.00],
+        [41.42, -82.18],
+        [41.30, -82.22],
+        [41.18, -82.05],
+        [41.08, -81.80],
+        [41.04, -81.55],
+        [41.08, -81.28],
+        [41.22, -81.10],
+        [41.38, -81.08],
+        [41.52, -81.22],
+        [41.62, -81.48]
+    ];
+
+    L.polygon(serviceArea, {
+        color: '#2a6aad',
+        weight: 2,
+        fillColor: '#4a9eff',
+        fillOpacity: 0.30
+    }).addTo(map);
+
+    var icon = L.divIcon({
+        className: '',
+        html: '<div style="background:#4a9eff;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.4)"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+    });
+    L.marker([41.5931, -81.5104], {icon: icon})
+     .addTo(map)
+     .bindPopup('<b>Surface Shield Systems</b><br>26250 Euclid Ave, Euclid OH');
+})();
+</script>
 {% endblock %}

@@ -849,10 +849,85 @@ img { max-width: 100%; display: block; }
     .process-title { font-size: 22px; }
 }
 
+/* ===== SERVICE AREA + PARTNERS ===== */
+.area-section {
+    background: #f4f6f9;
+    padding: 60px 0;
+    border-top: 1px solid #dce6f0;
+    border-bottom: 1px solid #dce6f0;
+}
+.area-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+.area-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4a9eff;
+    margin-bottom: 8px;
+}
+.area-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+.area-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+.partner-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.partner-logo-slot {
+    height: 60px;
+    border: 2px dashed #c8d8e8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aab;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: #fff;
+}
+.area-map-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 12px;
+}
+.area-map-wrap {
+    width: 100%;
+    height: 340px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #dce6f0;
+    box-shadow: 0 4px 16px rgba(26,58,107,0.10);
+}
+@media (max-width: 768px) {
+    .area-inner { grid-template-columns: 1fr; }
+    .area-map-wrap { height: 240px; }
+}
+
 /* ===== CTA BANNER ===== */
 .cta-banner {
     background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-    padding: 48px 0;
+    padding: 22px 0;
 }
 
 .cta-inner {
