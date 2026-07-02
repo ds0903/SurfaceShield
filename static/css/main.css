@@ -195,12 +195,12 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #0f2150;
+    background: #4a9eff;
     color: var(--white);
     padding: 11px 20px;
     border-radius: 8px;
-    border: 1.5px solid #3a6abf;
-    box-shadow: 0 0 12px rgba(58,106,191,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+    border: 1.5px solid #4a9eff;
+    box-shadow: 0 0 12px rgba(74,158,255,0.4);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 11px;
@@ -213,9 +213,9 @@ img { max-width: 100%; display: block; }
 }
 
 .btn-request:hover {
-    background: #162d6e;
-    box-shadow: 0 0 20px rgba(58,106,191,0.55), inset 0 1px 0 rgba(255,255,255,0.12);
-    border-color: #5a8adf;
+    background: #2d87f0;
+    box-shadow: 0 0 20px rgba(74,158,255,0.6);
+    border-color: #2d87f0;
 }
 .btn-request i { font-size: 18px; }
 
@@ -373,19 +373,18 @@ img { max-width: 100%; display: block; }
 
 .hero-badges {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
-    padding: 8px 40px;
-    background: rgba(5,12,35,0.7);
+    padding: 18px 40px;
+    background: rgba(5,12,35,0.75);
     border-top: 1px solid rgba(74,158,255,0.2);
     backdrop-filter: blur(4px);
-    border-radius: 0;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 .hero-badge-item {
     display: flex;
@@ -393,11 +392,11 @@ img { max-width: 100%; display: block; }
     gap: 10px;
     color: rgba(255,255,255,0.85);
 }
-.hero-badge-item i { font-size: 22px; color: #4a9eff; }
+.hero-badge-item i { font-size: 28px; color: #4a9eff; }
 .hero-badge-item span {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.5px;
     line-height: 1.4;
     text-transform: uppercase;
@@ -684,7 +683,7 @@ img { max-width: 100%; display: block; }
 .why-section {
     position: relative;
     background: var(--navy);
-    padding: 80px 0;
+    padding: 40px 0;
     overflow: hidden;
 }
 .why-section::before {
@@ -694,57 +693,65 @@ img { max-width: 100%; display: block; }
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="1" fill="rgba(255,255,255,0.04)"/></svg>') repeat;
 }
 .why-inner { position: relative; z-index: 1; }
-.why-header { text-align: center; margin-bottom: 56px; }
+.why-header { text-align: center; margin-bottom: 20px; }
 .why-label {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 4px;
     color: rgba(255,255,255,0.5);
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 .why-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 36px;
+    font-size: 28px;
     color: #fff;
     letter-spacing: 1px;
 }
 .why-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 16px;
 }
-.why-item { text-align: center; color: #fff; }
+.why-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    color: #fff;
+    text-align: left;
+}
 .why-icon {
-    width: 90px;
-    height: 90px;
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 2px solid rgba(74,158,255,0.4);
     background: rgba(74,158,255,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 32px;
+    font-size: 22px;
     color: #4a9eff;
+    margin-bottom: 12px;
 }
 .why-item h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 14px;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
     color: #fff;
 }
 .why-item p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.6;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
 }
 @media (max-width: 768px) {
-    .why-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-    .why-title { font-size: 24px; }
+    .why-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .why-title { font-size: 22px; }
 }
 @media (max-width: 480px) {
     .why-grid { grid-template-columns: 1fr; }
@@ -753,21 +760,21 @@ img { max-width: 100%; display: block; }
 /* ===== OUR PROCESS ===== */
 .process-section {
     background: #f4f6f9;
-    padding: 80px 0;
+    padding: 44px 0;
 }
-.process-header { text-align: center; margin-bottom: 56px; }
+.process-header { text-align: center; margin-bottom: 30px; }
 .process-label {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 4px;
     color: #4a9eff;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 .process-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 36px;
+    font-size: 28px;
     color: var(--navy);
     letter-spacing: 1px;
 }
@@ -780,22 +787,23 @@ img { max-width: 100%; display: block; }
 .process-step {
     flex: 1;
     text-align: center;
-    max-width: 180px;
+    max-width: 160px;
 }
 .process-icon-wrap {
     position: relative;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 .process-icon {
-    width: 80px;
-    height: 80px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     background: var(--navy);
+    border: 3px solid rgba(74,158,255,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 22px;
     color: #fff;
     margin: 0 auto;
 }
@@ -816,10 +824,10 @@ img { max-width: 100%; display: block; }
     justify-content: center;
 }
 .process-connector {
-    flex: 0 0 40px;
+    flex: 0 0 30px;
     height: 2px;
     border-top: 2px dashed #b0bcd0;
-    margin-top: 40px;
+    margin-top: 31px;
 }
 .process-step h4 {
     font-family: 'Montserrat', sans-serif;
