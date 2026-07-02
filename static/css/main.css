@@ -1906,6 +1906,62 @@ img { max-width: 100%; display: block; }
     .about-svc-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== AUTO PAGE ===== */
+.auto-intro-section { background: #fff; padding: 50px 0; border-bottom: 1px solid #e8edf3; }
+.auto-intro-inner { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.auto-intro-stats { display: flex; flex-direction: column; gap: 12px; min-width: 160px; }
+.auto-stat { display: flex; align-items: center; gap: 12px; background: #f4f6f9; border-radius: 10px; padding: 12px 16px; }
+.auto-stat i { color: #2e7d32; font-size: 18px; flex-shrink: 0; }
+.auto-stat span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; color: var(--navy); line-height: 1.4; }
+
+.auto-services-section { background: #f4f6f9; padding: 60px 0; }
+.auto-svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.auto-svc-card { background: #fff; border-radius: 14px; padding: 28px 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.auto-svc-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg,#1b5e20,#2e7d32); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.auto-svc-icon i { color: #fff; font-size: 22px; }
+.auto-svc-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: var(--navy); margin-bottom: 8px; }
+.auto-svc-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
+.auto-svc-list { list-style: none; flex: 1; }
+.auto-svc-list li { font-size: 12px; color: var(--text-light); padding: 4px 0; border-bottom: 1px solid #f0f3f7; }
+.auto-svc-list li::before { content: '• '; color: #2e7d32; }
+.auto-svc-benefits { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.auto-svc-benefits span { background: #e8f5e9; color: #1b5e20; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+
+.auto-membership-section { background: linear-gradient(135deg,#1b5e20,#2e7d32); padding: 60px 0; }
+.auto-membership-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+.auto-membership-list { display: flex; flex-direction: column; gap: 12px; }
+.auto-membership-item { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 18px; }
+.auto-membership-item i { color: #a5d6a7; font-size: 16px; flex-shrink: 0; }
+.auto-membership-item span { color: #fff; font-size: 14px; font-weight: 600; }
+
+.auto-why-section { background: #fff; padding: 60px 0; }
+.auto-why-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+.auto-principles { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+.auto-principle { border-left: 3px solid #2e7d32; padding-left: 16px; }
+.auto-principle-word { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: var(--navy); display: block; margin-bottom: 4px; }
+.auto-principle p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+.auto-why-checklist { background: #f4f6f9; border-radius: 14px; padding: 28px 24px; }
+.auto-why-checklist h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; color: var(--navy); letter-spacing: 1px; margin-bottom: 18px; }
+.auto-why-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #e8edf3; }
+.auto-why-item i { color: #2e7d32; font-size: 14px; flex-shrink: 0; }
+.auto-why-item span { font-size: 13px; color: var(--text); }
+
+.int-icon { background: linear-gradient(135deg,#4a148c,#7b1fa2) !important; }
+.int-stat i { color: #7b1fa2 !important; }
+.int-principle { border-left-color: #7b1fa2 !important; }
+
+.ext-icon { background: linear-gradient(135deg,#0d3d7a,#1565c0) !important; }
+.ext-stat i { color: #1565c0 !important; }
+.ext-principle { border-left-color: #1565c0 !important; }
+.ext-membership { background: linear-gradient(135deg,#0d3d7a,#1565c0) !important; }
+
+@media (max-width: 1024px) { .auto-svc-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 768px) {
+    .auto-intro-inner, .auto-membership-inner, .auto-why-inner { grid-template-columns: 1fr; }
+    .auto-intro-stats { flex-direction: row; flex-wrap: wrap; }
+    .auto-svc-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== SERVICE PAGES ===== */
 .svc-hero {
     position: relative;
