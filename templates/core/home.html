@@ -19,28 +19,33 @@
             <img src="/media/logo_2.png" alt="Surface Shield Systems">
         </div>
         <div class="hero-brand">
-            <h1 class="hero-brand-name">SURFACE<br>SHIELD</h1>
+            <h1 class="hero-brand-name">SURFACE SHIELD</h1>
             <p class="hero-brand-sub">— SYSTEMS —</p>
         </div>
         <div class="hero-tagline">
-            <h2>TOTAL PROTECTION. <span class="accent">TOTAL SOLUTIONS.</span></h2>
-            <p>ONE COMPANY. FOUR SPECIALTIES. COMPLETE PROTECTION FOR WHAT MATTERS MOST.</p>
+            <h2>PROTECT WHAT MATTERS.<br><span class="accent">DELIVERING EXCELLENCE.</span></h2>
+            <p>One Company. Four Specialized Divisions.<br>Complete Property & Vehicle Protection.</p>
         </div>
         <div class="hero-ctas">
-            <a href="{% url 'request_information' %}" class="hero-btn hero-btn-primary">
-                <i class="fas fa-clipboard-list"></i>
-                <span><strong>REQUEST INFORMATION</strong><br><small>TELL US ABOUT YOUR PROJECT</small></span>
+            <a href="{% url 'request_information' %}" class="hero-btn-solid">
+                REQUEST PROJECT CONSULTATION <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="#footer-contact" class="hero-btn hero-btn-secondary nav-contact-scroll">
-                <i class="fas fa-shield-alt"></i>
-                <span><strong>WE WORK WITH<br>INSURANCE CLAIMS</strong><br><small>RESTORATION YOU CAN RELY ON</small></span>
+            <a href="#services-section" class="hero-btn-outline">
+                VIEW OUR SERVICES <i class="fas fa-arrow-right"></i>
             </a>
+        </div>
+        <div class="hero-badges">
+            <div class="hero-badge-item"><i class="fas fa-shield-alt"></i><span>FULLY LICENSED<br>& INSURED</span></div>
+            <div class="hero-badge-item"><i class="fas fa-file-invoice-dollar"></i><span>INSURANCE CLAIM<br>SPECIALISTS</span></div>
+            <div class="hero-badge-item"><i class="fas fa-user-tie"></i><span>TRAINED<br>PROFESSIONALS</span></div>
+            <div class="hero-badge-item"><i class="fas fa-tools"></i><span>PREMIUM PRODUCTS<br>& EQUIPMENT</span></div>
+            <div class="hero-badge-item"><i class="fas fa-star"></i><span>SATISFACTION<br>GUARANTEED</span></div>
         </div>
     </div>
 </section>
 
 <!-- SERVICES CARDS -->
-<section class="services-section">
+<section class="services-section" id="services-section">
     <div class="container">
         <div class="services-grid">
 
@@ -142,34 +147,6 @@
     </div>
 </section>
 
-<!-- TRUST BADGES -->
-<section class="trust-badges">
-    <div class="container">
-        <div class="badges-grid">
-            <div class="badge-item">
-                <i class="fas fa-shield-alt"></i>
-                <span>FULLY LICENSED<br>& INSURED</span>
-            </div>
-            <div class="badge-item">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <span>WE WORK WITH<br>INSURANCE CLAIMS</span>
-            </div>
-            <div class="badge-item">
-                <i class="fas fa-user-tie"></i>
-                <span>TRAINED<br>PROFESSIONALS</span>
-            </div>
-            <div class="badge-item">
-                <i class="fas fa-tools"></i>
-                <span>PREMIUM PRODUCTS<br>& EQUIPMENT</span>
-            </div>
-            <div class="badge-item">
-                <i class="fas fa-star"></i>
-                <span>SATISFACTION<br>GUARANTEED</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- PROTECTING PROPERTIES SECTION -->
 <section class="protecting-section">
     <div class="container">
@@ -203,6 +180,95 @@
                         <p>Healthier spaces. Better living.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section">
+    <div class="why-overlay"></div>
+    <div class="container why-inner">
+        <div class="why-header">
+            <p class="why-label">WHY CHOOSE US</p>
+            <h2 class="why-title">EXPERIENCE. <span class="accent">INTEGRITY. RESULTS.</span></h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>QUALITY<br>CRAFTSMANSHIP</h4>
+                <p>We deliver superior workmanship using proven methods and premium materials.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fas fa-handshake"></i></div>
+                <h4>HONEST &<br>TRANSPARENT</h4>
+                <p>Clear communication, honest recommendations, and fair pricing every step of the way.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h4>INSURANCE<br>EXPERTISE</h4>
+                <p>We guide you through the insurance process to maximize your coverage.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fas fa-users"></i></div>
+                <h4>CUSTOMER<br>FOCUSED</h4>
+                <p>Your satisfaction is our priority. We treat your property like our own.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OUR PROCESS -->
+<section class="process-section">
+    <div class="container">
+        <div class="process-header">
+            <p class="process-label">OUR PROCESS</p>
+            <h2 class="process-title">SIMPLE. <span class="accent">TRANSPARENT. EFFECTIVE.</span></h2>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="process-icon-wrap">
+                    <span class="process-num">1</span>
+                    <div class="process-icon"><i class="fas fa-calendar-alt"></i></div>
+                </div>
+                <h4>INSPECTION</h4>
+                <p>We assess the damage and understand your needs.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-step">
+                <div class="process-icon-wrap">
+                    <span class="process-num">2</span>
+                    <div class="process-icon"><i class="fas fa-clipboard-list"></i></div>
+                </div>
+                <h4>PLANNING</h4>
+                <p>We create a detailed plan and provide a clear solution.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-step">
+                <div class="process-icon-wrap">
+                    <span class="process-num">3</span>
+                    <div class="process-icon"><i class="fas fa-hammer"></i></div>
+                </div>
+                <h4>EXECUTION</h4>
+                <p>Our team gets to work with precision and care.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-step">
+                <div class="process-icon-wrap">
+                    <span class="process-num">4</span>
+                    <div class="process-icon"><i class="fas fa-check-circle"></i></div>
+                </div>
+                <h4>QUALITY CHECK</h4>
+                <p>We perform a thorough inspection to ensure perfection.</p>
+            </div>
+            <div class="process-connector"></div>
+            <div class="process-step">
+                <div class="process-icon-wrap">
+                    <span class="process-num">5</span>
+                    <div class="process-icon"><i class="fas fa-shield-alt"></i></div>
+                </div>
+                <h4>WARRANTY</h4>
+                <p>We stand behind our work with strong warranties.</p>
             </div>
         </div>
     </div>
