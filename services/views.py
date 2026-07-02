@@ -15,3 +15,7 @@ def auto(request):
 
 def interior(request):
     return render(request, 'services/interior.html')
+
+
+def storm_damage(request):
+    return render(request, 'services/storm_damage.html')

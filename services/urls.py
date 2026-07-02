@@ -6,4 +6,5 @@ urlpatterns = [
     path('exterior/', views.exterior, name='exterior'),
     path('auto/', views.auto, name='auto'),
     path('interior/', views.interior, name='interior'),
+    path('restoration/storm-damage/', views.storm_damage, name='storm_damage'),
 ]
