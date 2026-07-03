@@ -2,7 +2,12 @@
 const header = document.querySelector('.site-header');
 if (header) {
     window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 60);
+        const y = window.scrollY;
+        if (!header.classList.contains('scrolled') && y > 60) {
+            header.classList.add('scrolled');
+        } else if (header.classList.contains('scrolled') && y < 30) {
+            header.classList.remove('scrolled');
+        }
     }, { passive: true });
 }
 

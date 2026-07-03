@@ -77,7 +77,7 @@
             <a href="{% url 'exterior' %}" class="service-card card-exterior">
                 <div class="service-card-img-wrap">
                     <div class="service-card-img img-exterior"></div>
-                    <div class="service-shield shield-blue"><i class="fas fa-building"></i></div>
+                    <div class="service-shield shield-blue service-shield-logo"><img src="{% static 'img/logo-exterior.png' %}" alt="Surface Shield Exterior"></div>
                 </div>
                 <div class="service-card-body">
                     <h3>SURFACE SHIELD<br><span class="service-name name-blue">EXTERIOR</span></h3>
@@ -287,7 +287,6 @@
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/owens-corning.png' %}" alt="Owens Corning"></div>
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/gaf.png' %}" alt="GAF"></div>
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/velux.png' %}" alt="VELUX"></div>
-                <div class="partner-logo-slot"><img src="{% static 'img/logos/abc-supply.png' %}" alt="ABC Supply"></div>
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/certainteed.png' %}" alt="CertainTeed"></div>
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/atlas.png' %}" alt="Atlas"></div>
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/malarkey.png' %}" alt="Malarkey"></div>
@@ -333,14 +332,14 @@
 <script>
 (function(){
     var map = L.map('service-map', { zoomControl: true, scrollWheelZoom: false })
-               .setView([41.35, -81.55], 9);
+               .setView([41.35, -81.55], 8.2);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
     var serviceArea = [
-        [41.62, -81.48],
+        [41.62, -81.50],
         [41.58, -81.65],
         [41.53, -81.80],
         [41.50, -82.00],
@@ -351,9 +350,14 @@
         [41.04, -81.55],
         [41.08, -81.28],
         [41.22, -81.10],
-        [41.38, -81.08],
-        [41.52, -81.22],
-        [41.62, -81.48]
+        [41.20, -80.82],
+        [41.28, -80.80],
+        [41.55, -80.78],
+        [41.92, -80.78],
+        [41.88, -80.95],
+        [41.76, -81.20],
+        [41.73, -81.36],
+        [41.62, -81.50]
     ];
 
     L.polygon(serviceArea, {

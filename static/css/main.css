@@ -108,7 +108,7 @@ img { max-width: 100%; display: block; }
 }
 
 .logo-img { transition: height 0.35s ease; }
-.main-nav a { transition: color 0.2s, font-size 0.35s ease, padding 0.35s ease; }
+.main-nav a { transition: color 0.2s; }
 
 /* LOGO */
 .logo {
@@ -462,6 +462,8 @@ img { max-width: 100%; display: block; }
     flex: 1;
 }
 
+.service-shield-logo { overflow: hidden; padding: 0 !important; }
+.service-shield-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .service-shield {
     width: 56px;
     height: 56px;
