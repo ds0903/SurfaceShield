@@ -1,7 +1,8 @@
-// Header shrink on scroll
+// Header shrink on scroll (desktop only)
 const header = document.querySelector('.site-header');
 if (header) {
     window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) return;
         const y = window.scrollY;
         if (!header.classList.contains('scrolled') && y > 60) {
             header.classList.add('scrolled');

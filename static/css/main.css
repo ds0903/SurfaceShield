@@ -18,6 +18,7 @@
 }
 
 html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -57,11 +58,15 @@ img { max-width: 100%; display: block; }
 .mobile-topbar a i { font-size: 12px; }
 .nav-mobile-request { display: none !important; }
 .nav-mobile-request a {
-    background: #0f2150 !important;
+    display: block !important;
+    background: var(--accent) !important;
     color: #fff !important;
     border-radius: 6px;
     text-align: center;
     margin-top: 8px;
+    padding: 13px 16px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
 }
 
 /* ===== HEADER ===== */
@@ -70,7 +75,7 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 2px 12px rgba(26,58,107,0.10);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1200;
     transition: box-shadow 0.3s;
 }
 
@@ -947,6 +952,7 @@ img { max-width: 100%; display: block; }
 .cta-banner {
     background: linear-gradient(135deg, #1a5fa8 0%, #2a7fd4 100%);
     padding: 22px 0;
+    overflow: hidden;
 }
 
 .cta-inner {
@@ -1649,37 +1655,55 @@ img { max-width: 100%; display: block; }
     .mobile-topbar { display: flex; }
     .btn-request { display: none; }
     .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0;
-        background: white; box-shadow: var(--shadow); z-index: 999; }
+        background: white; box-shadow: var(--shadow); z-index: 1100; }
     .main-nav.open { display: flex; }
     .main-nav ul { flex-direction: column; padding: 16px; gap: 4px; width: 100%; }
     .main-nav a { font-size: 13px; padding: 10px 12px; }
     .hamburger { display: flex; }
     .nav-mobile-request { display: block !important; }
-    .hero { height: auto; min-height: 560px; padding: 32px 0; }
-    .hero-logo img { width: 80px; height: 80px; }
-    .hero-brand-name { font-size: 26px; letter-spacing: 3px; }
-    .hero-tagline h2 { font-size: 20px; }
-    .hero-tagline p { font-size: 11px; }
-    .hero-ctas { flex-direction: column; align-items: center; gap: 10px; }
-    .hero-btn-solid, .hero-btn-outline { padding: 13px 22px; font-size: 11px; width: 100%; max-width: 280px; justify-content: center; }
-    .hero-badges { gap: 16px; }
-    .hero-badge-item span { font-size: 10px; }
+    .hero { height: auto !important; min-height: 0 !important; overflow: hidden !important; }
+    .hero-panels { background-size: cover; }
+    .hero-content { position: relative !important; inset: auto !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; color: white !important; margin-top: 0 !important; padding: 24px 20px 0 !important; gap: 10px !important; justify-content: flex-start !important; background: linear-gradient(to bottom, rgba(5,12,35,0.7) 0%, rgba(5,12,35,0.85) 100%); min-height: 0 !important; }
+    .hero-logo { display: none !important; }
+    .hero-brand-name { font-size: 22px !important; letter-spacing: 2px !important; }
+    .hero-brand-sub { font-size: 10px !important; }
+    .hero-tagline h2 { font-size: 17px !important; }
+    .hero-tagline p { font-size: 11px !important; }
+    .hero-ctas { flex-direction: column !important; align-items: stretch !important; gap: 8px !important; width: 100% !important; }
+    .hero-btn-solid, .hero-btn-outline { padding: 12px 16px !important; font-size: 11px !important; width: 100% !important; max-width: 100% !important; justify-content: center !important; box-sizing: border-box !important; white-space: normal !important; }
+    .hero-badges { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; width: 100% !important; flex-wrap: wrap !important; gap: 8px 6px !important; justify-content: center !important; padding: 12px 8px !important; margin-top: 4px !important; }
+    .hero-badge-item { width: calc(50% - 6px) !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 3px !important; }
+    .hero-badge-item i { font-size: 18px !important; }
+    .hero-badge-item span { font-size: 9px !important; }
+    .cta-banner { padding: 20px 0; }
+    .cta-inner { flex-direction: column; text-align: center; padding: 0 20px; gap: 14px; box-sizing: border-box; width: 100%; }
+    .cta-text { min-width: 0; width: 100%; }
+    .cta-text h3 { font-size: 15px; word-break: break-word; overflow-wrap: break-word; }
+    .cta-text p { font-size: 12px; }
+    .btn-cta { font-size: 11px; padding: 12px 14px; width: 100%; justify-content: center; white-space: normal !important; text-align: center; word-break: break-word; box-sizing: border-box; }
     .services-grid { grid-template-columns: 1fr; }
     .protecting-tiles { grid-template-columns: repeat(2, 1fr); }
     .badges-grid { justify-content: flex-start; }
-    .footer-inner { grid-template-columns: 1fr; gap: 24px; }
-    .cta-inner { flex-direction: column; text-align: center; }
+    .footer-inner { grid-template-columns: 1fr; gap: 14px; padding: 28px 20px 20px; }
+    .footer-col h4 { font-size: 11px; padding-bottom: 6px; margin-bottom: 8px; }
+    .footer-col ul li { margin-bottom: 4px; font-size: 12px; }
+    .footer-brand { text-align: left; }
+    .footer-brand-link { margin-top: 0 !important; flex-direction: row !important; align-items: center !important; gap: 12px; }
+    .footer-logo-img { width: 72px !important; height: 72px !important; margin-right: 0 !important; margin-bottom: 0 !important; margin-top: 0 !important; flex-shrink: 0; }
+    .footer-brand-text { align-items: flex-start !important; text-align: left; }
+    .footer-brand-name { font-size: 18px; }
     .form-row { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
     .hero-panels { display: none; }
-    .hero { background: var(--navy); min-height: 520px; }
+    .hero { background: var(--navy); }
+    .hero-panels { display: none; }
     .hero-tagline h2 { font-size: 17px; }
-    .hero-logo img { width: 70px; height: 70px; }
-    .hero-brand-name { font-size: 24px; }
+    .hero-brand-name { font-size: 22px; }
     .protecting-tiles { grid-template-columns: 1fr 1fr; }
     .tile { height: 140px; }
+    .hero-badge-item { width: calc(50% - 16px); }
 }
 
 /* ===== ABOUT PAGE ===== */
