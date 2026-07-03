@@ -30,49 +30,66 @@
             </div>
             {% endif %}
 
+            <div class="ri-form-header">
+                <h2 class="ri-form-title">Get a Free Estimate</h2>
+                <p class="ri-form-sub">Fill out the form and we'll get back to you shortly.</p>
+            </div>
+
             <form method="post" novalidate>
                 {% csrf_token %}
                 <input type="hidden" name="form_start" value="{{ form_start }}">
-                <!-- Honeypot -->
                 <div style="display:none;">
                     <input type="text" name="website" tabindex="-1" autocomplete="off">
                 </div>
 
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" placeholder="(216) 555-0000" required>
+                    </div>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Interested In *</label>
+                        <select name="service">
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="restoration">Surface Shield Restoration</option>
+                            <option value="exterior">Surface Shield Exterior</option>
+                            <option value="auto">Surface Shield Auto</option>
+                            <option value="interior">Surface Shield Interior</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number *" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="address" placeholder="Property Address">
+                    <label>Property Address</label>
+                    <input type="text" name="address" placeholder="Street address">
                 </div>
                 <div class="form-row-3">
                     <div class="form-group">
+                        <label>City</label>
                         <input type="text" name="city" placeholder="City">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="state" placeholder="State" maxlength="2">
+                        <label>State</label>
+                        <input type="text" name="state" placeholder="OH" maxlength="2">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="zip" placeholder="Zip Code" maxlength="10">
+                        <label>Zip Code</label>
+                        <input type="text" name="zip" placeholder="44132" maxlength="10">
                     </div>
                 </div>
                 <div class="form-group">
-                    <select name="service">
-                        <option value="" disabled selected>Service Interested In *</option>
-                        <option value="restoration">Surface Shield Restoration</option>
-                        <option value="exterior">Surface Shield Exterior</option>
-                        <option value="auto">Surface Shield Auto</option>
-                        <option value="interior">Surface Shield Interior</option>
-                    </select>
-                </div>
-                <div class="form-group">
+                    <label>How Did You Hear About Us?</label>
                     <select name="heard_from">
-                        <option value="" disabled selected>How Did You Hear About Us?</option>
+                        <option value="" disabled selected>Please select...</option>
                         <option value="google">Google Search</option>
                         <option value="facebook">Facebook</option>
                         <option value="instagram">Instagram</option>
@@ -82,19 +99,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" placeholder="Message / Details&#10;Tell us more about your project..." rows="4"></textarea>
+                    <label>Tell Us About Your Project *</label>
+                    <textarea name="message" placeholder="Describe your project, timeline, and any details..." rows="3"></textarea>
                 </div>
 
                 {% if turnstile_site_key %}
-                <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}" style="margin-bottom:12px;"></div>
+                <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}" style="margin-bottom:16px;"></div>
                 {% endif %}
-
-                <div class="form-group ri-subscribe">
-                    <label class="ri-checkbox-label">
-                        <input type="checkbox" name="subscribe">
-                        <span>Subscribe to our newsletter for tips and updates</span>
-                    </label>
-                </div>
 
                 <button type="submit" class="btn-ri-submit">
                     SUBMIT INFORMATION <i class="fas fa-paper-plane"></i>

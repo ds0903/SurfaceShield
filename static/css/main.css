@@ -462,8 +462,17 @@ img { max-width: 100%; display: block; }
     flex: 1;
 }
 
-.service-shield-logo { overflow: hidden; padding: 0 !important; }
-.service-shield-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.service-shield-logo {
+    overflow: hidden;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 90px !important;
+    height: 90px !important;
+    bottom: -38px !important;
+}
+.service-shield-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
 .service-shield {
     width: 56px;
     height: 56px;
@@ -1370,14 +1379,37 @@ img { max-width: 100%; display: block; }
 .ri-form-card {
     background: white;
     border-radius: 10px;
-    padding: 24px 28px;
+    padding: 28px 32px;
     box-shadow: 0 4px 32px rgba(26,58,107,0.12);
     width: 100%;
 }
 
-.ri-form-card .form-group {
-    margin-bottom: 8px;
+.ri-form-header { margin-bottom: 14px; }
+.ri-form-title { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: var(--dark); margin: 0 0 4px; }
+.ri-form-sub { font-size: 13px; color: #888; margin: 0; }
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
+.form-row-2 .form-group { margin-bottom: 0; }
+
+.ri-form-card .form-group label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+}
+
+.ri-form-card .form-group {
+    margin-bottom: 6px;
+}
+.ri-form-card .form-row-2 { margin-bottom: 6px; }
+.ri-form-card .form-row-3 { margin-bottom: 6px; }
 
 .ri-form-card .form-group input,
 .ri-form-card .form-group select,
@@ -2222,7 +2254,7 @@ img { max-width: 100%; display: block; }
 /* INSURANCE */
 .svc-insurance {
     background: #0d1b3e;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .svc-ins-inner {
