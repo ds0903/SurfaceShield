@@ -1980,6 +1980,10 @@ img { max-width: 100%; display: block; }
 .auto-why-item i { color: #2e7d32; font-size: 14px; flex-shrink: 0; }
 .auto-why-item span { font-size: 13px; color: var(--text); }
 
+.rst-icon { background: linear-gradient(135deg,#8b0000,#c62828) !important; }
+.rst-stat i { color: #c62828 !important; }
+.rst-principle { border-left-color: #c62828 !important; }
+
 .int-icon { background: linear-gradient(135deg,#4a148c,#7b1fa2) !important; }
 .int-stat i { color: #7b1fa2 !important; }
 .int-principle { border-left-color: #7b1fa2 !important; }
