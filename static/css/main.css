@@ -2030,12 +2030,13 @@ img { max-width: 100%; display: block; }
 }
 
 .svc-hero-logo {
-    width: 110px;
-    height: 110px;
+    width: 220px;
+    height: 220px;
     object-fit: contain;
     flex-shrink: 0;
     filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5));
 }
+.svc-hero-logo-tall { transform: scale(1.15); }
 
 .svc-hero-label {
     font-family: 'Montserrat', sans-serif;

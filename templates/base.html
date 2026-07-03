@@ -19,13 +19,11 @@
 </head>
 <body>
 
-<!-- MOBILE TOP BAR -->
 <div class="mobile-topbar">
     <a href="tel:2162801855"><i class="fas fa-phone"></i> +1 (216) 280-1855</a>
     <a href="mailto:michael@surfaceshieldsystems.com"><i class="fas fa-envelope"></i> michael@surfaceshieldsystems.com</a>
 </div>
 
-<!-- HEADER -->
 <header class="site-header">
     <div class="header-inner container">
         <a href="{% url 'home' %}" class="logo">
@@ -56,7 +54,6 @@
     </div>
 </header>
 
-<!-- MESSAGES -->
 {% if messages %}
 <div class="messages-wrap">
     {% for message in messages %}
@@ -65,12 +62,10 @@
 </div>
 {% endif %}
 
-<!-- MAIN CONTENT -->
 <main>
     {% block content %}{% endblock %}
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer">
     <div class="footer-inner container">
         <div class="footer-brand">

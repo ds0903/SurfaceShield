@@ -1,28 +1,24 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% load static %}
 {% block title %}Storm Damage & Insurance Restoration | Surface Shield Restoration{% endblock %}
 
 {% block content %}
-
-<!-- HERO -->
 <section class="svc-hero svc-hero-restoration">
     <div class="svc-hero-overlay"></div>
     <div class="container svc-hero-content">
-        <p class="svc-hero-label">SURFACE SHIELD RESTORATION</p>
-        <h1 class="svc-hero-title title-red" style="font-size:clamp(32px,5vw,64px);">STORM DAMAGE &<br>INSURANCE RESTORATION</h1>
-        <p class="svc-hero-tagline">HELPING HOMEOWNERS NAVIGATE THE RESTORATION PROCESS WITH CONFIDENCE</p>
+        <img src="{% static 'img/logo-restoration.png' %}" alt="Surface Shield Restoration" class="svc-hero-logo">
+        <div>
+            <h1 class="svc-hero-title title-red" style="font-size:clamp(32px,5vw,64px);">STORM DAMAGE &<br>INSURANCE RESTORATION</h1>
+            <p class="svc-hero-tagline">HELPING HOMEOWNERS NAVIGATE THE RESTORATION PROCESS WITH CONFIDENCE</p>
+        </div>
     </div>
 </section>
-
-<!-- INTRO -->
 <section class="auto-intro-section">
     <div class="container">
         <p class="about-body-lg" style="max-width:820px;margin:0 auto 16px;">Experiencing storm damage can be overwhelming. Between property inspections, insurance paperwork, construction decisions, and unexpected questions, many homeowners aren't sure where to begin.</p>
         <p class="about-body" style="max-width:820px;margin:0 auto;">Surface Shield Restoration is committed to making the restoration process easier by providing professional documentation, clear communication, and high-quality restoration services while helping property owners understand what to expect throughout the project.</p>
     </div>
 </section>
-
-<!-- PROCESS -->
 <section class="auto-services-section">
     <div class="container">
         <p class="about-section-label">HOW IT WORKS</p>
@@ -73,8 +69,6 @@
         </div>
     </div>
 </section>
-
-<!-- FAQ -->
 <section class="auto-why-section" style="background:#f4f6f9;">
     <div class="container">
         <p class="about-section-label">COMMON QUESTIONS</p>
@@ -104,8 +98,6 @@
         </div>
     </div>
 </section>
-
-<!-- COMMITMENT -->
 <section class="about-commitment-section">
     <div class="container">
         <p class="about-section-label">OUR PROMISE</p>
@@ -130,8 +122,6 @@
         </div>
     </div>
 </section>
-
-<!-- CTA -->
 <section class="cta-banner">
     <div class="container cta-inner">
         <i class="fas fa-cloud-rain cta-icon"></i>

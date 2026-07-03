@@ -1,11 +1,9 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Surface Shield Systems | Total Protection. Total Solutions.{% endblock %}
 
 {% block content %}
-
-<!-- HERO SECTION -->
 <section class="hero">
     <div class="hero-panels">
         <div class="hero-panel panel-house"></div>
@@ -43,13 +41,9 @@
         </div>
     </div>
 </section>
-
-<!-- SERVICES CARDS -->
 <section class="services-section" id="services-section">
     <div class="container">
         <div class="services-grid">
-
-            <!-- RESTORATION -->
             <a href="{% url 'restoration' %}" class="service-card card-restoration">
                 <div class="service-card-img-wrap">
                     <div class="service-card-img img-restoration"></div>
@@ -72,8 +66,6 @@
                     <span class="btn-learn btn-learn-red">LEARN MORE</span>
                 </div>
             </a>
-
-            <!-- EXTERIOR -->
             <a href="{% url 'exterior' %}" class="service-card card-exterior">
                 <div class="service-card-img-wrap">
                     <div class="service-card-img img-exterior"></div>
@@ -96,8 +88,6 @@
                     <span class="btn-learn btn-learn-blue">LEARN MORE</span>
                 </div>
             </a>
-
-            <!-- AUTO -->
             <a href="{% url 'auto' %}" class="service-card card-auto">
                 <div class="service-card-img-wrap">
                     <div class="service-card-img img-auto"></div>
@@ -119,8 +109,6 @@
                     <span class="btn-learn btn-learn-green">LEARN MORE</span>
                 </div>
             </a>
-
-            <!-- INTERIOR -->
             <a href="{% url 'interior' %}" class="service-card card-interior">
                 <div class="service-card-img-wrap">
                     <div class="service-card-img img-interior"></div>
@@ -146,8 +134,6 @@
         </div>
     </div>
 </section>
-
-<!-- WHY CHOOSE US -->
 <section class="why-section">
     <div class="why-overlay"></div>
     <div class="container why-inner">
@@ -179,8 +165,6 @@
         </div>
     </div>
 </section>
-
-<!-- OUR PROCESS -->
 <section class="process-section">
     <div class="container">
         <div class="process-header">
@@ -235,8 +219,6 @@
         </div>
     </div>
 </section>
-
-<!-- PROTECTING PROPERTIES SECTION -->
 <section class="protecting-section">
     <div class="container">
         <div class="protecting-inner">
@@ -273,12 +255,8 @@
         </div>
     </div>
 </section>
-
-<!-- SERVICE AREA + PARTNERS -->
 <section class="area-section">
     <div class="container area-inner">
-
-        <!-- LEFT: Partners -->
         <div class="area-partners">
             <p class="area-label">OUR PARTNERS</p>
             <h3 class="area-title">WE WORK WITH<br><span class="accent">THE BEST</span></h3>
@@ -293,8 +271,6 @@
                 <div class="partner-logo-slot"><img src="{% static 'img/logos/iko.png' %}" alt="IKO"></div>
             </div>
         </div>
-
-        <!-- RIGHT: Map -->
         <div class="area-map">
             <p class="area-map-label">PROUDLY SERVING NORTHEAST OHIO</p>
             <div class="area-map-wrap">
@@ -304,8 +280,6 @@
 
     </div>
 </section>
-
-<!-- CTA BANNER -->
 <section class="cta-banner">
     <div class="container">
         <div class="cta-inner">

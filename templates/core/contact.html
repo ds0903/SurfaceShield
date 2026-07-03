@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% block title %}Contact Us | Surface Shield Systems{% endblock %}
 
 {% block content %}
@@ -8,8 +8,6 @@
         <p class="subtitle">Have a question? We're here to help.</p>
 
         <div class="contact-page-grid">
-
-            <!-- INFO CARD -->
             <div class="contact-info-card">
                 <div class="contact-person">
                     <div>
@@ -33,8 +31,6 @@
                     </li>
                 </ul>
             </div>
-
-            <!-- FORM -->
             <div class="form-card" style="flex:1;">
 
                 {% if messages %}
@@ -48,7 +44,6 @@
                 <form method="post" novalidate>
                     {% csrf_token %}
                     <input type="hidden" name="form_start" value="{{ form_start }}">
-                    <!-- Honeypot -->
                     <div style="display:none;">
                         <input type="text" name="website" tabindex="-1" autocomplete="off">
                     </div>
