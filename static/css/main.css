@@ -1146,7 +1146,8 @@ img { max-width: 100%; display: block; }
     transition: background 0.2s;
 }
 
-.social-links a:hover { background: var(--accent); }
+.social-links a { pointer-events: none; opacity: 0.35; filter: grayscale(1); cursor: default; }
+.social-links a:hover { background: rgba(255,255,255,0.08); }
 
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.12);
@@ -1688,9 +1689,9 @@ img { max-width: 100%; display: block; }
     .footer-inner { grid-template-columns: 1fr; gap: 14px; padding: 28px 20px 20px; }
     .footer-col h4 { font-size: 11px; padding-bottom: 6px; margin-bottom: 8px; }
     .footer-col ul li { margin-bottom: 4px; font-size: 12px; }
-    .footer-brand { text-align: left; }
+    .footer-brand { text-align: center; display: flex; justify-content: center; padding-right: 16px; }
     .footer-brand-link { margin-top: 0 !important; flex-direction: row !important; align-items: center !important; gap: 12px; }
-    .footer-logo-img { width: 72px !important; height: 72px !important; margin-right: 0 !important; margin-bottom: 0 !important; margin-top: 0 !important; flex-shrink: 0; }
+    .footer-logo-img { width: 82px !important; height: 82px !important; margin-right: 0 !important; margin-bottom: 0 !important; margin-top: 0 !important; flex-shrink: 0; }
     .footer-brand-text { align-items: flex-start !important; text-align: left; }
     .footer-brand-name { font-size: 18px; }
     .form-row { grid-template-columns: 1fr; }
@@ -2024,7 +2025,9 @@ img { max-width: 100%; display: block; }
     .auto-intro-stats { flex-direction: row; flex-wrap: wrap; gap: 8px; }
     .auto-stat { padding: 8px 12px; }
     .auto-svc-grid { grid-template-columns: 1fr; }
-    .svc-ins-inner { gap: 16px; flex-direction: column; }
+    .svc-ins-inner { gap: 0; flex-direction: column; align-items: flex-start; }
+    .svc-ins-left { height: auto !important; min-height: 0 !important; max-height: 200px !important; align-self: flex-start !important; overflow: hidden !important; }
+    .svc-ins-left-link { max-height: 200px !important; overflow: hidden !important; padding: 0 !important; margin: 0 !important; display: block !important; }
     .svc-ins-badges { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px; flex: none; width: 100%; justify-content: unset; }
     .svc-ins-badge { gap: 6px; padding: 10px 8px; }
 }
