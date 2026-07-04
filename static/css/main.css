@@ -1868,7 +1868,7 @@ img { max-width: 100%; display: block; }
 .about-section-h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900; font-size: 30px;
-    color: var(--navy); margin-bottom: 0;
+    color: var(--navy); margin-bottom: 28px;
 }
 .about-body { font-size: 15px; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
 .about-body-lg { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-weight: 500; }
@@ -1974,7 +1974,7 @@ img { max-width: 100%; display: block; }
 .auto-stat i { color: #2e7d32; font-size: 18px; flex-shrink: 0; }
 .auto-stat span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; color: var(--navy); line-height: 1.4; }
 
-.auto-services-section { background: #f4f6f9; padding: 30px 0 0; }
+.auto-services-section { background: #f4f6f9; padding: 30px 0; }
 .auto-svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .auto-svc-card { background: #fff; border-radius: 14px; padding: 28px 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
 .auto-svc-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg,#1b5e20,#2e7d32); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
