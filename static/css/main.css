@@ -1562,6 +1562,20 @@ img { max-width: 100%; display: block; }
     .ri-ins-badges { justify-content: flex-start; }
     .ri-ins-left { flex: auto; }
 }
+@media (max-width: 768px) {
+    .ri-left { padding: 28px 16px; }
+    .ri-title { font-size: clamp(26px, 8vw, 40px); }
+    .ri-subtitle { font-size: 11px; }
+    .ri-desc { font-size: 12px; }
+    .ri-right { padding: 20px 16px; }
+    .ri-form-card { padding: 18px 14px; }
+    .form-row-2 { grid-template-columns: 1fr; gap: 0; }
+    .form-row-3 { grid-template-columns: 1fr; gap: 0; }
+    .form-row-3 .form-group { margin-bottom: 6px; }
+    .ri-ins-inner { gap: 14px; }
+    .ri-ins-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ri-ins-badge { align-items: center; text-align: center; }
+}
 
 /* ===== CONTACT PAGE ===== */
 .contact-page-grid {
