@@ -185,3 +185,12 @@ def request_information(request):
 
 def page_not_found(request, exception):
     return render(request, 'core/404.html', status=404)
+
+
+def sitemap(request):
+    return render(request, 'sitemap.xml', content_type='application/xml')
+
+
+def robots_txt(request):
+    content = "User-agent: *\nAllow: /\nSitemap: https://surfaceshieldsystems.com/sitemap.xml\n"
+    return HttpResponse(content, content_type='text/plain')

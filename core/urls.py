@@ -6,4 +6,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('request-information/', views.request_information, name='request_information'),
+    path('sitemap.xml', views.sitemap, name='sitemap'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
 ]
