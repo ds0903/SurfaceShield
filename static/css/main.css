@@ -1874,7 +1874,7 @@ img { max-width: 100%; display: block; }
 .about-body-lg { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 16px; font-weight: 500; }
 
 /* INTRO */
-.about-intro-section { background: #fff; padding: 60px 0; border-bottom: 1px solid #e8edf3; }
+.about-intro-section { background: #fff; padding: 30px 0; border-bottom: 1px solid #e8edf3; }
 .about-intro-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: start; }
 .about-intro-badges { display: flex; flex-direction: column; gap: 14px; min-width: 180px; }
 .about-badge-v { display: flex; align-items: center; gap: 12px; background: #f4f6f9; border-radius: 10px; padding: 12px 16px; }
@@ -1882,11 +1882,11 @@ img { max-width: 100%; display: block; }
 .about-badge-v span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; color: var(--navy); letter-spacing: 0.5px; line-height: 1.4; }
 
 /* WHO WE ARE */
-.about-who-section { background: #f4f6f9; padding: 60px 0; }
+.about-who-section { background: #f4f6f9; padding: 30px 0; }
 .about-philosophy { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--navy); margin: 20px 0; line-height: 1.5; }
 
 /* WHY CHOOSE US */
-.about-why-section { background: #fff; padding: 60px 0; }
+.about-why-section { background: #fff; padding: 30px 0; }
 .about-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .about-why-item { background: #f4f6f9; border-radius: 12px; padding: 28px 24px; }
 .about-why-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -1895,7 +1895,7 @@ img { max-width: 100%; display: block; }
 .about-why-item p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
 
 /* DIVISIONS */
-.about-divisions-section { background: #f4f6f9; padding: 60px 0; }
+.about-divisions-section { background: #f4f6f9; padding: 30px 0; }
 .about-div-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .about-div-card { background: #fff; border-radius: 14px; padding: 28px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
 .about-div-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -1926,7 +1926,7 @@ img { max-width: 100%; display: block; }
 .about-commit-closing { text-align: center; font-size: 15px; color: rgba(255,255,255,0.85); font-style: italic; }
 
 /* MORE THAN A SERVICE */
-.about-more-section { background: #f4f6f9; padding: 70px 0; }
+.about-more-section { background: #f4f6f9; padding: 30px 0; }
 .about-more-inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center; }
 .about-more-text .about-section-label { color: var(--accent); }
 .about-more-section .about-section-h2 { color: var(--navy) !important; }
@@ -1940,10 +1940,14 @@ img { max-width: 100%; display: block; }
     .about-why-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
-    .about-intro-inner { grid-template-columns: 1fr; }
+    .about-intro-inner { grid-template-columns: 1fr; gap: 20px; }
+    .about-intro-section { padding: 30px 0; }
     .about-intro-badges { flex-direction: row; flex-wrap: wrap; }
     .about-commit-grid { grid-template-columns: 1fr; }
-    .about-more-inner { grid-template-columns: 1fr; }
+    .about-more-inner { grid-template-columns: 1fr; gap: 20px; justify-items: center; }
+    .about-more-contact { display: flex; justify-content: center; width: 100%; }
+    .about-more-text { width: 100%; }
+    .about-more-contact .about-founder-card { max-width: 320px; width: 100%; margin: 0 auto; }
     .about-why-grid { grid-template-columns: 1fr; }
     .about-div-grid { grid-template-columns: 1fr; }
 }
