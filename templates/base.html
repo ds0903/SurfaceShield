@@ -54,8 +54,8 @@
                 <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">HOME</a></li>
                 <li><a href="{% url 'restoration' %}" class="{% if request.resolver_match.url_name == 'restoration' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">RESTORATION</span></a></li>
                 <li><a href="{% url 'exterior' %}" class="{% if request.resolver_match.url_name == 'exterior' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">EXTERIOR</span></a></li>
-                <li><a href="{% url 'auto' %}" class="{% if request.resolver_match.url_name == 'auto' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">AUTO</span></a></li>
                 <li><a href="{% url 'interior' %}" class="{% if request.resolver_match.url_name == 'interior' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">INTERIOR</span></a></li>
+                <li><a href="{% url 'auto' %}" class="{% if request.resolver_match.url_name == 'auto' %}active{% endif %}"><span class="nav-top">SURFACE SHIELD</span><span class="nav-bot">AUTO</span></a></li>
                 <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">ABOUT US</a></li>
                 <li><a href="#footer-contact" class="nav-contact-scroll">CONTACT US</a></li>
                 <li class="nav-mobile-request"><a href="{% url 'request_information' %}">REQUEST INFORMATION</a></li>
@@ -111,8 +111,8 @@
             <ul>
                 <li><a href="{% url 'restoration' %}">Surface Shield Restoration</a></li>
                 <li><a href="{% url 'exterior' %}">Surface Shield Exterior</a></li>
-                <li><a href="{% url 'auto' %}">Surface Shield Auto</a></li>
                 <li><a href="{% url 'interior' %}">Surface Shield Interior</a></li>
+                <li><a href="{% url 'auto' %}">Surface Shield Auto</a></li>
             </ul>
         </div>
 
