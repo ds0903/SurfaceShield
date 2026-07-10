@@ -76,15 +76,25 @@
       #ss-chat-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(58,142,230,0.55); }
       #ss-chat-btn img { width: 36px; height: 36px; object-fit: contain; }
       #ss-chat-btn .ss-pulse {
-        position: absolute; inset: -4px; border-radius: 50%;
-        background: rgba(58,142,230,0.3);
-        animation: ss-pulse 2s ease-in-out infinite;
+        position: absolute; inset: -8px; border-radius: 50%;
+        background: transparent;
+        border: 2px solid rgba(58,142,230,0.7);
+        animation: ss-pulse 1.6s ease-out infinite;
+        pointer-events: none;
+      }
+      #ss-chat-btn .ss-pulse2 {
+        position: absolute; inset: -16px; border-radius: 50%;
+        background: transparent;
+        border: 2px solid rgba(58,142,230,0.35);
+        animation: ss-pulse 1.6s ease-out 0.5s infinite;
+        pointer-events: none;
       }
       @keyframes ss-pulse {
-        0%,100% { transform: scale(1); opacity: 0.6; }
-        50%      { transform: scale(1.3); opacity: 0; }
+        0%   { transform: scale(0.9); opacity: 1; }
+        100% { transform: scale(1.5); opacity: 0; }
       }
-      #ss-chat-btn.open .ss-pulse { display: none; }
+      #ss-chat-btn.open .ss-pulse,
+      #ss-chat-btn.open .ss-pulse2 { display: none; }
       #ss-chat-btn .ss-close-icon { display: none; color: #fff; font-size: 22px; }
       #ss-chat-btn.open img { display: none; }
       #ss-chat-btn.open .ss-close-icon { display: block; }
@@ -186,6 +196,7 @@
     document.body.insertAdjacentHTML('beforeend', `
       <button id="ss-chat-btn" aria-label="Chat with us">
         <span class="ss-pulse"></span>
+        <span class="ss-pulse2"></span>
         <img src="${faviconSrc}" alt="Surface Shield">
         <span class="ss-close-icon"><i class="fas fa-times"></i></span>
       </button>
