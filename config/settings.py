@@ -118,6 +118,11 @@ NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', EMAIL_HOST_USER)
 TURNSTILE_SITE_KEY = os.environ.get('TURNSTILE_SITE_KEY', '')
 TURNSTILE_SECRET_KEY = os.environ.get('TURNSTILE_SECRET_KEY', '')
 
+# ── Gemini AI ──
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
+GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash-lite')
+GEMINI_MODEL_FALLBACK = os.environ.get('GEMINI_MODEL_FALLBACK', 'gemini-2.5-flash')
+
 # ── Jazzmin ──
 JAZZMIN_SETTINGS = {
     "site_title": "Surface Shield Admin",

@@ -8,4 +8,6 @@ urlpatterns = [
     path('request-information/', views.request_information, name='request_information'),
     path('sitemap.xml', views.sitemap, name='sitemap'),
     path('robots.txt', views.robots_txt, name='robots_txt'),
+    path('api/chat/', views.chat_api, name='chat_api'),
+    path('api/save-lead/', views.save_lead, name='save_lead'),
 ]

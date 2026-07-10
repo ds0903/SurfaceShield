@@ -8,7 +8,7 @@ from django.urls import path
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages as admin_messages
 
-from .models import ContactMessage, Newsletter, NewsletterCampaign, SiteVisit
+from .models import ContactMessage, Newsletter, NewsletterCampaign, SiteVisit, ChatLead
 
 
 # ── Patch admin index to inject dashboard stats ──
@@ -186,6 +186,51 @@ class NewsletterCampaignAdmin(admin.ModelAdmin):
             'total': subscribers.count(),
         }
         return render(request, 'admin/core/newslettercampaign/send_preview.html', context)
+
+
+# ── Chat Leads ──
+@admin.register(ChatLead)
+class ChatLeadAdmin(admin.ModelAdmin):
+    list_display = ('name_badge', 'phone_fmt', 'service_interest', 'created_at_fmt', 'read_badge')
+    list_filter = ('is_read',)
+    search_fields = ('name', 'phone')
+    readonly_fields = ('created_at', 'conversation')
+    ordering = ('-created_at',)
+    list_per_page = 25
+
+    def name_badge(self, obj):
+        initials = ''.join(p[0].upper() for p in obj.name.split()[:2]) if obj.name else '?'
+        return format_html(
+            '<div style="display:flex;align-items:center;gap:10px;">'
+            '<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3a8ee6,#1a3a6b);'
+            'color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">{}</div>'
+            '<div style="font-weight:600;color:#1a1a2e;">{}</div>'
+            '</div>',
+            initials, obj.name
+        )
+    name_badge.short_description = 'Name'
+
+    def phone_fmt(self, obj):
+        return format_html('<a href="tel:{}" style="white-space:nowrap;font-weight:600;">{}</a>', obj.phone, obj.phone)
+    phone_fmt.short_description = 'Phone'
+
+    def created_at_fmt(self, obj):
+        return format_html('<span style="color:#555;font-size:12px;white-space:nowrap;">{}</span>',
+                           obj.created_at.strftime('%b %d, %Y %H:%M') if obj.created_at else '—')
+    created_at_fmt.short_description = 'Received'
+
+    def read_badge(self, obj):
+        if obj.is_read:
+            return mark_safe('<span style="background:#e8f5e9;color:#2e7d32;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">&#10004; Read</span>')
+        return mark_safe('<span style="background:#e3f2fd;color:#1565c0;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;">&#9679; New Chat</span>')
+    read_badge.short_description = 'Status'
+
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        obj = self.get_object(request, object_id)
+        if obj and not obj.is_read:
+            obj.is_read = True
+            obj.save(update_fields=['is_read'])
+        return super().change_view(request, object_id, form_url, extra_context)
 
 
 # ── SiteVisit ──

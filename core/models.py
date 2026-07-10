@@ -40,6 +40,21 @@ class Newsletter(models.Model):
         return self.email
 
 
+class ChatLead(models.Model):
+    name = models.CharField(max_length=200)
+    phone = models.CharField(max_length=50)
+    service_interest = models.CharField(max_length=200, blank=True)
+    conversation = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"[Chat] {self.name} — {self.phone}"
+
+
 class NewsletterCampaign(models.Model):
     subject = models.CharField(max_length=300)
     body = models.TextField()
