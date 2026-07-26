@@ -1151,7 +1151,7 @@ img { max-width: 100%; display: block; }
 
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.12);
-    padding: 16px 24px;
+    padding: 10px 24px;
 }
 
 .footer-bottom .container {
@@ -1185,19 +1185,51 @@ img { max-width: 100%; display: block; }
 
 .footer-links a:hover { color: white; }
 
-.footer-dev {
+.footer-bottom .footer-dev {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
 }
 
-.footer-dev a {
+.ds-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.footer-bottom .ds-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #4d87f5;
+    border-radius: 8px;
+    border: none;
+    box-shadow: none;
+    color: #0d1117 !important;
     font-family: 'Montserrat', sans-serif;
-    color: #4a9eff;
-    transition: color 0.2s;
+    font-size: 16px;
+    font-weight: 800;
+    flex-shrink: 0;
+    line-height: 1;
 }
 
-.footer-dev a:hover { color: white; }
+.footer-bottom .footer-dev .ds-logo-text {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1;
+}
 
 /* ===== MESSAGES ===== */
 .messages-wrap {
