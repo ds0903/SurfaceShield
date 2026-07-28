@@ -1,4 +1,5 @@
 import json
+import re
 import threading
 import urllib.error
 import urllib.parse
@@ -390,6 +391,75 @@ def _load_prompt():
 
 _SYSTEM_PROMPT = _load_prompt()
 
+_LEAD_TAG_RE = re.compile(r'\[LEAD:([^\]]+)\]', re.IGNORECASE)
+
+
+def _parse_lead_tag(text):
+    """Find [LEAD:name=...,phone=...,service=...] in text.
+    Returns (params_dict or None, clean_text_without_tag).
+    """
+    match = _LEAD_TAG_RE.search(text)
+    if not match:
+        return None, text
+    params = {}
+    for part in match.group(1).split(','):
+        if '=' in part:
+            k, v = part.split('=', 1)
+            params[k.strip().lower()] = v.strip()
+    clean = _LEAD_TAG_RE.sub('', text).strip()
+    return (params if params.get('phone') else None), clean
+
+
+def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request):
+    name = params.get('name', 'Unknown')
+    phone = params.get('phone', '')
+    service = params.get('service', 'general')
+
+    # Deduplicate: same phone + service within last 24h
+    day_ago = timezone.now() - timedelta(hours=24)
+    if ChatLead.objects.filter(phone=phone, service_interest=service, created_at__gte=day_ago).exists():
+        return
+
+    # Build conversation string from history + current exchange
+    lines = []
+    for turn in history:
+        role = 'Visitor' if turn.get('role') == 'user' else 'Bot'
+        lines.append(f"{role}: {turn.get('text', '')}")
+    lines.append(f'Visitor: {user_message}')
+    lines.append(f'Bot: {clean_reply}')
+    conversation = '\n'.join(lines)
+
+    page_url = params.get('page_url', '')
+    referrer = params.get('referrer', '')
+    utm_source = params.get('utm_source', '')
+    utm_medium = params.get('utm_medium', '')
+    utm_campaign = params.get('utm_campaign', '')
+
+    ChatLead.objects.create(
+        name=name, phone=phone, service_interest=service,
+        page_url=page_url, referrer=referrer,
+        utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
+        conversation=conversation,
+    )
+
+    now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
+    _send_notification(
+        subject=_lead_subject(name, service),
+        body=(
+            f'New Chat Lead (AI-detected)\n\n'
+            f'Name: {name}\n'
+            f'Phone: {phone}\n'
+            f'Service: {service}\n'
+            f'\n— Technical Info —\n'
+            f'Date/Time: {now}\n'
+            f'Page: {page_url or "—"}\n'
+            f'Referrer: {referrer or "—"}\n'
+            f'UTM Source: {utm_source or "—"}\n'
+            f'UTM Medium: {utm_medium or "—"}\n'
+            f'UTM Campaign: {utm_campaign or "—"}\n'
+            f'\n— Conversation —\n{conversation}'
+        )
+    )
 
 
 @require_POST
@@ -406,6 +476,14 @@ def chat_api(request):
         user_message = body.get('message', '').strip()
         if not user_message:
             return JsonResponse({'error': 'Empty message'}, status=400)
+        # UTM + tracking from frontend
+        tracking = {
+            'page_url': body.get('page_url', ''),
+            'referrer': body.get('referrer', ''),
+            'utm_source': body.get('utm_source', ''),
+            'utm_medium': body.get('utm_medium', ''),
+            'utm_campaign': body.get('utm_campaign', ''),
+        }
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request'}, status=400)
 
@@ -418,7 +496,7 @@ def chat_api(request):
     payload_obj = {
         'system_instruction': {'parts': [{'text': _SYSTEM_PROMPT}]},
         'contents': contents,
-        'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 300},
+        'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 350},
     }
 
     def _call(m, key):
@@ -429,13 +507,24 @@ def chat_api(request):
             result = json.loads(resp.read())
         return result['candidates'][0]['content']['parts'][0]['text'].strip()
 
-    # Try primary model with key rotation (up to len(keys) attempts)
+    def _process_reply(raw_reply):
+        lead_params, clean_reply = _parse_lead_tag(raw_reply)
+        if lead_params:
+            lead_params.update(tracking)
+            try:
+                _save_chat_lead_from_tag(lead_params, history, user_message, clean_reply, request)
+            except Exception:
+                pass
+        return clean_reply
+
+    # Try primary model with key rotation
     keys = django_settings.GEMINI_KEYS or [django_settings.GEMINI_API_KEY]
     last_err = None
     for _ in range(len(keys)):
         key = _key_manager.next_key()
         try:
-            return JsonResponse({'reply': _call(model, key)})
+            raw = _call(model, key)
+            return JsonResponse({'reply': _process_reply(raw)})
         except urllib.error.HTTPError as e:
             if e.code in (429, 403, 400):
                 _key_manager.mark_failed(key)
@@ -447,10 +536,11 @@ def chat_api(request):
             last_err = e
             break
 
-    # Fallback model with fresh key
+    # Fallback model
     key = _key_manager.next_key()
     try:
-        return JsonResponse({'reply': _call(fallback_model, key)})
+        raw = _call(fallback_model, key)
+        return JsonResponse({'reply': _process_reply(raw)})
     except urllib.error.HTTPError as e:
         _key_manager.mark_failed(key)
         return JsonResponse({'error': f'Gemini error {e.code}'}, status=502)
