@@ -9,7 +9,7 @@ from pathlib import Path
 
 from django.conf import settings as django_settings
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
@@ -410,6 +410,23 @@ def _parse_lead_tag(text):
     return (params if params.get('phone') else None), clean
 
 
+def _strip_md(text):
+    """Remove markdown formatting from conversation text."""
+    text = re.sub(r'\*\*([^*]+)\*\*', r'\1', text)   # **bold** → bold
+    text = re.sub(r'^\s*\*\s+', '• ', text, flags=re.MULTILINE)  # * bullet → •
+    return text
+
+
+def _build_conversation(history, user_message, clean_reply):
+    lines = []
+    for turn in history:
+        role = 'Visitor' if turn.get('role') == 'user' else 'Bot'
+        lines.append(f"{role}: {_strip_md(turn.get('text', ''))}")
+    lines.append(f'Visitor: {_strip_md(user_message)}')
+    lines.append(f'Bot: {_strip_md(clean_reply)}')
+    return '\n'.join(lines)
+
+
 def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request):
     name = params.get('name', 'Unknown')
     phone = params.get('phone', '')
@@ -420,46 +437,64 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     if ChatLead.objects.filter(phone=phone, service_interest=service, created_at__gte=day_ago).exists():
         return
 
-    # Build conversation string from history + current exchange
-    lines = []
-    for turn in history:
-        role = 'Visitor' if turn.get('role') == 'user' else 'Bot'
-        lines.append(f"{role}: {turn.get('text', '')}")
-    lines.append(f'Visitor: {user_message}')
-    lines.append(f'Bot: {clean_reply}')
-    conversation = '\n'.join(lines)
-
+    conversation = _build_conversation(history, user_message, clean_reply)
     page_url = params.get('page_url', '')
     referrer = params.get('referrer', '')
     utm_source = params.get('utm_source', '')
     utm_medium = params.get('utm_medium', '')
     utm_campaign = params.get('utm_campaign', '')
 
-    ChatLead.objects.create(
+    lead = ChatLead.objects.create(
         name=name, phone=phone, service_interest=service,
         page_url=page_url, referrer=referrer,
         utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
         conversation=conversation,
     )
+    # Store lead id in session so subsequent messages update the conversation
+    leads_in_session = request.session.get('chat_lead_ids', [])
+    leads_in_session.append(lead.pk)
+    request.session['chat_lead_ids'] = leads_in_session
 
     now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
-    _send_notification(
-        subject=_lead_subject(name, service),
-        body=(
-            f'New Chat Lead (AI-detected)\n\n'
-            f'Name: {name}\n'
-            f'Phone: {phone}\n'
-            f'Service: {service}\n'
-            f'\n— Technical Info —\n'
-            f'Date/Time: {now}\n'
-            f'Page: {page_url or "—"}\n'
-            f'Referrer: {referrer or "—"}\n'
-            f'UTM Source: {utm_source or "—"}\n'
-            f'UTM Medium: {utm_medium or "—"}\n'
-            f'UTM Campaign: {utm_campaign or "—"}\n'
-            f'\n— Conversation —\n{conversation}'
-        )
+    subject = _lead_subject(name, service)
+    body = (
+        f'New Chat Lead (AI-detected)\n\n'
+        f'Name: {name}\n'
+        f'Phone: {phone}\n'
+        f'Service: {service}\n'
+        f'\n— Technical Info —\n'
+        f'Date/Time: {now}\n'
+        f'Page: {page_url or "—"}\n'
+        f'Referrer: {referrer or "—"}\n'
+        f'UTM Source: {utm_source or "—"}\n'
+        f'UTM Medium: {utm_medium or "—"}\n'
+        f'UTM Campaign: {utm_campaign or "—"}\n'
+        f'\nFull conversation attached.'
     )
+    try:
+        msg = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=django_settings.EMAIL_HOST_USER,
+            to=[django_settings.NOTIFICATION_EMAIL],
+        )
+        filename = f'chat_{name.replace(" ", "_")}_{timezone.now().strftime("%Y%m%d_%H%M%S")}.txt'
+        msg.attach(filename, conversation, 'text/plain')
+        msg.send(fail_silently=True)
+    except Exception:
+        pass
+
+
+def _update_lead_conversations(request, history, user_message, clean_reply):
+    """Update conversation field for all leads saved in this session."""
+    lead_ids = request.session.get('chat_lead_ids', [])
+    if not lead_ids:
+        return
+    conversation = _build_conversation(history, user_message, clean_reply)
+    try:
+        ChatLead.objects.filter(pk__in=lead_ids).update(conversation=conversation)
+    except Exception:
+        pass
 
 
 @require_POST
@@ -487,14 +522,47 @@ def chat_api(request):
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request'}, status=400)
 
+    # Extract already-collected visitor data from full history (not just last 20)
+    # Scan all user messages for phone and name hints so AI doesn't ask twice
+    _phone_re = re.compile(r'(\+?\d[\d\s\-().]{7,}\d)')
+    collected_phone, collected_name = '', ''
+    for turn in history:
+        if turn.get('role') != 'user':
+            continue
+        txt = turn.get('text', '')
+        if not collected_phone:
+            m = _phone_re.search(txt)
+            if m:
+                collected_phone = m.group(1).strip()
+        # Simple name hint: if bot addressed visitor by name, extract it
+    for turn in history:
+        if turn.get('role') == 'bot':
+            m = re.search(r'\b([А-ЯІЇЄA-Z][а-яіїєa-z]{2,})[,!]', turn.get('text', ''))
+            if m:
+                collected_name = m.group(1)
+                break
+
+    # Build context summary if we have collected data
+    context_note = ''
+    if collected_phone or collected_name:
+        parts_note = []
+        if collected_name:
+            parts_note.append(f'name={collected_name}')
+        if collected_phone:
+            parts_note.append(f'phone={collected_phone}')
+        context_note = (
+            f'\n\n[SYSTEM NOTE: Visitor already provided {", ".join(parts_note)}. '
+            f'Do NOT ask for this information again.]'
+        )
+
     contents = []
-    for turn in history[-10:]:
+    for turn in history:
         role = 'user' if turn.get('role') == 'user' else 'model'
         contents.append({'role': role, 'parts': [{'text': turn.get('text', '')}]})
     contents.append({'role': 'user', 'parts': [{'text': user_message}]})
 
     payload_obj = {
-        'system_instruction': {'parts': [{'text': _SYSTEM_PROMPT}]},
+        'system_instruction': {'parts': [{'text': _SYSTEM_PROMPT + context_note}]},
         'contents': contents,
         'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 500},
     }
@@ -505,7 +573,18 @@ def chat_api(request):
         req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'}, method='POST')
         with urllib.request.urlopen(req, timeout=15) as resp:
             result = json.loads(resp.read())
-        return result['candidates'][0]['content']['parts'][0]['text'].strip()
+        candidates = result.get('candidates', [])
+        if not candidates:
+            raise ValueError('No candidates in Gemini response')
+        candidate = candidates[0]
+        # Handle safety blocks or empty content
+        finish_reason = candidate.get('finishReason', '')
+        if finish_reason == 'SAFETY':
+            return "I'm sorry, I can't respond to that. Please call us at +1 (216) 280-1855 for assistance."
+        parts = candidate.get('content', {}).get('parts', [])
+        if not parts:
+            raise ValueError('Empty content in Gemini response')
+        return parts[0].get('text', '').strip()
 
     def _process_reply(raw_reply):
         lead_params, clean_reply = _parse_lead_tag(raw_reply)
@@ -515,34 +594,56 @@ def chat_api(request):
                 _save_chat_lead_from_tag(lead_params, history, user_message, clean_reply, request)
             except Exception:
                 pass
-        return clean_reply
+        # Update conversation for all leads already saved in this session
+        try:
+            _update_lead_conversations(request, history, user_message,
+                                       clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip())
+        except Exception:
+            pass
+        # If AI wrote only the tag with no message text, return raw without tag
+        return clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip()
 
-    # Try primary model with key rotation
+    # Try primary model — rotate through ALL keys on any error
     keys = django_settings.GEMINI_KEYS or [django_settings.GEMINI_API_KEY]
     last_err = None
     for _ in range(len(keys)):
         key = _key_manager.next_key()
+        key_label = f'...{key[-6:]}' if key else 'empty'
         try:
             raw = _call(model, key)
+            print(f'[Gemini] OK model={model} key={key_label}')
             return JsonResponse({'reply': _process_reply(raw)})
         except urllib.error.HTTPError as e:
             if e.code in (429, 403, 400):
                 _key_manager.mark_failed(key)
-                last_err = e
+                print(f'[Gemini] HTTP {e.code} key={key_label} → marked failed, trying next')
             else:
-                last_err = e
-                break
-        except Exception as e:
+                print(f'[Gemini] HTTP {e.code} key={key_label} → trying next')
             last_err = e
-            break
+        except Exception as e:
+            print(f'[Gemini] ERROR key={key_label} → {e} → trying next')
+            last_err = e
 
-    # Fallback model
-    key = _key_manager.next_key()
-    try:
-        raw = _call(fallback_model, key)
-        return JsonResponse({'reply': _process_reply(raw)})
-    except urllib.error.HTTPError as e:
-        _key_manager.mark_failed(key)
-        return JsonResponse({'error': f'Gemini error {e.code}'}, status=502)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=502)
+    # Fallback model — rotate through ALL keys on any error
+    print(f'[Gemini] All primary keys failed, switching to fallback model={fallback_model}')
+    for _ in range(len(keys)):
+        key = _key_manager.next_key()
+        key_label = f'...{key[-6:]}' if key else 'empty'
+        try:
+            raw = _call(fallback_model, key)
+            print(f'[Gemini] OK fallback model={fallback_model} key={key_label}')
+            return JsonResponse({'reply': _process_reply(raw)})
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 403, 400):
+                _key_manager.mark_failed(key)
+                print(f'[Gemini] Fallback HTTP {e.code} key={key_label} → marked failed, trying next')
+            else:
+                print(f'[Gemini] Fallback HTTP {e.code} key={key_label} → trying next')
+            last_err = e
+        except Exception as e:
+            print(f'[Gemini] Fallback ERROR key={key_label} → {e} → trying next')
+            last_err = e
+
+    err_msg = f'Gemini error {last_err.code}' if isinstance(last_err, urllib.error.HTTPError) else str(last_err)
+    print(f'[Gemini] FATAL all keys exhausted: {err_msg}')
+    return JsonResponse({'error': err_msg}, status=502)

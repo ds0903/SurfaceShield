@@ -229,7 +229,9 @@
         padding: 8px 14px; font-size: 13px; outline: none; resize: none;
         max-height: 80px; overflow-y: auto; line-height: 1.4;
         font-family: 'Open Sans', sans-serif;
+        scrollbar-width: none;
       }
+      #ss-chat-input::-webkit-scrollbar { display: none; }
       #ss-chat-input:focus { border-color: #3a8ee6; }
       #ss-chat-send {
         width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
