@@ -122,6 +122,12 @@ TURNSTILE_SECRET_KEY = os.environ.get('TURNSTILE_SECRET_KEY', '')
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
 GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash-lite')
 GEMINI_MODEL_FALLBACK = os.environ.get('GEMINI_MODEL_FALLBACK', 'gemini-2.5-flash')
+_raw_keys = [
+    os.environ.get('GEMINI_API_KEY_1', ''),
+    os.environ.get('GEMINI_API_KEY_2', ''),
+    os.environ.get('GEMINI_API_KEY_3', ''),
+]
+GEMINI_KEYS = [k for k in _raw_keys if k] or ([GEMINI_API_KEY] if GEMINI_API_KEY else [])
 
 # ── Jazzmin ──
 JAZZMIN_SETTINGS = {

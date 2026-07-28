@@ -8,8 +8,26 @@
   let isTyping = false;
   let leadSaved = false;
 
-  const LEAD_PHRASES = ['will reach out', 'will contact you', 'will get back to you', 'team will reach', 'our team will'];
-  const PHONE_RE = /(\+?[\d\s\-().]{7,})/g;
+  const LEAD_PHRASES = ['will reach out', 'will contact you', 'will get back to you', 'team will reach', 'our team will', 'noted your information'];
+  const PHONE_RE = /(\+?1?[\s\-.]?\(?\d{3}\)?[\s\-.]?\d{3}[\s\-.]?\d{4})/g;
+  const EMAIL_RE = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g;
+
+  function _getUtm() {
+    const p = new URLSearchParams(window.location.search);
+    return {
+      utm_source: p.get('utm_source') || sessionStorage.getItem('utm_source') || '',
+      utm_medium: p.get('utm_medium') || sessionStorage.getItem('utm_medium') || '',
+      utm_campaign: p.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || '',
+    };
+  }
+
+  // Store UTM on first page load
+  (function() {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('utm_source')) sessionStorage.setItem('utm_source', p.get('utm_source'));
+    if (p.get('utm_medium')) sessionStorage.setItem('utm_medium', p.get('utm_medium'));
+    if (p.get('utm_campaign')) sessionStorage.setItem('utm_campaign', p.get('utm_campaign'));
+  })();
 
   function tryExtractLead() {
     if (leadSaved) return;
@@ -17,16 +35,25 @@
     const isLeadConfirmed = LEAD_PHRASES.some(p => lastBotMsg.toLowerCase().includes(p));
     if (!isLeadConfirmed) return;
 
-    // Scan user messages for phone
-    let name = '', phone = '', service = '';
+    const allUserText = history.filter(m => m.role === 'user').map(m => m.text).join(' ');
+    const allText = history.map(m => m.text).join(' ').toLowerCase();
+
+    // Phone
+    let phone = '';
     for (const m of history) {
       if (m.role !== 'user') continue;
       const phones = m.text.match(PHONE_RE);
-      if (phones) phone = phones[0].trim();
+      if (phones) { phone = phones[0].trim(); break; }
     }
     if (!phone) return;
 
-    // Try to extract name from history (first user message that bot acknowledged with a name)
+    // Email
+    let email = '';
+    const emails = allUserText.match(EMAIL_RE);
+    if (emails) email = emails[0];
+
+    // Name — bot acknowledges name in reply
+    let name = '';
     for (const m of history) {
       if (m.role === 'bot' && m.text.match(/\b([A-Z][a-z]+)[,!]/)) {
         name = m.text.match(/\b([A-Z][a-z]+)[,!]/)[1];
@@ -34,25 +61,44 @@
       }
     }
     if (!name) {
-      // fallback: first word of first user message
       const firstUser = history.find(m => m.role === 'user');
       name = firstUser?.text?.split(/\s/)[0] || 'Unknown';
     }
 
-    // Detect service from conversation
-    const allText = history.map(m => m.text).join(' ').toLowerCase();
-    if (allText.includes('roof') || allText.includes('restoration') || allText.includes('storm')) service = 'restoration';
-    else if (allText.includes('exterior') || allText.includes('wash') || allText.includes('pressure')) service = 'exterior';
-    else if (allText.includes('auto') || allText.includes('car') || allText.includes('vehicle') || allText.includes('detailing')) service = 'auto';
-    else if (allText.includes('interior') || allText.includes('clean') || allText.includes('home')) service = 'interior';
+    // Service
+    let service = '';
+    if (allText.includes('roof') || allText.includes('restor') || allText.includes('storm') || allText.includes('shingle')) service = 'restoration';
+    else if (allText.includes('exterior') || allText.includes('wash') || allText.includes('pressure') || allText.includes('soft wash')) service = 'exterior';
+    else if (allText.includes('auto') || allText.includes('car') || allText.includes('vehicle') || allText.includes('detail') || allText.includes('ceramic')) service = 'auto';
+    else if (allText.includes('interior') || allText.includes('clean') || allText.includes('deep clean')) service = 'interior';
+
+    // Preferred contact & call time (scan bot questions + user answers)
+    let preferred_contact = '', call_time = '', address = '', description = '';
+    for (let i = 0; i < history.length; i++) {
+      const m = history[i];
+      if (m.role !== 'user') continue;
+      const prev = history[i - 1]?.text?.toLowerCase() || '';
+      if (prev.includes('contact') && (prev.includes('call') || prev.includes('text'))) preferred_contact = m.text.slice(0, 50);
+      if (prev.includes('time') || prev.includes('when')) call_time = m.text.slice(0, 80);
+      if (prev.includes('address') || prev.includes('property') || prev.includes('location')) address = m.text.slice(0, 200);
+      if (prev.includes('describe') || prev.includes('tell us') || prev.includes('project')) description = m.text.slice(0, 300);
+    }
 
     const conversation = history.map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${m.text}`).join('\n');
+    const utm = _getUtm();
 
     leadSaved = true;
     fetch('/api/save-lead/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrf() },
-      body: JSON.stringify({ name, phone, service, conversation })
+      body: JSON.stringify({
+        name, phone, email, address, service, description,
+        preferred_contact, call_time,
+        page_url: window.location.href,
+        referrer: document.referrer,
+        ...utm,
+        conversation
+      })
     }).catch(() => {});
   }
 

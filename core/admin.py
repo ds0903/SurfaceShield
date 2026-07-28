@@ -191,12 +191,19 @@ class NewsletterCampaignAdmin(admin.ModelAdmin):
 # ── Chat Leads ──
 @admin.register(ChatLead)
 class ChatLeadAdmin(admin.ModelAdmin):
-    list_display = ('name_badge', 'phone_fmt', 'service_interest', 'created_at_fmt', 'read_badge')
-    list_filter = ('is_read',)
-    search_fields = ('name', 'phone')
-    readonly_fields = ('created_at', 'conversation')
+    list_display = ('name_badge', 'phone_fmt', 'email', 'service_interest', 'created_at_fmt', 'read_badge')
+    list_filter = ('is_read', 'service_interest')
+    search_fields = ('name', 'phone', 'email', 'address')
+    readonly_fields = ('created_at', 'conversation', 'page_url', 'referrer', 'utm_source', 'utm_medium', 'utm_campaign')
     ordering = ('-created_at',)
     list_per_page = 25
+    fieldsets = (
+        ('Contact Info', {'fields': ('name', 'phone', 'email', 'address')}),
+        ('Project', {'fields': ('service_interest', 'description', 'preferred_contact', 'call_time')}),
+        ('Status', {'fields': ('is_read', 'created_at')}),
+        ('Conversation', {'fields': ('conversation',), 'classes': ('collapse',)}),
+        ('Tracking', {'fields': ('page_url', 'referrer', 'utm_source', 'utm_medium', 'utm_campaign'), 'classes': ('collapse',)}),
+    )
 
     def name_badge(self, obj):
         initials = ''.join(p[0].upper() for p in obj.name.split()[:2]) if obj.name else '?'

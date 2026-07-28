@@ -1,0 +1,429 @@
+# SSBOS-001-AIM3-V1.0 | AI Module 3 — Exterior Division (Version 1.0)
+# Primary category: Exterior Division
+# Subcategories: soft_washing, pressure_washing, roof_cleaning, wood_restoration,
+#                concrete_masonry, chemicals, equipment, pricing_intelligence
+# Do not overwrite. Archive previous versions to modules/archive/.
+
+module_id: SSBOS-001-AIM3-V1.0
+division: Surface Shield Exterior
+version: "1.0"
+
+core_operating_principle: >
+  Educate → Assess → Recommend → Protect. The AI communicates as a trained exterior
+  cleaning consultant: accurate about chemistry, honest about limitations, and always
+  directing customers toward a professional on-site evaluation before quoting or
+  committing to outcomes.
+
+# ── 3.1 Soft Washing Science ─────────────────────────────────────────────────
+
+soft_washing:
+
+  definition: >
+    Soft washing is a low-pressure chemical cleaning method (typically under 100 PSI
+    at the nozzle) that uses sodium hypochlorite-based solutions and surfactants to kill
+    and remove biological growth — algae, mold, mildew, lichen, moss, and bacteria —
+    without abrading or damaging delicate surfaces.
+
+  core_chemistry:
+    sodium_hypochlorite:
+      common_name: Bleach / SH
+      pool_grade_concentration: "10–12.5%"
+      household_concentration: "3–6%"
+      active_agent: Hypochlorous acid (HOCl) kills cell membranes of biological organisms
+      dilution_targets:
+        roof_cleaning: "1–3% SH at surface"
+        house_washing: "0.3–0.7% SH at surface"
+        heavy_organic: "up to 4% SH at surface for severe moss or lichen"
+      ai_note: >
+        Never recommend exact concentrations to customers. Mix ratios depend on
+        dwell time, surface type, contamination severity, and water hardness.
+        Actual mix is a technician judgment call on-site.
+
+    surfactants:
+      purpose: Reduce surface tension; increase dwell time; improve penetration and sheet-off
+      types:
+        - Elemonator (citrus-based, biodegradable)
+        - Simple Cherry
+        - F18 (commercial surfactant)
+        - Dawn dish soap (field improvisation, not preferred)
+      ai_note: Surfactant type and dose affect foam, run-off pattern, and plant safety.
+
+    neutralization:
+      purpose: Arrest SH activity on sensitive surfaces or accelerate rinse-off
+      common_agent: Sodium thiosulfate or sodium bicarbonate solutions
+      ai_note: Neutralizers are used on wood or vegetation-sensitive areas at technician discretion.
+
+  biological_targets:
+    gloeocapsa_magma: Black streaks on roofs and siding; airborne algae; killed by SH
+    cladosporium: Dark mold on painted surfaces and wood
+    moss: Three-dimensional growth; roots penetrate surface; requires stronger dwell
+    lichen: Symbiotic algae+fungi; most resistant; may require multiple treatments
+    mildew: Surface fungal growth; responsive to low SH concentrations
+
+  surface_compatibility:
+    safe: [Asphalt shingles, vinyl siding, aluminum siding, EIFS/stucco, painted wood, gutters, fascia]
+    caution: [Cedar and natural wood (pH sensitive), painted metal, PVDF coatings, screen mesh]
+    avoid_direct_contact: [Vegetation, glass, polished metal, unpainted copper, exposed electrical]
+
+  plant_protection_protocol:
+    pre_wet: Saturate all nearby vegetation and soil before applying SH
+    buffer: Keep sprayer pointed away from direct plant overspray
+    rinse_during: Flush plants periodically during dwell time on adjacent surfaces
+    post_rinse: Thorough final rinse of all vegetation after job completion
+
+# ── 3.2 Pressure Washing Systems ─────────────────────────────────────────────
+
+pressure_washing:
+
+  definition: >
+    High-pressure water cleaning using 500–4000+ PSI to remove dirt, grime, paint,
+    stains, and debris by mechanical force. Most effective on hard, durable surfaces
+    where chemical-only methods are insufficient.
+
+  pressure_ranges:
+    low_pressure: "500–1500 PSI — wood, vehicles, screens, soft surfaces"
+    medium_pressure: "1500–2500 PSI — concrete prep, brick, general exterior"
+    high_pressure: "2500–4000 PSI — heavy concrete, industrial surfaces"
+    ultra_high: ">4000 PSI — industrial/commercial only; not residential"
+
+  flow_rate_importance: >
+    GPM (gallons per minute) matters as much as PSI. Higher GPM = more volume = faster
+    cleaning. A 4 GPM machine at 2500 PSI often outperforms a 2 GPM machine at 4000 PSI
+    on large flat surfaces.
+
+  nozzle_guide:
+    "0-degree": Red; pencil jet; maximum concentration; risk of surface damage; rarely used
+    "15-degree": Yellow; stripping paint, heavy stains, concrete
+    "25-degree": Green; general washing, driveways, brick
+    "40-degree": White; wide fan; rinsing, soft surfaces, vehicles
+    "65-degree": Black; low-pressure soap application
+    rotating_turbo: Combines 0° impact with rotation; fast concrete cleaning
+    surface_cleaner: Dual rotating bar with shroud; uniform concrete/flat-surface cleaning
+
+  downstream_injection:
+    method: Chemical injector draws solution from bucket post-pump (after high pressure)
+    resulting_pressure: Low (typically 50–150 PSI at nozzle when injecting)
+    use_case: House washing, soft washing where low pressure + chemical needed
+    limitation: Cannot inject strongly through long hose runs without pressure loss
+
+  x_jet_method:
+    description: Proportioner attached to gun that draws chemical directly through venturi effect
+    advantage: No chemical through pump; adjustable ratio; good for multi-story application
+    ratios: Proportioner tips control dilution (typically 5:1 to 20:1 water:chemical)
+    ai_note: X-Jet is a technique, not a brand requirement. Results depend on tip selection and pressure.
+
+  surface_cleaning_production_rates:
+    concrete_driveway: "800–1,500 sq ft/hour with surface cleaner"
+    house_siding: "1,500–3,000 sq ft/hour downstream soft wash"
+    roof: "1,000–2,500 sq ft/hour depending on pitch and access"
+    wood_deck: "400–800 sq ft/hour (lower = prep, higher = rinse pass)"
+
+# ── 3.3 Roof Cleaning Methods ────────────────────────────────────────────────
+
+roof_cleaning:
+
+  arma_guidance:
+    source: "Asphalt Roofing Manufacturers Association (ARMA)"
+    recommended_method: Low-pressure (under 100 PSI) sodium hypochlorite solution
+    explicitly_not_recommended: High-pressure washing — removes granules and voids warranties
+    approved_formula: "Laundry strength sodium hypochlorite + water + TSP substitute or surfactant"
+    ai_note: >
+      Always cite ARMA guidance when customers ask about pressure washing roofs.
+      High-pressure roof washing is damaging and invalidates manufacturer warranties.
+
+  biological_removal_process:
+    step_1: Pre-wet and protect surrounding vegetation
+    step_2: Apply SH solution from bottom to top (prevents streaking)
+    step_3: Allow dwell time (10–20 minutes depending on severity)
+    step_4: Rinse with low-pressure water (top to bottom)
+    step_5: Second application if heavy moss or lichen present
+    ai_note: Full visual result may take 2–4 weeks as dead organisms rinse away naturally.
+
+  roof_types_and_considerations:
+    asphalt_shingles:
+      cleaning_method: Soft wash only
+      risk_areas: [Flashing seams, pipe boots, ridge caps — avoid direct high pressure]
+    metal_roofs:
+      cleaning_method: Low-pressure soft wash or 500–800 PSI with wide fan tip
+      caution: Avoid abrasive or high-acid chemicals on coated panels
+    tile_roofs:
+      cleaning_method: Soft wash; walk boards required on clay tile to prevent cracking
+      caution: Do not walk directly on tile; use safe roof access systems
+    cedar_shake:
+      cleaning_method: Low-pressure (600–800 PSI max) with appropriate brightener
+      caution: Cedar is fragile; high pressure splits fibers; requires wood-specific chemistry
+
+  moss_treatment:
+    fresh_moss: Single SH application typically sufficient
+    established_moss: May require mechanical pre-removal (hand brush) + two chemical passes
+    preventative: Zinc or copper strips at ridge line slow biological regrowth
+    ai_note: Guarantee moss regrowth prevention would be inaccurate — recommend annual inspection.
+
+# ── 3.4 Wood Restoration ─────────────────────────────────────────────────────
+
+wood_restoration:
+
+  surfaces:
+    - Cedar siding and shingles
+    - Wood decks (pressure-treated, composite adjacent, natural)
+    - Fences (pine, cedar, redwood)
+    - Log homes
+    - Pergolas and gazebos
+    - Wood docks
+
+  process_overview:
+    step_1_clean:
+      method: Low-pressure wash (600–1200 PSI) with wood cleaner (oxalic acid or sodium percarbonate-based)
+      purpose: Remove gray oxidation, dirt, mildew, old sealer residue
+    step_2_brighten:
+      method: Apply wood brightener (oxalic acid solution)
+      purpose: Restore natural wood pH, open grain, neutralize tannin bleed, restore color
+      dwell_time: "5–10 minutes; do not let dry on surface"
+    step_3_rinse:
+      method: Low-pressure rinse top to bottom
+    step_4_dry:
+      requirement: Wood must dry 24–72 hours before sealing (moisture content under 15%)
+    step_5_seal_or_stain:
+      method: Apply penetrating stain, sealer, or preservative (customer choice)
+      ai_note: Surface Shield recommends — specific product selection is technician + customer decision.
+
+  gray_wood_explanation: >
+    Gray color in weathered wood is UV oxidation of surface lignin, not damage. Brightener
+    and cleaning restore natural color. Wood below the gray layer is typically sound.
+
+  cedar_specific:
+    tannin_bleed: Cedar releases tannins when wet — brown bleed on adjacent surfaces is normal
+    acid_sensitivity: Cedar responds well to oxalic acid but poorly to SH at high concentrations
+    grain_raise: Expect slight grain raise after cleaning — light sanding before sealing is recommended
+
+  pressure_limits:
+    soft_wood_pine: "600–900 PSI maximum"
+    cedar: "600–800 PSI maximum"
+    hardwood_oak_ipe: "up to 1200 PSI"
+    ai_note: These are guidelines. Technician adjusts based on wood condition and age.
+
+  ai_boundaries:
+    never_quote: Do not quote deck restoration pricing without knowing size, condition, access, and product type.
+    never_guarantee: Do not guarantee color match on weathered or previously stained wood.
+
+# ── 3.5 Concrete & Masonry Cleaning ─────────────────────────────────────────
+
+concrete_masonry:
+
+  surfaces:
+    - Driveways (concrete, asphalt, pavers)
+    - Sidewalks and walkways
+    - Patios
+    - Retaining walls
+    - Brick exteriors
+    - Block foundations
+    - Stamped and colored concrete
+
+  stain_types_and_treatments:
+    organic_algae_mold:
+      treatment: "Soft wash (SH solution) + low-pressure rinse or surface cleaner"
+      notes: "Most common exterior concrete stain; responds well to SH"
+    oil_and_grease:
+      treatment: "Degreaser (alkaline — sodium hydroxide or citrus-based) + agitation + hot water"
+      notes: "Hot water pressure washing significantly improves oil extraction"
+      ai_note: "Old, deep-set oil may not fully remove — inform customer before job"
+    rust:
+      treatment: "Oxalic acid or F9 BARC (Hydrofluoric acid-based) — professional-grade only"
+      caution: >
+        HF-based rust removers are hazardous. Only trained technicians with PPE apply.
+        Never suggest customer apply F9 or similar products themselves.
+    efflorescence:
+      definition: White crystalline salt deposits that migrate to surface through concrete pores
+      treatment: "Dilute muriatic acid (5–10%) or proprietary efflorescence remover"
+      caution: Acid application requires wet surface, neutralization, and thorough rinse
+      ai_note: Efflorescence indicates moisture migration — may recur if drainage not addressed
+    paint_and_graffiti:
+      treatment: "Paint stripper + pressure washing; graffiti removers (solvent-based)"
+      notes: "Multiple passes typically required; some penetrating graffiti may not fully remove"
+    tire_marks:
+      treatment: "Alkaline degreaser + hot water + surface cleaner + agitation"
+
+  paver_cleaning_and_sealing:
+    cleaning: Soft wash or surface cleaner; avoid disturbing polymeric sand joints
+    joint_sand: After cleaning, inspect and refill polymeric sand if displaced
+    sealing: Wet-look or matte sealer applied after complete drying (48+ hours)
+    ai_note: Never guarantee paver color restoration on heavily stained or aged concrete pavers
+
+  stamped_concrete_caution: >
+    Colored or stamped concrete is sensitive to acid and high pressure. Avoid muriatic acid
+    on stamped surfaces. Use pH-neutral cleaners and low-to-medium pressure only.
+
+  asphalt:
+    cleaning_method: Hot water pressure wash + degreaser; no SH (bleaches and degrades asphalt)
+    sealing: Crack fill + asphalt sealer — separate service category
+
+# ── 3.6 Chemical Encyclopedia ────────────────────────────────────────────────
+
+chemicals:
+
+  sodium_hypochlorite:
+    abbreviation: SH
+    type: Oxidizing biocide
+    uses: [Soft washing, house washing, roof cleaning, mold/mildew removal]
+    safe_handling: [Gloves, eye protection, no mixing with acids or ammonia]
+    shelf_life: "Degrades ~50% potency over 6 months; store cool and dark"
+
+  oxalic_acid:
+    type: Organic acid / chelating agent
+    uses: [Wood brightener, rust removal (mild), concrete stain treatment]
+    safe_handling: [Gloves, eye protection, do not inhale dust, neutralize before disposal]
+
+  sodium_percarbonate:
+    type: Oxygen bleach
+    uses: [Wood cleaning, deck wash, eco-friendly alternative to SH for some applications]
+    notes: "Slower acting than SH; safer for plants; good for pre-treatment"
+
+  muriatic_acid:
+    chemical_name: Hydrochloric acid (diluted)
+    type: Strong inorganic acid
+    uses: [Efflorescence removal, concrete etching, brick cleaning]
+    safe_handling: [Full PPE; dilute into water (never water into acid); neutralize with baking soda]
+    ai_note: Technician-only product. Never recommend customer self-application.
+
+  f9_barc:
+    type: Hydrofluoric acid-based rust and calcium remover
+    uses: [Heavy rust stains, calcium deposits, battery acid stains]
+    hazard: "HF is highly toxic — penetrating burn risk; professional use only"
+    ai_note: Never describe application procedure to customers. Strictly field technician product.
+
+  alkaline_degreasers:
+    examples: [Purple Power, Simple Green, ZEP, proprietary formulas]
+    type: High-pH surfactant blends
+    uses: [Oil, grease, tire marks, general degreasing on hard surfaces]
+
+  surfactants:
+    elemonator: "Citrus-based; biodegradable; widely used with SH; reduces run-off speed"
+    simple_cherry: "Cherry-scented; foamy; good cling on vertical surfaces"
+    generic_approach: "Add 1–4 oz per gallon of mix depending on surface angle and dwell needed"
+
+  wood_brightener:
+    active: Oxalic acid (typically 2–5% solution)
+    purpose: Neutralize wood pH post-cleaning; open grain; restore natural color tone
+    ai_note: Always brighten after SH or sodium percarbonate wood wash to avoid gray/raised grain
+
+# ── 3.7 Equipment Encyclopedia ───────────────────────────────────────────────
+
+equipment:
+
+  pressure_washers:
+    cold_water:
+      typical_use: General residential cleaning
+      common_specs: "2.5–5 GPM / 2500–4000 PSI"
+    hot_water:
+      typical_use: Oil, grease, food service, heavy contamination
+      advantage: "Hot water breaks down oils 4–8x faster than cold; reduces chemical use"
+      common_specs: "3–5 GPM / 2500–4000 PSI / 200°F–250°F"
+
+  soft_wash_systems:
+    batch_tank: Pre-mixed SH solution in tank; pump delivers at low pressure
+    proportioner_system: Concentrates metered at machine; reduces storage of diluted product
+    typical_pump_pressure: "40–80 PSI delivery at surface"
+
+  surface_cleaners:
+    description: Spinning bar with dual nozzles inside shroud; uniform flat-surface cleaning
+    sizes: ["12-inch (residential)", "16-inch (residential/light commercial)", "20-inch+ (commercial)"]
+    water_recovery: Some models include vacuum recovery for indoor/sensitive areas
+
+  downstream_injectors:
+    placement: After pump, before gun
+    draw_ratio: "Typically 10:1 (10 parts water: 1 part chemical concentrate)"
+    limitation: Reduced draw effectiveness over long hose runs (>200 ft)
+
+  x_jet_proportioner:
+    placement: At the gun (before wand)
+    advantage: Chemical never contacts pump; adjustable concentration by tip
+    tip_colors: Color-coded by dilution ratio (red = 5:1, blue = 10:1, etc.)
+
+  hoses:
+    high_pressure: "3/8-inch single wire or 4000 PSI rated for residential; 1/2-inch for commercial"
+    garden_hose_supply: "5/8-inch minimum for adequate water supply to pump"
+    length: "200–300 ft typical reach; longer runs reduce pressure and flow"
+
+  spray_tips:
+    selection_factors: [Surface type, pressure required, fan angle, chemical vs water application]
+
+  ppe_required:
+    chemical_application: [Chemical-resistant gloves (nitrile or rubber), eye protection, rubber boots, apron]
+    pressure_washing: [Safety glasses, ear protection, closed-toe boots (steel toe preferred)]
+    roof_work: [Non-slip footwear, harness if pitch exceeds 6:12, buddy system]
+
+  common_troubleshooting:
+    low_pressure:
+      causes: [Worn nozzle, air in pump, inlet restriction, unloader misadjusted, water supply inadequate]
+    pulsing_pressure:
+      causes: [Insufficient water supply, air in inlet line, worn pump valves]
+    chemical_not_drawing:
+      causes: [Injector screen clogged, hose too long, using high-pressure tip instead of soap tip]
+    machine_overheating:
+      causes: [Bypass running too long without trigger pulled; add thermal relief valve or bypass cooler]
+
+# ── 3.8 Internal Pricing Intelligence ───────────────────────────────────────
+
+pricing_intelligence:
+
+  ai_rule: >
+    NEVER quote prices to customers. Pricing depends on property size, surface condition,
+    access difficulty, chemical consumption, and current market rates. Direct all pricing
+    inquiries to a free on-site estimate or phone consultation with a Surface Shield rep.
+
+  general_estimating_logic:
+    house_washing:
+      measurement: Linear feet of perimeter × average height; or total sq ft of facade
+      factors: [Story count, siding type, mildew severity, plant proximity, access obstacles]
+    roof_cleaning:
+      measurement: Square footage of roof surface (not footprint — multiply by pitch factor)
+      factors: [Pitch, biological growth type, moss thickness, access, number of stories]
+    concrete_cleaning:
+      measurement: Square footage of surface area
+      factors: [Stain type, surface texture, sealing required, hot vs cold water needed]
+    deck_restoration:
+      measurement: Total deck square footage including railings (linear feet × 2 for railing equivalent)
+      factors: [Wood species, condition, previous sealer type, brightening required, sealer product]
+
+  production_rate_benchmarks:
+    house_washing_soft: "1,500–3,000 sq ft facade/hour (crew of 2)"
+    roof_soft_wash: "1,000–2,500 sq ft roof surface/hour"
+    concrete_surface_cleaner: "800–1,500 sq ft/hour"
+    deck_full_restoration: "200–400 sq ft/hour (clean + brighten + seal)"
+    fence_cleaning: "100–200 linear feet/hour"
+
+  profitability_factors:
+    chemical_cost: Track SH consumption per job; price per gallon varies by supplier
+    labor: Crew size × time on site; minimize drive time with route grouping
+    equipment: Factor depreciation and maintenance into hourly cost basis
+    minimum_job_size: All jobs have a minimum that covers mobilization regardless of scope
+
+  upsell_opportunities:
+    house_washing: [Roof cleaning, gutter flush, window cleaning, concrete sealing]
+    roof_cleaning: [Gutter cleaning, fascia wash, moss prevention treatment]
+    deck_cleaning: [Sealing, fence cleaning, concrete patio]
+    ai_note: Educate customers on value combinations; never pressure-sell or promise bundled discounts.
+
+# ── 3.9 AI Boundaries and Escalation Rules ───────────────────────────────────
+
+ai_boundaries:
+  never_do:
+    - Quote a price or price range for any exterior cleaning service
+    - Recommend specific chemical concentrations for customer self-application
+    - Instruct customers to operate pressure washing equipment themselves
+    - Guarantee stain removal outcomes (especially oil, rust, graffiti, or deep organic)
+    - Recommend HF-based products (F9, BARC) for customer use
+    - Confirm that a specific stain type is present without professional inspection
+    - Promise moss or algae will not return after a single treatment
+  always_do:
+    - Direct pricing questions to a free estimate or phone consultation
+    - Distinguish between "likely cause" and "confirmed diagnosis"
+    - Recommend professional inspection for surface damage, structural concerns, or unknown stain types
+    - Explain why pressure washing a roof voids warranties (cite ARMA)
+    - Protect the customer from unsafe DIY attempts with hazardous chemicals
+  escalate_when:
+    - Customer describes structural damage, peeling coatings, or active water intrusion
+    - Questions involve HF acid, industrial chemicals, or multi-story unsafe access
+    - Scope appears to involve commercial or industrial scale
+    - Any urgent safety concern
+  escalate_to: Qualified Surface Shield Systems representative — call +1 (216) 280-1855

@@ -1,6 +1,9 @@
 import json
+import threading
+import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from django.conf import settings as django_settings
@@ -13,6 +16,66 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 from .models import ContactMessage, Newsletter, ChatLead
+
+
+_KEY_STATUS_FILE = Path(__file__).parent / 'key_status.json'
+_km_lock = threading.Lock()
+
+
+class _GeminiKeyManager:
+    def __init__(self):
+        self._index = 0
+
+    def _keys(self):
+        return django_settings.GEMINI_KEYS or [django_settings.GEMINI_API_KEY]
+
+    def _load(self):
+        try:
+            with open(_KEY_STATUS_FILE, encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+
+    def _save(self, status):
+        try:
+            with open(_KEY_STATUS_FILE, 'w', encoding='utf-8') as f:
+                json.dump(status, f, indent=2)
+        except Exception:
+            pass
+
+    def _is_failed(self, key, status):
+        entry = status.get(key)
+        if not entry:
+            return False
+        try:
+            failed_at = datetime.fromisoformat(entry['failed_at'])
+            return datetime.now() - failed_at < timedelta(hours=1)
+        except Exception:
+            return False
+
+    def mark_failed(self, key):
+        with _km_lock:
+            status = self._load()
+            status[key] = {'failed_at': datetime.now().isoformat()}
+            self._save(status)
+
+    def next_key(self):
+        with _km_lock:
+            keys = self._keys()
+            if not keys:
+                return ''
+            status = self._load()
+            for _ in range(len(keys)):
+                key = keys[self._index % len(keys)]
+                self._index = (self._index + 1) % len(keys)
+                if not self._is_failed(key, status):
+                    return key
+            # all failed — reset and return first
+            self._save({})
+            return keys[0]
+
+
+_key_manager = _GeminiKeyManager()
 
 
 def _get_client_ip(request):
@@ -68,6 +131,42 @@ def _send_notification(subject, body):
         pass
 
 
+def _division_from_service(service):
+    s = (service or '').lower()
+    if any(x in s for x in ('roof', 'restor', 'storm', 'shingle', 'siding', 'gutter')):
+        return 'Restoration'
+    if any(x in s for x in ('exterior', 'wash', 'pressure', 'soft', 'window', 'concrete')):
+        return 'Exterior'
+    if any(x in s for x in ('auto', 'car', 'vehicle', 'detail', 'ceramic', 'paint', 'fleet')):
+        return 'Auto'
+    if any(x in s for x in ('interior', 'clean', 'deep', 'move', 'post', 'construction')):
+        return 'Interior'
+    return service.title() if service else 'General'
+
+
+def _lead_subject(name, service):
+    division = _division_from_service(service)
+    return f'New Website Lead | {division} | {name}'
+
+
+def _meta_block(request):
+    now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
+    page = request.POST.get('page_url', request.META.get('HTTP_REFERER', '—'))
+    ref = request.POST.get('referrer', '—')
+    utm_source = request.POST.get('utm_source', '—')
+    utm_medium = request.POST.get('utm_medium', '—')
+    utm_campaign = request.POST.get('utm_campaign', '—')
+    return (
+        f'\n— Technical Info —\n'
+        f'Date/Time: {now}\n'
+        f'Page: {page}\n'
+        f'Referrer: {ref}\n'
+        f'UTM Source: {utm_source}\n'
+        f'UTM Medium: {utm_medium}\n'
+        f'UTM Campaign: {utm_campaign}\n'
+    )
+
+
 def home(request):
     return render(request, 'core/home.html')
 
@@ -106,8 +205,11 @@ def contact(request):
                 name=name, email=email, phone=phone, message=msg
             )
             _send_notification(
-                subject=f'New Contact: {name}',
-                body=f'Name: {name}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{msg}',
+                subject=_lead_subject(name, 'contact'),
+                body=(
+                    f'Name: {name}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{msg}'
+                    + _meta_block(request)
+                ),
             )
             messages.success(request, 'Your message has been sent! We will contact you shortly.')
             return redirect('contact')
@@ -168,7 +270,7 @@ def request_information(request):
                 Newsletter.objects.get_or_create(email=email)
 
             _send_notification(
-                subject=f'New Request: {name}',
+                subject=_lead_subject(name, service),
                 body=(
                     f'Name: {name}\n'
                     f'Phone: {phone}\n'
@@ -177,6 +279,7 @@ def request_information(request):
                     f'Address: {full_address}\n'
                     f'How Heard: {heard_from}\n\n'
                     f'Message:\n{msg}'
+                    + _meta_block(request)
                 ),
             )
             messages.success(request, 'Thank you! We will get back to you soon.')
@@ -196,7 +299,17 @@ def save_lead(request):
         body = json.loads(request.body)
         name = body.get('name', '').strip()
         phone = body.get('phone', '').strip()
+        email = body.get('email', '').strip()
+        address = body.get('address', '').strip()
         service = body.get('service', '').strip()
+        description = body.get('description', '').strip()
+        preferred_contact = body.get('preferred_contact', '').strip()
+        call_time = body.get('call_time', '').strip()
+        page_url = body.get('page_url', '').strip()
+        referrer = body.get('referrer', '').strip()
+        utm_source = body.get('utm_source', '').strip()
+        utm_medium = body.get('utm_medium', '').strip()
+        utm_campaign = body.get('utm_campaign', '').strip()
         conversation = body.get('conversation', '').strip()
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request'}, status=400)
@@ -204,22 +317,42 @@ def save_lead(request):
     if not name or not phone:
         return JsonResponse({'error': 'Name and phone required'}, status=400)
 
-    # Avoid duplicate saves in same session
     session_key = f'chat_lead_{phone}'
     if request.session.get(session_key):
         return JsonResponse({'status': 'already_saved'})
     request.session[session_key] = True
 
     ChatLead.objects.create(
-        name=name,
-        phone=phone,
-        service_interest=service,
+        name=name, phone=phone, email=email, address=address,
+        service_interest=service, description=description,
+        preferred_contact=preferred_contact, call_time=call_time,
+        page_url=page_url, referrer=referrer,
+        utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
         conversation=conversation,
     )
 
+    now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
     _send_notification(
-        subject=f'[Chat Lead] {name} — {phone}',
-        body=f'New chat lead!\n\nName: {name}\nPhone: {phone}\nService: {service or "not specified"}\n\nConversation:\n{conversation}'
+        subject=_lead_subject(name, service),
+        body=(
+            f'New Chat Lead\n\n'
+            f'Name: {name}\n'
+            f'Phone: {phone}\n'
+            f'Email: {email or "—"}\n'
+            f'Address: {address or "—"}\n'
+            f'Service: {service or "—"}\n'
+            f'Description: {description or "—"}\n'
+            f'Preferred Contact: {preferred_contact or "—"}\n'
+            f'Best Time to Call: {call_time or "—"}\n'
+            f'\n— Technical Info —\n'
+            f'Date/Time: {now}\n'
+            f'Page: {page_url or "—"}\n'
+            f'Referrer: {referrer or "—"}\n'
+            f'UTM Source: {utm_source or "—"}\n'
+            f'UTM Medium: {utm_medium or "—"}\n'
+            f'UTM Campaign: {utm_campaign or "—"}\n'
+            f'\n— Conversation —\n{conversation}'
+        )
     )
 
     return JsonResponse({'status': 'saved'})
@@ -235,29 +368,36 @@ def robots_txt(request):
 
 
 def _load_prompt():
-    prompt_path = Path(__file__).parent / 'chat_prompt.yaml'
-    with open(prompt_path, encoding='utf-8') as f:
-        return f.read()
+    base_dir = Path(__file__).parent
+    parts = [
+        '# Surface Shield Systems — AI Assistant\n'
+        '# YAML knowledge base. Use all sections to answer questions accurately.\n'
+        '# Collect leads per lead_capture rules. Follow all rules strictly.\n\n'
+    ]
+    # Master prompt
+    master = base_dir / 'chat_prompt.yaml'
+    with open(master, encoding='utf-8') as f:
+        parts.append(f.read())
+    # Load all module files from core/modules/ in sorted order
+    modules_dir = base_dir / 'modules'
+    if modules_dir.exists():
+        for mod_file in sorted(modules_dir.glob('*.yaml')):
+            parts.append(f'\n\n# --- Module: {mod_file.stem} ---\n')
+            with open(mod_file, encoding='utf-8') as f:
+                parts.append(f.read())
+    return '\n'.join(parts)
 
 
 _SYSTEM_PROMPT = _load_prompt()
-
-_SYSTEM_PROMPT_HEADER = """
-# Surface Shield Systems — AI Assistant
-# The following YAML contains ALL information about the company and its services.
-# Use it to answer visitor questions accurately. Collect leads (name + phone) when appropriate.
-
-"""
-
-_SYSTEM_PROMPT = _SYSTEM_PROMPT_HEADER + _SYSTEM_PROMPT
 
 
 
 @require_POST
 def chat_api(request):
-    api_key = django_settings.GEMINI_API_KEY
     model = django_settings.GEMINI_MODEL
-    if not api_key:
+    fallback_model = django_settings.GEMINI_MODEL_FALLBACK
+
+    if not django_settings.GEMINI_KEYS and not django_settings.GEMINI_API_KEY:
         return JsonResponse({'error': 'AI not configured'}, status=503)
 
     try:
@@ -269,44 +409,50 @@ def chat_api(request):
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request'}, status=400)
 
-    # Build Gemini contents array: system instruction + history + new user message
     contents = []
-    for turn in history[-10:]:  # last 10 turns to stay within context
+    for turn in history[-10:]:
         role = 'user' if turn.get('role') == 'user' else 'model'
         contents.append({'role': role, 'parts': [{'text': turn.get('text', '')}]})
     contents.append({'role': 'user', 'parts': [{'text': user_message}]})
 
-    payload = json.dumps({
+    payload_obj = {
         'system_instruction': {'parts': [{'text': _SYSTEM_PROMPT}]},
         'contents': contents,
-        'generationConfig': {
-            'temperature': 0.7,
-            'maxOutputTokens': 300,
-        }
-    }).encode()
+        'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 300},
+    }
 
-    fallback = django_settings.GEMINI_MODEL_FALLBACK
-
-    def _call_gemini(m):
-        url = f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}'
-        req = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json'}, method='POST')
+    def _call(m, key):
+        url = f'https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}'
+        data = json.dumps(payload_obj).encode()
+        req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'}, method='POST')
         with urllib.request.urlopen(req, timeout=15) as resp:
             result = json.loads(resp.read())
         return result['candidates'][0]['content']['parts'][0]['text'].strip()
 
-    try:
-        reply = _call_gemini(model)
-        return JsonResponse({'reply': reply})
-    except urllib.error.HTTPError:
-        pass  # try fallback
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=502)
+    # Try primary model with key rotation (up to len(keys) attempts)
+    keys = django_settings.GEMINI_KEYS or [django_settings.GEMINI_API_KEY]
+    last_err = None
+    for _ in range(len(keys)):
+        key = _key_manager.next_key()
+        try:
+            return JsonResponse({'reply': _call(model, key)})
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 403, 400):
+                _key_manager.mark_failed(key)
+                last_err = e
+            else:
+                last_err = e
+                break
+        except Exception as e:
+            last_err = e
+            break
 
+    # Fallback model with fresh key
+    key = _key_manager.next_key()
     try:
-        reply = _call_gemini(fallback)
-        return JsonResponse({'reply': reply})
+        return JsonResponse({'reply': _call(fallback_model, key)})
     except urllib.error.HTTPError as e:
-        err_body = e.read().decode()
-        return JsonResponse({'error': f'Gemini error: {err_body}'}, status=502)
+        _key_manager.mark_failed(key)
+        return JsonResponse({'error': f'Gemini error {e.code}'}, status=502)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=502)

@@ -453,7 +453,7 @@ img { max-width: 100%; display: block; }
 
 .img-restoration { background-image: url("/media/img_restoration.png"); background-color: #c0a080; }
 .img-exterior    { background-image: url("/media/img_exterior.png");    background-color: #8aaccc; background-size: 110%; background-position: 45% 65%; }
-.img-auto        { background-image: url("/media/img_auto.png");        background-color: #3a3a4a; background-size: 110%; background-position: center 55%; }
+.img-auto        { background-image: url("/media/auto.png");        background-color: #3a3a4a; background-size: 110%; background-position: center 55%; }
 .img-interior    { background-image: url("/media/img_interior.png");    background-color: #b8a890; }
 
 .service-card-img-wrap {
@@ -1193,6 +1193,10 @@ img { max-width: 100%; display: block; }
     font-size: 12px;
     color: rgba(255,255,255,0.85);
     white-space: nowrap;
+}
+
+.footer-bottom .footer-dev .footer-dev-text {
+    color: rgba(255,255,255,0.85) !important;
 }
 
 .ds-logo-link {
@@ -2100,7 +2104,7 @@ img { max-width: 100%; display: block; }
 
 .svc-hero-restoration { background-image: url("/media/img_restoration.png"); background-color: #2a1a1a; }
 .svc-hero-exterior    { background-image: url("/media/img_exterior.png");    background-color: #1a2a3a; }
-.svc-hero-auto        { background-image: url("/media/img_auto.png");        background-color: #1a1a2a; }
+.svc-hero-auto        { background-image: url("/media/auto.png");        background-color: #1a1a2a; }
 .svc-hero-interior    { background-image: url("/media/img_interior.png");    background-color: #1a1a2a; }
 
 .svc-hero-overlay {
