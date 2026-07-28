@@ -256,7 +256,7 @@ def request_information(request):
             msg,
         ]))
 
-        if name and phone:
+        if name and phone and service and msg:
             ContactMessage.objects.create(
                 name=name,
                 email=email,
@@ -285,7 +285,7 @@ def request_information(request):
             messages.success(request, 'Thank you! We will get back to you soon.')
             return redirect('request_information')
         else:
-            messages.error(request, 'Name and phone are required.')
+            messages.error(request, 'Please fill in all required fields.')
     return render(request, 'core/request_information.html', {'form_start': form_start})
 
 

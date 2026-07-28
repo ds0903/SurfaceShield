@@ -26,20 +26,13 @@
     <div class="ri-right">
         <div class="ri-form-card">
 
-            {% if messages %}
-            <div class="form-messages">
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-            {% endif %}
 
             <div class="ri-form-header">
                 <h2 class="ri-form-title">Get a Free Estimate</h2>
                 <p class="ri-form-sub">Fill out the form and we'll get back to you shortly.</p>
             </div>
 
-            <form method="post" novalidate>
+            <form method="post">
                 {% csrf_token %}
                 <input type="hidden" name="form_start" value="{{ form_start }}">
                 <div style="display:none;">
@@ -63,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label>Service Interested In *</label>
-                        <select name="service">
+                        <select name="service" required>
                             <option value="" disabled selected>Select a service...</option>
                             <option value="restoration">Surface Shield Restoration</option>
                             <option value="exterior">Surface Shield Exterior</option>
@@ -104,7 +97,7 @@
                 </div>
                 <div class="form-group">
                     <label>Tell Us About Your Project *</label>
-                    <textarea name="message" placeholder="Describe your project, timeline, and any details..." rows="3"></textarea>
+                    <textarea name="message" placeholder="Describe your project, timeline, and any details..." rows="3" required></textarea>
                 </div>
 
                 {% if turnstile_site_key %}
