@@ -8,6 +8,26 @@
   let isTyping = false;
   let leadSaved = false;
 
+  const LS_KEY = 'ss_chat_v1';
+  const LS_TTL = 12 * 60 * 60 * 1000; // 12 hours
+
+  function storageSave() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({ ts: Date.now(), history }));
+    } catch(e) {}
+  }
+
+  function storageLoad() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (!raw) return false;
+      const obj = JSON.parse(raw);
+      if (Date.now() - obj.ts > LS_TTL) { localStorage.removeItem(LS_KEY); return false; }
+      history = obj.history || [];
+      return history.length > 0;
+    } catch(e) { return false; }
+  }
+
   const LEAD_PHRASES = ['will reach out', 'will contact you', 'will get back to you', 'team will reach', 'our team will', 'noted your information'];
   const PHONE_RE = /(\+?1?[\s\-.]?\(?\d{3}\)?[\s\-.]?\d{3}[\s\-.]?\d{4})/g;
   const EMAIL_RE = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g;
@@ -185,7 +205,7 @@
         background: #fff; border-radius: 16px;
         box-shadow: 0 8px 40px rgba(5,12,35,0.22);
         display: flex; flex-direction: column;
-        overflow: hidden;
+        overflow: visible;
         transform: scale(0.85) translateY(20px);
         opacity: 0; pointer-events: none;
         transform-origin: bottom right;
@@ -198,22 +218,25 @@
 
       /* ── Resize handle ── */
       .ss-chat-resize {
-        position: absolute; top: 0; left: 0;
-        width: 22px; height: 22px;
+        position: absolute; top: -10px; left: -10px;
+        width: 28px; height: 28px;
         cursor: nw-resize;
-        z-index: 10;
-        border-top-left-radius: 16px;
-        display: flex; align-items: flex-start; justify-content: flex-start;
-        padding: 5px 0 0 5px;
-        box-sizing: border-box;
+        z-index: 10000;
+        background: #1a3a6b;
+        border-radius: 50%;
+        border: 2px solid #3a8ee6;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        transition: background 0.15s;
       }
+      .ss-chat-resize:hover { background: #3a8ee6; }
       .ss-chat-resize::before {
-        content: '';
+        content: '⤡';
+        color: #fff;
+        font-size: 13px;
+        line-height: 1;
+        transform: rotate(-45deg);
         display: block;
-        width: 10px; height: 10px;
-        border-top: 2px solid rgba(255,255,255,0.5);
-        border-left: 2px solid rgba(255,255,255,0.5);
-        border-top-left-radius: 3px;
       }
 
       .ss-chat-header {
@@ -221,6 +244,8 @@
         padding: 14px 16px; display: flex; align-items: center; gap: 10px;
         border-bottom: 2px solid #1a3a6b;
         flex-shrink: 0;
+        border-radius: 16px 16px 0 0;
+        overflow: hidden;
       }
       .ss-chat-header img { width: 34px; height: 34px; object-fit: contain; border-radius: 50%; }
       .ss-chat-header-text { flex: 1; }
@@ -267,6 +292,8 @@
       .ss-chat-footer {
         padding: 10px 12px; background: #fff; border-top: 1px solid #eef1f7;
         display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+        border-radius: 0 0 16px 16px;
+        overflow: hidden;
       }
       #ss-chat-input {
         flex: 1; border: 1px solid #d8e0ee; border-radius: 20px;
@@ -399,6 +426,7 @@
       const reply = data.reply || data.error || 'Sorry, something went wrong.';
       addMessage('bot', reply);
       history.push({ role: 'user', text }, { role: 'bot', text: reply });
+      storageSave();
       tryExtractLead();
     } catch {
       hideTyping();
@@ -429,10 +457,15 @@
   function init() {
     buildWidget();
 
-    addMessage('bot', GREETING);
-
     const win = document.getElementById('ss-chat-win');
     initResize(win);
+
+    // Restore or show greeting
+    if (storageLoad() && history.length > 0) {
+      history.forEach(m => addMessage(m.role === 'user' ? 'user' : 'bot', m.text));
+    } else {
+      addMessage('bot', GREETING);
+    }
 
     document.getElementById('ss-chat-btn').addEventListener('click', toggleChat);
 
