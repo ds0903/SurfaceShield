@@ -21,7 +21,6 @@
     };
   }
 
-  // Store UTM on first page load
   (function() {
     const p = new URLSearchParams(window.location.search);
     if (p.get('utm_source')) sessionStorage.setItem('utm_source', p.get('utm_source'));
@@ -38,7 +37,6 @@
     const allUserText = history.filter(m => m.role === 'user').map(m => m.text).join(' ');
     const allText = history.map(m => m.text).join(' ').toLowerCase();
 
-    // Phone
     let phone = '';
     for (const m of history) {
       if (m.role !== 'user') continue;
@@ -47,12 +45,10 @@
     }
     if (!phone) return;
 
-    // Email
     let email = '';
     const emails = allUserText.match(EMAIL_RE);
     if (emails) email = emails[0];
 
-    // Name — bot acknowledges name in reply
     let name = '';
     for (const m of history) {
       if (m.role === 'bot' && m.text.match(/\b([A-Z][a-z]+)[,!]/)) {
@@ -65,14 +61,12 @@
       name = firstUser?.text?.split(/\s/)[0] || 'Unknown';
     }
 
-    // Service
     let service = '';
     if (allText.includes('roof') || allText.includes('restor') || allText.includes('storm') || allText.includes('shingle')) service = 'restoration';
     else if (allText.includes('exterior') || allText.includes('wash') || allText.includes('pressure') || allText.includes('soft wash')) service = 'exterior';
     else if (allText.includes('auto') || allText.includes('car') || allText.includes('vehicle') || allText.includes('detail') || allText.includes('ceramic')) service = 'auto';
     else if (allText.includes('interior') || allText.includes('clean') || allText.includes('deep clean')) service = 'interior';
 
-    // Preferred contact & call time (scan bot questions + user answers)
     let preferred_contact = '', call_time = '', address = '', description = '';
     for (let i = 0; i < history.length; i++) {
       const m = history[i];
@@ -106,6 +100,45 @@
     const m = document.cookie.match(/csrftoken=([^;]+)/);
     return m ? m[1] : '';
   }
+
+  // ── Markdown renderer (bot messages only) ──────────────────────────────────
+  function applyInline(s) {
+    return s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+  }
+
+  function renderMarkdown(raw) {
+    const esc = raw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    const lines = esc.split('\n');
+    const out = [];
+    let inList = false;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const bullet = line.match(/^\s*[*\-]\s+(.*)/);
+      if (bullet) {
+        if (!inList) { out.push('<ul>'); inList = true; }
+        out.push('<li>' + applyInline(bullet[1]) + '</li>');
+      } else {
+        if (inList) { out.push('</ul>'); inList = false; }
+        if (line === '') {
+          out.push('<br>');
+        } else {
+          out.push(applyInline(line) + (i < lines.length - 1 ? '<br>' : ''));
+        }
+      }
+    }
+    if (inList) out.push('</ul>');
+    return out.join('');
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  }
+  // ──────────────────────────────────────────────────────────────────────────
 
   function buildWidget() {
     const css = `
@@ -162,10 +195,32 @@
         transform: scale(1) translateY(0);
         opacity: 1; pointer-events: all;
       }
+
+      /* ── Resize handle ── */
+      .ss-chat-resize {
+        position: absolute; top: 0; left: 0;
+        width: 22px; height: 22px;
+        cursor: nw-resize;
+        z-index: 10;
+        border-top-left-radius: 16px;
+        display: flex; align-items: flex-start; justify-content: flex-start;
+        padding: 5px 0 0 5px;
+        box-sizing: border-box;
+      }
+      .ss-chat-resize::before {
+        content: '';
+        display: block;
+        width: 10px; height: 10px;
+        border-top: 2px solid rgba(255,255,255,0.5);
+        border-left: 2px solid rgba(255,255,255,0.5);
+        border-top-left-radius: 3px;
+      }
+
       .ss-chat-header {
         background: #050c23;
         padding: 14px 16px; display: flex; align-items: center; gap: 10px;
         border-bottom: 2px solid #1a3a6b;
+        flex-shrink: 0;
       }
       .ss-chat-header img { width: 34px; height: 34px; object-fit: contain; border-radius: 50%; }
       .ss-chat-header-text { flex: 1; }
@@ -185,7 +240,7 @@
       .ss-msg.user { align-self: flex-end; }
       .ss-msg-bubble {
         padding: 9px 13px; border-radius: 14px; font-size: 13px; line-height: 1.5;
-        word-break: break-word; white-space: pre-wrap;
+        word-break: break-word;
       }
       .ss-msg.bot .ss-msg-bubble {
         background: #fff; color: #1a1a2e;
@@ -197,6 +252,8 @@
         background: #1a3a6b;
         color: #fff; border-bottom-right-radius: 4px;
       }
+      .ss-msg-bubble ul { margin: 4px 0 4px 16px; padding: 0; }
+      .ss-msg-bubble li { margin-bottom: 3px; }
 
       .ss-typing { display: flex; align-items: center; gap: 4px; padding: 10px 13px; }
       .ss-typing span {
@@ -209,7 +266,7 @@
 
       .ss-chat-footer {
         padding: 10px 12px; background: #fff; border-top: 1px solid #eef1f7;
-        display: flex; gap: 8px; align-items: center;
+        display: flex; gap: 8px; align-items: center; flex-shrink: 0;
       }
       #ss-chat-input {
         flex: 1; border: 1px solid #d8e0ee; border-radius: 20px;
@@ -230,6 +287,7 @@
       @media (max-width: 480px) {
         #ss-chat-win { width: calc(100vw - 24px); right: 12px; bottom: 88px; }
         #ss-chat-btn { right: 12px; bottom: 16px; }
+        .ss-chat-resize { display: none; }
       }
     `;
 
@@ -248,6 +306,7 @@
       </button>
 
       <div id="ss-chat-win" role="dialog" aria-label="Surface Shield Chat">
+        <div class="ss-chat-resize" title="Resize"></div>
         <div class="ss-chat-header">
           <img src="${faviconSrc}" alt="">
           <div class="ss-chat-header-text">
@@ -268,7 +327,8 @@
     const msgs = document.getElementById('ss-chat-msgs');
     const div = document.createElement('div');
     div.className = `ss-msg ${role}`;
-    div.innerHTML = `<div class="ss-msg-bubble">${escHtml(text)}</div>`;
+    const content = role === 'bot' ? renderMarkdown(text) : escHtml(text);
+    div.innerHTML = `<div class="ss-msg-bubble">${content}</div>`;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
     return div;
@@ -288,8 +348,34 @@
     document.getElementById('ss-typing-indicator')?.remove();
   }
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+  function initResize(win) {
+    const handle = win.querySelector('.ss-chat-resize');
+    let startX, startY, startW, startH;
+
+    handle.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = win.offsetWidth;
+      startH = win.offsetHeight;
+
+      function onMove(e) {
+        const dx = startX - e.clientX;
+        const dy = startY - e.clientY;
+        const newW = Math.max(280, Math.min(640, startW + dx));
+        const newH = Math.max(360, Math.min(window.innerHeight - 140, startH + dy));
+        win.style.width = newW + 'px';
+        win.style.height = newH + 'px';
+      }
+
+      function onUp() {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      }
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
   }
 
   async function sendMessage(text) {
@@ -343,8 +429,10 @@
   function init() {
     buildWidget();
 
-    // Greeting
     addMessage('bot', GREETING);
+
+    const win = document.getElementById('ss-chat-win');
+    initResize(win);
 
     document.getElementById('ss-chat-btn').addEventListener('click', toggleChat);
 
