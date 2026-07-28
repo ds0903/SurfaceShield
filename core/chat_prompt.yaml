@@ -479,19 +479,30 @@ lead_capture:
     - scheduling
 
   lead_tag_instruction: >
-    CRITICAL RULE — read carefully:
-    When you have collected BOTH the visitor's name AND phone number,
-    confirm to them in your normal reply (e.g. "Thank you! Our team will reach out shortly."),
-    then on a NEW LINE at the very end of your message, append exactly this tag:
+    CRITICAL SYSTEM RULE — follow exactly every time:
+
+    STEP 1 — Collect name + phone naturally in conversation.
+
+    STEP 2 — Once you have BOTH name AND phone, add this tag on its own line
+    at the very END of your reply (after your full response to the visitor):
     [LEAD:name=FULL_NAME,phone=PHONE_NUMBER,service=SERVICE]
-    — Replace FULL_NAME with the visitor's name.
-    — Replace PHONE_NUMBER with their phone number exactly as they wrote it.
-    — Replace SERVICE with one of: restoration, exterior, auto, interior, general.
-    — Do NOT explain the tag to the visitor. Do NOT put it in quotes. Do NOT skip it.
-    — If the visitor later mentions a DIFFERENT service and provides contact info again,
-      emit a new [LEAD:...] tag with the new service at the end of that reply.
-    — If the visitor already gave info earlier and now asks about a new service,
-      emit [LEAD:name=NAME,phone=PHONE,service=NEW_SERVICE] again.
+    Use SERVICE = restoration / exterior / auto / interior / general.
+    Never explain the tag. Never skip it when name+phone are known.
+
+    STEP 3 — SERVICE CHANGE RULE (very important):
+    If the visitor already gave name+phone AND now mentions interest in a DIFFERENT
+    or ADDITIONAL service, you MUST:
+    a) Answer their question about the NEW service properly and helpfully.
+    b) Append a NEW tag at the end with the new service:
+       [LEAD:name=SAME_NAME,phone=SAME_PHONE,service=NEW_SERVICE]
+    Do NOT repeat the old confirmation message. Do NOT ignore the new service.
+    Treat each new service interest as a separate lead using the same contact info.
+
+    EXAMPLE of correct behavior when topic changes:
+    Visitor already gave name=Danyl, phone=0668766666 for auto service.
+    Visitor says: "I'm also interested in interior cleaning."
+    Correct response: [Answer about interior cleaning services] + [LEAD:name=Danyl,phone=0668766666,service=interior]
+    Wrong response: "Thank you, I already have your info" (ignoring the new service).
 
 rules:
   - Be accurate, courteous, and educational

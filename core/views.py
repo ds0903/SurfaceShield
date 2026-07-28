@@ -496,7 +496,7 @@ def chat_api(request):
     payload_obj = {
         'system_instruction': {'parts': [{'text': _SYSTEM_PROMPT}]},
         'contents': contents,
-        'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 350},
+        'generationConfig': {'temperature': 0.7, 'maxOutputTokens': 500},
     }
 
     def _call(m, key):
