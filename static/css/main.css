@@ -253,7 +253,7 @@ img { max-width: 100%; display: block; }
 
 .hero-panels {
     height: 100%;
-    background-image: url("/media/home_main.png");
+    background-image: url("/media/home_main.webp");
     background-size: cover;
     background-position: center;
     filter: brightness(0.75);
@@ -451,10 +451,10 @@ img { max-width: 100%; display: block; }
     border-radius: 10px 10px 0 0;
 }
 
-.img-restoration { background-image: url("/media/img_restoration.png"); background-color: #c0a080; }
-.img-exterior    { background-image: url("/media/img_exterior.png");    background-color: #8aaccc; background-size: 110%; background-position: 45% 65%; }
-.img-auto        { background-image: url("/media/auto.png");        background-color: #3a3a4a; background-size: 110%; background-position: center 55%; }
-.img-interior    { background-image: url("/media/img_interior.png");    background-color: #b8a890; }
+.img-restoration { background-image: url("/media/img_restoration.webp"); background-color: #c0a080; }
+.img-exterior    { background-image: url("/media/img_exterior.webp");    background-color: #8aaccc; background-size: 110%; background-position: 45% 65%; }
+.img-auto        { background-image: url("/media/auto.webp");        background-color: #3a3a4a; background-size: 110%; background-position: center 55%; }
+.img-interior    { background-image: url("/media/img_interior.webp");    background-color: #b8a890; }
 
 .service-card-img-wrap {
     position: relative;
@@ -666,10 +666,10 @@ img { max-width: 100%; display: block; }
     cursor: default;
 }
 
-.tile-residential    { background-image: url("/media/tile_residential.png");     background-color: #8aaccc; }
-.tile-commercial     { background-image: url("/media/tile_commercial.png");      background-color: #2a4a7a; }
-.tile-automotive     { background-image: url("/media/tile_automotive.png");      background-color: #2a2a3a; }
-.tile-interior-spaces{ background-image: url("/media/tile_interior_spaces.png"); background-color: #b8a890; }
+.tile-residential    { background-image: url("/media/tile_residential.webp");     background-color: #8aaccc; }
+.tile-commercial     { background-image: url("/media/tile_commercial.webp");      background-color: #2a4a7a; }
+.tile-automotive     { background-image: url("/media/tile_automotive.webp");      background-color: #2a2a3a; }
+.tile-interior-spaces{ background-image: url("/media/tile_interior_spaces.webp"); background-color: #b8a890; }
 
 .tile-overlay {
     position: absolute;
@@ -1363,7 +1363,7 @@ img { max-width: 100%; display: block; }
     background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 60%, #0d1b3e 100%);
     background-image:
         linear-gradient(to bottom, rgba(10,20,50,0.80) 0%, rgba(10,20,50,0.65) 100%),
-        url("/media/img_auto.png");
+        url("/media/img_auto.webp");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -2102,10 +2102,10 @@ img { max-width: 100%; display: block; }
     overflow: hidden;
 }
 
-.svc-hero-restoration { background-image: url("/media/img_restoration.png"); background-color: #2a1a1a; }
-.svc-hero-exterior    { background-image: url("/media/img_exterior.png");    background-color: #1a2a3a; }
-.svc-hero-auto        { background-image: url("/media/auto.png");        background-color: #1a1a2a; }
-.svc-hero-interior    { background-image: url("/media/img_interior.png");    background-color: #1a1a2a; }
+.svc-hero-restoration { background-image: url("/media/img_restoration.webp"); background-color: #2a1a1a; }
+.svc-hero-exterior    { background-image: url("/media/img_exterior.webp");    background-color: #1a2a3a; }
+.svc-hero-auto        { background-image: url("/media/auto.webp");        background-color: #1a1a2a; }
+.svc-hero-interior    { background-image: url("/media/img_interior.webp");    background-color: #1a1a2a; }
 
 .svc-hero-overlay {
     position: absolute;
