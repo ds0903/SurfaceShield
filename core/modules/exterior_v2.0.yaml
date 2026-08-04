@@ -1,0 +1,298 @@
+# SSBOS-001-AIM3-V2.0 | AI Module 3 — Exterior Division (Version 2.0)
+# Focus: Soft Wash Chemistry & Application Systems
+# Supersedes: sections 3.1/3.6/3.7 of exterior_v1.0.yaml where more detail needed
+# Do NOT overwrite exterior_v1.0.yaml — both versions are active.
+
+module_id: SSBOS-001-AIM3-V2.0
+division: Surface Shield Systems — Exterior Division
+version: "2.0"
+topic: Soft Wash Chemistry & Application Systems
+
+required_ai_behavior:
+  - Identify substrate and contaminant BEFORE recommending chemistry
+  - Prefer least aggressive process that achieves professional result
+  - Separate organic growth from oxidation, rust, efflorescence, oil, paint, mineral staining
+  - NEVER suggest mixing sodium hypochlorite with acids, ammonia, or unknown chemicals
+  - NEVER promise stain is fully removable before testing
+  - Recommend controlled test area when colorfastness or coating stability is uncertain
+  - Escalate roof-access, fall-protection, electrical, hazardous-material questions to qualified professional
+
+# ── Section 3 — Soft Washing Fundamentals ────────────────────────────────────
+
+soft_washing_v2:
+
+  definition: >
+    Low-pressure process where cleaning chemistry performs most contaminant removal.
+    Water flow applies, controls, and rinses the solution — not mechanical cutting.
+
+  appropriate_uses:
+    - Asphalt shingles
+    - Vinyl siding
+    - Painted and coated surfaces
+    - Stucco and EIFS
+    - Delicate masonry
+    - Exterior trim
+    - Areas with algae, mildew, mold, moss, or lichen
+
+  conditions_requiring_caution:
+    - Oxidized vinyl or aluminum siding
+    - Failing paint or chalking coatings
+    - Unsealed or weathered wood
+    - Historic masonry and weak mortar
+    - Natural stone with uncertain mineral composition
+    - Electrical service components
+    - Open windows, defective seals, and active leaks
+
+# ── Section 4 — Sodium Hypochlorite Knowledge ────────────────────────────────
+
+sodium_hypochlorite_v2:
+
+  overview: >
+    Oxidizing cleaner for organic contamination. Effectiveness depends on source strength,
+    freshness, storage conditions, temperature, sunlight, dwell time, surfactant selection,
+    contaminant load, and final concentration at the surface.
+
+  source_vs_final_strength: >
+    Source strength = concentration in original container.
+    Final strength = estimated concentration after dilution and application system effects.
+    AI must NOT confuse container strength with surface strength.
+
+  dilution_formula:
+    relationship: "Final % = Source % × Chemical Fraction"
+    required_fraction: "Target % / Source %"
+    example: "To target 1.0% from 10% SH → 1.0 / 10 = 0.10 → approx 10% chemical, 90% water"
+    ai_note: >
+      This is a planning estimate only. Injector draw rate, hose length, nozzle, water pressure,
+      proportioner calibration, pump characteristics, and solution degradation can materially
+      change actual delivered concentration.
+
+  practical_strength_bands:
+    very_light:
+      context: Routine maintenance and highly sensitive substrates
+      caution: May not overcome established growth
+      ai_instruction: Recommend testing and longer dwell before increasing strength
+    light_to_moderate:
+      context: Many siding and building-wash conditions
+      caution: Oxidation and coating instability can mimic dirt
+      ai_instruction: Confirm substrate and test first
+    moderate_to_strong:
+      context: Heavy organic contamination and selected roof-cleaning conditions
+      caution: Greater plant, metal, coating, and exposure risk
+      ai_instruction: Professional use only with controlled application
+    specialty_exceptional:
+      context: Severe growth or highly specific procedures
+      caution: High consequence if misapplied
+      ai_instruction: Require field assessment, label review, and trained technician
+
+  ai_note: >
+    Do NOT present a universal percentage chart as substitute for inspection. Different
+    contractors, products, application systems, and substrates require different procedures.
+
+# ── Section 5 — Surfactants and Additives ────────────────────────────────────
+
+surfactants_v2:
+
+  purpose: Improve wetting, cling, distribution, and visual tracking
+  warning: More surfactant is not automatically better — excess may increase rinse time, leave residue, or cause foaming
+
+  rules:
+    - Use only products known compatible with sodium hypochlorite when SH is present
+    - Follow manufacturer dosage instructions
+    - Do not use fragrance or detergent as substitute for compatibility testing
+    - Avoid uncontrolled mixtures of multiple cleaners
+    - Rinse application equipment after use per equipment and chemical manufacturer directions
+
+# ── Section 6 — Application Systems ─────────────────────────────────────────
+
+application_systems:
+
+  downstream_injector:
+    description: Introduces chemical AFTER pressure-washer pump — reduces chemical exposure inside pump
+    common_use: Building washing, house washing
+    ai_note: >
+      Draw rate varies with injector size, nozzle, hose length, pressure, viscosity,
+      and equipment condition. Actual dilution differs from theoretical.
+
+  x_jet:
+    description: External chemical-injection nozzle system; draws from separate container; avoids chemical through hose
+    ai_note: >
+      Actual dilution must be confirmed for the specific unit, proportioner insert,
+      machine flow, hose setup, and elevation.
+
+  dedicated_soft_wash_pump:
+    types:
+      - 12-volt diaphragm pumps
+      - Air diaphragm systems
+      - Booster pumps
+      - Gas-powered chemical pumps
+    applies: Premixed or proportioned solution at low pressure, higher chemical concentration capability
+    critical: Material compatibility, pressure rating, hose condition, electrical protection, and maintenance are essential
+
+  proportioning_systems:
+    description: Blend water, SH, and surfactant through metering valves
+    ai_note: >
+      Valve markings are NOT laboratory measurements. System must be calibrated by measured
+      draw or output testing. Recheck when hose, pump, nozzle, source strength, or temperature changes.
+
+# ── Section 7 — Dwell Time and Reapplication Logic ───────────────────────────
+
+dwell_time:
+
+  definition: >
+    Period during which cleaning solution remains active on surface.
+    Must not dry unintentionally. Hot, sunny, windy, and porous conditions shorten effective dwell.
+
+  procedure:
+    1: Pre-inspect and document the substrate
+    2: Protect sensitive areas; pre-wet vegetation when appropriate
+    3: Apply controlled, even coat
+    4: Observe biological reaction and surface condition
+    5: Maintain safe dwell without allowing uncontrolled drying
+    6: Reapply only when substrate and surrounding conditions permit
+    7: Rinse or leave to weather only when specific process, product, and substrate justify it
+    8: Complete final inspection and document unresolved staining
+
+# ── Section 8 — Plant, Property & Environmental Protection ───────────────────
+
+environmental_protection:
+
+  pre_application:
+    - Identify delicate plants, fresh landscaping, ponds, pools
+    - Identify painted metals, copper, aluminum, natural stone, unfinished wood
+    - Control overspray and wind drift
+
+  during_application:
+    - Use water strategically before, during, and after when appropriate
+    - Do not allow concentrated chemical to pool in soil, planters, drains, ponds, or waterways
+    - Use collection, diversion, neutralization, or containment only when compatible with applicable rules
+    - Assign ground technician to monitor landscaping on higher-risk projects
+
+  documentation:
+    - Document pre-existing plant stress and property defects before starting
+
+  ai_note: >
+    Recommend site-specific protection plan rather than relying on single universal procedure.
+
+# ── Section 9 — Chemical Safety & Compatibility ──────────────────────────────
+
+chemical_safety:
+
+  critical_rule: >
+    NEVER mix sodium hypochlorite with acids, ammonia, or unknown chemicals.
+    Dangerous chlorine or chloramine gases may be released.
+
+  ppe_requirements:
+    - Chemical-resistant gloves, eye/face protection
+    - Protective clothing and footwear appropriate to SDS and exposure
+    - Ventilation; avoid breathing mist or vapors
+
+  storage_rules:
+    - Store SH away from acids, ammonia products, heat, sunlight, metals, and incompatible materials
+    - Use clearly labeled compatible containers
+    - Never use food or beverage containers
+
+  ai_limits:
+    - Do not create medical treatment instructions beyond product label/SDS first-aid guidance
+    - Escalate chemical exposure emergencies to emergency services
+
+# ── Section 10 — Surface-Specific Decision Logic ─────────────────────────────
+
+surface_decision_logic:
+
+  asphalt_shingles:
+    primary_risk: Granule loss, foot traffic, runoff, metal reaction
+    preferred_logic: Manufacturer-compatible low-pressure treatment
+    escalate_when: Unknown roof type, severe deterioration, unsafe access
+
+  vinyl_siding:
+    primary_risk: Oxidation, water intrusion, spotting
+    preferred_logic: Low pressure and controlled chemistry
+    escalate_when: Heavy chalking or failing seals
+
+  painted_wood:
+    primary_risk: Paint failure, fiber damage, water intrusion
+    preferred_logic: Test area and mild process
+    escalate_when: Peeling paint, lead-paint concern, rot
+
+  stucco_eifs:
+    primary_risk: Water intrusion and finish damage
+    preferred_logic: Very low pressure and controlled dwell
+    escalate_when: Cracks, delamination, unknown coating
+
+  brick_masonry:
+    primary_risk: Mortar erosion, efflorescence, acid sensitivity
+    preferred_logic: Identify stain and masonry type first
+    escalate_when: Historic masonry or weak mortar
+
+  concrete:
+    primary_risk: Etching, striping, runoff, sealer damage
+    preferred_logic: Pre-treat, even mechanical cleaning, post-treat as needed
+    escalate_when: Decorative coating, exposed aggregate, unknown sealer
+
+# ── Section 11 — Roof Cleaning AI Rules ──────────────────────────────────────
+
+roof_cleaning_rules_v2:
+
+  strict_rules:
+    - Do NOT recommend high-pressure washing of asphalt shingles
+    - Roof-cleaning recommendation must consider: roof type, age, condition, access, drainage, landscaping, metals, manufacturer guidance, fall hazards
+    - Moss and lichen may remain physically attached after treatment and weather away gradually — aggressive scraping damages roofing
+    - Cleaning improves appearance but does NOT repair aged, brittle, hail-damaged, wind-damaged, or improperly installed roofing
+    - AI must distinguish cosmetic discoloration from roofing-performance diagnosis
+
+# ── Section 12 — Customer Communication Scripts ───────────────────────────────
+
+customer_communication:
+
+  what_chemical_do_you_use: >
+    Surface Shield Systems selects the cleaning solution according to the material and
+    type of contamination. For organic growth, a professionally controlled
+    sodium-hypochlorite-based process may be appropriate. We adjust application, dwell time,
+    and protection plan after evaluating the surface.
+
+  will_solution_damage_plants: >
+    Any exterior cleaning chemical must be controlled carefully around landscaping.
+    Our process includes identifying sensitive areas, managing overspray and runoff,
+    using water and other protection measures as appropriate, and monitoring the
+    property throughout the work.
+
+  can_you_remove_every_stain: >
+    Many organic stains respond very well, but rust, oxidation, mineral deposits,
+    paint failure, and permanent material changes require different treatments.
+    We inspect and, when necessary, test a small area before confirming the expected result.
+
+  why_not_use_more_pressure: >
+    More pressure is not always better. On siding, roofing, wood, stucco, and masonry,
+    excessive pressure can cause permanent damage or force water behind the surface.
+    Professional cleaning uses the correct balance of chemistry, dwell time, water flow,
+    and controlled mechanical action.
+
+# ── Section 13 — Internal Knowledge Boundaries ───────────────────────────────
+
+knowledge_boundaries:
+
+  public_ai_must_not:
+    - Provide specific chemical concentrations for customer self-application
+    - Give access planning for working at height
+    - Troubleshoot equipment for untrained users
+    - Authorize handling of concentrated chemicals without training
+    - Bypass product labels, SDS requirements, or safety controls
+
+  escalate_to_representative:
+    - Property-specific chemical concentrations
+    - Access planning and fall protection questions
+    - Equipment troubleshooting in the field
+    - Hazardous conditions or unusual substrates
+    - Any urgent safety concern
+
+  escalate_contact: "Qualified Surface Shield Systems representative — call +1 (216) 280-1855"
+
+# ── Section 14 — Version 3.0 Roadmap ─────────────────────────────────────────
+
+roadmap_v3:
+  - Pressure-washer fundamentals: PSI, GPM, cleaning units, unloaders, injectors, nozzles, hose friction
+  - X-Jet and downstream calibration procedures
+  - Surface-cleaner sizing and flatwork production controls
+  - Pump, hose, reel, tank, and proportioner maintenance
+  - Equipment troubleshooting and freeze protection
+  - Field checklists, technician decision trees, and quality-control standards
