@@ -1,4 +1,4 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}About Us | Surface Shield Systems LLC{% endblock %}
 {% block meta_description %}Learn about Surface Shield Systems LLC — founded by Michael Polansky in Euclid, Ohio. We deliver professional roofing, cleaning, and protection services with integrity.{% endblock %}
 {% block meta_keywords %}about Surface Shield Systems, Michael Polansky, Euclid Ohio contractor, licensed insured roofing{% endblock %}
@@ -8,40 +8,64 @@
 {% block og_url %}/about/{% endblock %}
 
 {% block content %}
+
+{# ── 1. HERO ── #}
 <section class="about-hero">
     <div class="about-hero-overlay"></div>
     <div class="container about-hero-content">
         <p class="about-label">SURFACE SHIELD SYSTEMS LLC</p>
         <h1 class="about-title">PROTECTING WHAT MATTERS.<br><span class="accent">DELIVERING EXCELLENCE.</span></h1>
         <p class="about-tagline">One Company. Four Specialized Divisions. Complete Property &amp; Vehicle Protection.</p>
+        <div class="about-hero-btns">
+            <a href="#divisions" class="about-hero-btn-outline">Explore Our Divisions <i class="fas fa-arrow-down"></i></a>
+            <a href="{% url 'request_information' %}" class="about-hero-btn-solid">Request Information <i class="fas fa-arrow-right"></i></a>
+        </div>
     </div>
 </section>
+
+{# ── 2. INTRO ── #}
 <section class="about-intro-section">
-    <div class="container about-intro-inner">
+    <div class="container about-intro-inner about-intro-top">
         <div class="about-intro-text">
+            <h2 class="about-intro-heading">One Company. Complete Protection.</h2>
             <p class="about-body-lg">Surface Shield Systems LLC is a premium property restoration, maintenance, and appearance company proudly serving residential, commercial, and fleet customers throughout Northeast Ohio. We bring together four specialized divisions under one trusted brand, providing comprehensive solutions designed to protect, restore, and enhance the investments that matter most.</p>
             <p class="about-body">Whether you're restoring a storm-damaged roof, maintaining a commercial property, preserving the beauty of your home, or protecting your vehicle, our experienced team delivers exceptional craftsmanship, premium service, and long-term solutions built on integrity, professionalism, and customer satisfaction.</p>
         </div>
         <div class="about-intro-badges">
-            <div class="about-badge-v"><i class="fas fa-shield-alt"></i><span>FULLY LICENSED<br>&amp; INSURED</span></div>
+            <div class="about-badge-v"><i class="fas fa-shield-alt"></i><span>FULLY INSURED &amp;<br>PROFESSIONALLY OPERATED</span></div>
             <div class="about-badge-v"><i class="fas fa-file-invoice-dollar"></i><span>INSURANCE<br>SPECIALISTS</span></div>
-            <div class="about-badge-v"><i class="fas fa-star"></i><span>SATISFACTION<br>GUARANTEED</span></div>
+            <div class="about-badge-v"><i class="fas fa-star"></i><span>CUSTOMER SATISFACTION<br>COMMITMENT</span></div>
             <div class="about-badge-v"><i class="fas fa-user-tie"></i><span>TRAINED<br>PROFESSIONALS</span></div>
         </div>
     </div>
 </section>
+
+{# ── 3. WHO WE ARE — 2 columns ── #}
 <section class="about-who-section">
-    <div class="container">
-        <p class="about-section-label">OUR STORY</p>
-        <h2 class="about-section-h2">WHO WE ARE</h2>
-        <p class="about-body">Surface Shield Systems was founded on one simple philosophy:</p>
-        <p class="about-philosophy"><strong>Protect. Restore. Enhance.</strong><br>These three principles define everything we do.</p>
-        <p class="about-body">We believe every home, commercial property, and vehicle represents a significant investment deserving professional care, exceptional craftsmanship, and long-lasting protection.</p>
-        <p class="about-body">Unlike companies that specialize in only one service, Surface Shield Systems combines multiple areas of expertise into one organization, allowing homeowners, business owners, property managers, and fleet operators to work with one trusted company capable of handling a complete range of restoration, maintenance, and appearance services.</p>
-        <p class="about-body">From the initial consultation through final project completion, our commitment remains the same: clear communication, superior workmanship, attention to detail, and customer-first service.</p>
-        <p class="about-body">Our mission isn't simply to complete projects.<br><strong>Our mission is to build lasting relationships while helping our customers protect the investments they've worked so hard to achieve.</strong></p>
+    <div class="container about-who-inner">
+        <div class="about-who-text">
+            <p class="about-section-label">OUR STORY</p>
+            <h2 class="about-section-h2">WHO WE ARE</h2>
+            <p class="about-body">Surface Shield Systems was founded on one simple philosophy:</p>
+            <p class="about-philosophy"><strong>Protect. Restore. Enhance.</strong><br>These three principles define everything we do.</p>
+            <p class="about-body">We believe every home, commercial property, and vehicle represents a significant investment deserving professional care, exceptional craftsmanship, and long-lasting protection.</p>
+            <p class="about-body">Unlike companies that specialize in only one service, Surface Shield Systems combines multiple areas of expertise into one organization, allowing homeowners, business owners, property managers, and fleet operators to work with one trusted company capable of handling a complete range of restoration, maintenance, and appearance services.</p>
+            <p class="about-body">From the initial consultation through final project completion, our commitment remains the same: clear communication, superior workmanship, attention to detail, and customer-first service.</p>
+            <p class="about-body">Our mission isn't simply to complete projects.<br><strong>Our mission is to build lasting relationships while helping our customers protect the investments they've worked so hard to achieve.</strong></p>
+        </div>
+        <div class="about-who-visual">
+            <div class="about-who-divisions-grid">
+                <div class="about-who-div-tile about-who-red"><i class="fas fa-home"></i><span>Restoration</span></div>
+                <div class="about-who-div-tile about-who-blue"><i class="fas fa-building"></i><span>Exterior</span></div>
+                <div class="about-who-div-tile about-who-purple"><i class="fas fa-couch"></i><span>Interior</span></div>
+                <div class="about-who-div-tile about-who-green"><i class="fas fa-car"></i><span>Auto</span></div>
+            </div>
+            <p class="about-who-visual-label">Four Divisions. One Trusted Company.</p>
+        </div>
     </div>
 </section>
+
+{# ── 4. WHY CHOOSE — 6 cards (3×2) ── #}
 <section class="about-why-section">
     <div class="container">
         <p class="about-section-label">WHAT SETS US APART</p>
@@ -72,16 +96,23 @@
                 <h4>Customer-First Philosophy</h4>
                 <p>Every recommendation we make is based on what is truly in the customer's best interest. Honesty, transparency, communication, and professionalism form the foundation of every relationship we build.</p>
             </div>
+            <div class="about-why-item">
+                <div class="about-why-icon"><i class="fas fa-clipboard-check"></i></div>
+                <h4>Accountability &amp; Long-Term Support</h4>
+                <p>Our responsibility does not end when the immediate work is completed. We remain committed to clear communication, dependable follow-through, professional documentation, and long-term relationships with the customers and properties we serve.</p>
+            </div>
         </div>
     </div>
 </section>
-<section class="about-divisions-section">
+
+{# ── 5. DIVISIONS — clickable cards, equal height ── #}
+<section class="about-divisions-section" id="divisions">
     <div class="container">
         <p class="about-section-label">WHAT WE DO</p>
         <h2 class="about-section-h2">OUR SPECIALIZED DIVISIONS</h2>
         <div class="about-div-grid">
 
-            <div class="about-div-card">
+            <a href="{% url 'restoration' %}" class="about-div-card about-div-card-link">
                 <div class="about-div-icon about-div-red"><i class="fas fa-home"></i></div>
                 <h3>Surface Shield <strong>Restoration</strong></h3>
                 <p class="about-div-sub">Protecting Structures. Restoring Confidence.</p>
@@ -96,10 +127,10 @@
                     <li>Exterior Carpentry</li>
                     <li>Premium Roofing Systems</li>
                 </ul>
-                <a href="{% url 'restoration' %}" class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <span class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </a>
 
-            <div class="about-div-card">
+            <a href="{% url 'exterior' %}" class="about-div-card about-div-card-link">
                 <div class="about-div-icon about-div-blue"><i class="fas fa-building"></i></div>
                 <h3>Surface Shield <strong>Exterior</strong></h3>
                 <p class="about-div-sub">Restoring Beauty. Preserving Value.</p>
@@ -113,10 +144,10 @@
                     <li>Commercial Exterior Cleaning</li>
                     <li>Property Maintenance Programs</li>
                 </ul>
-                <a href="{% url 'exterior' %}" class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <span class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </a>
 
-            <div class="about-div-card">
+            <a href="{% url 'interior' %}" class="about-div-card about-div-card-link">
                 <div class="about-div-icon about-div-purple"><i class="fas fa-couch"></i></div>
                 <h3>Surface Shield <strong>Interior</strong></h3>
                 <p class="about-div-sub">Creating Healthier, Cleaner Spaces.</p>
@@ -130,10 +161,10 @@
                     <li>Property Turnover Services</li>
                     <li>Customized Cleaning Programs</li>
                 </ul>
-                <a href="{% url 'interior' %}" class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <span class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </a>
 
-            <div class="about-div-card">
+            <a href="{% url 'auto' %}" class="about-div-card about-div-card-link">
                 <div class="about-div-icon about-div-green"><i class="fas fa-car"></i></div>
                 <h3>Surface Shield <strong>Auto</strong></h3>
                 <p class="about-div-sub">Premium Automotive Appearance &amp; Protection.</p>
@@ -147,17 +178,19 @@
                     <li>Vehicle Preservation</li>
                     <li>Maintenance Memberships</li>
                 </ul>
-                <a href="{% url 'auto' %}" class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <span class="about-div-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </a>
 
         </div>
     </div>
 </section>
-<section class="about-commitment-section">
+
+{# ── 6. OUR COMMITMENT — compact ── #}
+<section class="about-commitment-section about-commitment-compact">
     <div class="container">
         <p class="about-section-label">OUR PROMISE</p>
         <h2 class="about-section-h2">OUR COMMITMENT</h2>
-        <p class="about-body" style="text-align:center;max-width:700px;margin:0 auto 40px;">At Surface Shield Systems, our commitment extends far beyond completing projects. Every service we provide is guided by three core principles that define our company and influence every decision we make.</p>
+        <p class="about-body" style="text-align:center;max-width:680px;margin:0 auto 28px;color:rgba(255,255,255,0.85);">Every Surface Shield Systems service is guided by three principles that shape how we protect property, serve our customers, and approach every project.</p>
         <div class="about-commit-grid">
             <div class="about-commit-item">
                 <div class="about-commit-num">01</div>
@@ -178,6 +211,8 @@
         <p class="about-commit-closing">These principles are more than words — they represent our promise to every customer we have the privilege to serve.</p>
     </div>
 </section>
+
+{# ── 7. OUR MISSION — compact founder card ── #}
 <section class="about-more-section">
     <div class="container about-more-inner">
         <div class="about-more-text">
@@ -191,6 +226,7 @@
         </div>
         <div class="about-more-contact">
             <div class="about-founder-card">
+                {# Replace .about-founder-avatar with <img> when photo is available #}
                 <div class="about-founder-avatar">
                     <div class="about-founder-initials">MP</div>
                 </div>
@@ -208,14 +244,18 @@
         </div>
     </div>
 </section>
-<section class="cta-banner">
-    <div class="container cta-inner">
-        <i class="fas fa-clipboard-list cta-icon"></i>
-        <div class="cta-text">
-            <h3>READY TO DISCUSS YOUR PROJECT?</h3>
-            <p>Let's discuss your project, answer your questions, and develop the right solution for your property or vehicle.</p>
+
+{# ── 8. FINAL CTA ── #}
+<section class="about-final-cta">
+    <div class="container about-final-cta-inner">
+        <div class="about-final-cta-text">
+            <h2>Let's Protect What Matters to You</h2>
+            <p>Whether you need property restoration, professional exterior maintenance, interior cleaning, or automotive appearance protection, Surface Shield Systems is ready to help you identify the right solution.</p>
         </div>
-        <a href="{% url 'request_information' %}" class="btn-cta">REQUEST PROJECT CONSULTATION <i class="fas fa-arrow-right"></i></a>
+        <div class="about-final-cta-btns">
+            <a href="{% url 'request_information' %}" class="btn-cta">Request Information <i class="fas fa-arrow-right"></i></a>
+            <a href="#divisions" class="about-final-cta-outline">Explore Our Services <i class="fas fa-arrow-down"></i></a>
+        </div>
     </div>
 </section>
 
