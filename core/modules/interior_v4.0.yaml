@@ -1,0 +1,347 @@
+module_id: SSBOS-001-AIM4-V4.0
+title: "AI Module 4 – Interior Division: Post-Construction Cleaning, Contractor Coordination and Project Closeout Systems"
+version: "4.0"
+division: Interior
+document_type: Elite SSBOS Manual
+status: developer-ready
+document_role: post-construction
+routing_priority: primary
+namespace: interior-division
+supersedes: none
+audience: [public-ai, technician, supervisor, management, developer]
+primary_use: AI retrieval, project planning, field SOP and closeout support
+document_status: developer-ready
+tags:
+  - rough-clean
+  - final-clean
+  - touch-up-clean
+  - occupancy-ready
+  - site-readiness
+  - construction-dust
+  - HEPA-control
+  - new-finish-protection
+  - adhesive-removal
+  - protective-film
+  - paint-residue
+  - grout-haze
+  - contractor-coordination
+  - trade-coordination
+  - room-final-clean
+  - estimating-production
+  - punch-list
+  - change-order
+  - quality-assurance
+  - project-closeout
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: rough-clean
+    risk_level: general
+    content: >
+      Post-construction cleaning is a staged construction-support service, not an
+      ordinary deep clean. The AI must help define phases, responsibilities, access,
+      readiness, finish protection, quality standards and escalation boundaries without
+      promising completion before the site is ready.
+    principles:
+      - Differentiate rough, final, touch-up and occupancy-ready cleaning.
+      - Confirm site readiness before final cleaning.
+      - Protect new finishes and honor manufacturer restrictions.
+      - Separate cleaning from repair, debris hauling, hazardous-material remediation and trade correction.
+      - Document conditions that can recontaminate completed areas or delay acceptance.
+
+  post_construction_cleaning_phases:
+    title: "Post-Construction Cleaning Phases"
+    chunk: rough-clean
+    risk_level: general
+    phases:
+      rough_clean:
+        primary_objective: Remove loose debris and heavy construction soil.
+        typical_tasks: Bulk dust, packaging, initial vacuuming and wipe-down.
+        readiness_requirement: Major demolition and high-dust work substantially complete.
+        chunk: rough-clean
+      final_clean:
+        primary_objective: Prepare for inspection or occupancy.
+        typical_tasks: Detailed surfaces, cabinets, fixtures, glass, floors and trim.
+        readiness_requirement: Trades substantially complete; utilities and lighting available.
+        chunk: final-clean
+      touch_up_clean:
+        primary_objective: Correct recontamination after punch work.
+        typical_tasks: Localized dust, fingerprints, footprints, glass and floor touchups.
+        readiness_requirement: Final punch work nearly complete.
+        chunk: touch-up-clean
+      occupancy_ready_reset:
+        primary_objective: Present a finished usable environment.
+        typical_tasks: Final verification, selected sanitizing and handoff documentation.
+        readiness_requirement: Acceptance criteria confirmed.
+        chunk: occupancy-ready
+
+  site_readiness_assessment:
+    title: "Site Readiness Assessment"
+    chunk: site-readiness
+    risk_level: elevated
+    checklist:
+      - Are drywall sanding, cutting, painting, flooring, cabinetry, millwork, electrical, plumbing and HVAC activities complete enough to avoid immediate recontamination?
+      - Are permanent utilities, lighting, hot water, HVAC, elevators, restrooms and safe access available?
+      - Have major debris, pallets, scrap and trade materials been removed or assigned?
+      - Are floors cured, coatings dry, sealants set and manufacturer waiting periods satisfied?
+      - Are keys, security, loading, parking, dumpsters and work hours coordinated?
+      - Are there active leaks, exposed wiring, broken glass, sharps, silica dust, lead, asbestos, mold or other hazards requiring escalation?
+
+  construction_dust_control:
+    title: "Construction Dust Control"
+    chunk: construction-dust
+    risk_level: elevated
+    rules:
+      - Use HEPA-filtered collection when appropriate to the dust type and task.
+      - Work high to low and from less contaminated zones toward exits.
+      - Avoid dry sweeping that redistributes fine dust when safer collection methods are available.
+      - Inspect vents, returns, ledges, tops of doors, cabinets, fixtures, trim and other horizontal surfaces.
+      - Confirm whether HVAC filter replacement or duct cleaning is included; surface cleaning does not clean the HVAC system.
+      - Document continuing dust generation by other trades or unfinished work.
+
+  new_surface_and_finish_protection:
+    title: "New-Surface and Finish Protection"
+    chunk: new-finish-protection
+    risk_level: elevated
+    surfaces:
+      fresh_paint:
+        primary_risk: Burnishing, color transfer, soft film.
+        ai_guidance: Verify cure time and use minimal pressure with compatible products.
+      new_hardwood:
+        primary_risk: Scratching, moisture intrusion, finish damage.
+        ai_guidance: Remove grit first and follow manufacturer care.
+      lvp_laminate:
+        primary_risk: Seam intrusion, residue, abrasion.
+        ai_guidance: Use controlled moisture and compatible tools.
+      natural_stone:
+        primary_risk: Etching, staining, sealer damage.
+        ai_guidance: Identify material and avoid unverified acidic or abrasive treatment.
+      cabinetry_millwork:
+        primary_risk: Finish softening, edge swelling, scratches.
+        ai_guidance: Test discreetly and control moisture.
+      decorative_metals:
+        primary_risk: Scratches, streaking, chemical reaction.
+        ai_guidance: Follow grain and finish-specific care.
+      glass_mirrors:
+        primary_risk: Scratches, fabrication debris, coating damage.
+        ai_guidance: Do not scrape without inspection and authorization.
+
+  adhesives_labels_and_protective_films:
+    title: "Adhesives, Labels and Protective Films"
+    chunk: adhesive-removal
+    risk_level: elevated
+    rules:
+      - Identify whether residue is adhesive, tape, silicone, mastic, paint, grout or unknown material.
+      - Confirm substrate compatibility before using solvents, blades, abrasives or heat.
+      - Protect factory labels, serial numbers, warranty markings and safety labels.
+      - Do not remove protective film when the responsible trade or manufacturer requires it to remain.
+      - Document aged, baked-on or brittle film that may not release cleanly.
+      - Escalate coated glass, high-gloss cabinetry, porous stone, specialty plastics and unknown finishes.
+
+  paint_grout_haze_and_specialty_residue_boundaries:
+    title: "Paint, Grout Haze and Specialty Residue Boundaries"
+    chunk: paint-residue
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      Paint, grout-haze, mortar, silicone, mastic and aggressive residue removal are
+      not routine cleaning. They may require testing, specialty products, trade
+      correction or separate authorization.
+    rules:
+      - Identify the residue and the substrate before treatment.
+      - Verify cure time and manufacturer restrictions.
+      - Use a controlled test area when authorized.
+      - Stop if scratching, etching, softening, color transfer or finish distortion appears.
+      - Separate permanent damage or installation defects from removable residue.
+      - Escalate large-scale correction, disputed responsibility or warranty impact.
+
+  contractor_and_trade_coordination:
+    title: "Contractor and Trade Coordination"
+    chunk: contractor-coordination
+    risk_level: elevated
+    rules:
+      - Identify the decision-maker for scope, access, schedule, change orders and acceptance.
+      - Confirm which trade is responsible for debris, labels, paint, grout haze, film and damage correction.
+      - Sequence cleaning after dust-producing work whenever practical.
+      - Document rooms or surfaces released for cleaning and areas not ready.
+      - Use written change orders for added work, repeated cleaning caused by other trades or conditions outside the original scope.
+      - Do not allow AI-generated communication to assign legal responsibility or waive contract rights.
+
+  room_by_room_final_clean_framework:
+    title: "Room-by-Room Final-Clean Framework"
+    chunk: room-final-clean
+    risk_level: general
+    rooms:
+      kitchen:
+        typical_final_clean_scope: Cabinets, counters, appliances, fixtures, backsplash, floors, glass.
+        common_exclusions: Appliance commissioning, heavy adhesive, interior ducts.
+      bathrooms:
+        typical_final_clean_scope: Tile, fixtures, glass, mirrors, cabinets, floors, detail dusting.
+        common_exclusions: Grout repair, caulk replacement, etched glass.
+      bedrooms_offices:
+        typical_final_clean_scope: Dusting, trim, closets, windows, floors, fixtures.
+        common_exclusions: Furniture moving unless contracted.
+      living_areas:
+        typical_final_clean_scope: Millwork, built-ins, glass, fixtures, floors, ledges.
+        common_exclusions: Repair of scratches or coating defects.
+      mechanical_spaces:
+        typical_final_clean_scope: Accessible exterior surfaces and floors if included.
+        common_exclusions: Equipment service, electrical work, internal HVAC cleaning.
+      stairs_halls:
+        typical_final_clean_scope: Rails, trim, walls as specified, floors, windows.
+        common_exclusions: High-access work beyond approved method.
+      garages_storage:
+        typical_final_clean_scope: Vacuuming, sweeping or washing as scoped, shelves, windows.
+        common_exclusions: Oil remediation, hazardous waste, heavy haul-out.
+
+  estimating_and_production_logic:
+    title: "Estimating and Production Logic"
+    chunk: estimating-production
+    risk_level: general
+    rules:
+      - Estimate by area, room type, fixture density, finish sensitivity, construction-soil level, access and required phase.
+      - Include mobilization, staging, vertical movement, elevator delays, security, documentation and inspection.
+      - Account for repeated cleaning when trades remain active.
+      - Separate routine final cleaning from specialty residue removal, high-access work, debris hauling and damage correction.
+      - Use allowances or field verification for unknown film, adhesive, paint, grout or surface conditions.
+      - Treat production rates as planning ranges rather than guarantees.
+
+  punch_list_and_change_order_management:
+    title: "Punch-List and Change-Order Management"
+    chunk: punch-list
+    risk_level: elevated
+    conditions:
+      area_missed_within_scope:
+        correct_classification: Quality correction.
+        required_action: Verify and complete promptly.
+      area_recontaminated_by_trade:
+        correct_classification: Additional work / touch-up.
+        required_action: Document and obtain authorization.
+      damage_or_installation_defect:
+        correct_classification: Not a cleaning correction.
+        required_action: Photograph and refer to responsible party.
+      unexpected_specialty_residue:
+        correct_classification: Scope change.
+        required_action: Test, price and authorize separately.
+      area_not_ready_at_scheduled_visit:
+        correct_classification: Delay / remobilization.
+        required_action: Document and reschedule.
+      customer_adds_rooms_or_surfaces:
+        correct_classification: Change order.
+        required_action: Update scope, price and schedule.
+
+  quality_assurance_and_closeout:
+    title: "Quality Assurance and Closeout"
+    chunk: quality-assurance
+    risk_level: general
+    rules:
+      - Use pre-clean, progress and final photographs where appropriate.
+      - Inspect under installed lighting and natural light when practical.
+      - Evaluate glass, mirrors, fixtures, cabinets, trim, floors, corners, vents, ledges and high surfaces.
+      - Identify unfinished work, permanent residue and trade-generated recontamination separately.
+      - Complete an internal supervisor review before customer or contractor walkthrough.
+      - Record accepted areas, open items, exclusions and authorized touch-up work.
+      - Provide completion documentation and maintenance recommendations when included.
+
+  customer_and_contractor_communication:
+    title: "Customer and Contractor Communication"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "Why are multiple phases needed?"
+        answer: >
+          Construction continues to generate dust and residue; rough, final and
+          touch-up phases serve different purposes.
+      - question: "Can you clean before every trade is finished?"
+        answer: >
+          Some work can begin, but final cleaning should follow major dust-producing
+          and finish work.
+      - question: "Will every label and mark be removed?"
+        answer: >
+          Only when safe, included in scope and compatible with the surface; specialty
+          removal may require testing and separate pricing.
+      - question: "Why is this more expensive than a deep clean?"
+        answer: >
+          Post-construction work involves heavier dust, residue removal, new-finish
+          protection, coordination and documentation.
+      - question: "Can you guarantee the space will stay clean?"
+        answer: >
+          The company can clean to the agreed standard, but ongoing construction and
+          other trades can recontaminate completed areas.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    boundaries:
+      - Do not declare a site safe, code-compliant, medically clean or ready for occupancy without authorized human verification.
+      - Do not diagnose silica exposure, lead, asbestos, mold, hazardous dust or regulated waste.
+      - Do not authorize solvent use, scraping, abrasive restoration or specialty chemical treatment on unknown finishes.
+      - Do not assign responsibility among contractors, owners, installers, manufacturers or trades.
+      - Do not approve change orders, credits, back-charges, damage claims, warranty actions or contract interpretations.
+      - Do not guarantee completion dates when site readiness and other trades remain outside company control.
+
+  mandatory_escalation_triggers:
+    title: "Mandatory Escalation Triggers"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Suspected asbestos, lead, silica hazard, mold, biohazard, sharps, unknown powder or hazardous chemical.
+      - Active leak, electrical hazard, exposed wiring, structural instability, broken glass or unsafe access.
+      - Fresh or uncured coatings, unknown stone, coated glass, historic finishes or high-value specialty materials.
+      - Damage allegation, trade dispute, back-charge, legal threat, insurance claim or warranty issue.
+      - Large-scale paint, grout, mortar, silicone, mastic or protective-film correction.
+      - Site not ready, repeated recontamination, major schedule conflict or material scope change.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    chunk: ai-boundaries
+    risk_level: general
+    principle: >
+      Index Version 4.0 as the post-construction Interior Division layer. Route
+      retrieval by cleaning phase, room type, residue type, surface, readiness status,
+      audience and risk. Hazardous-material, new-finish, contractor-dispute and
+      change-order chunks must override general cleaning guidance.
+    recommended_chunks:
+      cleaning_phases:
+        tags: [rough-clean, final-clean, touch-up, occupancy-ready]
+      site_readiness:
+        tags: [construction-complete, utilities, access, cure-time]
+      dust_control:
+        tags: [construction-dust, HEPA, sequencing, recontamination]
+      new_finish_protection:
+        tags: [fresh-paint, hardwood, cabinetry, stone, glass]
+      residue_boundaries:
+        tags: [adhesive, label, film, paint, grout-haze]
+      contractor_coordination:
+        tags: [general-contractor, trades, scope, change-order]
+      punch_list_management:
+        tags: [quality-correction, recontamination, damage, added-work]
+      ai_boundaries:
+        tags: [hazardous-material, dispute, warranty, escalation]
+    metadata:
+      module: AIM4
+      version: "4.0"
+      division: interior
+      document_role: post-construction
+      status: developer-ready
+      cleaning_phase: [rough, final, touch-up, occupancy-ready]
+      audience: [public-ai, technician, supervisor, management, developer]
+      risk_level: [general, elevated, escalation-required]
+      routing_priority: primary
+
+  roadmap_v5:
+    next_version: "V5.0"
+    title: "Residential Deep Cleaning & Room-Level SOPs"
+    focus:
+      - Residential deep-cleaning systems and room-level SOPs.
+      - Kitchen, bathroom, bedroom, living-area, basement, garage and move-in / move-out workflows.
+      - Soil classification, product routing, tool selection and cross-contamination controls.
+      - Pet, child, allergy, fragrance and occupied-home considerations.
+      - Estimating, production, quality control, customer communication and escalation rules.

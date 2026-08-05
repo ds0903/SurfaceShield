@@ -1,0 +1,322 @@
+module_id: SSBOS-001-AIM3-V5.0
+title: "AI Module 3 – Exterior Division: Concrete, Masonry & Natural Stone Systems"
+version: "5.0"
+division: Exterior
+status: active
+supersedes: none
+tags:
+  - concrete
+  - masonry
+  - brick
+  - natural-stone
+  - pavers
+  - efflorescence
+  - rust
+  - oil-stains
+  - flatwork
+  - sealing
+  - stain-diagnostics
+  - quality-control
+  - estimating
+
+sections:
+
+  required_ai_behavior:
+    priority: CRITICAL
+    rules:
+      - Identify the substrate, finish, coating, age, joint condition, and contaminant before recommending any process.
+      - Distinguish cleaning, restoration, repair, sealing, and replacement as separate services.
+      - Use the least aggressive method that can reasonably achieve the intended result.
+      - Never treat every white deposit as efflorescence or every orange stain as rust without inspection.
+      - Recommend a discreet test area when chemistry, coating stability, colorfastness, or historical significance is uncertain.
+      - Avoid guarantees regarding complete stain removal, exact color restoration, or uniformity on aged and repaired surfaces.
+      - Escalate structural cracking, severe spalling, unstable masonry, suspected hazardous coatings, drainage failure, and historic masonry to qualified specialists.
+      - Do not prescribe unlabeled chemical mixtures or acid combinations.
+      - Do not diagnose structural integrity from a customer description alone.
+      - Do not recommend sealing over unresolved moisture, contamination, or coating failure.
+      - Property-specific pricing or chemical recommendations must trigger human escalation when measurements or substrate verification are missing.
+
+  surface_identification:
+    title: "Surface Identification"
+    surfaces:
+      broom_finished_concrete:
+        characteristics: Textured flatwork; common on walks and driveways.
+        primary_risks: Etching, striping, aggregate exposure.
+        ai_starting_point: Inspect strength, age, sealer, and drainage before recommending process.
+      decorative_stamped_concrete:
+        characteristics: Colored, textured, often sealed.
+        primary_risks: Color loss, sealer whitening, pattern damage.
+        ai_starting_point: Confirm coating and perform test area.
+      exposed_aggregate:
+        characteristics: Visible stone matrix embedded in concrete.
+        primary_risks: Dislodged aggregate, acid sensitivity.
+        ai_starting_point: Low-pressure evaluation and chemistry control.
+      clay_brick:
+        characteristics: Porous fired masonry with mortar joints.
+        primary_risks: Mortar erosion, face damage, water intrusion.
+        ai_starting_point: Identify brick hardness and joint condition before selecting method.
+      concrete_block_cmu:
+        characteristics: Porous structural masonry.
+        primary_risks: Water penetration, paint and coating failure.
+        ai_starting_point: Assess coating, joints, and interior exposure.
+      pavers:
+        characteristics: Modular units with sand-filled joints.
+        primary_risks: Joint washout, polymeric haze, movement.
+        ai_starting_point: Inspect joint material and edge restraint.
+      manufactured_stone_veneer:
+        characteristics: Cement-based decorative veneer.
+        primary_risks: Delamination, color change, water entry.
+        ai_starting_point: Very low pressure and manufacturer-sensitive approach only.
+      natural_stone:
+        characteristics: Mineral-specific behavior varies widely.
+        primary_risks: Acid reaction, staining, surface loss.
+        ai_starting_point: Identify stone type before selecting any chemistry.
+
+  contaminant_classification:
+    title: "Contaminant Classification"
+    organic_contamination:
+      types:
+        - Algae and biological film
+        - Mold and mildew growth
+        - Moss and lichen
+        - Leaf tannins and organic runoff
+        - Food and beverage residues
+      note: >
+        Organic contamination often responds to oxidizing or detergent-based cleaning,
+        but the surface and surrounding materials must be evaluated before treatment.
+    inorganic_and_chemical_staining:
+      types:
+        - Rust and irrigation staining
+        - Efflorescence and mineral deposits
+        - Hard-water scale
+        - Oil, grease, hydraulic fluid, and tire marks
+        - Paint, sealer, adhesive, and construction residue
+        - Atmospheric soot and metallic runoff
+      note: >
+        Inorganic stains generally require contaminant-specific chemistry or mechanical
+        processes. Stronger sodium hypochlorite is NOT a universal solution for mineral,
+        petroleum, oxidation, or coating-related stains.
+
+  concrete_cleaning_systems:
+    title: "Concrete Cleaning Systems"
+    content: >
+      Professional flatwork cleaning commonly combines pre-treatment, controlled
+      mechanical cleaning, edge work, rinsing, and a post-treatment when appropriate.
+      Production quality depends on even overlap, consistent travel speed, adequate
+      water supply, correct nozzle selection, runoff control, and final inspection.
+    new_concrete_and_cure:
+      priority: HIGH
+      rule: >
+        New or recently repaired concrete may be vulnerable to surface damage.
+        Do not recommend aggressive pressure, acid treatment, sealing, or stain
+        removal without confirming cure status and the installer or product requirements.
+    surface_cleaner_controls:
+      rules:
+        - Match equipment size and nozzle configuration to machine flow and available pressure.
+        - Confirm swivel and spray bar operate correctly before beginning.
+        - Maintain consistent overlap and travel speed to reduce striping.
+        - Use controlled edge cleaning rather than holding a concentrated jet close to the surface.
+        - Do not use a turbo nozzle indiscriminately on decorative, weak, or unknown concrete.
+
+  brick_and_masonry_cleaning:
+    title: "Brick and Masonry Cleaning"
+    content: >
+      Brick and masonry cleaning requires attention to unit hardness, mortar strength,
+      age, absorptivity, coatings, previous repairs, and water-entry pathways. Excessive
+      pressure can erode joints, scar brick faces, drive moisture into wall systems,
+      and expose concealed defects.
+    rules:
+      - Inspect mortar joints and loose units before cleaning.
+      - Pre-wet or manage absorption when required by the selected product and substrate.
+      - Use low pressure and controlled rinsing on weak, historic, painted, or veneer masonry.
+      - Avoid acid-based assumptions — many stones, mortars, metals, coatings, and adjacent materials can be damaged.
+      - Document pre-existing cracks, spalls, salts, repairs, and discoloration.
+
+  natural_stone_decision_logic:
+    title: "Natural Stone Decision Logic"
+    stone_families:
+      calcareous:
+        examples: [Limestone, Marble, Travertine]
+        key_sensitivity: Acid-sensitive — can etch or dull.
+        ai_rule: Do not recommend acidic cleaners without specialist confirmation.
+      siliceous:
+        examples: [Granite, Quartzite, many Sandstones]
+        key_sensitivity: Variable porosity and mineral staining.
+        ai_rule: Identify finish and test chemistry before applying.
+      slate_and_layered:
+        examples: [Slate, some Flagstone]
+        key_sensitivity: Delamination and flaking risk.
+        ai_rule: Use controlled pressure and inspect layers.
+      manufactured_cast_stone:
+        examples: [Cementitious decorative products]
+        key_sensitivity: Color and surface-finish sensitivity.
+        ai_rule: Follow manufacturer-compatible approach only.
+      unknown_stone:
+        key_sensitivity: Unpredictable reaction.
+        ai_rule: Stop and identify before recommending any chemistry.
+
+  efflorescence_and_mineral_deposits:
+    title: "Efflorescence and Mineral Deposits"
+    content: >
+      Efflorescence is generally associated with soluble salts transported by moisture
+      and deposited as water evaporates. Cleaning visible deposits does not correct the
+      underlying moisture pathway. When deposits recur, evaluate drainage, flashing,
+      capillary movement, leaks, grading, irrigation, and joint conditions.
+    rules:
+      - Confirm the deposit is mineral-based rather than paint oxidation, detergent residue, or biological film.
+      - Begin with dry brushing or the mildest suitable method where appropriate.
+      - Treat chemical removal as substrate-specific and product-specific.
+      - Do not promise permanent correction unless the moisture source is addressed.
+
+  rust_and_metallic_staining:
+    title: "Rust and Metallic Staining"
+    content: >
+      Rust staining may originate from irrigation water, fertilizer, metal furniture,
+      fasteners, downspouts, HVAC components, rebar, or embedded metal. Removal
+      chemistry depends on the substrate and stain source. Separate cosmetic surface
+      rust from active corrosion or structural reinforcement problems.
+    rules:
+      - Identify and correct the source when practical.
+      - Protect adjacent metals, coatings, vegetation, and glass.
+      - Use product-specific dwell and rinsing instructions.
+      - Escalate signs of rebar corrosion, cracking, or spalling for repair evaluation.
+
+  oil_grease_tire_marks:
+    title: "Oil, Grease, Tire Marks, and Petroleum Stains"
+    content: >
+      Petroleum stains migrate into porous concrete and may not be completely removable.
+      Results depend on age, depth, porosity, previous sealers, temperature, agitation,
+      extraction, and repetition. Communicate improvement ranges rather than guarantee
+      complete removal.
+    procedure:
+      1: Remove loose material and prevent further contamination.
+      2: Identify the stain and whether the surface is sealed.
+      3: Select a compatible degreaser, absorbent, poultice, hot-water process, or specialty method.
+      4: Agitate and extract or rinse according to product and site requirements.
+      5: Repeat only when the substrate remains stable and additional improvement is reasonable.
+      6: Document residual shadowing and recommend maintenance or coating options when appropriate.
+
+  paver_cleaning_and_joint_protection:
+    title: "Paver Cleaning and Joint Protection"
+    rules:
+      - Identify paver material, joint sand type, polymeric condition, sealer, settlement, and edge restraint.
+      - Avoid uncontrolled pressure that removes joint material or destabilizes the installation.
+      - Explain that re-sanding, polymeric-sand installation, and sealing are separate operations from cleaning.
+      - Do not seal over unstable joints, trapped moisture, active efflorescence, or unresolved contamination.
+      - Allow required drying and curing intervals before jointing or sealing.
+
+  decorative_concrete_and_coated_surfaces:
+    title: "Decorative Concrete and Coated Surfaces"
+    content: >
+      Stamped, stained, painted, epoxy-coated, and previously sealed surfaces can be
+      damaged by aggressive chemistry, heat, or pressure. Determine whether the customer
+      is requesting cleaning, coating restoration, stripping, or resealing. A failed
+      sealer may appear cloudy, white, peeling, or uneven and can require specialized
+      corrective work.
+
+  sealing_and_protective_treatments:
+    title: "Sealing and Protective Treatments"
+    content: >
+      Sealants and water repellents should be selected according to substrate, moisture
+      behavior, vapor transmission, appearance, traction, exposure, and maintenance
+      expectations. Cleaning alone does not automatically mean the surface is ready to seal.
+    rules:
+      - Confirm the substrate is clean, stable, and sufficiently dry.
+      - Verify compatibility with existing coatings and previous sealers.
+      - Use test areas for appearance, darkening, gloss, and color enhancement.
+      - Follow manufacturer requirements for temperature, moisture, application rate, curing, and recoat intervals.
+      - Avoid presenting any sealer as permanently maintenance-free or universally compatible.
+
+  runoff_containment_and_property_protection:
+    title: "Runoff, Containment, and Property Protection"
+    rules:
+      - Inspect storm drains, landscaped areas, ponds, neighboring property, and interior water-entry risks.
+      - Control sediment, dissolved contaminants, chemical solution, and debris per site requirements.
+      - Do not direct oily wastewater, concentrated chemicals, or removed coatings into drains or waterways.
+      - Protect doors, electrical components, vehicles, glass, painted surfaces, metals, and sensitive landscaping.
+      - Assign active runoff monitoring on higher-risk commercial and restoration projects.
+
+  quality_control_procedure:
+    title: "Quality-Control Procedure"
+    steps:
+      1: Complete and photograph the pre-existing condition inspection.
+      2: Confirm customer expectations and known limitations.
+      3: Perform a test area when needed.
+      4: Protect adjacent property and establish runoff controls.
+      5: Apply the selected cleaning sequence consistently.
+      6: Inspect edges, corners, joints, vertical splash areas, and transitions.
+      7: Correct reasonable touch-up items without overworking the surface.
+      8: Document residual permanent staining, material defects, and recommended repairs or maintenance.
+      9: Obtain final internal approval before customer presentation.
+
+  estimating_and_production_logic:
+    title: "Estimating and Production Logic"
+    ai_rule: >
+      The AI may support preliminary estimating but must not produce a binding price
+      without verified measurements and site conditions.
+    cost_drivers:
+      square_footage:
+        why: Controls baseline labor and production.
+        treatment: Measure each distinct surface and elevation.
+      contamination_severity:
+        why: Changes chemistry, dwell time, and number of repetitions.
+        treatment: Classify as light, moderate, heavy, or specialty.
+      access_and_mobilization:
+        why: Affects setup, hoses, lifts, and crew time.
+        treatment: Price separately when material.
+      sensitive_substrate_coating:
+        why: Requires testing and slower production.
+        treatment: Apply restoration-risk factor.
+      runoff_and_containment:
+        why: May require labor, barriers, or recovery systems.
+        treatment: Include as a separate operational allowance.
+      detail_work:
+        why: Edges, joints, steps, and vertical faces slow production.
+        treatment: Do not bury in flatwork rate.
+      repairs_sealing_joint_sand:
+        why: Separate scope and possible return visits.
+        treatment: Price as distinct line items.
+
+  customer_communication:
+    title: "Customer Communication Library"
+    scripts:
+      - question: "Can you make the concrete look brand new?"
+        answer: >
+          Professional cleaning can often produce a major improvement, but aged concrete
+          may retain permanent discoloration, wear, repairs, aggregate variation, rust
+          shadows, oil penetration, or surface damage. We inspect the surface and explain
+          the expected improvement before beginning.
+      - question: "Why is the white staining coming back?"
+        answer: >
+          White mineral deposits can be connected to moisture moving through masonry or
+          concrete. Cleaning may remove the visible deposit, but recurring moisture,
+          drainage, flashing, irrigation, or joint conditions may also need correction.
+      - question: "Will pressure washing damage the brick?"
+        answer: >
+          Brick and mortar vary greatly in strength and condition. We evaluate the masonry
+          first and use controlled chemistry, water flow, and pressure rather than treating
+          every wall the same way.
+      - question: "Can you remove all of the oil?"
+        answer: >
+          Fresh surface contamination may respond very well, but older oil can penetrate
+          deeply into porous concrete. We use a stain-specific process and communicate
+          whether full removal or significant improvement is the realistic objective.
+
+  knowledge_boundaries:
+    priority: CRITICAL
+    boundaries:
+      - Do not prescribe unlabeled chemical mixtures or acid combinations.
+      - Do not diagnose structural integrity from a customer description alone.
+      - Do not recommend sealing over unresolved moisture, contamination, or coating failure.
+      - Do not guarantee complete stain removal or permanent efflorescence correction.
+      - Do not recommend abrasive blasting, grinding, hot-water treatment, or high-pressure methods without trained professional evaluation.
+      - Route historic masonry, severe spalling, reinforcement corrosion, hazardous coatings, and major drainage failures to qualified specialists.
+
+  roadmap_v6:
+    next_version: "V6.0"
+    focus:
+      - Commercial building washing and multi-story logistics
+      - Parking structures, loading areas, dumpster pads, storefronts, and fleet-adjacent surfaces
+      - Water recovery, containment, access equipment, traffic control, and site coordination
+      - Commercial production rates, crew planning, mobilization, and recurring maintenance contracts
+      - Commercial proposals, service schedules, reporting, and quality assurance

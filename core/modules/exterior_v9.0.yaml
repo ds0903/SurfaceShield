@@ -1,0 +1,394 @@
+module_id: SSBOS-001-AIM3-V9.0
+title: "AI Module 3 – Exterior Division: Field Diagnostics, Troubleshooting and AI Decision Systems"
+version: "9.0"
+division: Exterior
+document_type: Elite SSBOS Manual
+status: active
+supersedes: none
+service_class: diagnostics
+audience: [public-ai, technician, internal, developer]
+document_status: developer-ready
+tags:
+  - universal-diagnostics
+  - diagnostic-evidence
+  - surface-diagnostics
+  - equipment-troubleshooting
+  - chemical-troubleshooting
+  - house-washing-decisions
+  - roof-cleaning-decisions
+  - concrete-masonry-diagnostics
+  - wood-diagnostics
+  - window-diagnostics
+  - photo-analysis
+  - quality-control
+  - failed-result-analysis
+  - customer-resolution
+  - damage-allegations
+  - ai-confidence
+  - mandatory-escalation
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: universal-diagnostics
+    risk_level: general
+    content: >
+      Version 9.0 trains the AI to help identify probable causes, organize technician
+      observations, distinguish cleaning limitations from workmanship problems, and route
+      high-risk conditions for human review. The AI must support disciplined investigation
+      without pretending that photographs or customer descriptions replace an on-site inspection.
+    operating_principles:
+      - Start with observable evidence rather than assumptions.
+      - Separate surface condition, contamination, equipment performance, chemistry, weather, access, and workmanship variables.
+      - Use decision logic to narrow possibilities, not to make unsupported final diagnoses.
+      - Document confidence level, missing information, and recommended next step.
+      - Escalate safety, damage, hazardous-material, structural, electrical, environmental, and legal concerns.
+
+  diagnostic_information_hierarchy:
+    title: "Diagnostic Information Hierarchy"
+    chunk: diagnostic-evidence
+    risk_level: general
+    evidence_levels:
+      verified_field_measurement:
+        examples: Pressure gauge, TDS meter, moisture meter, measured area, confirmed product label.
+        ai_treatment: Highest confidence when instrument and method are appropriate.
+      direct_technician_observation:
+        examples: Visible leak, pulsation, oxidation, coating failure, uneven drying.
+        ai_treatment: Use as primary factual input.
+      clear_photographs_or_video:
+        examples: Surface pattern, equipment condition, access limitation.
+        ai_treatment: Useful but limited by angle, lighting, scale, and hidden conditions.
+      customer_description:
+        examples: When problem began, prior work, expected result.
+        ai_treatment: Treat as relevant but unverified.
+      historical_assumption:
+        examples: Typical injector draw, usual stain type, expected production.
+        ai_treatment: Use only as a hypothesis.
+      unknown_or_conflicting_data:
+        examples: Mixed symptoms, incomplete photos, inconsistent readings.
+        ai_treatment: Request more information or escalate.
+
+  universal_field_diagnostic_workflow:
+    title: "Universal Field Diagnostic Workflow"
+    chunk: universal-diagnostics
+    risk_level: general
+    steps:
+      1: Define the reported problem in neutral language.
+      2: Identify the surface, system, equipment, chemical, weather, and timing involved.
+      3: Document what changed from normal operation or expected appearance.
+      4: Check for immediate safety or property-protection concerns.
+      5: Collect measurements, photographs, videos, labels, and equipment details.
+      6: Separate likely causes into surface, contamination, chemistry, equipment, method, environmental, and expectation categories.
+      7: Perform the least invasive appropriate test.
+      8: Record the result and update the working diagnosis.
+      9: Escalate when risk, uncertainty, damage, or scope authority exceeds the AI or technician boundary.
+      10: Document the final disposition, customer communication, and corrective action.
+
+  surface_diagnostic_framework:
+    title: "Surface Diagnostic Framework"
+    chunk: surface-diagnostics
+    risk_level: elevated
+    conditions:
+      stain_remains_after_cleaning:
+        possible_categories: Wrong chemistry, insufficient dwell, permanent change, specialty stain.
+        initial_check: Identify stain type and test a controlled area.
+        escalation_trigger: Unknown substrate or aggressive treatment required.
+      uneven_appearance:
+        possible_categories: Oxidation, inconsistent application, drying, shadowing, prior coating.
+        initial_check: Compare dry and wet appearance; inspect pattern.
+        escalation_trigger: Coating failure or damage allegation.
+      white_residue:
+        possible_categories: Efflorescence, detergent residue, mineral spotting, sealer failure.
+        initial_check: Check source, texture, and water behavior.
+        escalation_trigger: Historic masonry or acid-sensitive material.
+      dark_return_after_drying:
+        possible_categories: Moisture, deep organic growth, incomplete treatment, substrate variation.
+        initial_check: Allow full drying and document timing.
+        escalation_trigger: Water intrusion or structural moisture concern.
+      etching_or_roughness:
+        possible_categories: Excess pressure, chemical reaction, pre-existing wear.
+        initial_check: Stop work and document.
+        escalation_trigger: Potential property damage.
+      color_loss:
+        possible_categories: Oxidation, pigment failure, incompatible chemistry, weathered coating.
+        initial_check: Test for chalking and review product history.
+        escalation_trigger: Customer dispute or coating warranty issue.
+      water_intrusion:
+        possible_categories: Open seals, failed flashing, excessive angle or pressure.
+        initial_check: Stop work, protect interior, document source.
+        escalation_trigger: Immediate human management and restoration review.
+
+  equipment_troubleshooting_logic:
+    title: "Equipment Troubleshooting Logic"
+    chunk: equipment-troubleshooting
+    risk_level: elevated
+    safety_rule: >
+      Equipment troubleshooting must begin with safe shutdown, visual inspection,
+      manufacturer guidance, and verification of water supply, filters, hoses, nozzles,
+      connections, and operating conditions. The AI must not instruct users to bypass
+      safety devices.
+    symptoms:
+      low_pressure:
+        common_cause_groups: Restricted supply, wrong nozzle, worn nozzle, leak, unloader or pump issue.
+        safe_first_checks: Verify water flow, filter, nozzle size, leaks, and hose condition.
+        escalate_when: Internal pump or unloader repair suspected.
+      pressure_pulsation:
+        common_cause_groups: Air leak, restricted inlet, cavitation, valve or seal problem.
+        safe_first_checks: Check supply, inlet fittings, filter, and tank level.
+        escalate_when: Noise, overheating, or internal damage.
+      injector_will_not_draw:
+        common_cause_groups: High-pressure nozzle, wrong injector, long hose, clog, air leak.
+        safe_first_checks: Confirm soap nozzle, inspect pickup tube and filter, test short setup.
+        escalate_when: Chemical compatibility or injector replacement uncertainty.
+      pump_overheats:
+        common_cause_groups: Extended bypass, low water, restricted flow, internal failure.
+        safe_first_checks: Shut down and cool safely; verify supply.
+        escalate_when: Repeated overheating or damaged components.
+      soft_wash_pump_cycles_rapidly:
+        common_cause_groups: Leak, restriction, pressure switch issue, undersized plumbing.
+        safe_first_checks: Inspect connections, filter, hose, and nozzle.
+        escalate_when: Electrical or pump-head repair required.
+      poor_surface_cleaner_performance:
+        common_cause_groups: Insufficient GPM, clogged tips, wrong tip size, worn swivel.
+        safe_first_checks: Inspect tips, bar rotation, supply, and machine output.
+        escalate_when: Swivel or internal repair.
+      unexpected_chemical_strength:
+        common_cause_groups: Source degradation, draw variation, proportioner setting, equipment change.
+        safe_first_checks: Measure source and output with approved methods.
+        escalate_when: Calibration cannot be verified safely.
+      engine_abnormal_noise_or_shutdown:
+        common_cause_groups: Oil, fuel, load, overheating, mechanical failure.
+        safe_first_checks: Stop operation and follow engine manual.
+        escalate_when: Any internal engine diagnosis or repair.
+
+  chemistry_and_application_troubleshooting:
+    title: "Chemistry and Application Troubleshooting"
+    chunk: chemical-troubleshooting
+    risk_level: elevated
+    rules:
+      - Confirm the actual product, source concentration, age, storage history, and label instructions.
+      - Verify the application system and estimated delivered strength.
+      - Check weather, surface temperature, wind, sunlight, and unintended drying.
+      - Confirm dwell time, coverage, agitation, rinsing, and reapplication sequence.
+      - Distinguish organic growth from oxidation, mineral deposits, rust, oil, paint, and permanent discoloration.
+      - Never respond to poor performance by automatically increasing concentration or dwell.
+      - Do not combine products unless compatibility and label instructions are confirmed.
+
+  service_specific_decision_systems:
+    title: "Service-Specific Decision Systems"
+    chunk: service-decision-systems
+
+    house_washing:
+      chunk: house-washing-decisions
+      risk_level: elevated
+      rules:
+        - Identify siding material, oxidation, open penetrations, electrical components, landscaping, and drainage.
+        - If streaking remains, determine whether it is organic contamination, oxidation, runoff pattern, or drying variation.
+        - If water enters the building, stop work and escalate immediately.
+        - If siding is chalked, explain that cleaning may reveal pre-existing oxidation or color inconsistency.
+
+    roof_soft_washing:
+      chunk: roof-cleaning-decisions
+      risk_level: escalation-required
+      priority: CRITICAL
+      rules:
+        - Confirm roof material, age, condition, drainage path, metals, landscaping, access, and manufacturer limitations.
+        - Do not diagnose hail, wind, leakage, or structural condition from cleaning appearance alone.
+        - Moss and lichen may remain attached temporarily after treatment; aggressive removal may damage roofing.
+        - Escalate unsafe access, brittle materials, active leakage, severe deterioration, or customer damage concerns.
+
+    concrete_and_masonry:
+      chunk: concrete-masonry-diagnostics
+      risk_level: elevated
+      rules:
+        - Identify coating, sealer, decorative finish, joint condition, mortar strength, and stain type.
+        - Uneven color may result from moisture, wear, curing variation, sealer, or previous damage.
+        - Stop if etching, exposed aggregate loss, mortar erosion, or coating failure appears.
+        - Specialty stain treatment requires controlled testing and separate authorization.
+
+    wood_restoration:
+      chunk: wood-diagnostics
+      risk_level: elevated
+      rules:
+        - Identify wood species, coating, moisture, rot, fasteners, splintering, and previous restoration.
+        - Raised grain may reflect weathering, prior pressure damage, or the cleaning process.
+        - Do not recommend coating until moisture and manufacturer conditions are acceptable.
+        - Escalate structural decay, lead-paint concern, unknown coating, or widespread failure.
+
+    windows_and_specialty_surfaces:
+      chunk: window-diagnostics
+      risk_level: escalation-required
+      priority: CRITICAL
+      rules:
+        - Identify glass type, coating, tint, fabrication-debris risk, frames, seals, and adjacent finishes.
+        - Do not recommend scraping without appropriate inspection and authorization.
+        - Hard-water stains, scratches, seal failure, and coating damage are different conditions.
+        - Escalate tempered-glass concerns, historic glazing, high access, or disputed scratches.
+
+  photo_and_video_analysis_protocol:
+    title: "Photo and Video Analysis Protocol"
+    chunk: photo-analysis
+    risk_level: elevated
+    limitation: >
+      Images can support triage, documentation, and planning, but they cannot reliably
+      reveal hidden moisture, structural condition, chemical concentration, coating
+      adhesion, exact dimensions, or all surface defects.
+    rules:
+      - Request wide context, medium-range, and close-up images.
+      - Request a scale reference when size matters.
+      - Ask for dry and wet conditions when appearance changes with moisture.
+      - Use consistent lighting and avoid heavy filters or digital enhancement.
+      - For equipment issues, request video with safe operating context and clear audio when appropriate.
+      - State confidence as high, moderate, or low and explain the limiting factors.
+      - Never represent a photo-based quantity as a verified field measurement.
+
+  quality_control_workflow:
+    title: "Quality-Control Workflow"
+    chunk: quality-control
+    risk_level: general
+    stages:
+      pre_job:
+        required_control: Confirm scope, exclusions, protection, defects, access, weather, and customer responsibilities.
+        documentation: Photos, notes, authorization.
+      test_area:
+        required_control: Validate process on uncertain or sensitive conditions.
+        documentation: Before and after comparison.
+      application:
+        required_control: Monitor coverage, dwell, runoff, plants, metals, windows, and public exposure.
+        documentation: Progress photos and technician notes.
+      rinse_or_completion:
+        required_control: Confirm residue removal and controlled runoff.
+        documentation: Area-by-area checklist.
+      dry_review:
+        required_control: Evaluate appearance after adequate drying when required.
+        documentation: Final photographs.
+      customer_handoff:
+        required_control: Explain results, limitations, unresolved conditions, and maintenance.
+        documentation: Acceptance or service record.
+
+  failed_result_analysis:
+    title: "Failed-Result Analysis"
+    chunk: failed-result-analysis
+    risk_level: escalation-required
+    priority: CRITICAL
+    principle: >
+      A failed or disputed result must be investigated systematically. The objective is
+      to identify whether the issue is incomplete work, a process limitation, permanent
+      material condition, new contamination, customer expectation mismatch, or property damage.
+    rules:
+      - Preserve photographs, job notes, weather data, product information, and customer communications.
+      - Do not admit fault or deny responsibility before factual review.
+      - Compare the agreed scope and documented pre-existing conditions.
+      - Inspect whether the reported issue changes after drying or additional observation.
+      - Identify whether a safe corrective procedure exists and who must authorize it.
+      - Escalate damage allegations, refunds, insurance matters, threats, legal claims, and public complaints to management.
+
+  customer_issue_resolution:
+    title: "Customer Issue Resolution"
+    chunk: customer-resolution
+    risk_level: elevated
+    situations:
+      area_missed:
+        situation: Customer says an area was missed.
+        communication_standard: Acknowledge the concern, identify the exact area, review scope and photos, and arrange verification.
+      expected_new_appearance:
+        situation: Customer expected a new appearance.
+        communication_standard: Explain the difference between cleaning, restoration, repair, oxidation, coating failure, and permanent aging.
+      damage_reported:
+        situation: Customer reports damage.
+        communication_standard: Stop argumentative discussion, document the allegation, protect the property, and escalate to management.
+        risk_level: escalation-required
+      result_changed_after_drying:
+        situation: Result changed after drying.
+        communication_standard: Explain that some surfaces must be evaluated dry; schedule reinspection when appropriate.
+      specialty_stain_remains:
+        situation: Specialty stain remains.
+        communication_standard: Explain that specialty stains may require separate testing, pricing, and authorization.
+
+  ai_confidence_and_response_format:
+    title: "AI Confidence and Response Format"
+    chunk: ai-confidence
+    risk_level: general
+    response_components:
+      observation: What is directly visible or reported.
+      likely_categories: The most plausible cause groups, without overclaiming.
+      confidence: High, moderate, or low.
+      missing_information: Measurements, images, product details, or field tests required.
+      safe_next_step: The least invasive verification or corrective action.
+      escalation: Whether management, a qualified technician, manufacturer, restoration professional, or emergency service is required.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      The AI must not diagnose structural safety, electrical hazards, hazardous materials,
+      legal liability, insurance coverage, or hidden property damage from photographs or
+      customer descriptions alone.
+    boundaries:
+      - Do not instruct users to bypass pressure, temperature, electrical, chemical, or engine safety controls.
+      - Do not provide internal pump, engine, electrical, lift, scaffold, or fall-protection repair procedures.
+      - Do not guarantee stain removal, color restoration, equipment repair, production time, or damage responsibility.
+      - Do not recommend increasingly aggressive chemistry or pressure without substrate verification and controlled testing.
+      - Do not issue refunds, discounts, admissions, warranty approvals, or binding scope changes.
+
+  mandatory_escalation_triggers:
+    title: "Mandatory Escalation Triggers"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Injury, chemical exposure, fire, electrical event, gas release, or immediate danger.
+      - Water intrusion, broken glass, damaged coating, etched surface, dead landscaping, or other damage allegation.
+      - Structural deterioration, active roof leak, unsafe access, unstable masonry, or severe wood decay.
+      - Unknown chemical mixture, hazardous material, lead, asbestos, biological hazard, or contaminated wastewater.
+      - Repeated equipment overheating, abnormal mechanical noise, electrical fault, or pump failure.
+      - Customer dispute, legal threat, insurance claim, chargeback, public complaint, or media contact.
+      - High uncertainty after reasonable observation and safe testing.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    principle: >
+      Version 9.0 should be indexed as a decision-support layer rather than a single
+      troubleshooting prompt. Retrieval should combine surface, service, symptom,
+      equipment, risk, and audience metadata. Safety and escalation chunks must override
+      general procedural chunks.
+    recommended_chunks:
+      universal_diagnostics:
+        tags: [diagnostic-workflow, evidence, confidence, escalation]
+      surface_diagnostics:
+        tags: [surface-condition, stain, oxidation, damage]
+      equipment_troubleshooting:
+        tags: [pressure-washer, injector, pump, surface-cleaner]
+      chemistry_troubleshooting:
+        tags: [chemical, dwell, dilution, compatibility]
+      service_decision_systems:
+        tags: [house-wash, roof, concrete, wood, windows]
+      photo_analysis:
+        tags: [photo-triage, video, confidence-limitations]
+      quality_control:
+        tags: [pre-job, test-area, final-review, documentation]
+      customer_resolution:
+        tags: [complaint, damage-allegation, corrective-action]
+    metadata:
+      module: AIM3
+      version: "9.0"
+      division: exterior
+      service_class: diagnostics
+      audience: [public-ai, technician, internal, developer]
+      confidence_level: [high, moderate, low]
+      risk_level: [general, elevated, escalation-required]
+      document_status: developer-ready
+
+  roadmap_v10:
+    next_version: "V10.0"
+    title: "Exterior Division Master Integration and Final Knowledge Review"
+    focus:
+      - Exterior Division master integration and final knowledge review.
+      - Core standard operating procedures by service class.
+      - Unified intake, inspection, estimating, scheduling, field, quality, and closeout workflows.
+      - Cross-references between chemistry, equipment, surfaces, commercial operations, windows, estimating, and diagnostics.
+      - Final developer routing hierarchy, metadata standard, and escalation map.
+      - Exterior Division completion checklist and handoff package.

@@ -1,0 +1,409 @@
+module_id: SSBOS-001-AIM3-V7.0
+title: "AI Module 3 – Exterior Division: Window Cleaning, Pure Water & Specialty Surfaces"
+version: "7.0"
+division: Exterior
+primary_focus: Professional Window Cleaning and Specialty Surface Care
+status: active
+supersedes: none
+service_class: windows-specialty
+audience: [public-ai, internal, developer]
+document_status: developer-ready
+tags:
+  - window-system-identification
+  - maintenance-window-cleaning
+  - post-construction-glass
+  - pure-water-ro-di
+  - water-fed-poles
+  - traditional-window-tools
+  - hard-water-restoration
+  - fabrication-debris
+  - solar-panel-cleaning
+  - specialty-surfaces
+  - stainless-steel
+  - aluminum
+  - composite-panels
+  - safety-protection
+  - quality-control
+  - estimating-production
+  - customer-communication
+  - ai-boundaries
+
+sections:
+
+  required_ai_behavior:
+    priority: CRITICAL
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    rules:
+      - Identify the glass or specialty surface before recommending any process.
+      - Distinguish routine soil from mineral deposits, sealant residue, paint, oxidation, corrosion, fabrication debris, and coating failure.
+      - Prefer the least aggressive method that can produce a professional result.
+      - Never promise scratch-free restoration or complete stain removal without inspection and testing.
+      - Escalate tempered-glass fabrication-debris concerns, damaged seals, failed coatings, high-access work, electrical hazards, and unknown architectural finishes.
+      - Explain that pure water is a delivery and rinse system — not a universal solution for every contaminant.
+      - Protect adjacent masonry, metal, landscaping, finished wood, interior spaces, and pedestrian areas.
+      - Do not automatically recommend scraper use without prior inspection and glass-type confirmation.
+
+  glass_and_window_system_identification:
+    title: "Glass and Window System Identification"
+    chunk: window-system-identification
+    risk_level: general
+    note: >
+      Recommendations depend on the complete assembly — not just the visible glass.
+      Consider glass type, frame material, sealants, screens, storm windows, coatings,
+      divided-light construction, and interior access.
+    systems:
+      annealed_glass:
+        characteristics: Common flat glass.
+        primary_risk: Scratching, seal leakage.
+        ai_starting_logic: Routine process after inspection.
+      tempered_glass:
+        characteristics: Safety glass, often labeled.
+        primary_risk: Fabrication debris and scratch risk.
+        ai_starting_logic: Avoid aggressive scraping without confirmation. Escalate if uncertain.
+      laminated_glass:
+        characteristics: Interlayer construction.
+        primary_risk: Edge and seal sensitivity.
+        ai_starting_logic: Control moisture and chemicals carefully.
+      low_e_coated_glass:
+        characteristics: Energy coating may be surface-exposed or internal.
+        primary_risk: Coating damage.
+        ai_starting_logic: Confirm coating location and follow manufacturer guidance before any treatment.
+      insulated_glass_unit:
+        characteristics: Two or more panes with sealed spacer.
+        primary_risk: Failed seals and internal fogging.
+        ai_starting_logic: Cleaning cannot repair seal failure — communicate this clearly.
+      storm_windows:
+        characteristics: Removable or fixed secondary units.
+        primary_risk: Trapped moisture, difficult access.
+        ai_starting_logic: Price by panel and access complexity — do not bundle into standard window rate.
+      true_divided_light_grids:
+        characteristics: Multiple small panes or decorative bars.
+        primary_risk: Labor intensity, sealant contact.
+        ai_starting_logic: Use detail-oriented low-risk methods.
+
+  professional_window_cleaning_methods:
+    title: "Professional Window Cleaning Methods"
+    chunk: maintenance-window-cleaning
+    risk_level: general
+    methods:
+      maintenance_cleaning:
+        description: >
+          Addresses atmospheric soil, pollen, insect residue, light fingerprints, and
+          common exterior film. May use traditional hand tools, pure-water systems, or
+          a combination depending on height, access, frame condition, and customer expectations.
+      detail_cleaning:
+        description: >
+          Includes frames, sills, tracks, screens, storm panels, divided lights, and
+          localized residue. These elements must be separately identified in the scope
+          because they substantially affect labor and pricing.
+      post_construction_cleaning:
+        chunk: post-construction-glass
+        risk_level: elevated
+        description: >
+          Elevated risk from paint, stucco, mortar, sealants, stickers, adhesive, and
+          fabrication debris. Requires inspection, documentation, written limitations,
+          and careful method selection. A routine window-cleaning price must not be
+          applied automatically.
+
+  pure_water_technology:
+    title: "Pure-Water Technology"
+    chunk: pure-water-ro-di
+    risk_level: general
+    description: >
+      Pure-water window cleaning uses treated water with very low dissolved-mineral
+      content. When properly produced and applied, the water rinses away loosened soil
+      and dries with minimal mineral spotting. Commonly uses reverse osmosis (RO),
+      deionization (DI), or a combined RO/DI system.
+    components:
+      sediment_carbon_prefilter:
+        function: Protects downstream membranes and resin.
+        operational_concern: Replacement interval and chlorine exposure.
+        ai_note: Follow system manufacturer schedule.
+      ro_membrane:
+        function: Reduces dissolved solids.
+        operational_concern: Feed pressure, temperature, and rejection rate.
+        ai_note: Performance varies by source water quality.
+      di_resin:
+        function: Polishes remaining ions.
+        operational_concern: Exhaustion and channeling.
+        ai_note: Monitor output quality with TDS meter.
+      tds_meter:
+        function: Measures total dissolved solids.
+        operational_concern: Calibration and sampling location.
+        ai_note: Use as a process-control indicator only.
+    limitation: >
+      A low TDS reading alone does not guarantee a clean window. Frames, oxidized
+      surfaces, hydrophobic contamination, failing seals, heavy organic growth, and
+      mineral deposits may require additional agitation or specialized treatment.
+
+  water_fed_pole_systems:
+    title: "Water-Fed Pole Systems"
+    chunk: water-fed-poles
+    risk_level: elevated
+    description: >
+      A water-fed pole delivers purified water through a brush at the glass. It can
+      reduce ladder use and improve production on appropriate buildings. Results depend
+      on brush selection, agitation, rinse technique, water quality, pole control,
+      frame condition, weather, and operator skill.
+    operating_rules:
+      - Inspect overhead electrical hazards and work-zone conditions before setup.
+      - Clean frames and upper seals first so contaminated runoff does not re-soil the glass.
+      - Use sufficient agitation to release film and debris.
+      - Rinse thoroughly so loosened contamination is carried away.
+      - Expect initial cleanings to require more time than established maintenance routes.
+      - Do not use water-fed poles as a substitute for a site-specific high-access safety plan.
+
+  traditional_tool_systems:
+    title: "Traditional Tool Systems"
+    chunk: traditional-window-tools
+    risk_level: general
+    description: >
+      Traditional window cleaning uses an applicator or washer, squeegee, detailing
+      towels, extension poles, buckets, scrapers approved for the specific glass, and
+      specialized hand tools.
+    ai_rule: Do not treat scraper use as universally safe.
+    rules:
+      - Inspect glass and identify possible tempered surfaces before any scraping.
+      - Keep blades clean, sharp, flat, and lubricated when the approved process requires them.
+      - Never drag a blade across dry glass or contaminated edges.
+      - Use nonabrasive pads appropriate for the glass and coating.
+      - Detail edges without damaging seals, films, tint, or painted frames.
+
+  hard_water_and_mineral_stain_diagnostics:
+    title: "Hard-Water and Mineral Stain Diagnostics"
+    chunk: hard-water-restoration
+    risk_level: elevated
+    description: >
+      Hard-water spotting and mineral deposits may contain calcium, magnesium, silica,
+      iron, irrigation residue, masonry runoff, or mixed contamination. Severity ranges
+      from removable surface deposits to permanent etching or coating damage.
+    procedure:
+      1: Identify the water source and surrounding materials.
+      2: Determine whether the deposit is recent, layered, or etched into the glass.
+      3: Inspect adjacent metal, stone, sealants, and coatings for chemical sensitivity.
+      4: Complete a small controlled test area.
+      5: Document improvement, remaining defects, and any evidence of permanent damage.
+      6: Obtain customer acceptance before broad restoration work.
+    ai_restriction: >
+      Do not prescribe aggressive acids or abrasive systems without product-specific
+      information, substrate confirmation, PPE review, and field testing.
+
+  fabrication_debris_and_glass_damage_risks:
+    title: "Fabrication Debris and Glass Damage Risks"
+    chunk: fabrication-debris
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_warning: >
+      Some tempered glass may contain fabrication debris that can be dislodged during
+      scraping and cause scratching. A scraper is not automatically safe simply because
+      it is designed for glass.
+    rules:
+      - Inspect labels, building records, and glass condition when available.
+      - Use written limitations for post-construction and restoration cleaning.
+      - Photograph pre-existing scratches, weld spatter, chips, coating defects, and seal failures.
+      - Escalate uncertain surfaces to a supervisor or qualified glass professional.
+      - Do not represent cleaning as a repair for damaged glass or failed insulated units.
+
+  solar_panel_cleaning:
+    title: "Solar Panel Cleaning"
+    chunk: solar-panel-cleaning
+    risk_level: elevated
+    description: >
+      Solar-panel cleaning requires coordination between cleaning performance, electrical
+      safety, roof access, manufacturer guidance, water quality, and warranty
+      considerations. Do not make unsupported energy-production guarantees.
+    rules:
+      - Confirm panel manufacturer guidance and system-owner requirements.
+      - Avoid abrasive tools and uncontrolled pressure.
+      - Control thermal shock by considering panel temperature and water temperature.
+      - Use access methods appropriate to the roof and electrical environment.
+      - Do not disconnect, open, or service electrical components unless qualified and authorized.
+      - Document cracked panels, loose wiring, damaged frames, and roof defects before cleaning.
+    escalation: High-access, roof work, electrical systems, and unknown panel types must be escalated.
+
+  specialty_architectural_surfaces:
+    title: "Specialty Architectural Surfaces"
+    chunk: specialty-surfaces
+    risk_level: elevated
+    note: Each system requires confirmation before chemical or mechanical treatment.
+    surfaces:
+      acrylic_polycarbonate:
+        common_concern: Scratching and chemical crazing.
+        avoid: Abrasives and incompatible solvents.
+        escalation_trigger: Unknown coating or prior damage.
+      window_film_tint:
+        common_concern: Edge lifting and chemical sensitivity.
+        avoid: Scrapers and strong chemicals.
+        escalation_trigger: Unidentified film type.
+      anodized_aluminum:
+        common_concern: Oxidation and finish variation.
+        avoid: Aggressive alkalinity or abrasion.
+        escalation_trigger: Color change or failed anodizing.
+      painted_metal:
+        common_concern: Chalking and coating failure.
+        avoid: High pressure and strong solvents.
+        escalation_trigger: Peeling, blistering, or unknown coating.
+      composite_panels:
+        common_concern: Joint and coating sensitivity.
+        avoid: Forcing water into seams.
+        escalation_trigger: Loose panels or failed joints.
+      historic_glazing:
+        common_concern: Fragile glass, putty, and frames.
+        avoid: Routine modern methods without review.
+        escalation_trigger: Heritage requirements or failing putty.
+
+  stainless_steel_and_aluminum:
+    title: "Stainless Steel and Aluminum"
+    chunk: stainless-steel
+    risk_level: elevated
+    description: >
+      Metal restoration begins with identifying the metal and finish. Stainless steel can
+      show fingerprints, atmospheric staining, tea staining, rust transfer, mineral
+      deposits, and directional scratches. Aluminum may be mill-finish, painted, anodized,
+      or coated. The wrong chemical or abrasive can permanently alter appearance.
+    rules:
+      - Follow the grain direction on brushed stainless steel.
+      - Avoid cross-grain abrasion unless a controlled restoration specification requires it.
+      - Test cleaners on an inconspicuous area.
+      - Protect adjacent glass, masonry, sealants, and landscaping.
+      - Distinguish surface contamination from corrosion, coating failure, or metal loss.
+
+  composite_and_coated_panels:
+    title: "Composite and Coated Panels"
+    chunk: composite-panels
+    risk_level: elevated
+    content: >
+      Architectural panel systems rely on factory-applied coatings and sealed joints.
+      Use low-pressure methods, compatible chemistry, controlled dwell time, and careful
+      rinsing. High pressure at panel joints can create water intrusion or damage sealants.
+
+  safety_and_property_protection:
+    title: "Safety and Property Protection"
+    chunk: safety-protection
+    risk_level: elevated
+    rules:
+      - Establish pedestrian and vehicle control where hoses, poles, ladders, or runoff cross occupied areas.
+      - Use fall protection and access systems according to applicable requirements and employer procedures.
+      - Maintain safe clearance from electrical conductors and energized equipment.
+      - Control interior leakage risk around failed seals, open windows, vents, and penetrations.
+      - Secure tools and poles against falling-object hazards.
+      - Use product labels and SDS documents for chemical PPE and first-aid guidance.
+      - Stop work when weather, wind, lightning, ice, heat, or access conditions create unacceptable risk.
+
+  quality_control:
+    title: "Quality Control"
+    chunk: quality-control
+    risk_level: general
+    steps:
+      1: Complete a pre-job inspection and document existing defects.
+      2: Confirm the agreed scope — glass only, frames, screens, tracks, storms, interior, exterior, or restoration.
+      3: Perform a representative test area where risk or staining is uncertain.
+      4: Inspect from multiple angles and lighting conditions.
+      5: Remove detailing residue and verify corners, edges, frames, and sills.
+      6: Document permanent stains, seal failure, scratches, coating damage, and inaccessible areas.
+      7: Complete a final walkthrough or provide photographic closeout documentation.
+
+  estimating_and_production_logic:
+    title: "Estimating and Production Logic"
+    chunk: estimating-production
+    risk_level: general
+    ai_rule: Identify labor drivers and recommend field verification before final pricing.
+    pricing_drivers:
+      pane_count_and_size:
+        why: Determines basic handling and detail time.
+        adjustment: Base quantity.
+      height_and_access:
+        why: Changes equipment, safety, and production.
+        adjustment: Access premium.
+      storm_windows_screens:
+        why: Multiple removals and cleaning surfaces.
+        adjustment: Per-unit add-on.
+      divided_lights:
+        why: High detail labor.
+        adjustment: Per-pane or complexity factor.
+      post_construction_debris:
+        why: Elevated risk and slower production.
+        adjustment: Separate restoration rate.
+      hard_water_restoration:
+        why: Testing and specialty treatment required.
+        adjustment: Per-area restoration allowance.
+      interior_contents_occupancy:
+        why: Protection and movement time.
+        adjustment: Mobilization and protection allowance.
+    commercial_note: >
+      Commercial route work may be priced by pane, opening, elevation, labor hour,
+      building zone, recurring service interval, or a hybrid model. Production
+      assumptions should be validated against actual crew history.
+
+  customer_communication:
+    title: "Customer Communication Library"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "Why did you recommend pure-water cleaning?"
+        answer: >
+          Pure-water systems allow us to scrub and rinse exterior glass with highly
+          purified water, often from the ground or with reduced ladder use. The method
+          can provide excellent maintenance results when the glass, frames, water quality,
+          and contamination are appropriate.
+      - question: "Can you remove all hard-water stains?"
+        answer: >
+          Some mineral deposits can be substantially improved, while others have etched
+          or permanently altered the glass. We inspect and test a small area before
+          confirming the likely restoration level.
+      - question: "Why are storm windows priced separately?"
+        answer: >
+          Storm windows create additional panels, edges, tracks, removal steps, and
+          trapped-surface cleaning. They can multiply the labor required even when the
+          visible opening appears to be a single window.
+      - question: "Can you clean fogged windows?"
+        answer: >
+          We can clean the accessible glass surfaces, but fogging between panes usually
+          indicates a failed insulated-glass seal. Cleaning does not repair that internal
+          seal failure.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    boundaries:
+      - Do not certify that a glass surface is safe to scrape without inspection and documentation.
+      - Do not guarantee complete restoration of mineral stains, scratches, corrosion, oxidation, or coating damage.
+      - Do not provide lift-operation, rope-access, or fall-protection training.
+      - Do not diagnose electrical or solar-system defects beyond visible-condition reporting.
+      - Do not represent internal fogging as a cleaning problem when seal failure is likely.
+      - Do not give site-specific chemical instructions without product, surface, and risk confirmation.
+      - Escalate architectural, historic, coated, damaged, or unidentified surfaces to a Surface Shield Systems representative.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    versioning:
+      - Store as SSBOS-001-AIM3-V7.0.
+      - Do not overwrite or delete AIM3 Versions 1.0 through 6.0.
+      - Maintain revision metadata and source-document traceability.
+    retrieval_priority: >
+      Safety, glass-damage limitations, fabrication-debris warnings, and escalation
+      triggers must be indexed with higher retrieval priority than general cleaning
+      instructions.
+    metadata:
+      module: AIM3
+      version: "7.0"
+      division: exterior
+      service_class: windows-specialty
+      audience: [public-ai, internal, developer]
+      risk_level: [general, elevated, escalation-required]
+      document_status: developer-ready
+
+  roadmap_v8:
+    next_version: "V8.0"
+    title: "Exterior Estimating Framework & Service-Price Architecture"
+    focus:
+      - Exterior estimating framework and service-price architecture
+      - Production-rate libraries and crew-hour calculations
+      - Mobilization, minimum charges, access premiums, and equipment allowances
+      - Residential and commercial proposal logic
+      - Optional add-ons and maintenance-plan pricing
+      - Quality-control documentation and closeout standards
+      - AI quote boundaries, confidence levels, and required human review

@@ -1,0 +1,263 @@
+module_id: SSBOS-001-AIM3-V4.0
+title: "AI Module 3 – Exterior Division: Professional Wood Restoration & Finishing Systems"
+version: "4.0"
+division: Exterior
+status: active
+supersedes: none
+tags:
+  - wood-restoration
+  - deck-cleaning
+  - fence-restoration
+  - wood-chemistry
+  - coatings
+  - moisture
+  - inspection
+  - maintenance
+  - customer-education
+  - stripping
+  - brightening
+  - staining
+  - sealing
+
+sections:
+
+  required_ai_behavior:
+    priority: CRITICAL
+    rules:
+      - Identify wood species, existing coating, contamination, moisture condition, and structural condition before recommending any process.
+      - Distinguish routine maintenance cleaning from full restoration, stripping, sanding, repair, and refinishing.
+      - Prefer the least aggressive process capable of achieving the intended result.
+      - Do not recommend coating structurally unsound, rotten, excessively wet, or contaminated wood.
+      - Do not guarantee an exact final color — wood species, age, porosity, prior coatings, preparation, and weathering all affect appearance.
+      - Recommend field testing whenever compatibility, coating condition, or color response is uncertain.
+      - Escalate suspected lead paint, severe rot, structural movement, electrical hazards, elevated-access requirements, or hazardous-material concerns to qualified professionals.
+      - Public-facing AI responses must remain educational and route property-specific restoration plans to a Surface Shield Systems representative.
+
+  wood_science_fundamentals:
+    title: "Wood Science Fundamentals"
+    content: >
+      Wood is a natural, porous, hygroscopic material. Its appearance and performance
+      change with species, grain orientation, moisture content, ultraviolet exposure,
+      biological growth, age, weathering, previous coatings, fasteners, drainage,
+      ventilation, and structural condition. Every restoration recommendation begins
+      with identifying the material and evaluating its current condition.
+
+  common_wood_species:
+    title: "Common Wood Species"
+    species:
+      cedar:
+        characteristics:
+          - Naturally decay-resistant and dimensionally stable
+          - Common for fences, siding, pergolas, decks, and architectural details
+          - Susceptible to ultraviolet graying and extractive bleeding
+          - Benefits from periodic cleaning and a compatible penetrating finish
+      pressure_treated_pine:
+        characteristics:
+          - Widely used for decks, stairs, railings, and fences
+          - Treated for biological durability but still subject to checking, warping, cracking, and UV degradation
+          - New material may require adequate drying before coating
+      redwood:
+        characteristics:
+          - Premium appearance and good natural decay resistance
+          - Requires ultraviolet protection to retain color
+          - Can show uneven absorption if preparation is inconsistent
+      douglas_fir:
+        characteristics:
+          - Strong structural lumber often used in framing and exposed structures
+          - Requires protection when exposed to weather
+          - Can develop checking and uneven weathering
+      exotic_hardwoods:
+        examples: [Ipe, Cumaru, Garapa, Tigerwood]
+        characteristics:
+          - Dense and naturally durable
+          - Often require specialized cleaners, careful drying, and penetrating oil finishes formulated for dense hardwoods
+          - Maintenance intervals and application methods differ from softwoods
+
+  common_deterioration:
+    title: "Common Forms of Deterioration"
+    types:
+      uv_degradation:
+        description: Gray appearance, surface-fiber breakdown, fading, and loss of natural color.
+      organic_growth:
+        description: Mold, mildew, algae, moss, or lichen associated with moisture and limited sunlight.
+      water_damage:
+        description: Softness, rot, delamination, swelling, cupping, or structural weakness.
+      mechanical_damage:
+        description: Splinters, gouges, impact marks, fastener damage, cracks, and abrasion.
+      coating_failure:
+        description: Peeling, flaking, blistering, excessive film build, uneven wear, or loss of adhesion.
+      fastener_and_metal_staining:
+        description: Rust marks, tannin reactions, and discoloration around incompatible or corroded hardware.
+
+  inspection_procedure:
+    title: "Inspection Procedure"
+    steps:
+      - Identify the wood species or probable species.
+      - Document the existing coating — penetrating, film-forming, painted, or unknown.
+      - Inspect for rot, loose boards, failed fasteners, structural movement, insect activity, and unsafe conditions.
+      - Check biological growth, UV damage, graying, tannin staining, and previous pressure damage.
+      - Evaluate drainage, ground clearance, shade, sun exposure, ventilation, and nearby landscaping.
+      - Determine whether cleaning, stripping, sanding, repair, or replacement is required.
+      - Recommend replacement of severely deteriorated structural components rather than cosmetic restoration.
+
+  cleaning_and_preparation:
+    title: "Cleaning and Preparation Systems"
+    methods:
+      maintenance_cleaning:
+        use: Light organic contamination, routine care, and surfaces with a stable compatible finish.
+      restoration_cleaning:
+        use: Weathered wood, heavier contamination, and preparation for refinishing.
+      stripping:
+        use: Removal or reduction of failed stain, sealer, or coating when the intended finish requires a clean, uniformly prepared substrate.
+      sanding:
+        use: Mechanical refinement — correct raised fibers, feather coating edges, remove localized defects, prepare selected surfaces.
+        limitation: Sanding does not replace chemical preparation when chemical residues or incompatible coatings remain.
+      repair_and_replacement:
+        use: Loose, rotten, split, structurally deficient, or improperly fastened components may require repair or replacement before finishing.
+
+  wood_chemistry:
+    title: "Wood Chemistry Categories"
+    ai_rule: >
+      The AI should explain product purpose but avoid inventing concentrations or mixing
+      instructions. The product label, Safety Data Sheet, manufacturer guidance, wood
+      species, existing finish, and field testing control the procedure.
+    categories:
+      sodium_percarbonate_cleaners:
+        use: General wood cleaning and organic contamination. Product instructions and substrate testing control application.
+      alkaline_strippers:
+        use: Remove or soften selected oil-based coatings and heavy buildup.
+        caution: Can darken wood — generally require thorough rinsing and compatible pH correction.
+      oxalic_acid_brighteners:
+        use: Brighten weathered wood, reduce iron or tannin discoloration, and help restore appearance after alkaline cleaning.
+      citric_acid_brighteners:
+        use: Milder acid category used in some wood-brightening and pH-correction systems.
+      specialty_cleaners:
+        use: Products designed for tannin, rust, mildew, coating residue, or species-specific conditions. Compatibility must be verified.
+
+  brightening_and_ph_correction:
+    title: "Brightening and pH Correction"
+    content: >
+      After certain alkaline cleaners or strippers, the wood may require an appropriate
+      brightener or pH-correction step. This can improve appearance, reduce darkening,
+      and prepare the surface for many finishing systems. Brightening does not repair
+      rotten wood, erase every stain, or guarantee uniform color.
+
+  water_pressure_and_rinsing:
+    title: "Water Pressure and Rinsing"
+    rules:
+      - Use controlled pressure appropriate to the wood species and condition.
+      - Excessive pressure can cut fibers, create fur, leave lap marks, enlarge checks, and cause permanent damage.
+      - Water flow, fan width, distance, angle, dwell time, chemistry, and operator technique should work together.
+      - Rinse methodically to avoid chemical residue and uneven preparation.
+      - Do not force water into wall assemblies, electrical components, joints, or building openings.
+
+  drying_and_moisture_content:
+    title: "Drying and Moisture Content"
+    content: >
+      Proper moisture content is critical before applying many finishes. Recent rainfall,
+      humidity, shade, wood thickness, species, air circulation, washing method, and
+      temperature all affect drying rate. Verify the coating manufacturer's maximum
+      moisture requirement using a suitable moisture meter and check multiple
+      representative locations across the structure.
+
+  finishing_systems:
+    title: "Finishing System Categories"
+    categories:
+      transparent_clear:
+        description: Maximum natural appearance but generally limited ultraviolet protection.
+      semi_transparent:
+        description: Visible grain with added pigment and balanced protection.
+      semi_solid:
+        description: Higher pigment, stronger ultraviolet protection, and partial grain visibility.
+      solid_color_stain:
+        description: High pigment and strong color uniformity with a more paint-like appearance.
+      paint_film_forming:
+        description: Creates a surface film; may be appropriate for selected vertical or previously painted wood, but requires compatible preparation and maintenance.
+      penetrating_oil_finish:
+        description: Common for decks, fences, cedar, and dense hardwoods. Product-specific compatibility, spread rate, and excess-product removal are important.
+
+  application_methods:
+    title: "Application Methods"
+    methods:
+      - Brush
+      - Stain pad
+      - Roller
+      - Airless sprayer
+      - HVLP sprayer
+      - Back-brushing
+      - Back-rolling
+    note: >
+      Spraying may improve production but does not eliminate the need for controlled
+      application, masking, overspray management, and back-brushing or back-rolling
+      when required by the product or substrate.
+
+  weather_and_application:
+    title: "Weather and Application Conditions"
+    rules:
+      - Confirm acceptable air and surface temperatures before beginning.
+      - Avoid application when rain, dew, frost, excessive heat, direct sun, or high wind may interfere with performance.
+      - Do not coat wood that exceeds the manufacturer's moisture limit.
+      - Respect minimum and maximum recoat windows specified by the product manufacturer.
+      - Account for shade, elevation, and differing exposure across the same structure.
+
+  maintenance_programs:
+    title: "Maintenance Programs"
+    ai_framing: >
+      Present maintenance as an investment in preserving the wood and reducing the
+      cost of future restoration, not merely a cosmetic service.
+    components:
+      - Annual visual inspection
+      - Scheduled maintenance cleaning
+      - Spot repairs and fastener correction
+      - Moisture and drainage management
+      - Localized touch-up where compatible
+      - Recoating before widespread failure
+      - Documentation of finish type and application date
+
+  customer_communication:
+    title: "Customer Communication Library"
+    scripts:
+      - question: "Why can't you just pressure wash my deck?"
+        answer: >
+          Pressure alone can damage wood fibers, leave a rough surface, and shorten the
+          service life of the deck. Professional restoration uses appropriate chemistry,
+          controlled water pressure, proper drying, and a finishing system selected for
+          the wood and its condition.
+      - question: "Why does my cedar fence turn gray?"
+        answer: >
+          Ultraviolet exposure and weathering break down the surface fibers and gradually
+          change the color. The gray appearance is often cosmetic, but the fence should
+          still be inspected for moisture damage, rot, and coating failure. Cleaning and
+          a suitable finish can restore much of the appearance and slow future weathering.
+      - question: "Will the restored wood look brand new?"
+        answer: >
+          Restoration can substantially improve appearance, but age, previous coatings,
+          repairs, sun exposure, porosity, and permanent staining can remain visible.
+          A test area helps establish realistic expectations.
+      - question: "How soon can the wood be stained after washing?"
+        answer: >
+          Drying time depends on the wood, weather, shade, humidity, and cleaning process.
+          We verify the coating manufacturer's moisture requirement rather than relying
+          only on a fixed number of days.
+
+  knowledge_boundaries:
+    priority: CRITICAL
+    boundaries:
+      - Do not guarantee stain color, coating lifespan, or complete stain removal.
+      - Do not diagnose structural safety without an onsite inspection.
+      - Do not recommend coating over an unknown or failing finish without evaluation.
+      - Do not provide unsafe chemical handling or uncontrolled mixing instructions.
+      - Escalate suspected lead paint, severe rot, structural movement, electrical hazards, elevated access, or hazardous-material concerns to qualified professionals.
+      - Public-facing AI responses should remain educational and route property-specific restoration plans to a Surface Shield Systems representative.
+
+  roadmap_v5:
+    next_version: "V5.0"
+    focus:
+      - Concrete restoration and flatwork cleaning
+      - Brick and masonry cleaning
+      - Natural stone identification and compatibility
+      - Efflorescence and mineral deposits
+      - Rust, oil, fertilizer, and specialty stain diagnostics
+      - Pavers and decorative concrete
+      - Commercial flatwork and parking structures
+      - Production standards, estimating methodology, and quality control

@@ -1,0 +1,355 @@
+module_id: SSBOS-001-AIM4-V2.0
+title: "AI Module 4 – Interior Division: Premium Interior Surfaces, Material Identification & Specialty Care"
+version: "2.0"
+division: Interior
+document_type: Elite SSBOS Manual
+status: developer-ready
+document_role: specialty-surfaces
+routing_priority: primary
+namespace: interior-division
+supersedes: none
+audience: [public-ai, technician, internal, developer]
+primary_use: AI retrieval, premium-surface care, employee reference
+document_status: developer-ready
+tags:
+  - premium-surfaces
+  - material-identification
+  - finish-identification
+  - natural-stone
+  - engineered-surfaces
+  - hardwood-flooring
+  - lvp-lvt-laminate
+  - premium-cabinetry
+  - decorative-metals
+  - interior-glass
+  - mirrors
+  - fine-furniture
+  - leather-upholstery
+  - product-selection
+  - test-area-protocol
+  - damage-prevention
+  - customer-communication
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: premium-surfaces
+    risk_level: general
+    content: >
+      Version 2.0 expands the Interior Division knowledge base into premium material
+      identification and specialty care. The AI should preserve original finishes, favor
+      the least aggressive effective process, distinguish cleaning from restoration, and
+      avoid unsupported certainty when material identity or finish history is unknown.
+    principles:
+      - Identify the material and finish before recommending products or tools.
+      - Separate removable soil from wear, etching, scratching, heat damage, UV change, coating failure, and permanent staining.
+      - Use manufacturer instructions as the controlling reference whenever available.
+      - Recommend a discreet test area when compatibility, colorfastness, or finish stability is uncertain.
+      - Escalate high-value, historic, damaged, chemically sensitive, or unidentified materials.
+
+  premium_surface_decision_framework:
+    title: "Premium Surface Decision Framework"
+    chunk: material-identification
+    risk_level: elevated
+    decisions:
+      what_is_the_material:
+        why_it_matters: Different materials respond differently to water, pH, abrasives, solvents, and heat.
+        ai_response: Do not recommend a method until material identity is reasonably established.
+      what_is_the_finish:
+        why_it_matters: Factory coatings, sealers, waxes, oils, and films may be more sensitive than the substrate.
+        ai_response: Treat finish identification as separate from substrate identification.
+      what_is_the_soil_or_defect:
+        why_it_matters: Grease, mineral scale, ink, abrasion, oxidation, and etching require different responses.
+        ai_response: Classify before selecting chemistry.
+      what_is_the_value_or_risk:
+        why_it_matters: Luxury, historic, custom, and irreplaceable finishes require more conservative procedures.
+        ai_response: Escalate when loss potential is high.
+      is_manufacturer_guidance_available:
+        why_it_matters: Approved products and exclusions may be material-specific.
+        ai_response: Use current manufacturer guidance when available.
+      is_restoration_required:
+        why_it_matters: Cleaning may not reverse physical or chemical damage.
+        ai_response: Explain limits and refer specialty restoration when appropriate.
+
+  natural_stone:
+    title: "Natural Stone"
+    chunk: natural-stone
+    risk_level: elevated
+    note: >
+      Natural stone varies in mineral composition, porosity, finish, sealer condition,
+      and prior treatment. The AI must avoid definitive stone identification from
+      photographs alone and should distinguish routine cleaning from honing, polishing,
+      stain poulticing, sealing, or repair.
+    materials:
+      marble:
+        typical_traits: Calcite-based; may be polished or honed.
+        primary_risks: Acid etching, scratching, dulling.
+        ai_starting_logic: Use pH-appropriate care; escalate etching and polishing.
+      limestone:
+        typical_traits: Often porous and acid-sensitive.
+        primary_risks: Etching, staining, erosion.
+        ai_starting_logic: Use conservative moisture and chemistry.
+      travertine:
+        typical_traits: Voids or filled pits; calcite-based.
+        primary_risks: Etching, filler damage, soil in holes.
+        ai_starting_logic: Avoid aggressive tools and acids.
+      granite:
+        typical_traits: Generally harder; mineral composition varies.
+        primary_risks: Residue, sealer issues, occasional staining.
+        ai_starting_logic: Use compatible neutral care and verify sealer.
+      quartzite:
+        typical_traits: Natural hard stone; may resemble marble.
+        primary_risks: Misidentification and resin sensitivity.
+        ai_starting_logic: Verify material before stronger chemistry.
+      slate:
+        typical_traits: Layered material with variable cleft.
+        primary_risks: Flaking, uneven absorption, coating issues.
+        ai_starting_logic: Use low-residue methods and test.
+      soapstone:
+        typical_traits: Soft, dense stone often oiled.
+        primary_risks: Scratching and uneven oil appearance.
+        ai_starting_logic: Follow owner/manufacturer maintenance system.
+
+  engineered_countertop_and_slab_materials:
+    title: "Engineered Countertop and Slab Materials"
+    chunk: engineered-surfaces
+    risk_level: elevated
+    rules:
+      - Quartz surfaces contain mineral aggregate and resin; high heat, harsh solvents, and abrasive procedures may damage the resin system.
+      - Cultured marble and solid-surface materials can scratch or dull even when the underlying substrate is durable.
+      - Porcelain and sintered slabs are durable but edges, seams, coatings, and installation details remain vulnerable.
+      - Do not assume the care requirements of an engineered product match natural stone.
+      - Request brand or manufacturer information when available.
+
+  hardwood_and_engineered_wood_flooring:
+    title: "Hardwood and Engineered Wood Flooring"
+    chunk: hardwood-flooring
+    risk_level: elevated
+    principle: >
+      The top finish is often the controlling factor. Excess water, steam, strong
+      alkalinity, solvents, abrasive pads, and prolonged wetting can damage coatings,
+      seams, wood fibers, or adhesives.
+    rules:
+      - Identify solid hardwood, engineered wood, laminate, or wood-look resilient flooring.
+      - Check for open seams, cupping, swelling, finish wear, scratches, wax, polish, or previous coating.
+      - Use minimal moisture and remove standing liquid promptly.
+      - Do not promise scratch, finish, pet-stain, black-water-mark, or UV-fade removal through cleaning.
+      - Escalate refinishing, recoating, water damage, loose boards, or structural movement.
+
+  lvp_lvt_and_laminate_flooring:
+    title: "LVP, LVT and Laminate Flooring"
+    chunk: lvp-lvt-laminate
+    risk_level: elevated
+    systems:
+      lvp_lvt:
+        primary_concerns: Residue, seam intrusion, wear-layer scratching, incompatible polish.
+        ai_guidance: Use low-residue compatible care; avoid abrasive restoration promises.
+      laminate:
+        primary_concerns: Water intrusion at seams, swelling, edge damage.
+        ai_guidance: Use very limited moisture and no unsupported steam recommendation.
+      click_lock_floors:
+        primary_concerns: Open joints, trapped soil, movement.
+        ai_guidance: Do not flood; inspect seams and transitions.
+      adhesive_down_floors:
+        primary_concerns: Adhesive sensitivity, edge lifting, residue.
+        ai_guidance: Avoid solvents unless product approval is known.
+
+  premium_cabinetry_and_millwork:
+    title: "Premium Cabinetry and Millwork"
+    chunk: premium-cabinetry
+    risk_level: elevated
+    rules:
+      - Identify painted, stained, lacquered, varnished, conversion-varnish, thermofoil, laminate, veneer, or high-gloss finishes.
+      - Use soft nonabrasive tools and controlled moisture, especially near seams, edges, hinges, and unfinished backs.
+      - Degreasing strength must be balanced against finish sensitivity.
+      - Do not use aggressive melamine foam, abrasive pads, or solvents without verification.
+      - Escalate peeling thermofoil, failing paint, water damage, delamination, or unknown custom finishes.
+
+  stainless_steel_and_decorative_metals:
+    title: "Stainless Steel and Decorative Metals"
+    chunk: decorative-metals
+    risk_level: elevated
+    finishes:
+      brushed_stainless:
+        common_issues: Fingerprints, grease, streaking.
+        care_logic: Clean with the grain and control residue.
+      polished_stainless:
+        common_issues: Fine scratches and haze.
+        care_logic: Use very soft tools; avoid abrasive compounds.
+      chrome:
+        common_issues: Water spots and plating damage.
+        care_logic: Use mild compatible care; plating loss is not cleanable.
+      brass_bronze:
+        common_issues: Tarnish, lacquer failure, patina.
+        care_logic: Determine whether patina is intentional and whether metal is coated.
+      nickel:
+        common_issues: Water spots, finish sensitivity.
+        care_logic: Avoid abrasives and strong acids.
+      matte_black_fixtures:
+        common_issues: Visible residue and coating wear.
+        care_logic: Use low-residue products and gentle cloths.
+
+  interior_glass_mirrors_and_decorative_glazing:
+    title: "Interior Glass, Mirrors and Decorative Glazing"
+    chunk: interior-glass
+    risk_level: elevated
+    rules:
+      - Identify mirror coatings, tinted films, frosted surfaces, decorative films, tempered glass, laminated glass, and coated architectural glass.
+      - Do not recommend scraping until the glass type, coating, debris, and damage risk are evaluated.
+      - Hard-water deposits, adhesive, paint, fabrication debris, scratches, and seal failure are different conditions.
+      - Prevent liquid intrusion behind mirror edges and into frames.
+      - Escalate historic glazing, disputed scratches, damaged tint, failed insulated units, or unknown coatings.
+
+  fine_furniture_leather_and_upholstery:
+    title: "Fine Furniture, Leather and Upholstery"
+    chunk: fine-furniture
+    risk_level: elevated
+    note: >
+      Furniture and upholstery may contain mixed materials, dyes, flame treatments,
+      performance finishes, adhesives, decorative trim, and concealed construction.
+      Product testing and manufacturer information are especially important.
+    rules:
+      - Identify finished wood, veneer, laminate, leather, faux leather, microfiber, natural fiber, synthetic fabric, and performance fabric.
+      - Check labels and care codes where available.
+      - Test colorfastness and finish stability in an inconspicuous area.
+      - Do not oversaturate upholstery or leather.
+      - Do not promise odor, dye transfer, ink, pet damage, fading, cracking, or permanent stain removal.
+      - Escalate antiques, high-value furniture, silk, velvet, Haitian cotton, unstable dyes, or unknown specialty materials.
+
+  product_selection_logic:
+    title: "Product Selection Logic"
+    chunk: product-selection
+    risk_level: general
+    selection_factors:
+      material_and_finish:
+        required_analysis: Confirm substrate and coating separately.
+      soil_type:
+        required_analysis: Organic soil, grease, mineral deposit, dye, adhesive, residue, or physical damage.
+      ph_and_solvent_sensitivity:
+        required_analysis: Avoid incompatible acids, alkalines, solvents, and oxidizers.
+      moisture_tolerance:
+        required_analysis: Control liquid volume, dwell, extraction, and drying.
+      mechanical_tolerance:
+        required_analysis: Select cloth, brush, pad, scraper, or machine based on scratch risk.
+      occupant_needs:
+        required_analysis: Children, pets, sensitivities, allergies, and requested product restrictions.
+      manufacturer_direction:
+        required_analysis: Approved products, dilution, dwell, tools, and prohibited methods.
+
+  damage_prevention_and_test_area_protocol:
+    title: "Damage Prevention and Test-Area Protocol"
+    chunk: test-area-protocol
+    risk_level: elevated
+    steps:
+      1: Document the material and existing defects.
+      2: Review manufacturer guidance and product label.
+      3: Select the least aggressive compatible method.
+      4: Test in a hidden or low-visibility area when practical.
+      5: Allow the test area to dry fully before evaluation when appearance may change.
+      6: Check color, gloss, texture, adhesion, residue, and water response.
+      7: Proceed only when results are acceptable.
+      8: Stop and escalate if damage, color transfer, swelling, dulling, etching, or coating instability appears.
+
+  customer_communication_standards:
+    title: "Customer Communication Standards"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "Can every stain be removed?"
+        answer: >
+          Some discoloration is permanent material change, wear, etching, dye loss,
+          heat, or chemical damage.
+      - question: "Why do you need to test first?"
+        answer: >
+          Testing helps protect valuable finishes and confirms compatibility before
+          full application.
+      - question: "Can you make the stone shiny again?"
+        answer: >
+          Cleaning may remove soil and residue, but honing or polishing is a separate
+          restoration service.
+      - question: "Why can't you use steam everywhere?"
+        answer: >
+          Heat and moisture can damage wood, seams, adhesives, coatings, and some
+          engineered materials.
+      - question: "Will cleaning remove scratches?"
+        answer: >
+          Scratches are physical damage and usually require repair or refinishing
+          rather than cleaning.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      The AI must not provide binding restoration diagnoses, guarantee stain removal,
+      override manufacturer instructions, or recommend aggressive procedures on
+      unidentified or high-value surfaces.
+    boundaries:
+      - Do not diagnose structural flooring, mold, asbestos, lead, pests, indoor-air quality, or health conditions.
+      - Do not recommend mixing cleaning chemicals.
+      - Do not authorize refinishing, polishing, honing, sanding, coating removal, or repair without qualified review.
+      - Do not represent photo identification as certain when material or finish remains ambiguous.
+      - Do not promise exact color, gloss, odor removal, sanitation level, or restoration outcome.
+
+  mandatory_escalation_triggers:
+    title: "Mandatory Escalation Triggers"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Historic, antique, irreplaceable, luxury, or custom surfaces.
+      - Unknown material, finish, coating, sealant, tint, or prior chemical treatment.
+      - Visible etching, swelling, delamination, finish failure, deep scratching, water damage, or structural movement.
+      - Potential mold, lead, asbestos, biological contamination, pest activity, or hazardous residue.
+      - Customer damage allegation, warranty issue, legal threat, insurance question, or requested guarantee.
+      - Any condition requiring sanding, polishing, honing, refinishing, repair, or restoration beyond cleaning.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    chunk: ai-boundaries
+    risk_level: general
+    principle: >
+      Version 2.0 should be indexed as a specialty-surface knowledge layer. Retrieval
+      should combine material, finish, soil, risk, audience, and requested outcome.
+      Safety and escalation content must override generic cleaning content.
+    recommended_chunks:
+      premium_surface_framework:
+        tags: [premium-surfaces, material-id, finish-id, risk]
+      natural_stone:
+        tags: [marble, granite, limestone, travertine, slate, quartzite]
+      engineered_surfaces:
+        tags: [quartz, solid-surface, porcelain, cultured-marble]
+      flooring:
+        tags: [hardwood, engineered-wood, lvp, lvt, laminate]
+      cabinetry_and_millwork:
+        tags: [cabinetry, lacquer, thermofoil, veneer, painted-finish]
+      metals:
+        tags: [stainless, brass, bronze, nickel, chrome]
+      glass_and_mirrors:
+        tags: [mirror, tempered-glass, tint, decorative-glass]
+      furniture_and_upholstery:
+        tags: [leather, upholstery, furniture, care-code]
+    metadata:
+      module: AIM4
+      version: "2.0"
+      division: interior
+      document_role: specialty-surfaces
+      status: developer-ready
+      audience: [public-ai, technician, internal, developer]
+      risk_level: [general, elevated, escalation-required]
+      routing_priority: primary
+
+  roadmap_v3:
+    next_version: "V3.0"
+    title: "Commercial Interior Maintenance & Facility Operations"
+    focus:
+      - Commercial interior maintenance and facility types.
+      - Office, retail, medical-office, property-management, apartment-turnover, church, and common-area workflows.
+      - Recurring service programs and frequency planning.
+      - Commercial production, staffing, access, security, and documentation.
+      - Commercial quality assurance and customer communication.
+      - Interior Division commercial SOP framework and escalation rules.

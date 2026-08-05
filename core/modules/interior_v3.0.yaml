@@ -1,0 +1,342 @@
+module_id: SSBOS-001-AIM4-V3.0
+title: "AI Module 4 – Interior Division: Commercial Interior Maintenance, Facility Operations and Recurring Service Systems"
+version: "3.0"
+division: Interior
+document_type: Elite SSBOS Manual
+status: developer-ready
+document_role: commercial-operations
+routing_priority: primary
+namespace: interior-division
+supersedes: none
+audience: [public-ai, technician, supervisor, management, developer]
+primary_use: AI retrieval, commercial service planning, facility support
+document_status: developer-ready
+tags:
+  - commercial-property-categories
+  - commercial-service-classes
+  - frequency-planning
+  - office-cleaning
+  - retail-cleaning
+  - medical-office-boundaries
+  - apartment-turnovers
+  - property-management
+  - common-area-maintenance
+  - access-security
+  - key-control
+  - confidentiality
+  - staffing-production
+  - commercial-quality-assurance
+  - recurring-service-agreements
+  - customer-communication
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: commercial-property-categories
+    risk_level: general
+    content: >
+      Version 3.0 trains the Surface Shield Systems AI to understand the planning,
+      communication, scope control, quality assurance, access coordination, and
+      recurring-service logic required for commercial interior cleaning. The AI should
+      support customers and staff without replacing site-specific evaluation, contract
+      review, or management approval.
+    principles:
+      - Differentiate routine janitorial maintenance from deep cleaning, turnover cleaning, post-construction cleaning, and specialty care.
+      - Account for occupancy, access, security, scheduling, traffic, confidentiality, and building operations.
+      - Develop clear task frequencies and service standards by facility type.
+      - Support recurring contracts with measurable quality expectations and documented issue resolution.
+      - Escalate hazardous materials, regulated environments, infection-control claims, security issues, and disputed scope.
+
+  commercial_property_categories:
+    title: "Commercial Property Categories"
+    chunk: commercial-property-categories
+    risk_level: general
+    facility_types:
+      office_buildings:
+        typical_priorities: Workstations, restrooms, break rooms, conference rooms, reception.
+        special_considerations: After-hours access, confidential documents, electronics.
+      retail_facilities:
+        typical_priorities: Sales floor, fitting rooms, glass, restrooms, entrances.
+        special_considerations: Customer traffic, displays, operating hours.
+      medical_offices:
+        typical_priorities: Public areas, exam-room surfaces, restrooms, waiting rooms.
+        special_considerations: Facility protocols, approved products, no unsupported infection-control claims.
+      apartment_communities:
+        typical_priorities: Common areas, turnovers, leasing offices, clubhouses.
+        special_considerations: Key control, unit condition, move schedules, property-manager approvals.
+      property_management:
+        typical_priorities: Multi-site consistency, inspections, reporting, tenant communication.
+        special_considerations: Standardized scopes and service logs.
+      churches_and_institutional_spaces:
+        typical_priorities: Sanctuaries, classrooms, offices, restrooms, event areas.
+        special_considerations: Event schedules, large open spaces, mixed-use rooms.
+      restaurants_non_kitchen_areas:
+        typical_priorities: Dining areas, entries, restrooms, windows, floors.
+        special_considerations: Food-contact boundaries and operating schedules.
+      schools_and_learning_spaces:
+        typical_priorities: Classrooms, offices, common areas, restrooms.
+        special_considerations: Access, child safety, facility-specific requirements.
+
+  commercial_service_classes:
+    title: "Commercial Service Classes"
+    chunk: commercial-service-classes
+    risk_level: general
+    classes:
+      - Routine recurring maintenance: scheduled cleaning intended to maintain an established standard.
+      - Periodic deep cleaning: detail work beyond the normal recurring scope.
+      - Day porter service: visible daytime support for high-traffic facilities.
+      - Nightly or after-hours janitorial service: cleaning performed outside normal occupancy.
+      - Unit turnover cleaning: preparation of apartments, offices, or rental spaces for new occupants.
+      - Post-construction final cleaning: removal of dust, debris, labels, residue, and construction-related soil.
+      - Common-area maintenance: hallways, elevators, stairs, lobbies, clubhouses, and shared amenities.
+      - Special project cleaning: floors, windows, high dusting, fixtures, or event preparation.
+
+  scope_development_by_frequency:
+    title: "Scope Development by Frequency"
+    chunk: frequency-planning
+    risk_level: general
+    frequencies:
+      daily_each_visit:
+        typical_tasks: Trash, restrooms, touchpoints, visible soil, entry areas, floors as specified.
+        planning_notes: Prioritize health, appearance, and high-traffic conditions.
+      weekly:
+        typical_tasks: Detailed dusting, low-use rooms, interior glass, deeper floor attention.
+        planning_notes: Rotate tasks when full coverage is not needed each visit.
+      monthly:
+        typical_tasks: High dusting, vents, baseboards, selected fixtures, detailed edges.
+        planning_notes: Use a documented periodic-task calendar.
+      quarterly:
+        typical_tasks: Deep cleaning, selected upholstery, machine floor care, detailed glass.
+        planning_notes: Confirm facility access and equipment needs.
+      annual_seasonal:
+        typical_tasks: Comprehensive reset, move support, post-winter or pre-event service.
+        planning_notes: Often requires separate scope and pricing.
+
+  office_cleaning_standards:
+    title: "Office Cleaning Standards"
+    chunk: office-cleaning
+    risk_level: general
+    rules:
+      - Respect desks, documents, electronics, personal items, and restricted areas.
+      - Do not move or discard papers, devices, medication, food, or personal property without authorization.
+      - Use electronics-safe methods and avoid excess moisture around equipment.
+      - Define whether dishes, refrigerators, microwaves, cabinets, and personal workstations are included.
+      - Maintain consistent restroom, break-room, reception, and conference-room standards.
+      - Document inaccessible areas, locked rooms, and conditions outside the agreed scope.
+
+  retail_and_customer_facing_facilities:
+    title: "Retail and Customer-Facing Facilities"
+    chunk: retail-cleaning
+    risk_level: general
+    rules:
+      - Plan work around store hours, deliveries, customers, and merchandising.
+      - Protect displays, signage, products, fixtures, and point-of-sale equipment.
+      - Use visible work-zone controls when cleaning during occupancy.
+      - Prioritize entries, glass, floors, fitting rooms, restrooms, and touchpoints.
+      - Coordinate wet-floor timing and drying before reopening affected areas.
+      - Separate routine appearance maintenance from specialty floor or fixture restoration.
+
+  medical_office_boundaries:
+    title: "Medical Office Boundaries"
+    chunk: medical-office-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      The AI must not claim that routine commercial cleaning provides sterilization,
+      infection control, medical-grade decontamination, or regulatory compliance unless
+      the facility-approved protocol, product, training, and contract explicitly support
+      that statement.
+    rules:
+      - Follow facility-specific instructions, approved products, contact times, PPE requirements, and restricted-area rules.
+      - Do not handle sharps, bodily fluids, pharmaceutical waste, or regulated medical waste unless specifically trained, equipped, and authorized.
+      - Route biohazard, exposure, isolation-room, or infection-control questions to facility management and qualified professionals.
+      - Document areas excluded from normal service and conditions requiring specialized remediation.
+
+  apartment_turnovers_and_property_management:
+    title: "Apartment Turnovers and Property Management"
+    chunk: apartment-turnovers
+    risk_level: elevated
+    phases:
+      initial_condition_review:
+        typical_work: Photos, damage notes, contents, utilities, access.
+        control_point: Separate cleaning from repairs and haul-out.
+      rough_clean:
+        typical_work: Trash and loose debris within scope, dust removal, initial vacuum.
+        control_point: Confirm disposal authority.
+      detailed_clean:
+        typical_work: Kitchen, baths, cabinets, appliances, fixtures, windows, floors.
+        control_point: Document permanent damage and heavy buildup.
+      final_quality_review:
+        typical_work: Touchups, odor observations, ready-status verification.
+        control_point: Use property-manager checklist.
+      closeout:
+        typical_work: Photos, service record, keys, unresolved items.
+        control_point: Confirm approval and billing status.
+      recurring_common_areas:
+        typical_work: Lobbies, stairs, elevators, laundry rooms, clubhouses.
+        control_point: Frequency and traffic-based standards.
+
+  access_security_and_confidentiality:
+    title: "Access, Security and Confidentiality"
+    chunk: access-security
+    risk_level: escalation-required
+    priority: CRITICAL
+    rules:
+      - Maintain controlled handling of keys, access cards, alarm codes, and building instructions.
+      - Do not store access credentials in public AI responses or unsecured notes.
+      - Record access failures, unlocked conditions, suspicious activity, or damage according to company policy.
+      - Respect confidential records, tenant information, customer data, and restricted areas.
+      - Use sign-in, sign-out, and key-control procedures where required.
+      - Escalate lost keys, alarm events, security breaches, theft allegations, or unauthorized access immediately.
+
+  staffing_and_production_planning:
+    title: "Staffing and Production Planning"
+    chunk: staffing-production
+    risk_level: general
+    rules:
+      - Estimate labor by task frequency, area type, fixture density, occupancy, soil level, access, and quality standard.
+      - Account for setup, supply staging, travel between buildings, elevators, security processing, inspection, and reporting.
+      - Use route density and multi-site coordination to improve efficiency without reducing quality.
+      - Match supervision level to facility complexity, staff experience, and customer requirements.
+      - Do not treat square footage alone as a complete production model.
+      - Plan backup staffing and supply continuity for recurring commercial contracts.
+
+  commercial_quality_assurance:
+    title: "Commercial Quality Assurance"
+    chunk: commercial-quality-assurance
+    risk_level: general
+    control_layers:
+      task_checklist:
+        method: Area-specific duties and frequencies.
+        evidence: Completed service log.
+      supervisor_inspection:
+        method: Scheduled and random review.
+        evidence: Inspection score and notes.
+      customer_feedback:
+        method: Designated contact and issue channel.
+        evidence: Ticket or email record.
+      corrective_action:
+        method: Defined response and follow-up process.
+        evidence: Resolution record.
+      trend_review:
+        method: Repeated misses, complaints, supply issues, staffing patterns.
+        evidence: Monthly or quarterly summary.
+      contract_review:
+        method: Scope, frequency, performance, and changed conditions.
+        evidence: Renewal or change-order documentation.
+
+  recurring_service_agreements:
+    title: "Recurring Service Agreements"
+    chunk: recurring-service-agreements
+    risk_level: general
+    rules:
+      - Define service areas, frequencies, task rotations, exclusions, and customer responsibilities.
+      - Specify access windows, holidays, weather or closure procedures, and emergency-contact rules.
+      - Identify consumables supplied by the customer versus Surface Shield Systems.
+      - Define issue-reporting, reservice, change-order, and termination procedures.
+      - Review scope when occupancy, tenant mix, operating hours, layout, or traffic changes.
+      - Avoid promising unchanged pricing when labor, materials, scope, or access conditions materially change.
+
+  customer_communication_standards:
+    title: "Customer Communication Standards"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "Can you clean during business hours?"
+        answer: >
+          Some services can be performed during occupancy, while wet floors, noise,
+          privacy, or safety may require off-hours scheduling.
+      - question: "How do you price recurring cleaning?"
+        answer: >
+          Pricing depends on size, task frequency, traffic, surface types, access,
+          operating hours, and required quality standard.
+      - question: "Do you provide medical-grade cleaning?"
+        answer: >
+          Service must follow the facility's approved protocol and unsupported medical
+          or regulatory claims will not be made.
+      - question: "Can you guarantee no complaints?"
+        answer: >
+          No service can guarantee zero complaints; the company can provide clear
+          standards, inspections, and a documented corrective-action process.
+      - question: "Can you handle multiple properties?"
+        answer: >
+          Multi-site programs can be structured with standardized scopes, reporting,
+          scheduling, and a designated account contact.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    boundaries:
+      - Do not guarantee regulatory compliance, infection control, sterilization, or medical outcomes.
+      - Do not provide legal interpretations of contracts, employment rules, privacy law, or waste regulations.
+      - Do not authorize access credentials, staffing changes, contract concessions, refunds, or scope changes.
+      - Do not diagnose mold, asbestos, lead, pests, biohazards, indoor-air-quality conditions, or building-system failures.
+      - Do not promise exact staffing levels, production rates, or service times without verified scope and management approval.
+      - Do not expose internal pricing formulas, confidential customer information, access codes, or employee data.
+
+  mandatory_escalation_triggers:
+    title: "Mandatory Escalation Triggers"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Biohazard, bodily fluid, sharps, regulated waste, unknown chemical, or hazardous-material concern.
+      - Security breach, lost key, alarm event, theft allegation, unauthorized access, or confidentiality issue.
+      - Customer complaint involving damage, injury, discrimination, legal threat, insurance claim, or media contact.
+      - Medical facility request involving infection-control, sterilization, isolation areas, or facility compliance.
+      - Scope dispute, significant price change, staffing conflict, repeated quality failure, or contract interpretation.
+      - Mold, pest infestation, active leak, electrical hazard, structural damage, or unsafe occupancy condition.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    chunk: ai-boundaries
+    risk_level: general
+    principle: >
+      Version 3.0 should be indexed as the commercial Interior Division layer.
+      Retrieval should route by facility type, service class, frequency, audience, and
+      risk. Medical-office, security, hazardous-material, and contract-boundary chunks
+      must override general service guidance.
+    recommended_chunks:
+      commercial_property_categories:
+        tags: [office, retail, medical-office, apartment, institutional]
+      service_classes:
+        tags: [recurring, deep-clean, day-porter, turnover, post-construction]
+      frequency_planning:
+        tags: [daily, weekly, monthly, quarterly, annual]
+      office_and_retail_standards:
+        tags: [office-cleaning, retail-cleaning, occupied-space]
+      medical_boundaries:
+        tags: [medical-office, infection-control-boundary, regulated-waste]
+      property_management:
+        tags: [turnover, common-area, multi-site, key-control]
+      quality_assurance:
+        tags: [inspection, corrective-action, service-log, trend-review]
+      ai_boundaries:
+        tags: [security, confidentiality, hazardous-material, escalation]
+    metadata:
+      module: AIM4
+      version: "3.0"
+      division: interior
+      document_role: commercial-operations
+      status: developer-ready
+      facility_type: [office, retail, medical-office, apartment, institutional]
+      audience: [public-ai, technician, supervisor, management, developer]
+      risk_level: [general, elevated, escalation-required]
+      routing_priority: primary
+
+  roadmap_v4:
+    next_version: "V4.0"
+    title: "Post-Construction Cleaning, Contractor Coordination and Project Closeout Systems"
+    focus:
+      - Post-construction interior cleaning systems.
+      - Rough, final, and touch-up cleaning phases.
+      - Construction dust control and sequencing.
+      - Adhesives, labels, films, paint, grout haze, and residue boundaries.
+      - New-surface protection and manufacturer restrictions.
+      - Contractor coordination, punch-list management, and completion documentation.
+      - Production planning, estimating, quality control, and escalation rules.

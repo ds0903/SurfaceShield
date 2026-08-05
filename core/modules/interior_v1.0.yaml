@@ -1,0 +1,302 @@
+module_id: SSBOS-001-AIM4-V1.0
+title: "AI Module 4 – Interior Division: Interior Cleaning Fundamentals & Professional Standards"
+version: "1.0"
+division: Interior
+document_type: Elite SSBOS Manual
+status: developer-ready
+document_role: foundation
+routing_priority: primary
+namespace: interior-division
+audience: [public-ai, internal, developer]
+primary_use: AI training, customer guidance, employee reference
+document_status: developer-ready
+tags:
+  - interior-philosophy
+  - residential-services
+  - commercial-services
+  - specialty-services
+  - room-classification
+  - surface-identification
+  - cleaning-categories
+  - professional-workflow
+  - cleaning-sequence
+  - quality-standards
+  - customer-communication
+  - chemical-safety
+  - ai-boundaries
+
+sections:
+
+  module_objective:
+    title: "Module Objective"
+    chunk: interior-philosophy
+    risk_level: general
+    content: >
+      Develop the foundational AI knowledge base for the Surface Shield Systems Interior
+      Division. The AI should understand professional residential, commercial, deep,
+      maintenance, move-in/move-out, and post-construction cleaning while consistently
+      representing Surface Shield Systems as a premium property-care provider.
+    principles:
+      - Educate customers in clear, practical language.
+      - Match services to property type, occupancy, finish level, and customer expectations.
+      - Protect surfaces, furnishings, occupants, pets, and indoor air quality.
+      - Avoid unsupported health, mold, hazardous-material, or stain-removal claims.
+      - Escalate unusual, hazardous, damaged, or specialty conditions to a human representative.
+
+  interior_division_philosophy:
+    title: "Interior Division Philosophy"
+    chunk: interior-philosophy
+    risk_level: general
+    content: >
+      Professional interior cleaning is not simply the removal of visible dirt. The purpose
+      is to create cleaner, more comfortable environments, protect valuable finishes, extend
+      material life, improve presentation, and reduce the burden of long-term maintenance.
+    values:
+      - Quality over speed.
+      - Surface preservation over aggressive cleaning.
+      - Clear scopes and realistic expectations.
+      - Consistent process and final verification.
+      - Respect for privacy, personal property, and occupied spaces.
+
+  service_categories:
+    title: "Service Categories"
+    chunk: residential-services
+    risk_level: general
+    categories:
+      residential:
+        chunk: residential-services
+        services:
+          - Routine cleaning.
+          - Deep cleaning.
+          - Move-in cleaning.
+          - Move-out cleaning.
+          - Seasonal cleaning.
+          - Luxury home cleaning.
+          - Vacation property cleaning.
+      commercial:
+        chunk: commercial-services
+        services:
+          - Office cleaning.
+          - Retail cleaning.
+          - Medical-office support areas.
+          - Apartment common areas.
+          - Churches and schools.
+          - Clubhouses.
+          - Property-management programs.
+      specialty:
+        chunk: specialty-services
+        services:
+          - Post-construction cleaning.
+          - Interior windows.
+          - Cabinets and appliances.
+          - Garages and basements.
+          - High dusting.
+          - Fixtures.
+          - Detailed turnover cleaning.
+
+  room_classification:
+    title: "Room Classification"
+    chunk: room-classification
+    risk_level: general
+    room_types:
+      - Kitchens and food-preparation areas.
+      - Bathrooms and restrooms.
+      - Bedrooms and private living areas.
+      - Living rooms, dining rooms, and family rooms.
+      - Laundry rooms, utility areas, basements, and garages.
+      - Office spaces, conference rooms, reception areas, break rooms, hallways, stairwells, and storage rooms.
+
+  surface_identification:
+    title: "Surface Identification"
+    chunk: surface-identification
+    risk_level: general
+    note: Surface type must be identified before selecting any cleaning product or method.
+    surface_groups:
+      flooring:
+        examples: Hardwood, engineered wood, LVP, laminate, ceramic tile, natural stone, concrete, carpet, area rugs.
+      counters_and_stone:
+        examples: Granite, quartz, marble, solid surface, laminate.
+      metal_and_fixtures:
+        examples: Stainless steel, chrome, brass, nickel, coated metal.
+      walls_and_finishes:
+        examples: Paint, wallpaper, paneling, decorative coatings.
+      cabinetry_and_furniture:
+        examples: Painted cabinets, stained wood, veneer, laminate, leather, fabric upholstery.
+      glass:
+        examples: Mirrors, windows, shower glass, glass partitions.
+      specialty:
+        examples: Electronics, artwork, delicate collectibles, manufacturer-controlled finishes.
+
+  cleaning_categories:
+    title: "Cleaning Categories"
+    chunk: cleaning-categories
+    risk_level: general
+    categories:
+      maintenance_cleaning:
+        definition: Recurring service intended to control normal soil and preserve presentation.
+      deep_cleaning:
+        definition: Detailed service addressing accumulated soil, overlooked areas, edges, fixtures, and high-touch surfaces.
+      detail_cleaning:
+        definition: Concentrated work on specific rooms, fixtures, cabinetry, appliances, or finish details.
+      sanitizing:
+        definition: Reducing microorganisms to levels defined by an applicable product label or standard.
+      disinfecting:
+        definition: Use of an EPA-registered disinfectant according to its label.
+        ai_rule: The AI must not imply disinfection without correct product, contact time, and process.
+      post_construction_cleaning:
+        definition: Phased removal of dust, labels, residue, protective film, and construction debris after trade work.
+      restoration_cleaning:
+        definition: Specialized work intended to improve neglected or damaged appearance without misrepresenting repair as cleaning.
+
+  professional_workflow:
+    title: "Professional Workflow"
+    chunk: professional-workflow
+    risk_level: general
+    steps:
+      1: Customer consultation.
+      2: Property evaluation.
+      3: Scope development.
+      4: Estimate and authorization.
+      5: Scheduling and access confirmation.
+      6: Arrival and pre-service walkthrough.
+      7: Protection and setup.
+      8: Cleaning sequence.
+      9: Quality inspection.
+      10: Customer walkthrough.
+      11: Completion documentation.
+      12: Maintenance recommendation.
+
+  general_cleaning_sequence:
+    title: "General Cleaning Sequence"
+    chunk: cleaning-sequence
+    risk_level: general
+    principle: >
+      A typical professional sequence moves from high to low and from relatively clean
+      areas toward dirtier areas to reduce recontamination and improve efficiency.
+    sequence:
+      1: High dusting and vents.
+      2: Ceiling fans and light fixtures.
+      3: Shelves, furniture, doors, trim, and glass.
+      4: Countertops and horizontal surfaces.
+      5: Bathrooms and restrooms.
+      6: Kitchen and food-preparation areas.
+      7: Vacuuming.
+      8: Hard-floor cleaning.
+      9: Touch-up and final inspection.
+
+  professional_standards:
+    title: "Professional Standards"
+    chunk: quality-standards
+    risk_level: general
+    standards:
+      - Complete a visual inspection before work begins.
+      - Identify surfaces and known manufacturer limitations.
+      - Use compatible products and tools.
+      - Protect personal property and sensitive finishes.
+      - Control cross-contamination with clean tools, cloth separation, and task sequencing.
+      - Use a consistent room-completion checklist.
+      - Document pre-existing damage and unusual conditions when appropriate.
+      - Perform a final quality review before customer handoff.
+
+  safety_and_chemical_rules:
+    title: "Safety and Chemical Rules"
+    chunk: chemical-safety
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      Never mix bleach or sodium hypochlorite with acids, ammonia, or unknown products.
+      Follow every product label and Safety Data Sheet.
+    rules:
+      - Provide ventilation as required by product instructions.
+      - Control slip and trip hazards, including wet floors, cords, tools, and open equipment.
+      - Use appropriate PPE.
+      - Do not work on unsafe ladders or improvise elevated access.
+      - Treat sharp objects, needles, bodily fluids, pest contamination, and unknown powders as escalation conditions.
+      - Protect children and pets from equipment, wet floors, and chemicals.
+      - Do not provide medical, indoor-air-quality, or hazardous-material conclusions.
+
+  customer_communication_standards:
+    title: "Customer Communication Standards"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "How often should my home be cleaned?"
+        answer: >
+          Frequency depends on occupancy, pets, children, allergies, lifestyle, finish
+          level, and expectations. Recurring cleaning can reduce accumulated soil and
+          the need for repeated deep cleaning.
+      - question: "Do you bring supplies?"
+        answer: >
+          Surface Shield Systems generally provides professional equipment and products
+          for the agreed scope. Customer preferences or manufacturer requirements should
+          be discussed before service.
+      - question: "Can every stain be removed?"
+        answer: >
+          Many soils respond well, but permanent discoloration, wear, etching, dye loss,
+          finish failure, and material damage may remain.
+      - question: "Do you disinfect everything?"
+        answer: >
+          Disinfection is a defined process requiring an appropriate registered product,
+          correct application, and label contact time. It should only be represented when
+          included and performed correctly.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    boundaries:
+      - Do not diagnose mold, asbestos, lead, pathogens, pests, or indoor-air-quality conditions.
+      - Do not guarantee removal of staining, odor, contamination, or damage.
+      - Do not recommend mixing products or deviating from labels.
+      - Do not override manufacturer care instructions.
+      - Do not make health, sanitation, or medical claims.
+      - Do not issue binding prices, schedules, warranties, refunds, or liability statements without authorization.
+      - Escalate structural damage, severe hoarding, biohazards, unknown contamination, active leaks, electrical hazards, and customer damage allegations.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    chunk: ai-boundaries
+    risk_level: general
+    principle: >
+      Create a distinct Interior Division namespace. Index this manual as a versioned
+      source and preserve section-level source traceability. Safety and AI-boundary
+      chunks must override general cleaning content.
+    recommended_chunks:
+      interior_philosophy:
+        tags: [interior-philosophy, premium-care]
+      residential_services:
+        tags: [residential, routine, deep, move-in, move-out]
+      commercial_services:
+        tags: [commercial, office, property-management]
+      surface_identification:
+        tags: [surface-identification, compatibility]
+      workflow:
+        tags: [intake, scope, scheduling, execution, closeout]
+      cleaning_sequence:
+        tags: [top-to-bottom, clean-to-dirty, room-order]
+      safety:
+        tags: [chemical-safety, slips, pets, children, biohazard]
+      ai_boundaries:
+        tags: [medical-claims, hazardous-materials, escalation]
+    metadata:
+      module: AIM4
+      version: "1.0"
+      division: interior
+      document_role: foundation
+      status: developer-ready
+      audience: [public-ai, internal, developer]
+      risk_level: [general, elevated, escalation-required]
+      routing_priority: primary
+
+  roadmap_v2:
+    next_version: "V2.0"
+    title: "Premium Surface Care & Specialty Finishes"
+    focus:
+      - Marble, granite, quartz, and natural-stone care.
+      - Hardwood, engineered wood, LVP, laminate, and premium flooring.
+      - Cabinet finishes and fine furniture.
+      - Stainless steel, decorative metals, glass, and mirrors.
+      - Luxury fixtures and specialty surfaces.
+      - Product-selection logic and surface-specific decision trees.
+      - Damage prevention, testing, escalation, and customer-expectation controls.

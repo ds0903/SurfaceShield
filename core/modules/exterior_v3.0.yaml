@@ -1,0 +1,315 @@
+module_id: SSBOS-001-AIM3-V3.0
+title: "AI Module 3 – Exterior Division: Professional Equipment & Application Systems"
+version: "3.0"
+division: Exterior
+status: active
+supersedes: none
+tags:
+  - pressure-washing
+  - equipment
+  - GPM
+  - PSI
+  - nozzles
+  - soft-wash-pump
+  - downstream-injector
+  - x-jet
+  - surface-cleaner
+  - troubleshooting
+  - preventive-maintenance
+
+core_philosophy: >
+  Professional cleaning depends on balancing water flow (GPM), pressure (PSI),
+  chemistry, dwell time, and operator technique while protecting the surface and
+  surrounding property. No single variable — pressure alone or chemical alone —
+  determines the outcome.
+
+sections:
+
+  required_ai_behavior:
+    priority: CRITICAL
+    rules:
+      - Never recommend bypassing safety systems, pressure-relief valves, or unloader valves.
+      - Never advise unsafe equipment modifications.
+      - For complex pump, engine, or unloader failures recommend a qualified service technician.
+      - When equipment type, GPM, or PSI is unknown, ask before recommending nozzle size or chemical ratios.
+      - Communicate realistic expectations — cleaning results depend on equipment condition, water supply, surface, and operator technique.
+
+  gpm_vs_psi:
+    title: "GPM vs PSI — Understanding the Difference"
+    content: >
+      GPM (gallons per minute) measures water volume — the carrying capacity that
+      delivers chemistry to the surface and rinses contamination away. PSI (pounds
+      per square inch) measures pressure — the mechanical impact force. Professional
+      cleaning requires both in proportion. High GPM with lower PSI is the foundation
+      of soft washing. High PSI with lower GPM suits hard-surface pressure washing.
+      Neither alone is sufficient for all applications.
+
+  cleaning_units:
+    title: "Cleaning Units (CU)"
+    formula: "CU = GPM × PSI"
+    examples:
+      - "4 GPM × 4000 PSI = 16,000 CU"
+      - "8 GPM × 2500 PSI = 20,000 CU (more volume, less impact)"
+    note: >
+      Cleaning Units give a comparable measure of total cleaning power. A machine
+      with higher CU but lower PSI can be more productive on flatwork than a lower-GPM
+      high-PSI unit. Match CU to the surface type, not just to a single number.
+
+  pressure_washer_components:
+    title: "Pressure Washer Components"
+    components:
+      engine_or_motor:
+        types: [gas, diesel, electric]
+        note: Gas and diesel are standard for mobile exterior work. Electric suits indoor or stationary setups.
+      pump:
+        preferred: triplex plunger pump
+        avoid: wobble-plate pumps for professional use
+      unloader_valve:
+        function: Diverts flow when trigger is released, protecting pump from deadhead damage.
+      hose:
+        note: Must be rated above machine PSI. Wire-braid or 4-wire for heavy professional use.
+      gun_and_lance:
+        note: Rated for machine pressure. Safety lock required.
+      nozzle:
+        note: Controls pressure, fan angle, and chemical draw. Match orifice size to machine GPM.
+
+  triplex_pumps:
+    title: "Triplex Pumps"
+    content: >
+      Triplex pumps use three pistons driven by a crankshaft and are the industry
+      standard for professional pressure washers. They run at lower RPM than wobble-plate
+      pumps, generate less heat, last longer, and are serviceable in the field. Common
+      maintenance: pump oil changes every 50–100 hours, valve and seal inspection, inlet
+      filter cleaning. Symptoms of wear: low pressure, pulsing, oil emulsification,
+      water in oil.
+
+  unloader_valves:
+    title: "Unloader Valves"
+    function: >
+      Bypasses or unloads water when the trigger is released, preventing pump damage
+      from deadhead pressure. Two main types: trapped-pressure (holds pressure at gun)
+      and flow-actuated (bypasses continuously). Trapped-pressure is most common in
+      professional setups.
+    common_failures:
+      - Constant bypass / no pressure at gun: unloader stuck open or spring failure
+      - Pulsing pressure: unloader chattering — adjust or replace
+      - Pressure spikes on trigger pull: unloader set too high
+    safety: Never defeat, remove, or bypass the unloader valve.
+
+  nozzle_selection:
+    title: "Nozzle Selection"
+    color_code:
+      - color: red
+        angle: "0°"
+        use: "Concentrated stream — extreme impact. Rarely needed; risk of surface damage."
+      - color: yellow
+        angle: "15°"
+        use: "Stripping, heavy concrete cleaning. High impact."
+      - color: green
+        angle: "25°"
+        use: "General pressure washing. Most common for flatwork and driveways."
+      - color: white
+        angle: "40°"
+        use: "Light cleaning and rinsing. Wider and gentler."
+      - color: black
+        angle: "65°"
+        use: "Low-pressure soap application. Draws chemical through downstream injector."
+    orifice_sizing: >
+      Nozzle orifice must match machine GPM. An undersized orifice increases pressure
+      beyond machine rating; an oversized orifice drops pressure and velocity. Match
+      orifice chart to machine GPM and desired PSI.
+    soft_wash_nozzles: >
+      Wide-fan or injector tips used with dedicated soft-wash pumps. No pressure
+      restriction — flow and chemical concentration do the work.
+
+  surface_cleaners:
+    title: "Surface Cleaners"
+    function: >
+      Rotating spray bar with two or more nozzles housed in a shroud. Produces a
+      consistent, overlap-free cleaning path with reduced striping compared to wand
+      cleaning. Suits driveways, flatwork, parking areas, and decks.
+    selection: >
+      Size surface cleaner to machine GPM. An underpowered machine running an oversized
+      surface cleaner produces slow rotation, striping, and inconsistent results.
+    maintenance:
+      - Inspect swivel for leaks before each use.
+      - Check that spray bar spins freely.
+      - Replace worn nozzles on schedule — worn nozzles reduce rotation speed and cleaning consistency.
+      - Flush after chemical use.
+
+  downstream_injectors:
+    title: "Downstream Injectors"
+    function: >
+      Inject chemical into the water stream after the pump using the Venturi effect
+      created by low-pressure (wide-angle) nozzle flow. Protects pump from chemical
+      contact.
+    dilution: >
+      Typical injector ratio: 1:7 to 1:10 (one part chemical to seven to ten parts
+      water at the injector). Actual surface dilution depends on injector ratio plus
+      any pre-dilution in the tank.
+    operation: >
+      Chemical draw occurs only when a low-pressure nozzle (65° black or equivalent)
+      is in use. High-pressure nozzles stop chemical draw because back-pressure closes
+      the injector ball. Confirm chemical is drawing before beginning a wash.
+    common_issues:
+      - No draw: nozzle orifice too large, injector ball stuck, chemical hose kinked or too long
+      - Weak draw: worn injector, partial blockage, incorrect nozzle
+
+  x_jet_systems:
+    title: "X-Jet Systems"
+    function: >
+      Aspirator-style applicator that attaches at the gun. Uses full machine pressure
+      combined with Venturi effect to draw and apply chemical without pumping from a
+      separate pump. Allows application from ground level to higher surfaces.
+    proportioners: >
+      X-Jet proportioner tips control the chemical-to-water ratio at the applicator.
+      Different proportioner inserts deliver different dilutions. Always verify proportioner
+      setting and result concentration before applying to sensitive surfaces.
+    advantage: No pump contact with chemical. Good for quick setup on residential jobs.
+    limitation: Chemical draw rate is fixed by proportioner; not as adjustable as dedicated pump systems.
+
+  dedicated_soft_wash_pumps:
+    title: "Dedicated Soft-Wash Pumps"
+    types:
+      - 12V diaphragm pumps (Remco, Flojet, SHURflo)
+      - Gas-powered diaphragm pumps for high volume
+    function: >
+      Pump chemical solution from a dedicated tank at controlled flow and low pressure.
+      Completely separate from the pressure washer. Allows precise volume control,
+      longer dwell application, and chemical delivery to large roof areas.
+    advantages:
+      - Adjustable flow rate
+      - Dedicated chemical contact — no pressure washer pump exposure
+      - Suitable for roof cleaning, large soft-wash jobs, high-volume applications
+    maintenance:
+      - Flush with clean water after each use
+      - Inspect valves and diaphragm periodically
+      - Store protected from freezing
+
+  tank_systems:
+    title: "Tank Systems"
+    types:
+      buffer_tank:
+        purpose: Supplies water to pressure washer when source flow is inadequate
+        sizing: "Minimum 1 gallon per GPM of machine output per minute of continuous run"
+      mix_tank:
+        purpose: Pre-mix and store chemical solution before application
+      fresh_water_tank:
+        purpose: Carry potable rinse water when site water is unavailable
+    materials: >
+      Poly tanks are chemical-resistant and suitable for sodium hypochlorite. Avoid
+      tanks not rated for chemical storage. Inspect fittings and bulkheads for leaks
+      regularly.
+
+  hoses_and_reels:
+    title: "Hoses & Hose Reels"
+    high_pressure_hose:
+      rating: Must exceed machine PSI rating
+      types: ["Wire-braid (3/8\")", "4-wire braid for high-pressure or high-temperature"]
+      fittings: M22, quick-connect, or JIC depending on machine
+    soft_wash_hose:
+      material: Chemical-resistant — verify compatibility with sodium hypochlorite
+    hose_reels:
+      types: [spring-retract, electric-retract, manual]
+      note: Electric reels improve field efficiency on large jobs.
+    inspection: >
+      Check for cuts, abrasion, kinks, and fitting wear before each use. A hose
+      failure under pressure is a safety hazard.
+
+  troubleshooting:
+    title: "Common Equipment Troubleshooting"
+    issues:
+      low_or_no_pressure:
+        causes:
+          - Worn or oversized nozzle
+          - Clogged inlet filter or water strainer
+          - Insufficient water supply (cavitation)
+          - Unloader valve stuck open
+          - Worn pump seals or valves
+        first_steps: Check water supply, inspect nozzle, check inlet filter.
+      pulsing_pressure:
+        causes:
+          - Chattering unloader valve
+          - Air in pump (cavitation from low water supply)
+          - Worn pump inlet valves
+        first_steps: Verify adequate water supply first. Adjust or service unloader.
+      no_chemical_draw:
+        causes:
+          - High-pressure nozzle in use (closes injector)
+          - Clogged injector
+          - Chemical hose too long or kinked
+          - Injector ball stuck or worn
+        first_steps: Confirm low-pressure nozzle installed, inspect injector.
+      machine_overheating:
+        causes:
+          - Running without adequate water supply
+          - Thermal relief valve venting
+          - Extended bypass operation (trigger not pulled)
+        note: Thermal relief valve protects pump — investigate cause before resetting.
+    safety_escalation: >
+      Complex pump, engine, or electrical failures should be referred to a qualified
+      equipment service technician. Do not recommend field disassembly of high-pressure
+      components without proper training.
+
+  preventive_maintenance:
+    title: "Preventive Maintenance"
+    schedule:
+      daily:
+        - Inspect hoses and fittings for leaks
+        - Check oil levels (engine and pump)
+        - Clean inlet filter / strainer
+        - Inspect nozzles for wear
+      periodic:
+        - Pump oil change every 50–100 hours
+        - Engine oil change per manufacturer schedule
+        - Nozzle replacement when flow or pattern degrades
+        - Unloader valve inspection and adjustment
+        - Hose reel bearing lubrication
+      seasonal:
+        - Winterize system before freezing temperatures
+        - Flush with pump antifreeze or blow out completely
+        - Inspect and replace worn seals if stored long-term
+
+  field_efficiency:
+    title: "Field Efficiency Principles"
+    principles:
+      - Plan chemical application and rinse sequence before starting (wet-to-wet application where applicable)
+      - Stage equipment to minimize hose drag and repositioning
+      - Verify water supply rate matches machine GPM before setup
+      - Apply chemical in sections to control dwell time
+      - Work top-to-bottom on vertical surfaces
+      - Use surface cleaner for large flatwork — wand work for detail and edges
+      - Final inspection before moving to next section
+
+  customer_education:
+    title: "Customer Education Scripts"
+    scripts:
+      - question: "Can't you just turn up the pressure more?"
+        answer: >
+          Higher pressure is not always better. Many surfaces — roof shingles, painted wood,
+          older concrete — can be permanently damaged by excessive pressure. Professional
+          cleaning uses the right combination of water volume, chemistry, and controlled
+          pressure for each surface.
+      - question: "Why do you use chemicals? Can't you just pressure wash it?"
+        answer: >
+          Pressure alone removes loose debris but cannot kill algae, mold, or mildew.
+          Professional cleaning chemistry breaks down organic growth so it releases cleanly
+          without requiring destructive pressure levels.
+      - question: "How long will it stay clean?"
+        answer: >
+          Results depend on shade, moisture, nearby trees, and traffic. We can explain
+          what typically influences regrowth for your specific property and recommend
+          maintenance intervals.
+
+  knowledge_boundaries:
+    priority: CRITICAL
+    boundaries:
+      - Do not recommend specific chemical concentrations without knowing the application, surface, and dilution system.
+      - Do not diagnose equipment remotely without inspection — refer to qualified service technician.
+      - Do not advise bypassing, disabling, or modifying safety components (unloader valve, thermal relief).
+      - Do not guarantee cleaning outcomes without knowing surface condition, equipment, and water supply.
+      - Property-specific equipment recommendations or repair procedures beyond field-level maintenance should be escalated to a qualified service professional.
+
+  roadmap_v4:
+    next_version: "V4.0"
+    focus: "Professional wood restoration, deck and fence restoration, stripping, brightening, staining, sealing, moisture testing, and long-term maintenance."

@@ -1,0 +1,295 @@
+module_id: SSBOS-001-AIM3-V8.0
+title: "AI Module 3 – Exterior Division: Professional Estimating, Production & Business Operations"
+version: "8.0"
+division: Exterior
+document_type: Elite SSBOS Manual
+status: active
+supersedes: none
+service_class: estimating
+audience: [developer, internal, public-ai]
+document_status: developer-ready
+tags:
+  - property-assessment
+  - scope-development
+  - production-planning
+  - labor-planning
+  - equipment-selection
+  - pricing-factors
+  - proposal-structure
+  - maintenance-programs
+  - customer-communication
+  - ai-estimating-boundaries
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: ai-estimating-boundaries
+    content: >
+      Version 8.0 trains the AI to support estimating and operations without replacing
+      company pricing authority, field verification, or management review. The system
+      must distinguish between educational guidance, preliminary planning, and an
+      approved customer-facing quote.
+    operating_principles:
+      - Build complete and unambiguous scopes of work.
+      - Identify labor, access, equipment, chemistry, protection, travel, and documentation cost drivers.
+      - Estimate production using ranges rather than unsupported guarantees.
+      - Separate measured quantities from assumptions and customer-provided information.
+      - Recommend human review when risk, access, contamination, or project scale exceeds routine conditions.
+
+  required_ai_estimating_behavior:
+    priority: CRITICAL
+    chunk: ai-estimating-boundaries
+    risk_level: escalation-required
+    rules:
+      - Ask for missing property information before producing a detailed estimate.
+      - State all assumptions plainly.
+      - Treat photographs, aerial measurements, and customer descriptions as preliminary unless field-verified.
+      - Do not issue binding prices unless an authorized Surface Shield Systems pricing framework is available.
+      - Do not hide exclusions, soft costs, access premiums, or site-specific limitations.
+      - Present uncertainty as a range, allowance, or inspection requirement rather than false precision.
+
+  property_assessment_framework:
+    title: "Property Assessment Framework"
+    chunk: property-assessment
+    risk_level: general
+    assessment_areas:
+      property_profile:
+        key_questions: Residential, multifamily, commercial, industrial, institutional, or HOA?
+      dimensions:
+        key_questions: What areas are measured, estimated, inaccessible, or excluded?
+      height_and_access:
+        key_questions: Stories, roof access, slope, setbacks, lifts, scaffolding, or ladder limitations?
+      surface_systems:
+        key_questions: Vinyl, brick, stucco, EIFS, wood, concrete, pavers, glass, metal, roofing, or mixed assembly?
+      contamination:
+        key_questions: Organic growth, oxidation, efflorescence, rust, oil, grease, paint, mineral deposits, or unknown staining?
+      protection_needs:
+        key_questions: Landscaping, ponds, pools, vehicles, electrical equipment, tenants, public areas, and adjacent property?
+
+  scope_of_work_architecture:
+    title: "Scope of Work Architecture"
+    chunk: scope-development
+    risk_level: general
+    note: Every proposal must define exactly what will be cleaned, how the work will be approached, what protection is included, and what is excluded.
+    elements:
+      - Project objective and service area.
+      - Surface preparation and protection measures.
+      - Cleaning method stated in performance terms rather than unsupported chemical promises.
+      - Included rinsing, cleanup, inspection, and documentation.
+      - Known limitations and pre-existing conditions.
+      - Customer responsibilities such as access, water service, vehicle removal, and secured windows.
+      - Optional add-ons priced separately.
+      - Exclusions such as repairs, coating replacement, hazardous-material remediation, or inaccessible areas.
+
+  production_rate_logic:
+    title: "Production-Rate Logic"
+    chunk: production-planning
+    risk_level: general
+    principle: >
+      Production rates must be modeled as ranges. A strong estimate separates productive
+      cleaning time from mobilization, setup, dwell time, access transitions, hose
+      management, protection, documentation, breakdown, and travel.
+    production_drivers:
+      machine_capacity:
+        effect: Higher GPM can improve rinsing and flatwork throughput when water supply supports the system.
+      contamination_level:
+        effect: Heavy growth or specialty stains increase chemistry, dwell, agitation, and repeat-treatment time.
+      access_complexity:
+        effect: Height, steep grades, obstacles, and restricted staging reduce hourly output.
+      surface_sensitivity:
+        effect: Delicate or unknown surfaces require testing and slower controlled work.
+      crew_experience:
+        effect: Experienced crews generally sequence work more efficiently, but quality and safety remain controlling.
+      weather:
+        effect: Heat, sun, wind, rain, and cold alter dwell, drying, access, and scheduling.
+      water_supply:
+        effect: Limited or inconsistent supply may require more time, storage, or alternate planning.
+      documentation:
+        effect: Commercial and restoration work may require more photography, reports, and acceptance steps.
+
+  crew_hour_and_schedule_planning:
+    title: "Crew-Hour and Schedule Planning"
+    chunk: labor-planning
+    risk_level: general
+    rules:
+      - Estimate total crew-hours, then convert to projected calendar duration based on crew size and site constraints.
+      - Add nonproductive time for travel, setup, breakdown, protection, chemical preparation, equipment fueling, and final inspection.
+      - Do not assume doubling crew size cuts project duration in half — congestion, equipment limits, and sequencing may reduce efficiency.
+      - Include reasonable contingency for weather, water-supply limitations, tenant coordination, or specialty treatment.
+      - Communicate projected duration as an operational estimate, not a guarantee.
+
+  pricing_architecture:
+    title: "Pricing Architecture"
+    chunk: pricing-factors
+    risk_level: general
+    principle: >
+      A complete price should recover direct job costs, equipment and vehicle burden,
+      overhead, risk, callbacks, administrative time, and target profit. Unit prices are
+      internal planning tools and not automatically customer-facing disclosures.
+    price_components:
+      materials_and_chemistry:
+        examples: Cleaning agents, neutralizers, protectants, filters, consumables, PPE.
+      direct_labor:
+        examples: Technician time, supervision, paid travel, setup, documentation, cleanup.
+      equipment_burden:
+        examples: Pressure washers, pumps, reels, surface cleaners, poles, recovery systems, maintenance and depreciation.
+      mobilization:
+        examples: Travel, loading, water transport, lift delivery, permits, parking, security processing.
+      risk_and_complexity:
+        examples: Height, fragile surfaces, occupied commercial sites, specialty staining, environmental controls.
+      overhead_and_margin:
+        examples: Insurance, office, CRM, marketing, estimating, billing, taxes, warranty reserve, profit.
+      contingency_or_allowance:
+        examples: Unknown conditions, verification items, or scope elements requiring field confirmation.
+
+  minimum_charges_mobilization_and_premiums:
+    title: "Minimum Charges, Mobilization and Premiums"
+    chunk: pricing-factors
+    risk_level: general
+    rules:
+      - Use a minimum service charge when mobilization and setup would otherwise make a small job unprofitable.
+      - Apply access or equipment premiums when specialized staging, lifts, recovery, additional technicians, or extended hose runs are required.
+      - Treat emergency, night, weekend, or restricted-hour scheduling as premium operational conditions.
+      - Avoid stacking arbitrary surcharges — each premium should correspond to a real cost, risk, or productivity effect.
+      - Explain value and scope rather than defending price through internal cost disclosure.
+
+  optional_add_ons_and_bundled_services:
+    title: "Optional Add-Ons and Bundled Services"
+    chunk: scope-development
+    risk_level: general
+    note: Optional services must be clearly separated from the base scope so customers can make informed decisions.
+    add_ons:
+      - Gutter cleaning or brightening.
+      - Exterior window cleaning.
+      - Concrete, patio, walkway, or driveway cleaning.
+      - Deck and fence cleaning or restoration.
+      - Roof soft washing.
+      - Rust, efflorescence, oil, or hard-water specialty treatment.
+      - Sealing, water repellents, or maintenance coatings when technically appropriate.
+      - Recurring annual or seasonal maintenance.
+
+  proposal_structure:
+    title: "Proposal Structure"
+    chunk: proposal-structure
+    risk_level: general
+    elements:
+      - Branded project summary and customer information.
+      - Detailed scope with inclusions and exclusions.
+      - Process and protection narrative.
+      - Line-item or grouped pricing appropriate to the customer and project.
+      - Optional services and alternates.
+      - Assumptions, limitations, customer responsibilities, and expected conditions.
+      - Payment terms, scheduling conditions, authorization language, and applicable warranty statements.
+      - Document ID, version, expiration date, and responsible company representative.
+
+  recurring_maintenance_pricing:
+    title: "Recurring Maintenance Pricing"
+    chunk: maintenance-programs
+    risk_level: general
+    principle: >
+      Maintenance plans should be based on expected soil load, exposure, service
+      frequency, access, customer standards, and the reduced setup or restoration burden
+      created by regular service.
+    program_types:
+      - Monthly or quarterly high-traffic commercial cleaning.
+      - Semiannual building, walkway, storefront, and entry maintenance.
+      - Annual residential or HOA exterior maintenance.
+      - Seasonal programs for pollen, algae, salt, irrigation staining, or leaf-related contamination.
+      - Multi-service agreements combining washing, windows, gutters, and flatwork.
+
+  customer_communication_standards:
+    title: "Customer Communication Standards"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "Why does the price vary?"
+        answer: >
+          Size is only one factor. Access, material, contamination, protection,
+          equipment, and expected result all affect the price.
+      - question: "Can you quote from photos?"
+        answer: >
+          A preliminary range may be possible, but final pricing may require
+          measurements, condition verification, and access review.
+      - question: "How long will it take?"
+        answer: >
+          We provide a projected range and explain the factors that can change
+          production — weather, access, contamination, and crew scheduling.
+      - question: "Why is specialty stain removal separate?"
+        answer: >
+          Specialty stains require different diagnostics, products, dwell times,
+          testing, and risk controls that go beyond standard cleaning procedures.
+      - question: "Will everything look new?"
+        answer: >
+          Cleaning can substantially improve many surfaces, but age, oxidation,
+          failing coatings, and permanent material changes may remain visible.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-estimating-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    critical_rule: >
+      The AI must not issue binding customer prices, guarantee production time,
+      authorize discounts, or create unsupported warranties without company-approved
+      data and field-verified measurements.
+    boundaries:
+      - Do not disclose confidential internal margins, labor rates, chemical costs, or pricing formulas unless management authorizes that audience.
+      - Do not infer code, permit, wastewater, labor, tax, or contract requirements without current verification.
+      - Do not recommend work that conflicts with safety rules, product labels, equipment manuals, or manufacturer requirements.
+      - Escalate unusual substrates, high access work, hazardous contamination, large commercial sites, disputes, or significant uncertainty.
+
+  mandatory_human_review_triggers:
+    title: "Mandatory Human Review Triggers"
+    chunk: ai-estimating-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Binding quote or contract issuance.
+      - Lift, scaffold, rope access, fall protection, or traffic-control requirements.
+      - Historic, fragile, coated, or unidentified materials.
+      - Hazardous-material concern, wastewater recovery, environmental restriction, or legal requirement.
+      - Commercial projects with multiple buildings, tenants, phases, or after-hours coordination.
+      - Large price deviation from standard service ranges.
+      - Customer dispute, damage allegation, warranty claim, or requested guarantee.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    principle: >
+      Index as a separate versioned knowledge source. Retrieval must distinguish public
+      education from internal estimating support. Pricing outputs require policy-aware
+      routing and must default to preliminary language unless an authorized price book
+      and required project data are available.
+    recommended_chunks:
+      property_assessment:
+        tags: [property-assessment, measurement, access, contamination]
+      scope_development:
+        tags: [scope, inclusions, exclusions, assumptions]
+      production_planning:
+        tags: [production-rate, crew-hours, scheduling]
+      pricing_architecture:
+        tags: [pricing-factors, mobilization, premiums, margin]
+      proposal_logic:
+        tags: [proposal, options, terms, customer-responsibilities]
+      maintenance_programs:
+        tags: [recurring-service, frequency, commercial, residential]
+      ai_boundaries:
+        tags: [binding-price, escalation, human-review, confidentiality]
+    metadata:
+      module: AIM3
+      version: "8.0"
+      division: exterior
+      service_class: estimating
+      audience: [developer, internal, public-ai]
+      document_status: developer-ready
+
+  roadmap_v9:
+    next_version: "V9.0"
+    title: "Field Diagnostics & Technician Support Logic"
+    focus:
+      - Field diagnostics and technician-support logic
+      - Service-specific troubleshooting decision trees
+      - Photo-analysis guidance and confidence limitations
+      - Quality-assurance workflows and failed-result diagnostics
+      - Customer complaint and issue-resolution pathways
+      - Escalation rules for damage, safety, chemistry, equipment, and scope changes

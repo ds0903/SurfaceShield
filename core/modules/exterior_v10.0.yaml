@@ -1,0 +1,433 @@
+module_id: SSBOS-001-AIM3-V10.0
+title: "AI Module 3 – Exterior Division: Master Integration, SOP Framework and Completion Manual"
+version: "10.0"
+division: Exterior
+document_type: Elite SSBOS Master Integration Manual
+status: production-ready
+document_role: master-routing
+routing_priority: primary
+supersedes: none
+integrates: [V1.0, V2.0, V3.0, V4.0, V5.0, V6.0, V7.0, V8.0, V9.0]
+audience: [public-ai, technician, estimator, management, developer]
+document_status: production-ready
+completion_status: complete
+next_module: SSBOS AI Module 4 - Interior Division
+tags:
+  - exterior-master-routing
+  - lead-intake
+  - service-qualification
+  - inspection-sop
+  - surface-classification
+  - contamination-classification
+  - method-routing
+  - equipment-routing
+  - chemistry-routing
+  - estimating-sop
+  - proposal-sop
+  - scheduling-sop
+  - field-execution
+  - quality-assurance
+  - project-closeout
+  - customer-issue-resolution
+  - damage-allegations
+  - audience-controls
+  - mandatory-escalation
+  - developer-integration
+
+sections:
+
+  document_control_and_completion:
+    title: "Document Control and Completion Status"
+    chunk: exterior-master-routing
+    risk_level: general
+    completion_banner: "MODULE 3 - EXTERIOR DIVISION: CONTENT DEVELOPMENT COMPLETE"
+    principle: >
+      Version 10.0 is the controlling integration layer for AI Module 3. It does not
+      erase or replace the technical content in Versions 1.0-9.0. Instead, it governs
+      how those knowledge sources are retrieved, sequenced, applied, qualified and
+      escalated.
+    control_items:
+      version_history:
+        requirement: Versions 1.0-9.0 remain available as controlled source modules.
+        status: Complete
+      primary_routing:
+        requirement: Version 10.0 routes requests to the appropriate technical source.
+        status: Complete
+      safety_priority:
+        requirement: Safety, label, manufacturer and escalation rules override general advice.
+        status: Mandatory
+      human_authority:
+        requirement: Binding price, contract, warranty, liability and high-risk decisions remain human-controlled.
+        status: Mandatory
+      deployment_readiness:
+        requirement: Developer may chunk, tag, index and test this module for production retrieval.
+        status: Ready
+
+  operating_principles:
+    title: "Exterior Division Operating Principles"
+    chunk: exterior-master-routing
+    risk_level: general
+    principles:
+      - Protect people, property, landscaping, equipment, water systems and the environment before production speed.
+      - Match the process to the substrate and contamination; do not force one method onto every surface.
+      - Use the least aggressive effective process and validate uncertain conditions with controlled testing.
+      - Separate cleaning, restoration, repair, coating, sealing and replacement as different service categories.
+      - Communicate inclusions, exclusions, assumptions, limitations and expected results before work begins.
+      - Treat photos, aerial measurements and customer descriptions as preliminary unless field-verified.
+      - Document pre-existing conditions, critical steps, quality controls and final results.
+      - Escalate unusual, hazardous, disputed, structural, legal, environmental or high-value conditions.
+
+  master_workflow:
+    title: "Master Exterior Division Workflow"
+    chunk: exterior-master-routing
+    risk_level: general
+    steps:
+      1: Lead intake and service qualification.
+      2: Customer education and expectation setting.
+      3: Property data collection.
+      4: Inspection and risk assessment.
+      5: Surface and contamination classification.
+      6: Method, equipment and chemistry routing.
+      7: Measurement and production planning.
+      8: Pricing and proposal development.
+      9: Scheduling and pre-job preparation.
+      10: Crew mobilization and site setup.
+      11: Controlled field execution.
+      12: Quality assurance and corrective review.
+      13: Customer walkthrough and closeout.
+      14: Billing, records and warranty handling.
+      15: Maintenance follow-up and recurring service.
+
+  intake_and_qualification_sop:
+    title: "Intake and Qualification SOP"
+    chunk: lead-intake
+    risk_level: general
+    rules:
+      - Capture customer name, service address, contact information, property type and requested service.
+      - Determine whether the request is residential, commercial, HOA, property-management, contractor, emergency or insurance-related.
+      - Request current photographs when they can improve triage, but do not treat them as a substitute for required inspection.
+      - Identify access, height, water, electricity, parking, tenant, gate, pet and scheduling restrictions.
+      - Screen for hazardous materials, active leakage, unstable surfaces, structural damage, electrical risk or unusual contamination.
+      - Clarify the customer objective: routine maintenance, appearance improvement, stain removal, restoration, preparation for coating or problem investigation.
+      - Decide whether the request can receive a preliminary range, requires remote review, or requires a field inspection.
+
+  inspection_and_documentation_sop:
+    title: "Inspection and Documentation SOP"
+    chunk: inspection-sop
+    risk_level: elevated
+    steps:
+      1: Confirm the requested scope and walk the property with the customer or responsible representative when practical.
+      2: Photograph the overall property, service areas, access routes, sensitive items and pre-existing conditions.
+      3: Identify the substrate, coating or finish, visible deterioration and contamination category.
+      4: Review water supply, drainage, runoff path, vegetation, metals, glass, electrical components and adjacent property.
+      5: Measure or estimate service quantities and clearly label each value as measured, calculated, customer-provided or assumed.
+      6: Perform a controlled test area when the surface, coating, stain or expected result is uncertain.
+      7: Document exclusions, limitations, customer responsibilities and escalation items before final pricing.
+
+  service_selection_matrix:
+    title: "Service Selection Matrix"
+    chunk: service-qualification
+    risk_level: general
+    services:
+      soft_washing:
+        typical_surfaces: Siding, roofs, delicate exteriors.
+        primary_objective: Organic growth treatment with controlled pressure.
+        core_source_version: V1-V2
+      pressure_washing:
+        typical_surfaces: Durable flatwork and selected hard surfaces.
+        primary_objective: Mechanical soil removal and rinsing.
+        core_source_version: V1-V3
+      wood_restoration:
+        typical_surfaces: Decks, fences, selected exterior wood.
+        primary_objective: Clean, strip, brighten and prepare for finish.
+        core_source_version: V4
+      concrete_and_masonry:
+        typical_surfaces: Concrete, brick, pavers, stone.
+        primary_objective: Routine cleaning, specialty stain treatment, restoration support.
+        core_source_version: V5
+      commercial_maintenance:
+        typical_surfaces: Buildings, facilities, multifamily, storefronts.
+        primary_objective: Operationally controlled recurring or project cleaning.
+        core_source_version: V6
+      windows_and_pure_water:
+        typical_surfaces: Glass, frames, solar panels.
+        primary_objective: Exterior glass cleaning and spot-reduction systems.
+        core_source_version: V7
+      estimating_and_proposals:
+        typical_surfaces: All exterior services.
+        primary_objective: Production, pricing architecture and proposal control.
+        core_source_version: V8
+      diagnostics_and_quality:
+        typical_surfaces: All exterior services and equipment.
+        primary_objective: Troubleshooting, photo triage, QC and escalation.
+        core_source_version: V9
+      master_integration:
+        typical_surfaces: All Exterior Division requests.
+        primary_objective: End-to-end routing and SOP governance.
+        core_source_version: V10
+
+  method_equipment_chemistry_routing:
+    title: "Method, Equipment and Chemistry Routing"
+    chunk: method-routing
+    risk_level: elevated
+    rules:
+      - First identify the substrate and whether a coating, sealer, finish or fragile component is present.
+      - Classify the contamination as organic, mineral, oxidation-related, petroleum-based, metallic, coating-related, construction-related or unknown.
+      - Select the least aggressive effective method that can be safely controlled on the site.
+      - Confirm equipment capacity, water supply, hose length, injector or proportioning behavior, nozzle selection and access requirements.
+      - Follow product labels, manufacturer instructions, safety data, PPE requirements and applicable regulations.
+      - Do not combine chemicals unless compatibility and permitted use are confirmed.
+      - Do not increase pressure, concentration or dwell automatically when the first result is incomplete; diagnose the cause first.
+
+  estimating_and_proposal_sop:
+    title: "Estimating and Proposal SOP"
+    chunk: estimating-sop
+    risk_level: elevated
+    steps:
+      1: Define the base scope and the customer objective.
+      2: Quantify the work and identify all assumptions.
+      3: Estimate crew-hours, mobilization, setup, protection, dwell, access transitions, cleanup, documentation and travel.
+      4: Select required equipment, specialty tools, access systems, water storage or recovery controls.
+      5: Account for chemistry, consumables, equipment burden, overhead, risk, contingency and target margin.
+      6: Separate optional services and specialty stain treatments from the base scope.
+      7: State exclusions, customer responsibilities, limitations, schedule conditions and any inspection requirement.
+      8: Route binding price, discount, contract and warranty approval to authorized management.
+    ai_pricing_rule: >
+      Preliminary planning support is permitted. Binding customer pricing requires
+      company-approved data, required project inputs and authorized review.
+
+  scheduling_and_prejob_sop:
+    title: "Scheduling and Pre-Job Preparation SOP"
+    chunk: scheduling-sop
+    risk_level: general
+    rules:
+      - Confirm authorization, deposit or payment requirement, scope version and customer contact.
+      - Review weather, temperature, wind, access, water, parking and operating-hour restrictions.
+      - Assign crew size, lead technician, equipment, chemicals, PPE, protection materials and documentation requirements.
+      - Verify equipment inspection, fuel, oil, filters, nozzles, spare parts, batteries, hoses and reels.
+      - Confirm lift, scaffold, traffic control, permits, security clearance or tenant notices when applicable.
+      - Issue a pre-job brief covering scope, risks, exclusions, quality standard and escalation contacts.
+
+  field_execution_sop:
+    title: "Field Execution SOP"
+    chunk: field-execution
+    risk_level: elevated
+    steps:
+      1: Conduct arrival check-in and confirm the work area has not materially changed.
+      2: Photograph conditions before setup and document any new defects or obstacles.
+      3: Establish work zones, hose routes, plant and property protection, electrical controls and runoff controls.
+      4: Perform equipment and chemical verification before application.
+      5: Complete a test area when required by uncertainty or company policy.
+      6: Apply the selected process in controlled sections while monitoring dwell, drying, runoff and adjacent materials.
+      7: Rinse, neutralize or recover as required by the process and site conditions.
+      8: Inspect each completed section before moving equipment or releasing the area.
+      9: Stop and escalate when damage, unsafe conditions, unexpected reactions, water intrusion or scope conflicts appear.
+
+  service_sop_summary:
+    title: "Service SOP Summary"
+    chunk: field-execution
+    risk_level: elevated
+    services:
+      house_washing:
+        critical_controls: Oxidation, electricals, open penetrations, landscaping, runoff.
+        typical_limitation: Cleaning may reveal faded or chalked siding.
+        mandatory_escalation: Water intrusion or disputed damage.
+      roof_soft_washing:
+        critical_controls: Roof condition, access, metals, drainage, plant protection.
+        typical_limitation: Moss or lichen may release gradually.
+        mandatory_escalation: Unsafe roof, active leak, brittle roofing.
+      concrete_cleaning:
+        critical_controls: Pressure control, joint condition, drainage, pattern consistency.
+        typical_limitation: Permanent stains or uneven substrate may remain.
+        mandatory_escalation: Etching, aggregate loss or coating failure.
+      pavers_and_sealing:
+        critical_controls: Joint stability, prior sealer, moisture and weather.
+        typical_limitation: Color and absorption may vary.
+        mandatory_escalation: Unknown sealer or widespread failure.
+      wood_restoration:
+        critical_controls: Species, coating, moisture, rot, fasteners.
+        typical_limitation: Raised grain and weathering may require sanding.
+        mandatory_escalation: Structural decay or unknown hazardous coating.
+      window_cleaning:
+        critical_controls: Glass type, coatings, seals, fabrication debris.
+        typical_limitation: Hard-water damage or scratches may remain.
+        mandatory_escalation: Historic glass, disputed scratch, high access.
+      gutter_cleaning:
+        critical_controls: Roof edge safety, debris, drainage, downspout flow.
+        typical_limitation: Interior staining may not fully release.
+        mandatory_escalation: Unsafe roof or damaged gutter system.
+      specialty_stains:
+        critical_controls: Test area, substrate compatibility, separate authorization.
+        typical_limitation: Improvement may be partial.
+        mandatory_escalation: Unknown stain or aggressive treatment required.
+      commercial_facilities:
+        critical_controls: Public protection, scheduling, recovery, documentation.
+        typical_limitation: Phased access may affect duration.
+        mandatory_escalation: Traffic, environmental or multi-party risk.
+
+  quality_assurance_and_closeout_sop:
+    title: "Quality Assurance and Closeout SOP"
+    chunk: quality-assurance
+    risk_level: general
+    steps:
+      1: Review the completed scope against the approved proposal and field notes.
+      2: Inspect the work dry when the surface or service requires dry evaluation.
+      3: Compare before and after documentation and identify unresolved limitations.
+      4: Complete safe corrective work that remains within the authorized scope.
+      5: Photograph final conditions and remove protection, debris, hoses and equipment.
+      6: Walk the project with the customer or responsible representative when practical.
+      7: Explain maintenance, drying, delayed-release effects, excluded conditions and recommended follow-up.
+      8: Record acceptance, issue list, warranty information, invoice status and future maintenance opportunity.
+
+  customer_issue_and_damage_allegation_protocol:
+    title: "Customer Issue and Damage Allegation Protocol"
+    chunk: damage-allegations
+    risk_level: escalation-required
+    priority: CRITICAL
+    rules:
+      - Acknowledge the concern without argument, unsupported denial or admission of liability.
+      - Identify the exact area, time, symptom and requested remedy.
+      - Preserve photos, video, job notes, product records, weather information and communication history.
+      - Compare the allegation with documented pre-existing conditions and approved scope.
+      - Stop further corrective action when it could alter evidence or increase damage.
+      - Escalate property damage, injury, refund demand, legal threat, insurance matter, chargeback or public complaint to management.
+      - Only authorized management may approve liability statements, refunds, credits, warranty coverage or settlement terms.
+
+  ai_routing_hierarchy:
+    title: "AI Routing Hierarchy"
+    chunk: exterior-master-routing
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_layers:
+      1:
+        layer: Emergency and safety
+        rule: Immediate danger, injury, exposure, fire, electrical event or active damage overrides all normal workflows.
+      2:
+        layer: Mandatory escalation
+        rule: Structural, hazardous, disputed, legal, environmental and high-access conditions require human control.
+      3:
+        layer: Manufacturer and label
+        rule: Current product labels, equipment manuals and manufacturer requirements override general guidance.
+      4:
+        layer: Version 10 orchestration
+        rule: Select the proper workflow, source module, audience and output type.
+      5:
+        layer: Technical source retrieval
+        rule: Retrieve only the relevant sections from Versions 1.0-9.0.
+      6:
+        layer: Company pricing and policy
+        rule: Apply only approved price books, terms, warranty rules and operational policies.
+      7:
+        layer: General education
+        rule: Provide qualified explanation when no company-specific decision is authorized.
+
+  audience_and_output_controls:
+    title: "Audience and Output Controls"
+    chunk: audience-controls
+    risk_level: general
+    audiences:
+      public_customer_ai: Education, intake, expectation setting, scheduling support and nonbinding preliminary guidance.
+      internal_estimator_ai: Scope development, production factors, optional services, assumptions and proposal drafting.
+      technician_ai: Field checks, safe troubleshooting, QC prompts and escalation support.
+      management_ai: Operational review, pricing analysis, issue triage and controlled decision support.
+      developer_view: Source identifiers, metadata, chunk relationships, confidence and routing rules.
+    restriction: >
+      The AI must not expose internal margins, confidential labor rates, pricing formulas
+      or restricted policies to unauthorized audiences.
+
+  knowledge_index:
+    title: "Knowledge Index: Versions 1.0-10.0"
+    chunk: exterior-master-routing
+    risk_level: general
+    versions:
+      "1.0":
+        primary_domain: Exterior fundamentals, cleaning science, customer consultation and baseline safety.
+        retrieval_use: Foundational explanation and qualification.
+      "2.0":
+        primary_domain: Sodium hypochlorite, dilution, surfactants, downstreaming, X-Jet, dwell and plant protection.
+        retrieval_use: Chemistry and application planning.
+      "3.0":
+        primary_domain: Pressure washers, GPM, PSI, pumps, unloaders, nozzles, injectors, reels and maintenance.
+        retrieval_use: Equipment selection and troubleshooting.
+      "4.0":
+        primary_domain: Wood science, stripping, brightening, moisture, sanding and finish systems.
+        retrieval_use: Deck and fence restoration.
+      "5.0":
+        primary_domain: Concrete, masonry, stone, pavers, specialty stains and sealing.
+        retrieval_use: Hard-surface service routing.
+      "6.0":
+        primary_domain: Commercial exterior cleaning, facility maintenance, access, runoff and recurring service.
+        retrieval_use: Commercial operations.
+      "7.0":
+        primary_domain: Glass, pure water, water-fed poles, hard-water stains, solar and specialty surfaces.
+        retrieval_use: Window and specialty-surface service.
+      "8.0":
+        primary_domain: Assessment, production, labor, pricing, proposals and maintenance programs.
+        retrieval_use: Estimating and business operations.
+      "9.0":
+        primary_domain: Diagnostics, equipment symptoms, photo analysis, QC and issue resolution.
+        retrieval_use: Technician and management support.
+      "10.0":
+        primary_domain: Master workflow, SOP governance, routing hierarchy and completion controls.
+        retrieval_use: Primary orchestration layer.
+
+  developer_integration_standard:
+    title: "Developer Integration Standard"
+    chunk: developer-integration
+    risk_level: general
+    rules:
+      - Store Version 10.0 as the primary Exterior Division routing and policy layer, not as the only knowledge source.
+      - Preserve source document ID, version, section, service class, surface, contamination, equipment, audience, risk and confidence metadata.
+      - Chunk by operational concept rather than arbitrary page length.
+      - Return the smallest sufficient set of relevant chunks and avoid loading the full module into every prompt.
+      - Give safety, label, manufacturer, knowledge-boundary and escalation chunks precedence over general procedural guidance.
+      - Support source traceability so internal users can identify the originating version and section.
+      - Separate public-facing content from internal pricing, management and developer content.
+      - Log low-confidence or high-risk requests for review and continuous improvement.
+
+  metadata_schema:
+    title: "Recommended Metadata Schema"
+    chunk: developer-integration
+    risk_level: general
+    schema:
+      module: AIM3
+      version: "10.0"
+      division: exterior
+      document_role: master-routing
+      service_class: [house-wash, roof, concrete, wood, windows, commercial, specialty]
+      audience: [public-ai, technician, estimator, management, developer]
+      risk_level: [general, elevated, escalation-required]
+      confidence: [high, moderate, low]
+      source_priority: [mandatory, primary, supporting]
+      status: production-ready
+
+  completion_checklist:
+    title: "Exterior Division Completion Checklist"
+    chunk: developer-integration
+    risk_level: general
+    items:
+      - Technical foundations documented. [V1.0]
+      - Chemistry and application systems documented. [V2.0]
+      - Equipment and maintenance systems documented. [V3.0]
+      - Wood restoration systems documented. [V4.0]
+      - Concrete, masonry, paver and stone systems documented. [V5.0]
+      - Commercial facility operations documented. [V6.0]
+      - Windows, pure water and specialty surfaces documented. [V7.0]
+      - Estimating, production and proposal logic documented. [V8.0]
+      - Diagnostics, quality control and issue resolution documented. [V9.0]
+      - Master workflow and SOP governance documented. [V10.0]
+      - AI knowledge boundaries and escalation rules documented. [V10.0]
+      - Developer routing, metadata and retrieval standards documented. [V10.0]
+
+  module_completion_certificate:
+    title: "Module Completion Certificate"
+    chunk: exterior-master-routing
+    completion_banner: "SSBOS-001 AI MODULE 3 - EXTERIOR DIVISION — VERSION 10.0 CAPSTONE COMPLETED"
+    note: >
+      The Exterior Division knowledge architecture is complete for controlled developer
+      integration, internal testing and staged production deployment. Ongoing amendments
+      should be issued through new controlled versions, supplements or company policy updates.
+    completion_status: Complete
+    next_development_stage: SSBOS AI Module 4 - Interior Division
+    document_owner: Surface Shield Systems LLC
+    controlled_document_id: SSBOS-001-AIM3-V10.0

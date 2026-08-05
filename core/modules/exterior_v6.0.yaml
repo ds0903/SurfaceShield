@@ -1,0 +1,458 @@
+module_id: SSBOS-001-AIM3-V6.0
+title: "AI Module 3 – Exterior Division: Commercial Exterior Cleaning & Facility Maintenance Systems"
+version: "6.0"
+division: Exterior
+classification: Controlled Working Knowledge Base
+status: active
+supersedes: none
+service_class: commercial
+audience: [public-ai, internal, developer]
+document_status: developer-ready
+tags:
+  - commercial-property-types
+  - commercial-services
+  - site-assessment
+  - operational-continuity
+  - access-equipment
+  - work-zone-control
+  - water-supply
+  - runoff-recovery
+  - environmental-boundaries
+  - traffic-pedestrian-safety
+  - crew-production-planning
+  - quality-control
+  - documentation
+  - recurring-maintenance
+  - commercial-customer-communication
+  - ai-boundaries
+  - escalation-triggers
+
+core_commercial_principle: >
+  Commercial exterior cleaning must balance cleaning performance with operational
+  continuity, safety, property protection, environmental responsibility, and
+  documented quality assurance. Commercial work is not merely a larger residential
+  job — it introduces additional responsibility for business continuity, tenant
+  coordination, public safety, access restrictions, water management, reporting,
+  and contractual performance.
+
+sections:
+
+  required_ai_behavior:
+    priority: CRITICAL
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    rules:
+      - Identify the property type, occupancy, access limitations, cleaning objective, and operational constraints before recommending any service approach.
+      - Distinguish routine maintenance from restoration, remediation, post-construction cleaning, and specialty stain removal.
+      - Avoid presenting generalized production rates or pricing as a binding estimate without a site review.
+      - Never guarantee regulatory compliance, wastewater disposal approval, stain removal, or uninterrupted operations without verification.
+      - Escalate high-rise access, confined-space, hazardous-material, electrical, traffic-control, and regulated-discharge questions to qualified personnel.
+      - Use professional, non-alarmist language and clearly separate observed conditions from assumptions.
+      - Prioritize tenant, customer, pedestrian, employee, and property safety in every recommendation.
+      - Classify all requested work before responding — routine cleaning / deep cleaning / restoration / specialty stain treatment / regulated-industrial work.
+
+  commercial_property_types:
+    title: "Commercial Property Types"
+    chunk: commercial-property-types
+    risk_level: general
+    note: Tailor questions and recommendations to the property class.
+    properties:
+      office_buildings:
+        considerations: Professional appearance, entryways, curtain walls, sidewalks, parking areas, and work-hour coordination.
+      retail_centers_and_shopping_plazas:
+        considerations: Customer traffic, storefront visibility, gum, food spills, sidewalks, curbs, loading zones, and night scheduling.
+      warehouses_and_distribution_centers:
+        considerations: Large wall areas, loading docks, truck traffic, industrial residue, drainage, and production sequencing.
+      industrial_and_manufacturing_facilities:
+        considerations: Process residue, safety zones, restricted areas, chemical compatibility, and site-specific protocols.
+        risk_level: elevated
+      schools_churches_and_government_facilities:
+        considerations: Public access, event scheduling, security, pedestrian safety, and budget-driven maintenance cycles.
+      hospitals_hotels_and_senior_living:
+        considerations: Continuous occupancy, sensitive entrances, noise limitations, emergency access, and high presentation standards.
+        risk_level: elevated
+      restaurants_and_drive_throughs:
+        considerations: Grease, food residue, dumpster pads, drive lanes, odors, customer traffic, and frequent maintenance.
+      apartments_condominiums_hoas:
+        considerations: Resident notification, phased work, building identification, balcony and window concerns, and board documentation.
+      parking_garages:
+        considerations: Vehicle movement, oil and soot, drainage, low-clearance equipment, ventilation, and water recovery.
+      historic_and_specialty_properties:
+        considerations: Material sensitivity, testing, conservation concerns, access restrictions, and documentation requirements.
+        risk_level: escalation-required
+
+  commercial_service_categories:
+    title: "Commercial Service Categories"
+    chunk: commercial-services
+    risk_level: general
+    ai_classification_rule: >
+      Classify the requested work as: routine cleaning / deep cleaning / restoration /
+      specialty stain treatment / regulated-industrial work. Classification determines
+      required questions, risk controls, and escalation path.
+    building_and_envelope_services:
+      - Low-pressure building washing
+      - Roof soft washing where appropriate
+      - Facade and siding cleaning
+      - Awning and canopy cleaning
+      - Exterior metal and composite panel cleaning
+      - Gutter and downspout cleaning
+      - Sign and architectural-feature cleaning
+    ground_level_and_flatwork_services:
+      - Sidewalks and pedestrian plazas
+      - Parking lots and parking structures
+      - Loading docks and receiving areas
+      - Drive-through lanes
+      - Dumpster and compactor pads
+      - Warehouse aprons and service courts
+      - Curbs, islands, and entry approaches
+    specialty_services:
+      - Storefront and window cleaning
+      - Gum and adhesive removal
+      - Graffiti treatment
+      - Rust and mineral-stain treatment
+      - Oil, grease, and food-residue cleaning
+      - Post-construction exterior cleaning
+      - Fleet and equipment washing
+      - Solar panel cleaning when qualified and appropriate
+
+  site_assessment_and_project_planning:
+    title: "Site Assessment & Project Planning"
+    chunk: site-assessment
+    risk_level: general
+    note: >
+      Final scope and pricing must be confirmed by qualified personnel when property
+      conditions materially affect safety, chemistry, access, or production. AI may
+      help collect preliminary information only.
+    assessment_checklist:
+      - Property type, use, and hours of operation
+      - Building height, elevations, rooflines, and access points
+      - Surface materials, coatings, prior repairs, and sensitive finishes
+      - Contaminant type, severity, and distribution
+      - Water sources, pressure, flow, and permitted connection points
+      - Electrical service, exterior outlets, lighting, transformers, and overhead lines
+      - Drainage paths, storm drains, landscaping, ponds, and receiving waters
+      - Vehicle and pedestrian traffic patterns
+      - Tenant, employee, customer, and delivery schedules
+      - Ladder, lift, scaffolding, or water-fed-pole requirements
+      - Potential containment, recovery, or disposal requirements
+      - Security, escort, identification, or restricted-area requirements
+    pre_proposal_documentation:
+      1: Photograph representative elevations and conditions.
+      2: Record approximate dimensions and identifiable service zones.
+      3: Note exclusions, inaccessible areas, and uncertain conditions.
+      4: Identify areas requiring test cleaning or specialty review.
+      5: Document water and electrical limitations.
+      6: Confirm scheduling restrictions and communication contacts.
+      7: Prepare a written scope with assumptions, options, and exclusions.
+
+  scheduling_and_operational_continuity:
+    title: "Scheduling & Operational Continuity"
+    chunk: operational-continuity
+    risk_level: general
+    operational_continuity_rule: >
+      The AI must never promise that a commercial property can remain fully operational
+      during cleaning. Explain that access and scheduling are evaluated and that temporary
+      closures or controlled work zones may be necessary.
+    scheduling_options:
+      - Overnight or early-morning work
+      - Weekend service
+      - Phased building-by-building service
+      - Zone-based closures
+      - Seasonal maintenance windows
+      - Coordination with tenant turnover, construction, or special events
+    communication_requirements:
+      - Designated client representative
+      - Emergency contact and escalation chain
+      - Tenant or resident notifications
+      - Vehicle relocation instructions
+      - Door, window, and HVAC preparation notices
+      - Water shutdown or access coordination
+      - Daily completion and exception reporting
+
+  access_height_and_work_zone_controls:
+    title: "Access, Height & Work-Zone Controls"
+    chunk: access-equipment
+    risk_level: elevated
+    access_methods:
+      - Ground-based low-pressure application
+      - Water-fed pole systems
+      - Extension and platform ladders
+      - Scaffolding
+      - Scissor lifts
+      - Articulating and telescopic boom lifts
+      - Specialized rope-access contractors
+    selection_note: >
+      Access equipment selection depends on height, terrain, reach, surface sensitivity,
+      public exposure, and site restrictions. Only trained and authorized personnel should
+      operate equipment requiring certification or specialized fall protection.
+    ai_restrictions:
+      priority: CRITICAL
+      rules:
+        - Do not provide operational instructions for lifts, scaffolds, rope access, or fall-protection systems.
+        - Do not recommend improvised access methods.
+        - Do not suggest working from roofs, ladders, or elevated platforms without a site-specific safety plan.
+        - Do not treat equipment rental availability as evidence that equipment is appropriate or safe.
+    escalation_trigger: >
+      Any request involving high-rise work, unstable ground, public exposure below
+      elevated work, roof access, overhead electrical lines, confined areas, or
+      specialized fall protection must be escalated to qualified operations personnel.
+
+  water_supply_recovery_and_environmental_controls:
+    title: "Water Supply, Recovery & Environmental Controls"
+    chunk: water-supply
+    risk_level: elevated
+    water_supply_planning:
+      - Available hose connections and authorization
+      - Supply flow and pressure
+      - Distance from source to work zone
+      - Backflow prevention requirements
+      - Onboard water capacity and refill logistics
+      - Hot-water needs for grease or industrial residue
+      - Freeze-weather limitations
+    runoff_and_recovery_concepts:
+      chunk: runoff-recovery
+      methods:
+        - Drain identification and protection
+        - Berming and temporary diversion
+        - Vacuum recovery
+        - Portable containment
+        - Filtration or separation when applicable
+        - Controlled discharge only where allowed
+        - Documentation of client or site-specific requirements
+      ai_rule: >
+        Do not make universal statements about what may enter a storm drain, sanitary
+        sewer, landscape area, or containment system. Local rules, property policies,
+        contaminant type, and project-specific conditions can change the correct approach.
+    environmental_boundary:
+      priority: CRITICAL
+      chunk: environmental-boundaries
+      rule: >
+        The AI may explain general runoff-control concepts but must not provide legal
+        conclusions or guarantee compliance. Site-specific discharge, recovery, transport,
+        and disposal decisions require verification by qualified personnel.
+
+  traffic_pedestrian_and_tenant_protection:
+    title: "Traffic, Pedestrian & Tenant Protection"
+    chunk: traffic-pedestrian-safety
+    risk_level: elevated
+    work_zone_elements:
+      - Cones, barricades, and warning signs
+      - Temporary pedestrian routes
+      - Doorway and entrance controls
+      - Vehicle-lane separation
+      - Spotters where visibility is limited
+      - Wet-surface warnings
+      - Controlled hose crossings
+      - Protection around loading docks and delivery routes
+    public_facing_considerations:
+      - Maintain emergency and accessible routes
+      - Avoid trapping occupants or blocking required exits
+      - Coordinate with security and property management
+      - Use professional uniforms and identification
+      - Manage noise, odor, mist, and overspray
+      - Inspect the site before reopening each zone
+    ai_communication_standard: >
+      When customers ask whether cleaning is safe during business hours, explain that
+      the decision depends on traffic, access, weather, chemicals, and work-zone controls.
+      Recommend a site-specific plan rather than a blanket assurance.
+
+  crew_equipment_and_production_planning:
+    title: "Crew, Equipment & Production Planning"
+    chunk: crew-production-planning
+    risk_level: general
+    production_variables:
+      - Crew size and skill mix
+      - GPM, pressure, heat, and equipment redundancy
+      - Chemical application capacity
+      - Water access and refill time
+      - Hose routing and setup distance
+      - Access-equipment positioning
+      - Contamination severity and dwell time
+      - Containment and recovery time
+      - Public and vehicle interruptions
+      - Setup, breakdown, travel, and cleanup
+    sequencing_logic:
+      1: Establish and document the work zone.
+      2: Protect sensitive surfaces, landscaping, doors, windows, and electrical components.
+      3: Complete elevated or upper-level work before lower areas where practical.
+      4: Clean walls and vertical surfaces before adjacent flatwork when runoff will affect those areas.
+      5: Perform specialty stain treatment only after identification and test cleaning.
+      6: Complete final rinsing, recovery, and reopening inspection.
+      7: Document completed zones and unresolved conditions.
+    redundancy_and_continuity:
+      - Backup nozzles, injectors, fittings, and hoses
+      - Spare pump or replacement-critical components where justified
+      - Secondary water or chemical plan
+      - Weather contingency
+      - Crew communication equipment
+      - Emergency shutdown and spill-response supplies
+
+  quality_assurance_and_documentation:
+    title: "Quality Assurance & Documentation"
+    chunk: quality-control
+    risk_level: general
+    quality_standard: >
+      A commercial project is not complete when cleaning stops. It is complete when
+      the work zone is safe, the scope is documented, quality is verified, exceptions
+      are communicated, and the property is returned to the client in an orderly condition.
+    quality_control_stages:
+      pre_job:
+        control: Confirm scope, exclusions, access, photos, sensitive areas, and client contacts.
+      startup:
+        control: Verify water, equipment, test area, protection, and work-zone controls.
+      in_process:
+        control: Inspect cleaning consistency, runoff, overspray, public exposure, and unresolved stains.
+      final:
+        control: Complete walkthrough, touch-ups, reopening check, photographs, and client sign-off.
+      post_service:
+        control: Deliver service report, document exceptions, and recommend maintenance or repairs.
+    recommended_documentation:
+      chunk: documentation
+      items:
+        - Before-and-after photographs
+        - Daily service log
+        - Weather and site-condition notes
+        - Areas completed and deferred
+        - Observed defects or pre-existing damage
+        - Chemical or specialty-treatment record where appropriate
+        - Client communication and authorization record
+        - Final walkthrough or acceptance record
+
+  recurring_facility_maintenance_programs:
+    title: "Recurring Facility Maintenance Programs"
+    chunk: recurring-maintenance
+    risk_level: general
+    ai_framing: >
+      Position recurring programs as planned asset maintenance — improving consistency,
+      reducing heavy restoration cycles, protecting presentation standards, and
+      simplifying budgeting.
+    common_frequencies:
+      monthly: High-traffic restaurants, drive-throughs, dumpster pads, and selected storefront zones.
+      quarterly: Retail entrances, sidewalks, loading areas, and hospitality properties.
+      semi_annual: Building washes, parking areas, windows, and seasonal property refreshes.
+      annual: Comprehensive exterior maintenance and condition review.
+      custom: Event-driven, tenant-turnover, construction, or compliance-related schedules.
+    program_components:
+      - Defined service zones and frequencies
+      - Priority response areas
+      - Scheduled inspections
+      - Photographic service records
+      - Annual condition summary
+      - Optional emergency or on-demand service
+      - Budget planning and renewal schedule
+      - Performance review with property management
+    maintenance_proposal_logic:
+      1: Identify high-visibility and high-contamination areas.
+      2: Separate frequent-service zones from annual-service zones.
+      3: Define measurable service expectations.
+      4: Establish scheduling and notification procedures.
+      5: State exclusions and specialty-treatment pricing.
+      6: Provide reporting and renewal terms.
+
+  commercial_customer_communication:
+    title: "Commercial Customer Communication"
+    chunk: commercial-customer-communication
+    risk_level: general
+    scripts:
+      - question: "Why should we clean the property every year?"
+        answer: >
+          Routine exterior maintenance supports curb appeal, preserves professional
+          presentation, limits the buildup of organic growth and traffic-related residue,
+          and can reduce the need for more aggressive restoration later.
+      - question: "Can the work be performed while we are open?"
+        answer: >
+          Many projects can be phased or scheduled around operations, but the correct
+          plan depends on traffic, entrances, chemicals, access, weather, and required
+          work-zone controls. A site review determines whether temporary closures or
+          off-hour service are appropriate.
+      - question: "Can you guarantee every stain will come out?"
+        answer: >
+          No responsible contractor should guarantee complete removal before identifying
+          the stain and testing the surface. Organic growth, rust, oil, oxidation,
+          minerals, coating failure, and permanent material changes require different
+          processes and may have different limitations.
+      - question: "Do you recover the wastewater?"
+        answer: >
+          Recovery requirements depend on the property, contaminants, drainage, local
+          rules, and project specifications. Surface Shield Systems evaluates runoff and
+          containment needs during planning and incorporates the required controls into
+          the scope.
+      - question: "How do you price a commercial property?"
+        answer: >
+          Pricing considers measurable area, access, surface type, contamination, water
+          supply, scheduling, equipment, crew needs, containment, safety controls, and
+          documentation. A site-specific proposal is more reliable than a simple
+          square-foot assumption.
+
+  knowledge_boundaries_and_escalation:
+    title: "AI Knowledge Boundaries & Escalation"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    public_ai_rule: >
+      The public-facing AI should provide education, collect project information, and
+      recommend professional evaluation. It must not function as a substitute for a
+      site-specific safety plan, environmental determination, engineering review,
+      or legal opinion.
+    the_ai_must_not:
+      - Guarantee compliance with environmental, wastewater, permit, safety, or traffic-control requirements.
+      - Provide legal advice or represent a preliminary answer as an approved site plan.
+      - Instruct users to operate lifts, scaffolds, rope-access systems, or specialized safety equipment.
+      - Recommend bypassing tenant notification, work-zone controls, discharge restrictions, or property rules.
+      - Provide binding production rates, schedules, or pricing without sufficient project information.
+      - Guarantee complete stain removal, restoration outcome, or uninterrupted business operations.
+      - Diagnose hazardous materials or structural safety based only on photographs or descriptions.
+    mandatory_escalation_triggers:
+      chunk: escalation-triggers
+      triggers:
+        - High-rise or specialized access
+        - Confined spaces or poor ventilation
+        - Electrical hazards or overhead lines
+        - Industrial chemicals, hazardous residue, or unknown contamination
+        - Hospital, school, government, or highly regulated facility protocols
+        - Storm-drain discharge, wastewater transport, or disposal questions
+        - Active traffic lanes or complex pedestrian control
+        - Historic masonry, fragile facades, or unknown coatings
+        - Structural deterioration, falling-material risk, or unstable access surfaces
+        - Contractual demands requiring guaranteed results or regulatory certification
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    versioning:
+      - Store as SSBOS-001-AIM3-V6.0.
+      - Do not overwrite or delete AIM3 Versions 1.0 through 5.0.
+      - Maintain revision metadata and source-document traceability.
+      - Treat safety and escalation content as high-priority retrieval material.
+    retrieval_priorities:
+      1: Retrieve property-type and service-category content first.
+      2: Retrieve site-planning and operational constraints when project specifics are provided.
+      3: Retrieve safety, environmental, and escalation content whenever risk terms are detected.
+      4: Retrieve customer communication language for public-facing responses.
+      5: Route unresolved or high-consequence questions to a Surface Shield Systems representative.
+    metadata:
+      module: AIM3
+      version: "6.0"
+      division: exterior
+      audience: [public-ai, internal, developer]
+      risk_level: [general, elevated, escalation-required]
+      service_class: commercial
+      document_status: developer-ready
+
+  roadmap_v7:
+    next_version: "V7.0"
+    title: "Window Cleaning & Specialty Surfaces"
+    focus:
+      - Traditional professional window-cleaning systems
+      - Water-fed pole technology
+      - Pure-water production and testing
+      - RO/DI system fundamentals
+      - Glass identification and fabrication-debris risk
+      - Hard-water and mineral-deposit treatment
+      - Scratch, etching, oxidation, and coating distinctions
+      - Solar panel cleaning principles
+      - Stainless steel and aluminum restoration
+      - Composite architectural panels
+      - Awnings, signage, and specialty facades
+      - Historic-building and sensitive-surface considerations
+      - Quality-control and spot-free inspection standards
+      - Estimating and production considerations
