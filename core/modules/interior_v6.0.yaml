@@ -1,0 +1,396 @@
+module_id: SSBOS-001-AIM4-V6.0
+title: "AI Module 4 – Interior Division: Enterprise Operations Manual & Unified AI Knowledge Framework"
+version: "6.0"
+division: Interior
+document_type: Elite SSBOS Manual — Master Edition
+status: production-ready
+document_role: master-routing
+routing_priority: mandatory
+namespace: interior-division
+supersedes: none
+controlled_sources: [V1.0, V2.0, V3.0, V4.0, V5.0]
+audience: [public-ai, technician, supervisor, management, developer]
+primary_use: Master routing, unified workflow, audience control, escalation, completion
+primary_rule: >
+  Protect people, property, finishes, privacy and customer trust before pursuing
+  speed, sales or appearance.
+tags:
+  - interior-master-routing
+  - source-module-map
+  - intake-qualification
+  - property-type-routing
+  - occupancy-routing
+  - service-classification
+  - inspection-risk
+  - surface-identification
+  - estimating-scheduling
+  - occupied-space-controls
+  - field-execution
+  - cross-contamination
+  - service-routing-matrix
+  - quality-assurance
+  - project-closeout
+  - customer-issue-resolution
+  - global-ai-boundaries
+  - mandatory-escalation
+  - developer-retrieval-hierarchy
+  - interior-completion-checklist
+
+sections:
+
+  purpose_and_knowledge_architecture:
+    title: "Purpose, Authority and Knowledge Architecture"
+    chunk: interior-master-routing
+    risk_level: general
+    routing_priority: mandatory
+    content: >
+      Version 6.0 is the primary orchestration layer for all Interior Division questions
+      and workflows. It does not replace source documents. It tells the AI which source
+      module to retrieve, which risks to prioritize, what audience controls apply, and
+      when a qualified human must take over.
+    version_routing:
+      V1.0: Foundation, service definitions, room classes, workflow and general safety.
+      V2.0: Premium surfaces, material identification, finish compatibility and specialty-care limits.
+      V3.0: Commercial facilities, recurring service, property management, medical-office boundaries and security.
+      V4.0: Post-construction phases, site readiness, new-finish protection, contractor coordination and closeout.
+      V5.0: Residential deep cleaning, occupied-home procedures, room-level SOPs and cross-contamination control.
+      V6.0: Route, combine and prioritize those sources without exposing confidential internal content to public users.
+
+  source_module_map:
+    title: "Source Module Map and Version Control"
+    chunk: source-module-map
+    risk_level: general
+    versions:
+      V1.0:
+        role: Foundation
+        primary_topics: Interior philosophy, residential/commercial services, rooms, surfaces, workflow, safety.
+        routing_status: Supporting
+      V2.0:
+        role: Specialty surfaces
+        primary_topics: Stone, hardwood, LVP, cabinetry, metals, glass, furniture, product logic.
+        routing_status: Primary when material-sensitive
+      V3.0:
+        role: Commercial operations
+        primary_topics: Offices, retail, medical offices, apartments, contracts, security, QA.
+        routing_status: Primary for commercial
+      V4.0:
+        role: Post-construction
+        primary_topics: Rough/final/touch-up, dust, residues, trades, punch lists, closeout.
+        routing_status: Primary for construction
+      V5.0:
+        role: Residential operations
+        primary_topics: Deep cleaning, room SOPs, occupied homes, soil classes, cross-contamination.
+        routing_status: Primary for residential
+      V6.0:
+        role: Master edition
+        primary_topics: Routing, unified workflow, audience control, escalation, completion.
+        routing_status: Mandatory routing layer
+
+  universal_intake_and_qualification:
+    title: "Universal Intake and Qualification Workflow"
+    chunk: intake-qualification
+    risk_level: general
+    steps:
+      1: Identify the customer, property address, property type and requested service.
+      2: Determine occupancy — occupied, vacant, move-in, move-out, commercial, construction or special project.
+      3: Identify rooms, surfaces, visible soil, odors, pets, children, sensitivities, access limitations and time constraints.
+      4: Ask what result the customer expects and whether previous cleaning, damage, coatings or specialty treatments exist.
+      5: Screen for mandatory escalation conditions before discussing process or pricing.
+      6: Collect contact preference and callback timing.
+      7: Route the inquiry to the correct Interior Division source module and prepare a consultation summary.
+      8: Send qualified lead information to consultations@surfaceshieldsystems.com or the approved CRM workflow.
+    intake_routing:
+      residential:
+        required_information: Home size, rooms, occupancy, pets, soil level, preferred frequency.
+        routing_outcome: Version 5.0 + relevant surface sections.
+      commercial:
+        required_information: Facility type, square footage, frequency, hours, access, security.
+        routing_outcome: Version 3.0.
+      post_construction:
+        required_information: Phase, readiness, trades active, residues, completion deadline.
+        routing_outcome: Version 4.0.
+      premium_surface:
+        required_information: Exact or suspected material, finish, condition, manufacturer.
+        routing_outcome: Version 2.0.
+      unknown_contamination:
+        required_information: Appearance, odor, source, exposure, affected area.
+        routing_outcome: Escalation before service recommendation.
+      general_information:
+        required_information: Service category and customer objective.
+        routing_outcome: Version 1.0 + this routing layer.
+
+  service_classification_and_routing:
+    title: "Interior Service Classification and Routing"
+    chunk: service-classification
+    risk_level: general
+    classes:
+      maintenance_cleaning:
+        typical_use: Recurring occupied home or routine commercial service.
+        primary_source: V1 + V3 or V5.
+        human_review: Required for final schedule and price.
+      deep_cleaning:
+        typical_use: Detailed residential reset or periodic commercial detail.
+        primary_source: V5.
+        human_review: Required when scope is extensive.
+      move_in_move_out:
+        typical_use: Vacant residence or unit turnover.
+        primary_source: V3 + V5.
+        human_review: Required for condition and exclusions.
+      post_construction:
+        typical_use: Rough, final, touch-up or occupancy-ready cleaning.
+        primary_source: V4.
+        human_review: Always for site readiness and scope.
+      premium_surface_care:
+        typical_use: Stone, hardwood, cabinetry, glass, fine furnishings.
+        primary_source: V2.
+        human_review: Required when material or finish uncertain.
+      specialty_restoration:
+        typical_use: Heavy residue, odor, stain, damaged or historic finish.
+        primary_source: V2 + relevant module.
+        human_review: Mandatory.
+      hazardous_regulated:
+        typical_use: Biohazard, asbestos, lead, sharps, medical waste, unknown chemical.
+        primary_source: Escalation only.
+        human_review: Mandatory; AI provides no procedure.
+
+  inspection_risk_and_surface_identification:
+    title: "Inspection, Risk and Surface Identification"
+    chunk: inspection-risk
+    risk_level: elevated
+    procedure:
+      - Confirm room type, material, finish, age, visible damage, prior treatment and manufacturer guidance.
+      - Document pre-existing scratches, chips, etching, water damage, loose components, failed coatings and inaccessible areas.
+      - Distinguish removable soil from wear, fading, oxidation, chemical damage, structural failure and installation defects.
+      - Use a discreet test area when compatibility or result is uncertain and authorization exists.
+      - Identify customer valuables, electronics, artwork, medication, documents, fragile items, security restrictions and pet controls.
+      - Classify risk as general, elevated or mandatory escalation.
+    risk_levels:
+      general:
+        examples: Known durable surface, routine soil, normal access.
+        ai_action: Provide education and collect lead details.
+      elevated:
+        examples: Premium finish, unknown coating, heavy residue, high access, occupied sensitive area.
+        ai_action: Recommend inspection and human approval.
+      mandatory_escalation:
+        examples: Biohazard, electrical hazard, active leak, broken glass, regulated waste, injury, legal dispute.
+        ai_action: Stop procedural guidance and escalate.
+      medical_regulated_claim:
+        examples: Sterilization, infection control, isolation area, regulated waste.
+        ai_action: Facility protocol and qualified review required.
+      damage_allegation:
+        examples: Customer reports scratching, discoloration, breakage or property damage.
+        ai_action: Document and route to management immediately.
+
+  estimating_proposal_scheduling:
+    title: "Estimating, Proposal and Scheduling Framework"
+    chunk: estimating-scheduling
+    risk_level: elevated
+    critical_rule: >
+      Binding prices, discounts, credits, refunds, warranties and contract changes
+      require authorized human approval.
+    rules:
+      - Estimate by service class, area, room type, fixture density, soil level, access, surface sensitivity, occupancy and desired result.
+      - Include mobilization, setup, protection, vertical movement, elevator or security delays, documentation, breakdown and quality review.
+      - Separate base scope, optional services, specialty treatment, high-access work, heavy haul-out and conditions requiring allowances.
+      - State assumptions, exclusions, customer responsibilities and conditions that may require a change order.
+      - Confirm access window, estimated duration range, parking, keys, pets, utilities and responsible contact before scheduling.
+      - Never guarantee completion time when occupancy, construction activity, drying, access or unexpected conditions may change production.
+
+  pre_job_and_occupied_space_controls:
+    title: "Pre-Job Preparation and Occupied-Space Controls"
+    chunk: occupied-space-controls
+    risk_level: elevated
+    rules:
+      - Confirm scope, arrival window, access, alarm procedures, customer contact and areas excluded from service.
+      - Request removal or securing of cash, jewelry, medication, confidential documents, firearms and highly fragile items.
+      - Confirm pet location, child safety, remote-work areas, medical equipment and fragrance or product preferences.
+      - Prepare color-coded cloths, separated tools, appropriate PPE, surface-compatible products and clean equipment.
+      - Use signage and slip controls where occupants, tenants or customers may enter work areas.
+      - Document inaccessible rooms, pre-existing conditions and customer-requested deviations from scope.
+
+  field_execution_and_unified_sop:
+    title: "Field Execution and Unified SOP Sequence"
+    chunk: field-execution
+    risk_level: general
+    steps:
+      1: Inspect and confirm that conditions match the authorized scope.
+      2: Identify and protect surfaces, belongings, adjacent areas and occupant pathways.
+      3: Test uncertain products or methods when authorized.
+      4: Work high to low, clean to dirty and from interior zones toward exits.
+      5: Maintain separation of kitchen, bathroom, glass and general-purpose tools.
+      6: Control moisture, residue, ventilation, cords, equipment and slip hazards.
+      7: Perform room-level work using the appropriate source SOP.
+      8: Complete dry-condition review when surfaces or residue require it.
+      9: Correct verified scope misses and document limitations or added-work conditions.
+      10: Complete supervisor review, customer walkthrough or approved closeout procedure.
+
+  service_specific_routing_matrix:
+    title: "Service-Specific Routing Matrix"
+    chunk: service-routing-matrix
+    risk_level: general
+    matrix:
+      routine_home_cleaning:
+        primary_source: V5
+        supporting_source: V1
+        critical_boundary: No medical or sanitation guarantees.
+      luxury_home_premium_finishes:
+        primary_source: V2
+        supporting_source: V5
+        critical_boundary: Material verification and test areas.
+      office_retail_cleaning:
+        primary_source: V3
+        supporting_source: V1
+        critical_boundary: Security, access and occupied-space controls.
+      medical_office_inquiry:
+        primary_source: V3
+        supporting_source: V1
+        critical_boundary: No sterilization or compliance claims.
+      apartment_turnover:
+        primary_source: V3
+        supporting_source: V5
+        critical_boundary: Separate cleaning, repairs and haul-out.
+      post_construction_final_clean:
+        primary_source: V4
+        supporting_source: V2
+        critical_boundary: Site readiness and new-finish protection.
+      move_in_move_out_residence:
+        primary_source: V5
+        supporting_source: V2
+        critical_boundary: Permanent damage and heavy residue exclusions.
+      unknown_odor_contamination:
+        primary_source: Escalation
+        supporting_source: Relevant source after review.
+        critical_boundary: No diagnosis or hazardous procedure.
+
+  quality_assurance_closeout_and_maintenance:
+    title: "Quality Assurance, Closeout and Maintenance"
+    chunk: quality-assurance
+    risk_level: general
+    rules:
+      - Use a scope-specific checklist and document areas completed, excluded, inaccessible or requiring follow-up.
+      - Inspect lighting, glass, fixtures, horizontal surfaces, edges, corners, floors, restrooms, kitchens and high-touch areas as applicable.
+      - Distinguish a verified missed task from permanent damage, wear, coating failure, recontamination or added work.
+      - Complete internal quality review before customer acceptance on larger, commercial or post-construction projects.
+      - Record customer concerns, corrective action, unresolved conditions and final acceptance.
+      - Recommend maintenance frequency based on occupancy, traffic, pets, children, environmental exposure, facility standards and customer goals.
+
+  customer_communication_and_issue_resolution:
+    title: "Customer Communication and Issue Resolution"
+    chunk: customer-issue-resolution
+    risk_level: general
+    situations:
+      customer_wants_exact_price:
+        approved_response: Explain the factors affecting scope and request measurements, photos or an inspection.
+      customer_asks_if_stains_removed:
+        approved_response: Explain that wear, etching, fading and permanent material changes may remain.
+      customer_reports_missed_area:
+        approved_response: Acknowledge, identify the area, review scope and arrange verification.
+      customer_reports_damage:
+        approved_response: Do not argue or admit liability; document and escalate to management.
+      customer_asks_medical_grade:
+        approved_response: Explain that service must follow an approved facility protocol and no unsupported claims will be made.
+      customer_requests_unsafe_method:
+        approved_response: Explain the property-protection concern and refer the request for professional review.
+
+  global_ai_rules_and_escalation_matrix:
+    title: "Global AI Rules and Escalation Matrix"
+    chunk: global-ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    mandatory_limitation: >
+      The AI must never diagnose hazardous materials, medical conditions, structural
+      safety or legal responsibility.
+    global_rules:
+      - Never recommend mixing cleaning chemicals or deviating from product labels and manufacturer instructions.
+      - Never guarantee stain, odor, contamination or damage removal.
+      - Never approve refunds, credits, back-charges, warranties, settlements or liability statements.
+      - Never expose access credentials, customer records, employee data, internal margins or confidential pricing formulas.
+      - Never instruct users to handle sharps, biohazards, regulated waste, asbestos, lead, unknown chemicals or electrical hazards.
+      - Escalate injury, chemical exposure, gas odor, active leak, flooding, broken glass, structural concern, property damage, legal threat, insurance claim, security breach, valuable artwork or historic material.
+    escalation_matrix:
+      immediate_danger_or_injury:
+        ai_action: Stop normal guidance and advise appropriate emergency action.
+        human_route: Emergency services + management.
+      hazardous_unknown_material:
+        ai_action: Do not identify or provide procedure.
+        human_route: Qualified remediation professional + management.
+      property_damage_allegation:
+        ai_action: Document facts and avoid fault determination.
+        human_route: Management / insurer as directed.
+      security_or_privacy_issue:
+        ai_action: Do not disclose or repeat credentials.
+        human_route: Management / facility contact.
+      contract_warranty_price_dispute:
+        ai_action: Provide no interpretation or concession.
+        human_route: Authorized company representative.
+
+  developer_integration_and_retrieval_hierarchy:
+    title: "Developer Integration and Retrieval Hierarchy"
+    chunk: developer-retrieval-hierarchy
+    risk_level: general
+    principle: >
+      Version 6.0 must be the primary routing document, while Versions 1.0-5.0 remain
+      retrievable controlled sources. The system should retrieve the smallest relevant
+      chunks and preserve source ID, version, section and audience metadata.
+    retrieval_steps:
+      1: Apply global system prompt and safety rules.
+      2: Classify division as Interior.
+      3: Use Version 6.0 to identify service class, facility type, audience and risk.
+      4: Retrieve the relevant source chunks from Versions 1.0-5.0.
+      5: Apply audience filters — public AI, technician, supervisor, management or developer.
+      6: Apply escalation overrides before generating a response.
+      7: Generate a concise answer, request missing information or create a qualified lead summary.
+      8: Log unanswered or low-confidence questions for future knowledge-base updates.
+    recommended_chunks:
+      interior_master_routing:
+        tags: [module:AIM4, version:6.0, priority:mandatory]
+      intake_qualification:
+        tags: [lead-intake, occupancy, facility-type, service-class]
+      inspection_risk:
+        tags: [surface, finish, soil, risk-level, escalation]
+      estimating_scheduling:
+        tags: [scope, production, assumptions, human-review]
+      occupied_space_controls:
+        tags: [pets, children, privacy, security, access]
+      field_execution:
+        tags: [SOP, cross-contamination, protection, verification]
+      quality_closeout:
+        tags: [inspection, issue-resolution, maintenance]
+      global_ai_boundaries:
+        tags: [safety, confidentiality, no-guarantees]
+      mandatory_escalation:
+        tags: [hazard, damage, legal, medical, security]
+    metadata:
+      module: AIM4
+      version: "6.0"
+      division: interior
+      document_role: master-routing
+      status: production-ready
+      routing_priority: mandatory
+      service_class: [maintenance, deep-clean, move-in, move-out, commercial, post-construction, specialty]
+      audience: [public-ai, technician, supervisor, management, developer]
+      risk_level: [general, elevated, escalation-required]
+      source_priority: [mandatory, primary, supporting]
+
+  interior_division_completion_checklist:
+    title: "Interior Division Completion Checklist"
+    chunk: interior-completion-checklist
+    risk_level: general
+    checklist:
+      - Foundation services, rooms, surfaces, workflow and general safety are documented. [V1.0 ✓]
+      - Premium materials, finishes, compatibility and damage-prevention rules are documented. [V2.0 ✓]
+      - Commercial facilities, recurring programs, access, security and medical-office boundaries are documented. [V3.0 ✓]
+      - Post-construction phases, readiness, residues, contractor coordination and closeout are documented. [V4.0 ✓]
+      - Residential room SOPs, occupied-home procedures, soil classes and cross-contamination controls are documented. [V5.0 ✓]
+      - Master intake, routing, estimating, scheduling, execution, quality and closeout architecture is documented. [V6.0 ✓]
+      - AI boundaries, audience controls, confidentiality and mandatory escalation are documented. [V6.0 ✓]
+      - Developer metadata, chunking and source-traceability requirements are documented. [V6.0 ✓]
+      - Versions 1.0-5.0 remain available as controlled source modules. [✓]
+      - Version 6.0 is assigned primary routing status for Interior Division. [✓]
+    completion_certificate:
+      completed_module: SSBOS-001-AIM4
+      master_version: "6.0"
+      controlled_sources: Versions 1.0 through 5.0
+      primary_routing_layer: SSBOS-001-AIM4-V6.0
+      next_planned_module: SSBOS-001 AI Module 5 - Auto Division
+      document_status: Released for Developer Integration

@@ -1,0 +1,422 @@
+module_id: SSBOS-001-AIM4-V5.0
+title: "AI Module 4 – Interior Division: Residential Deep Cleaning, Room-Level SOPs and Occupied-Home Operations"
+version: "5.0"
+division: Interior
+document_type: Elite SSBOS Manual
+status: developer-ready
+document_role: residential-operations
+routing_priority: primary
+namespace: interior-division
+supersedes: none
+audience: [public-ai, technician, supervisor, management, developer]
+primary_use: AI retrieval, residential field SOP, room-level procedure, quality support
+document_status: developer-ready
+tags:
+  - residential-service-classes
+  - soil-classification
+  - universal-residential-workflow
+  - kitchen-sop
+  - bathroom-sop
+  - bedroom-sop
+  - living-area-sop
+  - laundry-utility-sop
+  - basement-garage-sop
+  - move-in-cleaning
+  - move-out-cleaning
+  - occupied-home
+  - pets-children-privacy
+  - cross-contamination
+  - product-tool-routing
+  - estimating-production
+  - quality-assurance
+  - customer-handoff
+  - customer-communication
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  purpose_and_operating_intent:
+    title: "Purpose and Operating Intent"
+    chunk: residential-service-classes
+    risk_level: general
+    core_customer_promise: >
+      Surface Shield Systems provides careful, professional interior cleaning designed
+      to improve cleanliness and appearance while respecting the property, its finishes,
+      and the people who occupy it.
+    principles:
+      - Protect finishes and personal property before pursuing maximum cleaning strength.
+      - Work from high to low, clean to dirty, dry soil to wet soil, and less contaminated zones toward more contaminated zones.
+      - Distinguish routine maintenance, deep cleaning, detail cleaning, turnover cleaning and specialty restoration.
+      - Treat customer expectations, occupancy, pets, children, allergies, fragrance sensitivity, valuables and privacy as operational requirements.
+      - Document pre-existing damage, permanent wear, inaccessible areas and conditions outside the agreed scope.
+
+  residential_service_classes:
+    title: "Residential Service Classes"
+    chunk: residential-service-classes
+    risk_level: general
+    classes:
+      maintenance_cleaning:
+        primary_objective: Maintain an established standard.
+        typical_use: Weekly, biweekly or monthly recurring service.
+      deep_cleaning:
+        primary_objective: Reset neglected details and accumulated soil.
+        typical_use: First service, seasonal reset or occasional intensive care.
+      move_in_cleaning:
+        primary_objective: Prepare an empty or mostly empty home for occupancy.
+        typical_use: New purchase, rental turnover or relocation.
+      move_out_cleaning:
+        primary_objective: Return an empty property to an agreed turnover condition.
+        typical_use: Lease completion, sale or handoff.
+      detail_cleaning:
+        primary_objective: Target defined high-detail areas.
+        typical_use: Kitchen, bathroom, fixtures, cabinets, windows or selected rooms.
+      specialty_care:
+        primary_objective: Address sensitive or unusual surfaces.
+        typical_use: Natural stone, fine furniture, premium finishes or specialty residue.
+
+  soil_classification:
+    title: "Soil Classification and Diagnostic Logic"
+    chunk: soil-classification
+    risk_level: elevated
+    soil_classes:
+      dry_particulate:
+        examples: Dust, lint, pollen, pet hair, crumbs.
+        primary_response: Vacuum, dust extraction, microfiber capture.
+        escalation_concern: Unknown powder, silica-like dust or hazardous residue.
+      organic_soil:
+        examples: Food residue, body oils, soap film, light biological buildup.
+        primary_response: Compatible detergent, dwell, agitation and removal.
+        escalation_concern: Biohazard, heavy animal waste or medical contamination.
+      mineral_soil:
+        examples: Hard water, calcium, lime, rust-like staining.
+        primary_response: Identify surface and use compatible specialty method.
+        escalation_concern: Natural stone, etched glass or unknown metal finish.
+      petroleum_polymer_soil:
+        examples: Grease, wax, adhesive, silicone, cosmetics.
+        primary_response: Compatible degreaser or specialty remover after testing.
+        escalation_concern: Unknown solvent sensitivity or coating damage.
+      pigment_transfer:
+        examples: Ink, dye, paint transfer, scuffs.
+        primary_response: Test mild method and verify finish stability.
+        escalation_concern: Permanent color change or high-value finish.
+      unknown_contamination:
+        examples: Unidentified residue, odor or powder.
+        primary_response: Stop, document and gather information.
+        escalation_concern: Any health, chemical or hazardous-material concern.
+
+  universal_residential_workflow:
+    title: "Universal Residential Workflow"
+    chunk: universal-residential-workflow
+    risk_level: general
+    steps:
+      1: Confirm scope, exclusions, customer priorities, access, pets, occupants, alarms and special instructions.
+      2: Conduct a pre-service walkthrough and document damage, sensitive finishes, excessive buildup and inaccessible areas.
+      3: Stage clean tools and supplies without blocking exits or creating trip hazards.
+      4: Remove or capture dry soil before introducing moisture.
+      5: Work high to low and room by room using clean-to-dirty sequencing.
+      6: Use surface-compatible products and controlled moisture.
+      7: Complete floors only after elevated surfaces and fixtures are finished.
+      8: Perform an internal quality review, restore moved items and document unresolved conditions.
+      9: Complete customer handoff and provide maintenance guidance when appropriate.
+
+  kitchen_sop:
+    title: "Kitchen SOP"
+    chunk: kitchen-sop
+    risk_level: elevated
+    procedure:
+      - Confirm whether cabinet interiors, appliance interiors, oven, refrigerator, pantry, dishes and small appliances are included.
+      - Remove dry dust and crumbs from upper surfaces before wet cleaning.
+      - Clean cabinet fronts using finish-compatible methods; avoid flooding edges and seams.
+      - Degrease backsplash and cooking-area surfaces without spreading grease to clean zones.
+      - Clean appliance exteriors according to finish direction and manufacturer guidance.
+      - Clean countertops, sink, fixtures and accessible edges; protect natural stone and specialty coatings.
+      - Clean doors, handles, switches, baseboards and floor edges.
+      - Complete final floor cleaning after all elevated work is finished.
+    condition_routing:
+      heavy_grease:
+        ai_interpretation: May require additional dwell, agitation and repeat passes.
+        required_response: Explain added labor; test on sensitive finishes.
+      natural_stone_counter:
+        ai_interpretation: Potential acid and abrasion sensitivity.
+        required_response: Use material-compatible approach; no generic acidic cleaner.
+      high_gloss_cabinetry:
+        ai_interpretation: Scratch and streak risk.
+        required_response: Use clean soft microfiber and minimal product.
+      burned_oven_soil:
+        ai_interpretation: May exceed standard deep-clean scope.
+        required_response: Confirm appliance condition and separate authorization.
+      unknown_odor_or_residue:
+        ai_interpretation: Possible contamination or hidden source.
+        required_response: Document and escalate when appropriate.
+
+  bathroom_sop:
+    title: "Bathroom SOP"
+    chunk: bathroom-sop
+    risk_level: elevated
+    procedure:
+      - Ventilate when practical and place slip-hazard controls before wet work.
+      - Identify tile, grout, natural stone, cultured surfaces, glass coatings and fixture finishes.
+      - Remove dry hair and dust before applying wet products.
+      - Clean shower, tub, walls and glass using soil-specific and surface-compatible methods.
+      - Clean vanity, sink, mirror, fixtures and accessible cabinet surfaces.
+      - Clean and disinfect toilet surfaces only with label-compliant products and required contact time when included.
+      - Clean vents, doors, handles, baseboards and floors.
+      - Document permanent etching, failed caulk, damaged grout, corrosion or suspected mold-like conditions without diagnosing them.
+    boundary: >
+      Cleaning may improve soap film, mineral buildup and visible soil, but it does not
+      repair etched glass, failed caulk, damaged grout, corroded metal, leaking plumbing
+      or permanent finish damage.
+
+  bedroom_sop:
+    title: "Bedrooms and Private Areas SOP"
+    chunk: bedroom-sop
+    risk_level: elevated
+    procedure:
+      - Respect privacy and do not open drawers, personal containers, medication storage or closed personal items unless specifically authorized.
+      - Dust high surfaces, ceiling fans, furniture tops, frames, sills, blinds and accessible décor.
+      - Use electronics-safe methods around televisions, computers, chargers and audio equipment.
+      - Do not move jewelry, cash, firearms, medication, legal documents or high-value items; request customer handling.
+      - Vacuum upholstery and floors only within scope and after confirming material compatibility.
+      - Restore furniture and belongings to their documented positions.
+
+  living_area_sop:
+    title: "Living, Dining and Common Areas SOP"
+    chunk: living-area-sop
+    risk_level: elevated
+    procedure:
+      - Document fragile décor, antiques, artwork, musical instruments, electronics and unstable furniture.
+      - Use clean tools and controlled moisture around finished wood, upholstery and decorative metals.
+      - Clean shelves, ledges, frames, blinds, doors, handles, baseboards and accessible glass.
+      - Protect floor surfaces while moving lightweight furniture when authorized.
+      - Do not disconnect electronics or move heavy furniture without explicit scope and safe handling arrangements.
+      - Complete floor care last and inspect from multiple viewing angles.
+
+  laundry_utility_sop:
+    title: "Laundry, Mudroom and Utility Areas SOP"
+    chunk: laundry-utility-sop
+    risk_level: elevated
+    procedure:
+      - Remove lint and dust from accessible exterior surfaces without entering appliance service areas.
+      - Clean detergent residue, cabinet surfaces, utility sinks, doors, trim and floors.
+      - Distinguish cleaning from dryer-vent service, appliance repair, plumbing repair and drain service.
+      - Use caution around shutoff valves, electrical outlets, gas appliances and exposed utility connections.
+      - Document active leaks, corrosion, strong gas-like odors or unsafe equipment conditions and escalate immediately.
+
+  basement_garage_sop:
+    title: "Basements, Garages and Storage Areas SOP"
+    chunk: basement-garage-sop
+    risk_level: elevated
+    areas:
+      basement:
+        routine_scope: Dust, cobwebs, accessible surfaces, floors and storage-area edges.
+        boundary_escalation: Active water, mold-like growth, structural cracking or sewage.
+      garage:
+        routine_scope: Dust, shelving exteriors, doors, windows and floors as scoped.
+        boundary_escalation: Oil remediation, hazardous chemicals, fuel or unknown waste.
+      mechanical_room:
+        routine_scope: Accessible exterior surfaces and floor.
+        boundary_escalation: No equipment service, electrical work or internal HVAC cleaning.
+      storage_area:
+        routine_scope: Accessible floors, shelves and open surfaces.
+        boundary_escalation: No disposal or moving of contents without authorization.
+
+  move_in_move_out_cleaning:
+    title: "Move-In and Move-Out Cleaning"
+    chunk: move-in-cleaning
+    risk_level: elevated
+    rules:
+      - Confirm whether the property is empty, partially occupied or contains abandoned items.
+      - Define cabinet interiors, closets, appliances, windows, garages, basements and debris removal separately.
+      - Document pre-existing damage, excessive soil, pests, odors and areas blocked by contents.
+      - Separate cleaning from repairs, painting, carpet replacement, biohazard remediation and junk hauling.
+      - Use an area-by-area completion checklist and final photographs when appropriate.
+      - Clarify that landlord, buyer, seller or property-manager acceptance criteria may differ from the cleaning scope.
+
+  occupied_home_operations:
+    title: "Occupied-Home Operations"
+    chunk: occupied-home
+    risk_level: elevated
+    rules:
+      - Confirm who will be present and identify children, pets, remote workers, caregivers and visitors.
+      - Secure doors and gates according to customer instructions; never leave exterior access unsecured.
+      - Control cords, wet floors, equipment and supplies to reduce trip and access hazards.
+      - Use fragrance-aware and allergy-aware procedures when disclosed; do not make medical claims.
+      - Protect confidential documents, mail, devices, medication and personal property.
+      - Pause work when an occupant enters the active work zone or when safe access cannot be maintained.
+      - Report broken items, spills, injury or unexpected conditions immediately.
+
+  cross_contamination_controls:
+    title: "Cross-Contamination Controls"
+    chunk: cross-contamination
+    risk_level: elevated
+    controls:
+      color_coded_cloths:
+        standard: Separate bathroom, kitchen, glass and general-use microfiber.
+        reason: Reduces transfer between soil zones.
+      tool_separation:
+        standard: Dedicated toilet and bathroom tools.
+        reason: Prevents sanitary cross-use.
+      clean_to_dirty_order:
+        standard: Begin with lower-soil areas and finish with highest-soil areas.
+        reason: Reduces recontamination.
+      high_to_low_order:
+        standard: Complete elevated surfaces before floors.
+        reason: Prevents repeat work.
+      solution_control:
+        standard: Do not return contaminated cloths to clean solution.
+        reason: Maintains product integrity.
+      equipment_sanitation:
+        standard: Clean and dry reusable tools after service.
+        reason: Reduces odor and soil transfer.
+
+  product_tool_routing:
+    title: "Product, Tool and Equipment Routing"
+    chunk: product-tool-routing
+    risk_level: elevated
+    rules:
+      - Identify surface and finish before choosing product or agitation level.
+      - Use manufacturer instructions and product labels as controlling guidance.
+      - Use the least aggressive effective tool, beginning with microfiber, soft brush, non-scratch pad or vacuum attachment as appropriate.
+      - Control moisture around seams, wood, electronics, cabinetry, laminate, LVP and porous materials.
+      - Do not use steam, acids, solvents, razor blades or abrasives without verified compatibility and authorization.
+      - Maintain labeled containers, SDS access, PPE and ventilation appropriate to the product.
+
+  estimating_and_production_planning:
+    title: "Estimating and Production Planning"
+    chunk: estimating-production
+    risk_level: general
+    rules:
+      - Estimate by home size, room count, fixture density, soil level, occupancy, contents, pets, surface sensitivity and scope detail.
+      - Add time for customer walkthrough, protection, setup, tool changes, documentation and quality review.
+      - Use separate pricing or allowances for appliance interiors, cabinet interiors, windows, heavy buildup, high access and specialty residue.
+      - Do not assume square footage alone predicts labor.
+      - Provide production ranges rather than guarantees when site conditions are not verified.
+      - Require management approval for binding price, discount, refund or scope change.
+
+  quality_assurance_and_customer_handoff:
+    title: "Quality Assurance and Customer Handoff"
+    chunk: quality-assurance
+    risk_level: general
+    steps:
+      1: Complete technician self-inspection room by room.
+      2: Check high surfaces, fixtures, edges, corners, handles, glass and floors under available lighting.
+      3: Review customer priorities and special requests against the written scope.
+      4: Document permanent staining, damage, inaccessible areas and excluded work.
+      5: Restore moved items and remove supplies, waste and protective materials.
+      6: Conduct customer walkthrough or provide completion communication.
+      7: Record reservice items, maintenance recommendations and follow-up actions.
+
+  customer_communication_library:
+    title: "Customer Communication Library"
+    chunk: customer-communication
+    risk_level: general
+    scripts:
+      - question: "How long will a deep clean take?"
+        answer: >
+          Time depends on home size, occupancy, soil level, contents, surfaces and
+          selected scope; a range is provided only after evaluation.
+      - question: "Will everything look new?"
+        answer: >
+          Cleaning can significantly improve appearance but cannot reverse permanent
+          wear, fading, scratches, etching or material deterioration.
+      - question: "Do you clean around pets and children?"
+        answer: >
+          Yes, with advance information and a safe access plan; products and work
+          zones must still be controlled.
+      - question: "Can you remove every stain and odor?"
+        answer: >
+          No guarantee should be made before identifying the source, surface and
+          permanence of the condition.
+      - question: "Do I need to leave the home?"
+        answer: >
+          Not always. The team can coordinate occupied-home service, but certain
+          products, noise, wet floors or restricted areas may require temporary
+          separation.
+      - question: "Can you use my products?"
+        answer: >
+          Customer-preferred products may be considered when labeled, compatible and
+          appropriate to the scope; the company may decline products that create safety
+          or performance concerns.
+
+  knowledge_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    mandatory_limitation: >
+      The AI must not diagnose mold, asbestos, lead, pests, indoor-air-quality
+      conditions, structural defects, medical risk or hazardous materials. It must not
+      guarantee stain removal, odor elimination, restoration, sanitation outcomes or
+      exact completion times.
+    boundaries:
+      - Do not recommend mixing chemicals or deviating from product labels.
+      - Do not provide medical, legal, insurance or environmental advice.
+      - Do not authorize disposal of personal property, medication, documents or unknown materials.
+      - Do not admit liability, approve damage claims, refunds, credits or warranties.
+      - Do not expose customer addresses, alarm codes, access instructions, photographs or private information to unauthorized users.
+
+  mandatory_escalation_triggers:
+    title: "Mandatory Escalation Triggers"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    triggers:
+      - Unknown powder, chemical, strong unusual odor or suspected hazardous material.
+      - Bodily fluids, sharps, significant animal waste, sewage or biohazard.
+      - Active leak, electrical hazard, gas-like odor, broken glass, structural instability or unsafe access.
+      - Visible widespread mold-like growth, pest infestation or contaminated HVAC concern.
+      - Customer injury, employee injury, property damage allegation, theft allegation or security issue.
+      - High-value antique, artwork, specialty finish or unidentified surface requiring treatment.
+      - Scope dispute, legal threat, insurance claim, media contact or requested admission of responsibility.
+
+  developer_integration_notes:
+    title: "Developer Integration Notes"
+    chunk: ai-boundaries
+    risk_level: general
+    principle: >
+      Index Version 5.0 as the residential Interior Division operating layer. Retrieval
+      should route by service class, room, soil type, surface, occupancy, audience and
+      risk. AI-boundary and escalation chunks must override procedural content.
+      Public-facing retrieval must exclude confidential internal pricing, staff
+      procedures and customer data.
+    recommended_chunks:
+      residential_service_classes:
+        tags: [maintenance, deep-clean, move-in, move-out, specialty]
+      soil_classification:
+        tags: [dry-soil, organic, mineral, grease, unknown]
+      kitchen_sop:
+        tags: [kitchen, cabinets, appliances, grease, countertops]
+      bathroom_sop:
+        tags: [bathroom, soap-scum, hard-water, toilet, glass]
+      private_and_common_rooms:
+        tags: [bedroom, living-room, valuables, electronics]
+      utility_areas:
+        tags: [laundry, basement, garage, mechanical-room]
+      occupied_home_controls:
+        tags: [pets, children, privacy, access, fragrance]
+      cross_contamination:
+        tags: [color-code, clean-to-dirty, equipment-sanitation]
+      ai_boundaries:
+        tags: [hazardous-material, medical-boundary, escalation]
+    metadata:
+      module: AIM4
+      version: "5.0"
+      division: interior
+      document_role: residential-operations
+      status: developer-ready
+      service_class: [maintenance, deep-clean, move-in, move-out, specialty]
+      audience: [public-ai, technician, supervisor, management, developer]
+      risk_level: [general, elevated, escalation-required]
+      routing_priority: primary
+
+  roadmap_v6:
+    next_version: "V6.0"
+    title: "Interior Division Master Integration and Completion"
+    focus:
+      - Interior Division master integration and unified customer lifecycle.
+      - Final SOP routing across residential, commercial, premium-surface and post-construction modules.
+      - Inspection, estimating, scheduling, field execution, quality assurance and closeout standards.
+      - Complete Version 1.0-5.0 knowledge index and cross-reference map.
+      - Final developer routing hierarchy, metadata schema and escalation map.
+      - Interior Division completion checklist and controlled completion certificate.

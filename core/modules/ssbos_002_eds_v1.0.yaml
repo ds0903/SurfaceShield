@@ -1,0 +1,365 @@
+document_id: SSBOS-002-EDS-V1.0
+title: "SSBOS Enterprise Design System: Publication, Document and AI Knowledge Standards"
+version: "1.0"
+owner: Surface Shield Systems LLC
+document_role: enterprise-design-standard
+status: released
+routing_priority: mandatory
+audience: [developer, management, document-production]
+applies_to: all-SSBOS-modules
+primary_formats: [DOCX, PDF]
+language_standard: English knowledge content; Ukrainian developer correspondence
+note: >
+  This document is the controlling design and production standard for all future
+  SSBOS deliverables. When a conflict exists, safety, legal requirements, manufacturer
+  instructions, source accuracy and readability override aesthetics.
+tags:
+  - governance
+  - design-standard
+  - brand-identity
+  - color-system
+  - typography
+  - page-architecture
+  - cover-header-footer
+  - tables-callouts
+  - workflow-diagrams
+  - ai-metadata
+  - docx-authoring
+  - pdf-export
+  - file-naming
+  - version-control
+  - companion-email
+  - accessibility
+  - privacy
+  - release-checklist
+
+sections:
+
+  purpose_and_governance:
+    title: "Purpose and Governance"
+    chunk: governance
+    controlling_rule: >
+      A file is not considered released until the DOCX has been rendered, every page
+      has been visually inspected, the PDF has been rendered and verified, and the
+      final filenames match the version-control standard.
+    principles:
+      - Use this standard for every new SSBOS knowledge module, master manual, quick-reference guide, SOP, developer package and internal training document.
+      - Do not invent new visual themes, colors, page layouts or naming schemes for individual modules.
+      - Preserve content accuracy and modular architecture; design must clarify knowledge rather than decorate it.
+      - Any deviation must be documented in the revision history and approved before release.
+    document_classes:
+      knowledge_module:
+        purpose: AI and employee domain knowledge.
+        typical_length: 8-35 pages.
+      master_integration_manual:
+        purpose: Routing, orchestration and cross-module governance.
+        typical_length: 15-50 pages.
+      sop_field_guide:
+        purpose: Task execution and quality controls.
+        typical_length: 3-20 pages.
+      developer_guide:
+        purpose: RAG, metadata, routing and deployment.
+        typical_length: 4-20 pages.
+      quick_reference:
+        purpose: Condensed desktop or field aid.
+        typical_length: 1-6 pages.
+      executive_standard:
+        purpose: Strategy, governance and approvals.
+        typical_length: 5-30 pages.
+
+  brand_identity_and_logo_rules:
+    title: "Brand Identity and Logo Rules"
+    chunk: brand-identity
+    rules:
+      - Preferred master logo — official high-resolution transparent Surface Shield Systems parent logo.
+      - Logo placement — centered on covers; small left or right placement in internal section dividers only when needed.
+      - Do not stretch, skew, recolor, crop through the shield, add drop shadows, place on busy imagery or recreate the logo from memory.
+      - Maintain clear space equal to at least 25% of the shield width on every side.
+      - Minimum recommended width — 0.70 inch in headers or compact references; 1.50-2.25 inches on standard covers.
+      - Use division logos only when the document scope is unambiguously division-specific.
+    logo_asset_rule: >
+      Use approved files from the Surface Shield master asset library. Website crops,
+      screenshots and newly improvised logo renderings are not approved master assets.
+
+  color_system:
+    title: "Color System"
+    chunk: design-standard
+    colors:
+      primary_deep_navy:
+        hex: "#123B66"
+        use: Headers, cover identity, control tables.
+        restriction: Do not use as full-page body background.
+      secondary_royal_blue:
+        hex: "#1F5FAF"
+        use: Section accents, links, key bars.
+        restriction: Avoid excessive saturation.
+      neutral_silver:
+        hex: "#B9C2CC"
+        use: Rules, secondary structure, icons.
+        restriction: Not for small body text.
+      background_light_blue:
+        hex: "#EAF2FA"
+        use: Table fills, notes, controlled callouts.
+        restriction: Keep contrast high.
+      text_charcoal:
+        hex: "#333A42"
+        use: Body text and labels.
+        restriction: Preferred over pure black.
+      alert_safety_red:
+        hex: "#A32626"
+        use: Critical warnings and stop-work rules.
+        restriction: Use sparingly.
+      status_approval_green:
+        hex: "#2E7D32"
+        use: Completed, approved, verified.
+        restriction: Do not use for safety warnings.
+    color_balance: >
+      Default page composition should remain predominantly white — approximately 70-80%
+      white space and white surfaces, 15-25% navy/blue structure, and less than 5%
+      alert or specialty colors.
+
+  typography_and_hierarchy:
+    title: "Typography and Hierarchy"
+    chunk: design-standard
+    font_family: Arial (primary; widely available and stable across Word, LibreOffice, PDF conversion and developer systems)
+    elements:
+      cover_title:
+        font: Arial
+        size: 22-30 pt
+        weight: Bold
+        rule: Centered; no more than three lines.
+      cover_subtitle:
+        font: Arial
+        size: 10-13 pt
+        weight: Bold
+        rule: Royal blue or navy.
+      heading_1:
+        font: Arial
+        size: 14-16 pt
+        weight: Bold
+        rule: Page-level section.
+      heading_2:
+        font: Arial
+        size: 11-12 pt
+        weight: Bold
+        rule: Subsection.
+      heading_3:
+        font: Arial
+        size: 9.5-10.5 pt
+        weight: Bold
+        rule: Minor hierarchy.
+      body:
+        font: Arial
+        size: 9-10 pt
+        weight: Regular
+        rule: 1.0-1.12 line spacing.
+      tables:
+        font: Arial
+        size: 7.2-8.5 pt
+        weight: Regular/Bold
+        rule: Never below 7 pt.
+      footer:
+        font: Arial
+        size: 7-8 pt
+        weight: Regular
+        rule: Muted charcoal.
+    rules:
+      - Use sentence case for headings; reserve full capitals for cover identity, document IDs and short labels.
+      - Avoid long paragraphs — target 45-85 words per paragraph in operating manuals.
+      - Use bold to establish hierarchy, not to emphasize entire paragraphs.
+      - Use ASCII hyphens in technical IDs and filenames; avoid decorative punctuation that may render inconsistently.
+
+  page_architecture_and_grid:
+    title: "Page Architecture and Grid"
+    chunk: design-standard
+    rules:
+      - Paper size — US Letter, portrait, unless a wide technical table requires a controlled landscape section.
+      - Default margins — 0.55-0.75 inch top and bottom; 0.65-0.80 inch left and right.
+      - Body text alignment — left aligned; do not fully justify long technical content.
+      - Section spacing — 6-9 pt before headings, 3-5 pt after headings and paragraphs.
+      - Keep headings with the following paragraph or table; avoid orphaned headings at page bottoms.
+      - Insert deliberate page breaks before major risk sections, master matrices, version-control pages and completion certificates.
+      - Tables must fit the printable width and repeat headers when they span multiple pages.
+      - No text, table or graphic may enter the header/footer safety zone.
+
+  cover_header_footer_standards:
+    title: "Cover, Header and Footer Standards"
+    chunk: design-standard
+    cover_formula:
+      - Approved logo centered near the upper third.
+      - Parent line — SURFACE SHIELD BUSINESS OPERATING SYSTEM.
+      - Document class — AI KNOWLEDGE BASE, MASTER MANUAL, SOP or DEVELOPER GUIDE.
+      - Module/division title and version.
+      - Short descriptive subtitle.
+      - Document-control table containing ID, division, type, status, primary use and language.
+      - One-sentence purpose statement near the bottom.
+    header_format: "SURFACE SHIELD SYSTEMS | SSBOS [document class or module]. Single line, 8-9 pt, deep navy, aligned right or balanced with small logo."
+    footer_format: "PROTECT WHAT MATTERS. DELIVERING EXCELLENCE. | Document ID | Page number. 7-8 pt muted charcoal, center aligned."
+
+  tables_callouts_and_visual_language:
+    title: "Tables, Callouts and Visual Language"
+    chunk: design-standard
+    table_types:
+      control_table:
+        header_color: Deep navy
+        body_fill: Light blue
+        use: Document identity and governance.
+      knowledge_matrix:
+        header_color: Deep navy or royal blue
+        body_fill: White
+        use: Comparisons and routing.
+      safety_callout:
+        header_color: Safety red
+        body_fill: Light blue or white
+        use: Stop-work and critical warnings.
+      developer_note:
+        header_color: Royal blue
+        body_fill: Light blue
+        use: RAG and metadata implementation.
+      approval_status:
+        header_color: Green
+        body_fill: White
+        use: Verified or completed status.
+      caution_note:
+        header_color: Amber
+        body_fill: Light blue
+        use: Elevated-risk guidance.
+    rules:
+      - Use no more than one dominant callout per page unless the content requires multiple critical warnings.
+      - Do not use emoji in released manuals.
+      - Use simple line icons only when they improve scanning and have consistent stroke weight.
+      - Never rely on color alone to communicate status; include a text label such as CRITICAL, CAUTION or APPROVED.
+      - Keep table wording concise; move long narrative into paragraphs below the table.
+
+  workflow_and_decision_tree_standards:
+    title: "Workflow and Decision-Tree Standards"
+    chunk: design-standard
+    decision_tree_rule: >
+      The AI may support routing and triage, but diagrams must never imply autonomous
+      approval of binding prices, legal conclusions, safety clearance, insurance
+      decisions, refunds, warranties or liability.
+    rules:
+      - Workflow nodes — rounded rectangles or consistent process boxes.
+      - Decision nodes — diamond or clearly labeled QUESTION / DECISION boxes.
+      - Use top-to-bottom direction for page documents; left-to-right only when it fits without shrinking text.
+      - Each branch must have explicit labels such as YES/NO, GENERAL/ELEVATED/ESCALATE or RESIDENTIAL/COMMERCIAL.
+      - Safety and mandatory escalation branches use red labels and terminate at HUMAN REVIEW or STOP WORK.
+      - Developer diagrams must include the source module and routing priority.
+      - Keep flowchart text at 8 pt or larger in the final PDF.
+
+  ai_knowledge_and_developer_metadata:
+    title: "AI Knowledge and Developer Metadata"
+    chunk: ai-metadata
+    principle: >
+      Every knowledge source must be independently retrievable and traceable. The
+      developer should preserve modular source documents rather than loading the entire
+      library into one system prompt.
+    required_metadata_fields:
+      document_id:
+        format: Stable ID
+        example: SSBOS-001-AIM4-V6.0
+      module:
+        format: Module code
+        example: AIM4
+      version:
+        format: Semantic version
+        example: "6.0"
+      division:
+        format: Controlled value
+        example: interior
+      section:
+        format: Section number/title
+        example: "14. AI Knowledge Boundaries"
+      document_role:
+        format: Controlled value
+        example: master-routing
+      audience:
+        format: One or more roles
+        example: public-ai / technician / management
+      risk_level:
+        format: Controlled value
+        example: general / elevated / escalation-required
+      routing_priority:
+        format: Controlled value
+        example: mandatory / primary / supporting
+      status:
+        format: Controlled value
+        example: draft / developer-ready / production-ready
+    chunking_rules:
+      - Chunks should normally represent one coherent topic, rule set or decision unit.
+      - Preserve the original document ID, version and section in every chunk.
+      - Safety, legal, privacy, medical, environmental and mandatory-escalation chunks override general guidance.
+      - Public AI must not retrieve confidential pricing formulas, credentials, employee data or internal management rules.
+      - Old versions remain archived and traceable; master-routing documents determine current orchestration.
+
+  file_naming_and_version_control:
+    title: "File Naming and Version Control"
+    chunk: governance
+    canonical_filename: "SSBOS-[project]_[module-or-title]_v[major.minor]_[edition].[ext]"
+    examples:
+      - SSBOS-001_AI_Module_5_Auto_Division_v1.0_Elite.docx
+      - SSBOS-001_AI_Module_5_Auto_Division_v1.0_Elite.pdf
+      - SSBOS-002_Enterprise_Design_System_v1.0.docx
+      - SSBOS-002_Enterprise_Design_System_v1.0.pdf
+    rules:
+      - Major version — material restructuring, new architecture or major domain expansion.
+      - Minor version — approved additions, corrections or layout improvements without changing the document role.
+      - Do not reuse a version number for different content.
+      - Do not overwrite prior released files; preserve the historical version.
+
+  companion_email_standard:
+    title: "Companion Email Standard"
+    chunk: governance
+    language: Ukrainian for developer companion emails; English for knowledge files.
+    required_elements:
+      - Subject line contains document ID, module/division, version and document class.
+      - Opening paragraph identifies the attached files and their role.
+      - Integration instructions state whether the file is a source module, routing layer, master integration or design standard.
+      - Explicitly instruct the developer not to replace prior versions unless the new document is identified as superseding them.
+      - Include RAG/chunking guidance, source traceability, audience controls, risk priorities and prohibited AI actions.
+      - List recommended knowledge chunks and metadata.
+      - Name the next planned module or version.
+      - Request confirmation after integration and invite requests for Markdown, JSON, YAML or testing files.
+
+  accessibility_privacy_and_security:
+    title: "Accessibility, Privacy and Security"
+    chunk: ai-metadata
+    rules:
+      - Use real headings in logical order and avoid using visual formatting alone to create structure.
+      - Provide descriptive alt text for meaningful images when the document is intended for accessible distribution.
+      - Mark table headers and avoid overly complex merged-cell structures.
+      - Maintain sufficient text/background contrast.
+      - Do not place EINs, SSNs, credentials, access codes, private customer records or regulated data in general SSBOS manuals.
+      - Separate public AI content from internal, management and developer-only content.
+      - Use redaction and metadata scrubbing before external distribution when sensitive source materials were used.
+      - Never share proprietary font files as part of an asset package.
+
+  release_checklist:
+    title: "Release Checklist and Approval"
+    chunk: governance
+    release_authority: >
+      The final approval decision belongs to Surface Shield Systems management. This
+      design system standardizes production but does not replace management review of
+      business, legal, technical or safety content.
+    checklist:
+      identity: Correct parent/division logo and document ID.
+      content: Complete and aligned with approved scope.
+      version: Version number and revision history correct.
+      styles: Typography follows hierarchy.
+      margins: All objects inside page grid.
+      tables: Readable; headers styled; no clipping.
+      callouts: Correct color and priority.
+      safety: Critical boundaries present.
+      metadata: Developer tags included where applicable.
+      docx_render: Every page visually inspected.
+      pdf_export: Generated from approved DOCX.
+      pdf_render: Every page visually inspected.
+      searchability: Text remains selectable/searchable.
+      privacy: Sensitive data removed or controlled.
+      filename: Canonical filename used.
+      email: Ukrainian companion email prepared.
+      approval: Release status confirmed.
+
+  next_phase:
+    next_module: SSBOS-001 AI Module 5 - Surface Shield Auto Division
+    note: All Auto Division documents must be produced under SSBOS Enterprise Design System V1.0.
