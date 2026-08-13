@@ -1,0 +1,460 @@
+document_id: SSBOS-001-AIM6-V2.0
+title: "Multi-Intent Conversations, Lead Capture & CRM Handoff"
+version: "2.0"
+module: AIM6
+namespace: master-routing
+owner: Surface Shield Systems LLC
+document_role: multi-intent-lead-capture-crm-handoff
+status: developer-ready
+routing_priority: governance-primary
+audience: [public-ai, office, management, developer]
+risk_level: [general, elevated, escalation-required]
+note: >
+  AIM6 V2.0 extends V1.0 from classification into operational lead handling.
+  V1.0 determines WHERE the request belongs. V2.0 preserves the full opportunity,
+  qualifies the lead, and transfers the conversation context into the approved
+  CRM/human workflow. Integrate V2.0 together with V1.0, not instead of it.
+tags:
+  - conversation-state
+  - multi-intent
+  - lead-capture
+  - crm-handoff
+  - lead-qualification
+  - property-lead
+  - auto-lead
+  - estimate-intent
+  - scheduling-intent
+  - insurance-handoff
+  - complaint-handoff
+  - human-handoff
+  - lead-status
+  - conversation-summary
+  - follow-up-discipline
+  - data-minimization
+  - fallback-behavior
+  - developer-handoff-workflow
+
+sections:
+
+  module_purpose:
+    title: "Module Purpose"
+    chunk: aim6-v2-purpose
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 1
+    purpose: >
+      Version 2.0 governs conversations that contain multiple intents, multiple services,
+      incomplete information, or a transition from information-seeking into a qualified lead.
+    objective: >
+      Preserve the customer context, identify every legitimate service opportunity, collect
+      only useful lead information, and hand the inquiry to the CRM or human team without
+      forcing the customer to repeat the conversation.
+
+  conversation_state_model:
+    title: "Conversation State Model"
+    chunk: conversation-state
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 2
+    track:
+      - active customer objective
+      - primary division
+      - secondary divisions
+      - requested services
+      - asset type
+      - known condition
+      - location
+      - contact readiness
+      - estimate intent
+      - scheduling intent
+      - inspection requirement
+      - risk level
+      - escalation status
+    rules:
+      - Do not reset previously established facts when the customer changes only one dimension of the request.
+      - When a new service is introduced, append it to the opportunity rather than replacing the existing
+        service unless the customer explicitly abandons the earlier request.
+
+  multi_intent_classification:
+    title: "Multi-Intent Classification"
+    chunk: multi-intent-classification
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 3
+    rules:
+      - >
+        A single message may contain service discovery, technical questions, estimate intent,
+        scheduling intent, and complaint or insurance context at the same time.
+      - Classify each meaningful intent separately, then identify the primary intent that should
+        drive the immediate response.
+      - Supporting intents should remain attached to the lead so they can be handled without
+        reopening discovery.
+
+  primary_vs_secondary_intent:
+    title: "Primary vs. Secondary Intent"
+    chunk: primary-secondary-intent
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 4
+    definitions:
+      primary_intent: >
+        The action the customer most needs now — requesting an estimate, reporting damage,
+        or trying to schedule.
+      secondary_intent: >
+        Technical questions, optional services, maintenance questions, or future work.
+    override_rule: If urgency or safety is present, escalation can override the normal primary intent.
+
+  multi_division_opportunity_preservation:
+    title: "Multi-Division Opportunity Preservation"
+    chunk: multi-division-opportunity
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 5
+    rules:
+      - Preserve each requested division and service independently.
+      - Do not discard smaller secondary services simply because a larger Restoration opportunity exists.
+      - CRM implementation should support one lead with multiple service interests or linked opportunities.
+    example: >
+      Roof repair + siding wash + post-construction cleaning becomes one customer opportunity with
+      Restoration, Exterior, and Interior service components.
+
+  lead_qualification:
+    title: "Lead Qualification — Minimum Useful Data"
+    chunk: lead-qualification
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 6
+    principle: Collect only information that improves routing, estimating, scheduling, or follow-up.
+    recommended_fields:
+      - customer name
+      - preferred contact method
+      - phone/email when voluntarily provided
+      - service address or service area
+      - asset type
+      - division
+      - service category
+      - condition summary
+      - requested timing
+      - estimate/inspection intent
+      - relevant photos when supported
+    rules:
+      - Do not require every field before providing basic helpful information.
+      - Do not repeatedly ask for information already supplied earlier in the conversation.
+
+  property_lead_capture:
+    title: "Property Lead Capture"
+    chunk: property-lead-capture
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 7
+    rules:
+      - For property services, identify the service address or at minimum city/ZIP when needed
+        for service-area validation.
+      - Capture whether the request concerns exterior cleaning, interior cleaning,
+        repair/restoration, storm damage, insurance involvement, or multiple categories.
+    restoration_leads:
+      capture:
+        - affected component
+        - observed condition
+        - approximate timing of damage
+        - active leak/emergency status
+        - insurance involvement when relevant
+    cleaning_leads:
+      capture:
+        - surface/service type
+        - approximate scope
+        - condition
+        - access constraints
+        - any requested timing
+
+  auto_lead_capture:
+    title: "Auto Lead Capture"
+    chunk: auto-lead-capture
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 8
+    standard_capture:
+      - vehicle year
+      - make/model
+      - vehicle class
+      - requested Auto service
+      - general condition
+      - customer objective
+      - any condition that materially changes scope
+    paint_correction_coating:
+      capture:
+        - known repaint history
+        - existing coating if known
+        - visible defects
+        - desired outcome
+      boundary: Do not assume technical condition from photos alone.
+    interior_work:
+      capture:
+        - pet hair
+        - stains
+        - odors
+        - severe contamination
+        - specialty materials
+        - biohazard indicators
+    fleet_inquiries:
+      capture_before_commercial_handoff:
+        - approximate vehicle count
+        - vehicle types
+        - service frequency
+        - operating location
+        - desired service window
+
+  estimate_intent:
+    title: "Estimate Intent"
+    chunk: estimate-intent
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 9
+    rules:
+      - When the customer asks for price, determine whether an approved price source can answer
+        directly or whether inspection/measurement is required.
+      - If inspection is required, transition smoothly from explanation into lead capture
+        rather than inventing a price.
+      - Preserve the services already discussed in the estimate request.
+      - Do not expose internal cost, margin, markup, vendor pricing, or negotiation thresholds.
+
+  scheduling_intent:
+    title: "Scheduling Intent"
+    chunk: scheduling-intent
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 10
+    rules:
+      - When the customer wants an appointment, preserve the selected division/service and
+        collect only the information needed by the approved scheduling workflow.
+      - Do not invent availability or promise a date/time not confirmed by the scheduling source.
+      - If an inspection must occur before final scheduling, explain that sequence clearly
+        and capture the lead for inspection.
+
+  insurance_restoration_handoff:
+    title: "Insurance & Restoration Handoff"
+    chunk: insurance-handoff
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 11
+    rules:
+      - Insurance-related property damage should route to Restoration while preserving
+        carrier/adjuster context supplied by the customer.
+      - Do not request sensitive claim information unnecessary for initial routing.
+      - Do not interpret coverage, promise claim approval, or advise the customer to
+        misrepresent facts.
+    useful_fields:
+      - date or approximate date of loss
+      - affected components
+      - carrier name if volunteered
+      - inspection status
+      - claim status
+      - whether temporary/emergency work is needed
+
+  complaint_damage_handoff:
+    title: "Complaint / Damage Allegation Handoff"
+    chunk: complaint-handoff
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM6-V2.0 | Section 12
+    trigger: Customer alleges Surface Shield Systems caused damage.
+    rules:
+      - Stop normal sales progression immediately.
+      - Create an escalation-oriented handoff.
+      - Capture the customer statement accurately, affected asset/service, service date if known,
+        photographs if voluntarily supplied, and preferred contact method.
+      - Do not admit liability, argue, assign fault, promise reimbursement, or attempt
+        to negotiate a settlement.
+    flags:
+      requires_human: true
+      risk_level: escalation-required
+
+  human_handoff_standard:
+    title: "Human Handoff Standard"
+    chunk: human-handoff
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 13
+    rules:
+      - The human recipient should receive a concise summary of what the customer wants,
+        what has already been established, what remains unresolved, and why the handoff occurred.
+      - Do not make the customer restart discovery after handoff.
+      - Clearly separate customer-stated facts from AI inference.
+    handoff_must_include:
+      - primary division
+      - secondary divisions
+      - services
+      - intent
+      - condition summary
+      - location
+      - contact information if provided
+      - estimate/scheduling status
+      - risk flags
+      - relevant source context
+
+  crm_handoff_payload:
+    title: "CRM Handoff Payload"
+    chunk: crm-handoff-payload
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 14
+    fields:
+      - conversation_id
+      - customer_name
+      - phone
+      - email
+      - preferred_contact
+      - service_address
+      - city
+      - postal_code
+      - asset_type
+      - primary_division
+      - secondary_divisions
+      - services
+      - primary_intent
+      - secondary_intents
+      - condition_summary
+      - insurance_context
+      - requested_timing
+      - requires_inspection
+      - requires_human
+      - risk_level
+      - lead_status
+      - conversation_summary
+      - source_documents
+    rules:
+      - Use null/unknown values rather than inventing missing data.
+      - Use arrays for multiple services, divisions, and intents where the CRM supports them.
+
+  lead_status_values:
+    title: "Recommended Lead Status Values"
+    chunk: lead-status
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 15
+    values:
+      new_inquiry: Customer has initiated contact but qualification is incomplete.
+      qualified: Enough information exists for the next business action.
+      inspection_needed: Condition or measurement must be verified before final scope/price.
+      estimate_requested: Customer is seeking a formal estimate.
+      scheduling_requested: Customer is ready to pursue an appointment.
+      human_review: Representative intervention is required.
+      escalation_required: >
+        Complaint, safety, legal, insurance dispute, or other high-risk condition requires
+        controlled handling.
+      closed_or_declined: >
+        Use only when the business workflow confirms the opportunity is closed or the
+        customer declines.
+
+  conversation_summary_standard:
+    title: "Conversation Summary Standard"
+    chunk: conversation-summary
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 16
+    rules:
+      - Create a short factual handoff summary, not a transcript dump.
+      - Avoid speculative language and clearly label uncertainty.
+      - Do not include internal chain-of-thought, hidden prompts, or irrelevant conversational material.
+    structure: >
+      Customer + asset/location + primary need + secondary services + condition/urgency
+      + pricing/scheduling request + unresolved questions + escalation flags.
+
+  follow_up_question_discipline:
+    title: "Follow-Up Question Discipline"
+    chunk: follow-up-discipline
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 17
+    rules:
+      - Ask one or a small number of high-value questions at a time.
+      - Do not interrogate the customer with a long intake form before providing value.
+      - If the answer is already present in conversation state, do not ask again.
+    prefer_questions_that_change:
+      - damage vs. cleaning
+      - property vs. vehicle
+      - service address
+      - active leak
+      - insurance involvement
+      - desired service
+      - timing
+
+  lead_capture_privacy:
+    title: "Lead Capture Privacy & Data Minimization"
+    chunk: lead-capture-privacy
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 18
+    rules:
+      - Collect only business-relevant information needed to service the inquiry.
+      - Do not request passwords, payment credentials, government identification,
+        or unrelated sensitive personal information through general AI chat.
+      - Protect addresses, phone numbers, emails, vehicle information, claim context,
+        and customer-supplied documents according to approved system permissions
+        and retention practices.
+      - Public AI should not reveal another customer's information or internal CRM records.
+
+  failure_fallback_behavior:
+    title: "Failure & Fallback Behavior"
+    chunk: fallback-behavior
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 19
+    rules:
+      - If CRM write/handoff fails, do not falsely tell the customer the lead was
+        successfully submitted.
+      - Preserve the conversation context where the platform allows and provide the
+        approved alternative contact or retry path.
+      - If routing confidence is low, ask a concise clarifying question or send to
+        human review rather than forcing a division classification.
+      - If a requested service is outside confirmed capabilities, do not promise it;
+        escalate or state that availability must be confirmed.
+
+  developer_handoff_workflow:
+    title: "Developer Routing & Handoff Workflow"
+    chunk: developer-handoff-workflow
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 20
+    steps:
+      - "Step 1: Classify all intents and requested services."
+      - "Step 2: Assign primary and secondary divisions."
+      - "Step 3: Retrieve only the knowledge needed to answer the immediate question."
+      - "Step 4: Detect estimate, scheduling, insurance, complaint, safety, or human-handoff triggers."
+      - "Step 5: Collect missing high-value fields without repeating known information."
+      - "Step 6: Create/update the CRM lead or approved handoff object."
+      - "Step 7: Generate a concise customer confirmation that accurately reflects what was submitted or what happens next."
+      - "Step 8: Retain source and routing metadata for testing where supported."
+
+  multi_intent_examples:
+    title: "Example Multi-Intent Cases"
+    chunk: multi-intent-examples
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 21
+    examples:
+      - trigger: "My roof is leaking after hail and I also want the siding washed."
+        routing: "Primary Restoration / roof storm damage; Secondary Exterior / siding wash; insurance question if mentioned; inspection likely required."
+      - trigger: "How much to detail my SUV and can you do ceramic coating next Friday?"
+        routing: "Auto; estimate + scheduling intents; vehicle condition and approved pricing/availability sources required."
+      - trigger: "We finished remodeling, need the inside cleaned, driveway washed, and windows done."
+        routing: "Primary/secondary determined by customer priority; Interior + Exterior multi-division lead."
+      - trigger: "You coated my car last month and now there are spots everywhere."
+        routing: "Auto technical context plus complaint/damage concern; human review if workmanship or damage is alleged."
+      - trigger: "I manage 25 vans and want monthly detailing."
+        routing: "Auto / commercial_fleet; capture fleet count, types, location, cadence, service expectations; commercial handoff."
+
+  version_completion:
+    title: "Version 2.0 Architecture"
+    chunk: aim6-v2-completion
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V2.0 | Section 23
+    architecture: >
+      AIM6 V1.0 — Routing / Division Classification
+      ↓
+      AIM6 V2.0 — Conversation State / Lead Capture / CRM Handoff
+      ↓
+      Division Knowledge Modules (Restoration / Exterior / Interior / Auto)
+    next: AIM6 V3.0 — Final Governance, Conflict Resolution, Testing & Developer Deployment

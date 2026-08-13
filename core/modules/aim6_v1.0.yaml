@@ -1,0 +1,332 @@
+document_id: SSBOS-001-AIM6-V1.0
+title: "Master Cross-Division Routing Foundation"
+version: "1.0"
+module: AIM6
+namespace: master-routing
+owner: Surface Shield Systems LLC
+document_role: master-cross-division-routing-foundation
+status: developer-ready
+routing_priority: governance-primary
+audience: [public-ai, office, management, developer]
+risk_level: [general, elevated, escalation-required]
+note: >
+  AIM6 V1.0 sits ABOVE all division knowledge modules (Restoration, Exterior, Interior, Auto).
+  It does not duplicate technical knowledge from division modules. Its role is to classify
+  the customer request and route it to the correct division before division-specific knowledge
+  is applied. The master router determines WHERE the question belongs; division modules
+  determine HOW to answer it.
+tags:
+  - master-routing
+  - division-classification
+  - restoration-routing
+  - exterior-routing
+  - interior-routing
+  - auto-routing
+  - restoration-vs-exterior
+  - cleaning-vs-damage
+  - insurance-routing
+  - multi-division-routing
+  - primary-secondary-routing
+  - ambiguity-resolution
+  - cross-selling
+  - pricing-routing
+  - scheduling-routing
+  - universal-boundaries
+  - universal-escalation
+  - master-routing-hierarchy
+  - routing-examples
+
+sections:
+
+  module_purpose:
+    title: "Module Purpose"
+    chunk: module-purpose
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 1
+    purpose: >
+      AI Module 6 establishes the master routing architecture for the Surface Shield Systems
+      website AI. It does not duplicate technical knowledge in the division modules.
+    routing_sequence:
+      - Understand Intent
+      - Classify Service
+      - Select Division
+      - Retrieve Appropriate Knowledge
+      - Apply Boundaries
+      - Respond or Escalate
+
+  primary_division_architecture:
+    title: "Primary Division Architecture"
+    chunk: master-division-classification
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 2
+    divisions:
+      restoration: >
+        Construction, repair, replacement, property damage, storm damage, insurance restoration,
+        roofing, siding, gutters, and building-envelope restoration.
+      exterior: >
+        Professional exterior cleaning and maintenance: house washing, soft washing, pressure
+        washing, roof soft washing, concrete, decks, fences, gutters, windows, masonry,
+        and organic-growth removal.
+      interior: >
+        Professional cleaning and maintenance inside residential or commercial properties,
+        including deep cleaning, post-construction cleaning, move-in/move-out, and interior windows.
+      auto: >
+        Vehicle appearance, detailing, paint correction, ceramic protection, interior vehicle
+        care, wheel/tire detailing, and fleet detailing.
+
+  first_level_routing:
+    title: "First-Level Routing Decision"
+    chunk: first-level-routing
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 3
+    rules:
+      building_exterior: "Cleaning/Maintenance → Exterior. Repair/Replacement/Restoration → Restoration."
+      building_interior: >
+        Cleaning/Maintenance → Interior. Structural or construction repair follows current
+        approved capabilities or is escalated.
+      vehicle: >
+        Cleaning/Appearance/Correction/Protection → Auto. Collision, structural, mechanical,
+        restraint-system, or electrical repair requires escalation.
+
+  restoration_vs_exterior:
+    title: "Restoration vs. Exterior Distinction"
+    chunk: restoration-vs-exterior
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 4
+    rules:
+      exterior_scope: >
+        A generally serviceable surface requires cleaning, washing, appearance maintenance,
+        or organic-growth removal → Exterior.
+      restoration_scope: >
+        Leaks, missing/broken materials, failed flashing, storm damage, repair, replacement,
+        or construction → Restoration.
+    examples:
+      - "'My roof has black streaks' → Exterior / Roof Soft Washing"
+      - "'My roof lost shingles during the storm' → Restoration / Roofing / Storm Damage"
+
+  cleaning_vs_damage:
+    title: "Cleaning vs. Material Damage"
+    chunk: cleaning-vs-damage
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 5
+    contamination:
+      definition: >
+        Dirt, algae, moss, surface staining, road grime, brake dust, organic growth, general
+        soil, and other cleanable deposits.
+      route: Applicable cleaning division (Exterior, Interior, or Auto).
+    material_failure:
+      definition: >
+        Broken shingles, cracked siding, rotten wood, failed flashing, structural masonry
+        damage, peeling clear coat, torn upholstery, and collision damage.
+      route: >
+        Restoration, specialized Auto evaluation, or human escalation as appropriate.
+
+  insurance_keyword_override:
+    title: "Insurance Keyword Override"
+    chunk: insurance-routing
+    risk_level: elevated
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 6
+    rule: >
+      When insurance is mentioned with property damage, strongly favor Restoration.
+      Do not route storm-damaged siding to Exterior merely because siding is mentioned.
+    trigger_keywords:
+      - insurance claim
+      - adjuster
+      - deductible
+      - storm claim
+      - hail claim
+      - wind claim
+      - insurance estimate
+      - supplement
+      - depreciation
+      - carrier estimate
+      - insurance inspection
+
+  multi_division_requests:
+    title: "Multi-Division Requests"
+    chunk: multi-division-routing
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 7
+    rules:
+      - Do not force a multi-service inquiry into one division.
+      - Create a multi-division service opportunity and preserve each requested service.
+    example: >
+      Roof repair + siding wash + driveway cleaning + post-construction house cleaning
+      → Restoration + Exterior + Interior.
+
+  primary_secondary_routing:
+    title: "Primary and Secondary Routing"
+    chunk: primary-secondary-routing
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 8
+    rules:
+      primary_division: The service driving the inquiry.
+      secondary_divisions: Additional relevant services.
+    example: >
+      Tree-damaged roof plus siding wash → Primary Restoration; Secondary Exterior.
+    purpose: Supports CRM routing, lead assignment, and targeted retrieval.
+
+  ambiguous_request_handling:
+    title: "Ambiguous Request Handling"
+    chunk: ambiguity-resolution
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 9
+    rules:
+      - Do not guess when one concise question can resolve routing.
+      - Ask whether the concern is damage/leak or professional cleaning.
+    example: >
+      "I need someone to look at my roof." → Ask: damage/leak or cleaning?
+      Damage → Restoration. Cleaning → Exterior.
+
+  cross_selling_standard:
+    title: "Cross-Selling Standard"
+    chunk: cross-selling
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 10
+    rules:
+      - Cross-selling must be relevant, helpful, optional, and non-pressuring.
+      - Do not automatically recommend unrelated services merely to increase transaction value.
+
+  pricing_routing:
+    title: "Pricing Routing"
+    chunk: pricing-routing
+    risk_level: elevated
+    routing_priority: mandatory
+    source: SSBOS-001-AIM6-V1.0 | Section 11
+    rules:
+      - AI Module 6 does not create pricing.
+      - Pricing comes from current approved division pricing sources, approved packages,
+        authorized estimate systems, or a human representative when inspection is required.
+      - Never transfer a price from one division to another merely because services appear similar.
+
+  scheduling_routing:
+    title: "Scheduling Routing"
+    chunk: scheduling-routing
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 12
+    rules:
+      - For booking intent, identify division, service, property/vehicle type, location,
+        scope information, preferred scheduling window, and inspection requirement.
+      - Follow the approved booking or lead-capture workflow.
+      - Do not invent appointment availability.
+
+  universal_ai_boundaries:
+    title: "Universal AI Boundaries"
+    chunk: universal-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM6-V1.0 | Section 13
+    boundaries:
+      - Do not invent prices, warranties, discounts, service availability, or binding commercial terms.
+      - Do not guarantee condition-dependent results, diagnose hidden structural conditions,
+        make insurance coverage determinations, or admit company liability.
+      - Do not reveal confidential financial information, margins, markup, vendor cost,
+        or private operating data.
+      - Do not override safety procedures or manufacturer instructions.
+
+  universal_escalation:
+    title: "Universal Escalation Triggers"
+    chunk: universal-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM6-V1.0 | Section 14
+    escalate_immediately:
+      - Customer damage allegations
+      - Insurance disputes
+      - Legal threats
+      - Refund or chargeback disputes
+      - Safety hazards
+      - Structural concerns
+      - Biohazards
+      - Electrical hazards
+      - EV high-voltage concerns
+      - Unclear service capability
+      - Unusual high-value projects
+      - Complex commercial projects
+      - Binding contract changes
+      - Negotiated commercial pricing
+      - Conflicting controlled sources
+
+  master_routing_hierarchy:
+    title: "Master Routing Hierarchy"
+    chunk: master-routing-hierarchy
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 15
+    levels:
+      level_1: "Identify Asset: Property Exterior / Property Interior / Vehicle."
+      level_2: "Identify Objective: Clean / Maintain / Enhance / Protect / Repair / Replace / Restore / Insurance Claim."
+      level_3: "Select Division: Restoration / Exterior / Interior / Auto."
+      level_4: "Identify Specific Service."
+      level_5: "Retrieve only relevant division knowledge."
+      level_6: "Apply global pricing, safety, claims, liability, and escalation boundaries."
+      level_7: "Respond, capture lead, or escalate."
+
+  developer_routing_objects:
+    title: "Developer Routing Objects"
+    chunk: developer-routing-objects
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 16
+    division_values: [restoration, exterior, interior, auto]
+    intent_values:
+      - service_discovery
+      - technical_question
+      - condition_assessment
+      - estimate_request
+      - scheduling_request
+      - maintenance_question
+      - insurance_claim
+      - complaint_dispute
+      - commercial_fleet
+      - human_escalation
+    routing_fields:
+      - primary_division
+      - secondary_divisions
+      - service_category
+      - intent
+      - asset_type
+      - risk_level
+      - requires_inspection
+      - requires_human
+      - knowledge_source
+
+  routing_examples:
+    title: "Routing Examples"
+    chunk: routing-examples
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 17
+    examples:
+      - "Driveway needs pressure washing → Exterior / Concrete Cleaning."
+      - "Wind ripped shingles off house → Restoration / Roof Repair / Storm Damage."
+      - "House needs cleaning after remodeling → Interior / Post-Construction Cleaning."
+      - "BMW has swirl marks and customer wants ceramic coating → Auto / Paint Correction + Ceramic Coating."
+      - "Hail damaged roof and siding and adjuster inspected it → Restoration / Storm & Insurance Restoration."
+      - "Siding wash plus inside-house cleaning → multi-division Exterior + Interior."
+
+  version_completion:
+    title: "Version 1.0 Architecture"
+    chunk: aim6-v1-completion
+    risk_level: general
+    routing_priority: governance-primary
+    source: SSBOS-001-AIM6-V1.0 | Section 20
+    architecture: >
+      MASTER ROUTER — AIM6 → Restoration / Exterior / Interior / Auto knowledge.
+      Version 1.0 sits above the individual division knowledge modules.
+      The master router determines WHERE the question belongs;
+      the division modules determine HOW the question should be answered.
+    next: AIM6 V2.0 — Multi-Intent Conversations, Lead Capture & CRM Handoff
