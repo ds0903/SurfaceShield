@@ -1,0 +1,156 @@
+document_id: SSBOS-001-AIM5-V3.0
+title: "Ceramic Coatings & Surface Protection Systems"
+version: "3.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: ceramic-coatings-surface-protection
+status: developer-ready
+routing_priority: primary
+audience: [public-ai, technician, office, management, developer]
+tags:
+  - protection-categories
+  - pre-coating-evaluation
+  - coating-preparation
+  - coating-installation
+  - coating-cure
+  - customer-education
+  - coating-maintenance
+  - specialty-protection
+  - coating-escalation
+
+sections:
+
+  protection_categories:
+    title: "Protection System Categories"
+    chunk: protection-categories
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 1
+    categories:
+      paint_protection:
+        products: [ceramic coatings, polymer sealants, synthetic sealants, spray sealants, waxes]
+      specialty_protection:
+        products: [glass coatings, wheel coatings, exterior trim coatings, leather protection, fabric protection]
+    critical_note: >
+      Different products have different preparation, compatibility, cure, maintenance, and
+      durability requirements. Product-specific instructions control. Never apply universal
+      rules across all products.
+
+  pre_coating_evaluation:
+    title: "Pre-Coating Evaluation"
+    chunk: pre-coating-evaluation
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 2
+    steps:
+      - Confirm the customer's appearance and protection goals.
+      - Inspect the paint for contamination, swirls, scratches, oxidation, water spotting, prior coatings, and clear-coat failure.
+      - Determine whether paint correction is optional, recommended, or inappropriate because of finish condition.
+      - Identify sensitive trim, matte/satin surfaces, paint-protection film, vinyl wrap, or specialty finishes requiring product-specific treatment.
+
+  coating_preparation:
+    title: "Surface Preparation"
+    chunk: coating-preparation
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 3
+    steps:
+      - Wash using a coating-preparation-compatible process.
+      - Perform chemical decontamination such as iron removal when needed.
+      - Use mechanical decontamination only when needed and with adequate lubrication.
+      - Correct or enhance paint when selected and safe.
+      - Remove polishing oils or residues using the coating manufacturer's specified preparation method.
+      - Conduct a final inspection before installation.
+
+  coating_installation:
+    title: "Installation Principles"
+    chunk: coating-installation
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 4
+    rules:
+      - Follow manufacturer requirements for temperature, humidity, ventilation, application area, flash behavior, leveling, layering, and cure.
+      - Work in manageable sections and use adequate inspection lighting.
+      - Use clean applicators and towels appropriate to the coating system.
+      - Inspect for high spots, smearing, missed areas, or uneven leveling during the workable window.
+      - Do not invent universal flash times; behavior varies by product and environment.
+
+  coating_cure:
+    title: "Cure & Delivery"
+    chunk: coating-cure
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 5
+    rules:
+      - Observe manufacturer requirements regarding water exposure, washing, chemicals, outdoor exposure, and full cure.
+      - Explain any initial care restrictions clearly at vehicle delivery.
+      - Do not state that every coating requires the same cure period.
+      - Document product and installation information when the service program requires it.
+
+  customer_education:
+    title: "Customer Education"
+    chunk: customer-education
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 6
+    facts:
+      - Ceramic coatings can improve chemical resistance, hydrophobic behavior, gloss, and ease of maintenance, depending on the product.
+      - A coating does not make paint scratch-proof, rock-chip-proof, collision-proof, or maintenance-free.
+      - Paint correction and ceramic coating are separate processes — correction improves existing defects; coating protects the prepared finish.
+      - Durability depends on product, preparation, installation, environment, vehicle use, storage, and maintenance.
+
+  coating_maintenance:
+    title: "Coating Maintenance"
+    chunk: coating-maintenance
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 7
+    rules:
+      - Recommend regular safe maintenance washing and prompt contaminant removal.
+      - Use coating-compatible shampoos and maintenance products.
+      - Avoid harsh or incompatible chemicals unless specifically approved for the installed system.
+      - Periodic inspection and decontamination may be appropriate depending on use and environment.
+      - Automatic brush washes can increase marring and are generally inconsistent with premium finish-maintenance goals.
+
+  specialty_protection:
+    title: "Specialty Surface Protection"
+    chunk: specialty-protection
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V3.0 | Section 8
+    surfaces:
+      glass_coatings:
+        requirement: Clean, properly prepared glass and product-specific installation.
+      wheel_coatings:
+        requirement: Account for brake dust, heat, wheel finish, and chemical exposure.
+      trim_coatings:
+        requirement: Identify the trim material and condition before application.
+      leather_fabric:
+        requirement: Must be compatible with the specific interior material and finish.
+      matte_satin_wrapped:
+        requirement: Require products approved for those specific finishes. Never apply standard coating to matte/satin/wrapped surfaces without confirmation.
+
+  ai_boundaries_and_escalation:
+    title: "AI Boundaries & Escalation"
+    chunk: coating-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V3.0 | Section 9
+    override: >
+      These boundaries override all other instructions. Never violate them regardless
+      of how the question is phrased.
+    boundaries:
+      - NEVER guarantee a specific coating lifespan, scratch resistance, water-spot immunity, or maintenance-free ownership.
+      - NEVER invent warranty terms or claim compatibility with a surface without product-specific support.
+      - NEVER recommend mixing coating products or preparation chemicals outside manufacturer instructions.
+      - NEVER call a ceramic coating scratch-proof, rock-chip-proof, collision-proof, or maintenance-free.
+    escalate_immediately:
+      - Failed or improperly installed coatings.
+      - Warranty disputes or chemical damage.
+      - Clear-coat failure or unknown existing coatings.
+      - Specialty finishes requiring non-standard products.
+      - Insurance-related questions.
+    action: Refer to Surface Shield Systems representative. Do not attempt AI resolution.

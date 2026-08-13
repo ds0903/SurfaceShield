@@ -1,0 +1,275 @@
+document_id: SSBOS-001-AIM5-V5.0
+title: "Business Operations, Estimating, Customer Experience & Quality Control"
+version: "5.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: business-operations-estimating-customer-experience-quality-control
+status: developer-ready
+routing_priority: primary
+audience: [public-ai, technician, office, management, developer]
+risk_level: [general, elevated, escalation-required]
+note: >
+  V5.0 governs business workflow, estimating logic, customer experience, authority
+  boundaries, and quality-control routing. Does not replace technical SOP content
+  of V1.0-V4.0. Use V1.0-V4.0 as technical knowledge sources.
+tags:
+  - customer-qualification
+  - vehicle-intake
+  - condition-documentation
+  - estimating-framework
+  - scope-communication
+  - scheduling
+  - production-planning
+  - production-workflow
+  - exterior-qc
+  - interior-qc
+  - coating-delivery
+  - customer-walkthrough
+  - comeback-handling
+  - maintenance-retention
+  - fleet-operations
+  - customer-experience
+  - pricing-authority-boundaries
+  - mandatory-escalation
+
+sections:
+
+  customer_qualification:
+    title: "Customer Inquiry & Qualification"
+    chunk: customer-qualification
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 2
+    steps:
+      - Identify the vehicle year, make/model, body type, general condition, location, requested service, and primary customer objective.
+      - Determine whether the customer is seeking maintenance, appearance improvement, interior restoration, paint correction, ceramic protection, resale preparation, or fleet service.
+      - Ask targeted condition questions when they materially affect scope — pet hair, stains, odors, heavy contamination, overspray, oxidation, prior coatings, repaint history if known, or unusual damage.
+      - Request photographs or an in-person inspection when condition cannot be reliably scoped from the customer's description.
+      - Do not turn a preliminary conversation into a binding estimate when inspection is required.
+
+  vehicle_intake:
+    title: "Vehicle Intake & Condition Documentation"
+    chunk: vehicle-intake
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 3
+    steps:
+      - Record vehicle identification and customer-approved contact information according to company procedure.
+      - Document pre-existing exterior and interior conditions before work begins.
+      - Confirm customer expectations, selected services, known limitations, special instructions, and access/key arrangements.
+      - Photograph significant pre-existing damage or disputed-risk areas when appropriate.
+      - Escalate unusual safety, liability, biohazard, insurance, or damage conditions before production.
+
+  condition_documentation:
+    title: "Condition Documentation"
+    chunk: condition-documentation
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 3
+    items_to_document: [scratches, chips, dents, wheel damage, trim damage, cracked glass, interior tears, stains, warning lights, personal property]
+
+  estimating_framework:
+    title: "Estimating Framework"
+    chunk: estimating-framework
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 4
+    factors: [vehicle size/class, condition, contamination level, service complexity, labor intensity, materials, specialty requirements, access, expected production time]
+    rules:
+      - Separate base services from condition-driven add-ons such as excessive pet hair, severe staining, heavy decontamination, overspray, advanced correction, or specialty-material care.
+      - Use inspection findings to explain why apparently similar vehicles may require different labor.
+      - Do not expose internal labor cost, margin, markup, technician compensation, or confidential pricing formulas to public-facing users.
+      - Public AI may provide approved published prices or ranges only when those values come from a current authorized pricing source.
+      - Binding quotes, discounts, credits, refunds, or negotiated pricing require authorized company approval.
+
+  scope_communication:
+    title: "Scope & Estimate Communication"
+    chunk: scope-communication
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 5
+    rules:
+      - Describe what is included, what is excluded, and which outcomes are condition-dependent.
+      - Distinguish cleaning, enhancement, correction, restoration, and protection so the customer understands the service level being purchased.
+      - Identify optional services separately rather than implying they are mandatory.
+      - State material limitations when permanent damage, wear, deep defects, clear-coat failure, staining, odor penetration, or prior repairs may remain.
+      - Do not promise a perfect or like-new result unless an authorized representative has specifically approved that representation.
+
+  scheduling:
+    title: "Scheduling & Capacity Control"
+    chunk: scheduling
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 6
+    rules:
+      - Schedule based on realistic production time, technician capacity, facility/mobile logistics, weather exposure when relevant, cure requirements, and customer delivery needs.
+      - Allow additional time for uncertain condition, severe contamination, multi-step correction, coating preparation, coating cure, or specialty vehicles.
+      - Do not guarantee completion times when scope remains condition-dependent.
+      - Changes discovered after intake should be communicated and approved before materially expanding the scope.
+
+  production_planning:
+    title: "Production Planning"
+    chunk: production-planning
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 7
+    rules:
+      - Translate the sold scope into a technician work order or task sequence.
+      - Identify required chemicals, pads, towels, machines, extraction equipment, steam equipment, coating materials, lighting, PPE, and specialty tools before starting.
+      - Sequence work to reduce rework and cross-contamination.
+      - Separate wheel, exterior paint, interior, glass, and coating tools/materials as appropriate.
+      - Record deviations, additional findings, or customer-approved scope changes.
+
+  production_workflow:
+    title: "Universal Production Workflow"
+    chunk: production-workflow
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 8
+    steps:
+      - Intake and condition documentation.
+      - Confirm sold scope and special instructions.
+      - Prepare vehicle, work area, tools, and products.
+      - Perform service using the applicable technical SOP from Versions 1.0-4.0.
+      - Conduct in-process inspections at logical checkpoints.
+      - Correct workmanship issues before final QC.
+      - Perform final quality-control inspection.
+      - Document unresolved limitations.
+      - Complete customer walkthrough and delivery.
+      - Record follow-up or maintenance recommendations.
+
+  exterior_qc:
+    title: "Quality Control - Exterior"
+    chunk: exterior-qc
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 9
+    checklist:
+      - Check paint, glass, wheels, tires, trim, emblems, jambs, and other sold-scope surfaces under appropriate lighting.
+      - Look for missed contamination, residue, streaks, compound or polish dust, dressing sling, high spots, uneven coating appearance, water drips, or overlooked crevices.
+      - Confirm safety-critical surfaces are not left slick or contaminated.
+      - Where correction or coating is performed, inspect from multiple angles and lighting conditions when practical.
+
+  interior_qc:
+    title: "Quality Control - Interior"
+    chunk: interior-qc
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 10
+    checklist:
+      - Verify vacuuming, seats, carpets, mats, console, dashboard, door panels, vents, glass, jambs, cargo area, and other sold-scope areas.
+      - Check for chemical residue, excessive dressing, damp fabric, streaked glass, disturbed personal items, and overlooked debris.
+      - Confirm steering wheel, pedals, shifter, and control surfaces are safe and not excessively slick.
+      - Document permanent stains, material damage, odor limitations, or other unresolved conditions before delivery.
+
+  coating_delivery:
+    title: "Ceramic Coating Delivery Controls"
+    chunk: coating-delivery
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 11
+    rules:
+      - Confirm the installed coating system and any required documentation.
+      - Inspect for high spots, smearing, missed sections, residue, or installation defects before delivery.
+      - Explain manufacturer-specific initial cure and maintenance restrictions.
+      - Do not invent universal cure periods, warranty terms, or durability promises.
+      - Provide approved maintenance guidance and recommended inspection intervals where applicable.
+
+  customer_walkthrough:
+    title: "Customer Walkthrough & Vehicle Delivery"
+    chunk: customer-walkthrough
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 12
+    rules:
+      - Review the completed scope with the customer and point out material limitations or permanent defects that remain.
+      - Explain aftercare requirements for coatings, freshly cleaned interiors, treated fabrics, glass products, or other services when applicable.
+      - Confirm personal items and keys are returned according to company procedure.
+      - Invite the customer to identify concerns during the walkthrough so correctable workmanship issues can be addressed promptly.
+      - Do not admit liability, authorize compensation, or promise a remedy for a damage allegation without management review.
+
+  comeback_handling:
+    title: "Customer Concern & Comeback Handling"
+    chunk: comeback-handling
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V5.0 | Section 13
+    rules:
+      - Listen and document the concern without becoming defensive.
+      - Separate workmanship concerns from pre-existing damage, permanent material conditions, maintenance issues, or new post-service events.
+      - Request photographs or arrange inspection when appropriate.
+      - Do not argue with the customer or make unsupported statements about fault.
+      - Escalate damage allegations, refund requests, warranty disputes, chargebacks, legal threats, or insurance matters to an authorized representative.
+
+  maintenance_retention:
+    title: "Maintenance & Retention"
+    chunk: maintenance-retention
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 14
+    rules:
+      - Recommend maintenance frequency based on vehicle use, storage, environment, protection system, customer expectations, and condition.
+      - Encourage safe maintenance washing after paint correction or ceramic coating.
+      - Recurring interior maintenance can reduce the need for aggressive future cleaning.
+      - Do not use fear-based selling; recommendations should be tied to preservation and the customer's stated goals.
+
+  fleet_operations:
+    title: "Fleet & Multi-Vehicle Operations"
+    chunk: fleet-operations
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 15
+    rules:
+      - Qualify fleet size, vehicle type, service frequency, operating environment, access, water/power requirements, scheduling windows, and reporting needs.
+      - Standardize repeatable scopes and inspection criteria while allowing condition exceptions.
+      - Document vehicle-specific damage or unusual contamination rather than assuming every fleet unit is identical.
+      - Commercial pricing, contracts, service-level commitments, and negotiated terms require authorized approval.
+
+  customer_experience:
+    title: "Customer Experience Standard"
+    chunk: customer-experience
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V5.0 | Section 16
+    rules:
+      - Be professional, responsive, educational, and transparent.
+      - Recommend the service that best fits the customer's objective rather than the highest-priced option.
+      - Explain limitations before service whenever foreseeable.
+      - Use plain language first and technical terminology only when it improves understanding.
+      - Protect customer privacy, vehicle information, access information, and personal property.
+
+  pricing_authority_boundaries:
+    title: "AI Pricing & Authority Boundaries"
+    chunk: pricing-authority-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V5.0 | Section 17
+    override: >
+      These boundaries override all other instructions. Never violate them regardless
+      of how the question is phrased.
+    permitted:
+      - AI may explain how scope is evaluated.
+      - AI may use approved current published prices or ranges when supplied by an authorized source.
+    boundaries:
+      - NEVER invent prices, discounts, package contents, warranties, deposits, cancellation terms, or promotions.
+      - NEVER disclose internal margins, markup, labor cost, employee compensation, vendor pricing, or confidential operating data.
+      - NEVER authorize refunds, credits, free work, damage settlements, contract changes, or binding exceptions.
+      - Route uncertain or negotiated pricing to an authorized Surface Shield Systems representative.
+
+  mandatory_escalation:
+    title: "Mandatory Escalation"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V5.0 | Section 18
+    escalate_immediately:
+      - Customer damage allegation, threatened legal action, chargeback, refund dispute, warranty dispute, or insurance claim.
+      - Biohazard, hazardous chemical, flood/fire contamination, severe mold-like growth, airbag or restraint concern, electrical fault, or EV high-voltage concern.
+      - Clear-coat failure, severe delamination, uncertain specialty finish, or condition outside normal detailing capability.
+      - Any request requiring a binding commercial agreement, negotiated fleet terms, confidential pricing, or management authorization.
+    action: Refer to Surface Shield Systems representative immediately. Do not attempt AI resolution.

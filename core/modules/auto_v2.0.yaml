@@ -1,0 +1,181 @@
+document_id: SSBOS-001-AIM5-V2.0
+title: "Paint Inspection, Paint Correction & Polishing Systems"
+version: "2.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: paint-inspection-correction-polishing
+status: developer-ready
+routing_priority: primary
+audience: [public-ai, technician, office, management, developer]
+tags:
+  - paint-inspection
+  - paint-defects
+  - paint-thickness
+  - correction-levels
+  - polishing-machines
+  - pad-compound-selection
+  - safe-correction
+  - customer-expectations
+  - paint-escalation
+
+sections:
+
+  paint_defect_classification:
+    title: "Paint Defect Classification"
+    chunk: paint-defects
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 1
+    defect_types:
+      surface_defects:
+        - swirl marks
+        - wash marring
+        - fine scratches
+        - holograms
+        - buffer trails
+        - light scuffing
+      environmental_defects:
+        - water spotting
+        - bird-dropping etching
+        - tree sap
+        - industrial fallout
+        - rail dust
+        - overspray
+        - paint transfer
+      age_related_conditions:
+        - oxidation
+        - fading
+        - reduced gloss
+        - clear coat deterioration
+      beyond_correction:
+        - deep scratches
+        - chips
+        - cracking
+        - delamination
+        - exposed substrate
+    note: Deep scratches, chips, cracking, delamination, and exposed substrate may exceed detailing correction capability.
+
+  paint_inspection_workflow:
+    title: "Paint Inspection Workflow"
+    chunk: paint-inspection
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 2
+    steps:
+      - Begin with a clean and sufficiently decontaminated surface before judging correction potential.
+      - Inspect under appropriate lighting from multiple angles.
+      - Identify defect type, severity, distribution, and panel-specific risk.
+      - Note edges, body lines, repainted areas if known, thin-looking or failing finishes, and previous correction history when available.
+      - Use paint-thickness measurements when appropriate and when the technician is trained to interpret them.
+      - Perform a controlled test spot before committing to a broader correction strategy.
+
+  paint_thickness_awareness:
+    title: "Paint Thickness Awareness"
+    chunk: paint-thickness
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 3
+    rules:
+      - A paint-thickness gauge is a risk-management tool, not a guarantee of remaining clear-coat thickness.
+      - Readings may vary by substrate, factory process, repaint history, filler, primer, and gauge capability.
+      - Do not infer a safe amount of material removal from a single reading.
+      - Unexpectedly low, high, or inconsistent readings require conservative treatment and possible escalation.
+
+  correction_levels:
+    title: "Correction Levels"
+    chunk: correction-levels
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 4
+    levels:
+      enhancement_polish:
+        description: Prioritizes gloss and clarity with limited defect reduction and lower aggressiveness.
+        aggressiveness: low
+      one_step_correction:
+        description: Uses a single polishing stage to balance defect improvement and finish quality.
+        aggressiveness: moderate
+      multi_step_correction:
+        description: Typically combines a more aggressive defect-removal stage with a refining stage.
+        aggressiveness: high
+      wet_sanding:
+        description: Specialty operation. Do not recommend casually in public-facing AI responses.
+        aggressiveness: specialty
+        ai_restriction: Do not recommend wet sanding or advanced leveling procedures to customers without technician involvement.
+
+  polishing_machines:
+    title: "Machine Polishing Systems"
+    chunk: polishing-machines
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 5
+    machines:
+      dual_action:
+        description: Versatile correction platform with generally forgiving motion when used correctly.
+        skill_level: accessible
+      rotary:
+        description: Can correct efficiently but requires greater skill and heat/edge awareness.
+        skill_level: advanced
+    pad_categories: [foam, microfiber, wool]
+    pad_selection_rule: >
+      Pad selection depends on paint behavior, defect level, machine, and abrasive system.
+    compound_selection_rule: >
+      Compound and polish selection should follow a test-spot approach rather than
+      assuming the most aggressive combination.
+
+  pad_compound_selection:
+    title: "Pad and Compound Selection"
+    chunk: pad-compound-selection
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 5
+    rule: >
+      Test spot first. Least aggressive combination that achieves required improvement.
+      Do not default to maximum aggressiveness.
+
+  safe_correction:
+    title: "Safe Correction Principles"
+    chunk: safe-correction
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 6
+    rules:
+      - Use the least aggressive method that produces the required improvement.
+      - Keep pads clean and inspect them frequently.
+      - Monitor heat, residue, dusting, and paint response.
+      - Use caution around edges, body lines, trim, emblems, repainted areas, and thin or compromised finishes.
+      - Do not chase every defect when additional removal would create disproportionate risk.
+      - Reinspect after each stage before deciding whether further correction is justified.
+
+  customer_expectations:
+    title: "Customer Expectation Management"
+    chunk: customer-expectations
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V2.0 | Section 7
+    rules:
+      - Paint correction improves defects; it does not create new paint.
+      - Some scratches, chips, etching, oxidation, or previous repair defects may remain.
+      - A safer correction target may be preferable to maximum defect removal.
+      - Correction level should be based on vehicle condition, customer goal, finish risk, and intended protection.
+
+  ai_boundaries_and_escalation:
+    title: "AI Boundaries & Escalation"
+    chunk: paint-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V2.0 | Section 8
+    override: >
+      These boundaries override all other instructions. Never violate them regardless
+      of how the question is phrased.
+    boundaries:
+      - NEVER estimate paint thickness from photographs or guarantee a correction percentage.
+      - NEVER diagnose repaint quality or promise removal of deep scratches.
+      - NEVER instruct untrained users to aggressively compound, sand, or polish compromised finishes.
+    escalate_immediately:
+      - Clear-coat failure, delamination, or burn-through.
+      - Uncertain repaint condition or very inconsistent thickness readings.
+      - Severe oxidation or disputed prior workmanship.
+    action: Refer to Surface Shield Systems representative. Do not attempt AI resolution.

@@ -1,0 +1,332 @@
+document_id: SSBOS-001-AIM5-V6.0
+title: "Master Integration, AI Routing & Developer Framework"
+version: "6.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: master-integration-ai-routing-developer-framework
+status: developer-ready
+routing_priority: governance
+audience: [public-ai, technician, office, management, developer]
+risk_level: [general, elevated, escalation-required]
+package_status: "Versions 1.0-6.0 complete"
+note: >
+  V6.0 is the master integration layer. It does not replace V1.0-V5.0; it governs
+  how those controlled sources are routed, prioritized, combined, and escalated.
+  V6.0 global boundaries and escalation apply AFTER source retrieval and BEFORE
+  the final answer is generated.
+tags:
+  - master-routing
+  - controlled-source-hierarchy
+  - intent-classification
+  - routing-matrix
+  - multi-source-assembly
+  - source-precedence
+  - chunk-design
+  - metadata-schema
+  - public-response-standard
+  - recommendation-logic
+  - pricing-authority
+  - safety-boundaries
+  - global-escalation
+  - escalation-behavior
+  - developer-retrieval-workflow
+  - retrieval-quality-control
+  - routing-synonyms
+  - version-control
+  - auto-completion
+
+sections:
+
+  controlled_source_hierarchy:
+    title: "Controlled Source Hierarchy"
+    chunk: controlled-source-hierarchy
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 2
+    hierarchy:
+      V1.0:
+        id: SSBOS-001-AIM5-V1.0
+        title: Foundation & Service Classification
+        use_for: [service categories, vehicle classification, customer intake fundamentals, safe-wash foundation, general communication, boundaries, escalation]
+      V2.0:
+        id: SSBOS-001-AIM5-V2.0
+        title: Paint Inspection, Correction & Polishing
+        use_for: [paint defects, paint inspection, thickness awareness, correction levels, polishing systems, risk, correction expectations]
+      V3.0:
+        id: SSBOS-001-AIM5-V3.0
+        title: Ceramic Coatings & Surface Protection
+        use_for: [coating evaluation, preparation, installation concepts, cure, maintenance, specialty protection, coating expectations]
+      V4.0:
+        id: SSBOS-001-AIM5-V4.0
+        title: Interior Detailing & Specialty Materials
+        use_for: [interior materials, leather, fabric, carpet, Alcantara, headliners, steam, electronics, odor, pet hair, interior protection, interior escalation]
+      V5.0:
+        id: SSBOS-001-AIM5-V5.0
+        title: Business Operations, Estimating, Customer Experience & QC
+        use_for: [inquiry qualification, intake, estimating logic, scheduling, production workflow, QC, delivery, retention, fleet operations, pricing authority, customer disputes]
+      V6.0:
+        id: SSBOS-001-AIM5-V6.0
+        title: Master Integration
+        use_for: [cross-version routing, source precedence, answer assembly, metadata, authority controls, global escalation, developer implementation]
+
+  intent_classification:
+    title: "Primary Routing Logic"
+    chunk: intent-classification
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 3
+    classify_intent_first:
+      - service discovery
+      - technical question
+      - condition assessment
+      - estimate/pricing
+      - scheduling
+      - aftercare
+      - complaint/dispute
+      - safety issue
+      - commercial/fleet request
+    then_identify_surface:
+      - exterior wash
+      - paint correction
+      - coating/protection
+      - interior
+      - operations/customer-service
+    retrieval_rule: Retrieve the narrowest relevant source chunks rather than loading the full Auto Division.
+
+  routing_matrix:
+    title: "Intent-to-Source Routing Matrix"
+    chunk: routing-matrix
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 4
+    routes:
+      general_detailing_service_selection: V1.0
+      swirls_scratches_oxidation_polishing_paint_thickness: V2.0
+      ceramic_coating_protection_cure_maintenance: V3.0
+      leather_carpet_fabric_alcantara_headliner_odor_pet_hair_steam_electronics: V4.0
+      quotes_scope_scheduling_qc_delivery_complaints_fleet_discounts_refunds: V5.0
+      cross_domain_conflict_escalation_routing_developer: V6.0
+
+  multi_source_assembly:
+    title: "Multi-Source Answer Assembly"
+    chunk: multi-source-assembly
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 5
+    rules:
+      - Use technical sources (V1.0-V4.0) for technical facts; use V5.0 for business-process constraints.
+      - Do not let an operational chunk override a technical safety limitation.
+      - Do not let a technical chunk create a price, discount, warranty, scheduling commitment, or contractual term absent from an approved business source.
+      - When customer asks both service selection and pricing — route service to applicable technical version, pricing authority to V5.0/current approved data.
+      - Keep the final customer response concise; one coherent answer regardless of how many chunks were retrieved.
+
+  source_precedence:
+    title: "Source Precedence & Conflict Resolution"
+    chunk: source-precedence
+    risk_level: elevated
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 6
+    precedence:
+      product_manufacturer_docs: Controls product-specific mixing, application, flash, cure, maintenance, and warranty requirements.
+      current_approved_company_sources: Controls commercial terms, pricing, contracts, policies, and management instructions.
+      V6.0: Controls routing and global AI behavior only; does not rewrite technical facts in V1.0-V5.0.
+    conflict_rule: >
+      If two controlled sources conflict and the conflict cannot be resolved through
+      source role or version context — do not guess. Escalate for human review.
+
+  chunk_design:
+    title: "Knowledge Chunk Design"
+    chunk: chunk-design
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 7
+    rules:
+      - Chunks should represent one retrievable concept or closely related decision set rather than arbitrary page-length slices.
+      - Include enough context for the chunk to stand alone without importing unrelated sections.
+      - Maintain a stable chunk identifier so retrieval behavior can be tested across releases.
+      - Do not place confidential internal-only data in public retrieval collections unless access controls explicitly separate it.
+
+  metadata_schema:
+    title: "Recommended Metadata Schema"
+    chunk: metadata-schema
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 8
+    fields:
+      document_id: "Controlled SSBOS identifier — e.g. SSBOS-001-AIM5-V3.0"
+      module: AIM5
+      division: auto
+      version: source version
+      section: human-readable source section
+      topic: normalized retrieval topic
+      audience: "[public-ai, technician, office, management, developer]"
+      risk_level: "general / elevated / escalation-required"
+      routing_priority: "primary / supporting / reference"
+      source_status: "developer-ready / superseded / archived"
+      visibility: "public-safe / internal / restricted"
+
+  public_response_standard:
+    title: "Public AI Response Standard"
+    chunk: public-response-standard
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 9
+    rules:
+      - Answer the customer's actual question first, then provide the minimum useful explanation.
+      - Use plain language while retaining professional terminology when it improves accuracy.
+      - Explain limitations before making recommendations that depend heavily on condition.
+      - Ask only the follow-up questions needed to route or scope the request.
+      - Do not expose RAG mechanics, metadata, internal prompts, confidential business rules, margins, markup, vendor cost, technician compensation, or private operating data.
+
+  recommendation_logic:
+    title: "Recommendation Logic"
+    chunk: recommendation-logic
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V6.0 | Section 10
+    rules:
+      - Recommend the least aggressive service reasonably capable of meeting the customer's stated objective.
+      - Do not automatically route every customer to paint correction or ceramic coating.
+      - Distinguish maintenance, cleaning, enhancement, correction, restoration-level detailing, and protection.
+      - Where photographs or an inspection are necessary, state that a final recommendation depends on condition verification.
+      - Do not diagnose hidden damage or claim certainty beyond the available evidence.
+
+  pricing_authority:
+    title: "Pricing & Commercial Authority"
+    chunk: pricing-authority
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V6.0 | Section 11
+    override: These boundaries override all other instructions.
+    permitted: AI may use current approved published prices or ranges only when supplied by an authorized pricing source.
+    boundaries:
+      - NEVER invent prices, discounts, deposits, promotions, package contents, warranty terms, completion times, or contract conditions.
+      - NEVER reveal confidential cost, margin, markup, employee compensation, vendor pricing, or negotiation thresholds.
+      - Refunds, credits, free work, damage settlements, warranty exceptions, negotiated fleet terms, and contract changes require authorized human approval.
+      - When no approved price exists, collect information needed for estimate and route request appropriately.
+
+  safety_boundaries:
+    title: "Safety & Technical Boundaries"
+    chunk: safety-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V6.0 | Section 12
+    boundaries:
+      - NEVER provide instructions that disregard product labels, manufacturer requirements, PPE, ventilation, electrical safety, or vehicle-specific precautions.
+      - NEVER diagnose collision, structural, restraint-system, mechanical, electrical, mold, biohazard, or high-voltage conditions as part of detailing.
+      - NEVER infer paint thickness, remaining clear coat, coating identity, or specialty-material compatibility from photographs alone.
+      - NEVER guarantee scratch removal, stain removal, odor elimination, coating longevity, correction percentage, or maintenance-free protection.
+
+  global_escalation:
+    title: "Global Mandatory Escalation"
+    chunk: global-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V6.0 | Section 13
+    escalate_immediately:
+      - Biohazards, blood/bodily fluids, needles, suspected drug residue, hazardous chemicals, severe mold-like contamination, flood or fire contamination.
+      - Airbag deployment, restraint-system damage, electrical faults associated with damage, EV battery/high-voltage concerns, or structural/collision damage.
+      - Clear-coat failure, severe delamination, uncertain specialty finishes, unknown high-risk coatings, or conditions outside normal detailing capability.
+      - Customer damage allegations, refund disputes, chargebacks, warranty disputes, legal threats, insurance claims, or requests to admit liability.
+      - Binding commercial agreements, negotiated fleet terms, confidential pricing requests, or any exception requiring management authorization.
+
+  escalation_behavior:
+    title: "Escalation Response Behavior"
+    chunk: escalation-behavior
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V6.0 | Section 14
+    rules:
+      - Do not alarm the customer unnecessarily; explain that the condition requires review by a Surface Shield Systems representative before a reliable recommendation can be made.
+      - Collect only the information reasonably needed for handoff.
+      - Do not speculate about fault, liability, repair cost, insurance coverage, health diagnosis, or legal outcome.
+      - Preserve the customer's stated concern accurately for the human representative.
+
+  developer_retrieval_workflow:
+    title: "Developer Retrieval Workflow"
+    chunk: developer-retrieval-workflow
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 15
+    steps:
+      - "Step 1: Classify division = auto."
+      - "Step 2: Classify intent and topic."
+      - "Step 3: Filter for active/developer-ready Auto sources and appropriate visibility."
+      - "Step 4: Retrieve the highest-relevance primary chunks."
+      - "Step 5: Retrieve supporting operational or safety chunks only when needed."
+      - "Step 6: Apply V6.0 boundaries, authority, and escalation rules."
+      - "Step 7: Generate one customer-facing answer without exposing internal retrieval mechanics."
+      - "Step 8: Log source identifiers where the implementation supports traceability and testing."
+
+  retrieval_quality_control:
+    title: "Retrieval Quality Controls"
+    chunk: retrieval-quality-control
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 16
+    rules:
+      - Prefer exact topical relevance over large context windows.
+      - Avoid retrieving multiple near-duplicate chunks when one authoritative chunk is sufficient.
+      - Review retrieval failures before adding more prompt text; improve metadata, chunk boundaries, synonyms, or routing rules first.
+    test_queries:
+      - "I have swirl marks."
+      - "Can you remove this scratch?"
+      - "How long does ceramic coating last?"
+      - "My coating failed."
+      - "There is a bad smell inside my car."
+      - "Can you remove pet hair?"
+      - "How much will this cost?"
+      - "When can I schedule?"
+      - "You damaged my car."
+      - "I need 20 fleet vehicles detailed."
+
+  routing_synonyms:
+    title: "Suggested Routing Synonyms"
+    chunk: routing-synonyms
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 17
+    synonyms:
+      paint_correction: [buffing, polishing, swirl removal, scratches, holograms, oxidation, compound, polish]
+      ceramic_protection: [ceramic, coating, hydrophobic, glass coating, wheel coating, trim coating, protection package]
+      interior: [shampoo, extraction, leather, carpet, seats, pet hair, odor, smoke smell, headliner, steam]
+      operations: [quote, estimate, price, appointment, schedule, pickup, delivery, complaint, refund, warranty, fleet]
+      escalation: [damage, ruined, burned paint, peeling clear, accident, insurance, blood, mold, flood, fire, battery, airbag]
+
+  version_control:
+    title: "Version Control & Release Rules"
+    chunk: version-control
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 18
+    rules:
+      - Treat Versions 1.0-6.0 as controlled source documents within AIM5.
+      - Do not silently modify a released document in the retrieval store; issue a controlled revision when substantive content changes.
+      - Retain source identifiers and revision history so answers can be traced during testing.
+      - Mark superseded sources explicitly if a later controlled revision replaces them.
+
+  auto_completion:
+    title: "Auto Division Completion Standard"
+    chunk: auto-completion
+    risk_level: general
+    routing_priority: governance
+    source: SSBOS-001-AIM5-V6.0 | Section 19
+    completion_statement: >
+      Versions 1.0-6.0 together form the planned Surface Shield Auto knowledge package.
+      Production readiness remains subject to successful developer ingestion, metadata
+      validation, routing tests, escalation tests, and confirmation that any live pricing,
+      warranty, scheduling, or policy data comes from current authorized sources.
+    controlled_package_index:
+      - "SSBOS-001-AIM5-V1.0 - Foundation & Service Classification"
+      - "SSBOS-001-AIM5-V2.0 - Paint Inspection, Paint Correction & Polishing Systems"
+      - "SSBOS-001-AIM5-V3.0 - Ceramic Coatings & Surface Protection Systems"
+      - "SSBOS-001-AIM5-V4.0 - Interior Detailing, Specialty Materials & Interior Preservation Systems"
+      - "SSBOS-001-AIM5-V5.0 - Business Operations, Estimating, Customer Experience & Quality Control"
+      - "SSBOS-001-AIM5-V6.0 - Master Integration, AI Routing & Developer Framework"
+    next_planned_module: none — AIM5 Auto Division complete

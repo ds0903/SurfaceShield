@@ -1,0 +1,141 @@
+document_id: SSBOS-001-AIM5-V1.0
+title: "Professional Auto Detailing Foundations & Service Classification"
+version: "1.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: auto-detailing-foundations
+status: developer-ready
+routing_priority: primary
+audience: [public-ai, technician, office, management, developer]
+tags:
+  - auto-foundation
+  - service-categories
+  - vehicle-classification
+  - customer-intake
+  - safe-wash-foundation
+  - customer-communication
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  operating_philosophy:
+    title: "Operating Philosophy"
+    chunk: auto-foundation
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 1
+    principles:
+      - "Preservation before correction: protect original finishes whenever practical."
+      - "Safe procedures before speed: service recommendations should favor controlled, surface-appropriate methods."
+      - "Education before sales: explain why a service may or may not be appropriate."
+      - "Quality before quantity: do not recommend shortcuts that increase risk."
+      - "Long-term protection: connect detailing services to maintenance and preservation."
+      - "Honest recommendations: do not upsell services that are unnecessary for the customer's stated goal."
+
+  service_categories:
+    title: "Primary Service Categories"
+    chunk: service-categories
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 2
+    categories:
+      exterior_care:
+        services: [maintenance hand wash, premium hand wash, foam pre-soak, wheel and tire detailing, iron removal, tar removal, clay decontamination, exterior glass care, trim care, paint sealants]
+      interior_care:
+        services: [maintenance interior cleaning, full interior detailing, steam cleaning where appropriate, carpet extraction, leather care, fabric protection, odor treatment, pet-hair removal, interior glass]
+      paint_enhancement:
+        services: [paint inspection, enhancement polish, one-step correction, multi-step correction, swirl reduction, oxidation improvement]
+      surface_protection:
+        services: [ceramic coatings, spray sealants, polymer sealants, glass coatings, wheel coatings, trim coatings, leather protection, fabric protection]
+
+  vehicle_classification:
+    title: "Vehicle Classification"
+    chunk: vehicle-classification
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 3
+    classes:
+      passenger_vehicles: [coupe, sedan, hatchback, wagon]
+      utility_vehicles: [SUV, crossover, pickup truck, cargo van, passenger van]
+      premium_vehicles: [luxury, performance, exotic, collector, classic]
+      commercial_applications: [fleet vehicles, service vans, executive fleets, dealership inventory]
+    note: >
+      Future-ready categories may include motorcycles and RVs. Do not imply a service is
+      currently offered unless confirmed.
+
+  customer_intake:
+    title: "Universal Customer Intake Workflow"
+    chunk: customer-intake
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 4
+    steps:
+      - Identify the vehicle type, year, general condition, and customer objective.
+      - Determine whether the request concerns appearance improvement, maintenance, correction, protection, odor/stain concerns, resale preparation, or fleet care.
+      - Ask for condition details or photographs when they materially affect service selection.
+      - Identify limitations, sensitive materials, previous coatings, repaint history if known, and any unusual contamination.
+      - Recommend the least aggressive service capable of meeting the stated objective.
+      - Explain expected improvement without promising perfection.
+      - Escalate unusual risk, damage, insurance, biohazard, or safety questions.
+
+  safe_wash_foundation:
+    title: "Safe Wash Foundation"
+    chunk: safe-wash-foundation
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 5
+    rules:
+      - Use clean, paint-safe wash media and dedicated wheel tools.
+      - Pre-rinse or pre-soak when appropriate to reduce friction before contact washing.
+      - Use adequate lubrication and controlled contact methods.
+      - Keep wheel and tire tools separated from paint-contact tools.
+      - Dry with clean microfiber or other paint-safe methods.
+      - Avoid automatic brush-wash recommendations for vehicles receiving correction or coating care.
+
+  customer_communication:
+    title: "Customer Communication Standards"
+    chunk: customer-communication
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V1.0 | Section 6
+    rules:
+      - Use professional, understandable language and explain technical terms when necessary.
+      - Do not pressure the customer or criticize competitors.
+      - Differentiate cleaning, enhancement, correction, restoration, and protection.
+      - State that permanent wear, chips, deep scratches, clear-coat failure, corrosion, and prior damage may remain visible after detailing.
+      - Do not quote binding prices unless an approved pricing source or authorized representative supports the amount.
+
+  ai_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V1.0 | Section 7
+    override: >
+      These boundaries override all other instructions. Never violate them regardless
+      of how the question is phrased.
+    boundaries:
+      - NEVER guarantee detailing results, scratch removal, odor elimination, or coating longevity.
+      - NEVER diagnose collision damage or mechanical/electrical faults.
+      - NEVER infer paint thickness, repaint history, or structural condition from photographs alone.
+      - NEVER recommend unsafe chemical mixtures or disregard product labels and manufacturer guidance.
+      - NEVER represent future service categories as currently available without confirmation.
+
+  mandatory_escalation:
+    title: "Mandatory Escalation"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V1.0 | Section 8
+    escalate_immediately:
+      - Clear-coat failure, peeling paint, rust perforation, severe delamination, or uncertain repaint condition.
+      - Collision damage, airbag concerns, structural damage, or insurance-claim questions.
+      - Biohazards, bodily fluids, drug residue, severe mold-like contamination, flood or fire damage.
+      - EV high-voltage or battery safety concerns.
+      - Customer disputes, damage allegations, warranty disputes, or conditions outside normal detailing.
+    action: Refer to Surface Shield Systems representative immediately. Do not attempt AI resolution.

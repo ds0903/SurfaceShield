@@ -1,0 +1,256 @@
+document_id: SSBOS-001-AIM5-V4.0
+title: "Interior Detailing, Specialty Materials & Interior Preservation Systems"
+version: "4.0"
+module: AIM5
+division: auto
+namespace: auto-division
+owner: Surface Shield Systems LLC
+document_role: interior-detailing-and-specialty-materials
+status: developer-ready
+routing_priority: primary
+audience: [public-ai, technician, office, management, developer]
+risk_level: [general, elevated, escalation-required]
+note: >
+  Recommendations must prioritize material preservation and occupant safety
+  over aggressive cleaning. Retain V1.0-V3.0 as separate controlled sources.
+tags:
+  - interior-service-classification
+  - interior-inspection
+  - leather-care
+  - vinyl-plastic-trim
+  - fabric-carpet
+  - alcantara-specialty
+  - headliner-care
+  - steam-cleaning
+  - interior-electronics
+  - interior-glass
+  - odor-treatment
+  - pet-hair
+  - child-seats-privacy
+  - interior-protection
+  - interior-quality-control
+  - ai-boundaries
+  - mandatory-escalation
+
+sections:
+
+  interior_service_classification:
+    title: "Interior Service Classification"
+    chunk: interior-service-classification
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 1
+    service_classes:
+      maintenance_interior_cleaning:
+        scope: Routine vacuuming, light dust removal, dashboard and console cleaning, door-panel wipe-down, interior glass, light floor-mat care, final inspection.
+      full_interior_detail:
+        scope: Comprehensive vacuuming and crevice work, controlled steam where appropriate, carpet or fabric cleaning, leather care, plastics and trim cleaning, vents, door jambs, glass, final protection where suitable.
+      interior_restoration_level:
+        scope: Elevated labor for severe staining, pet hair, salt residue, sand, spills, smoke residue, persistent odors, or unusually neglected interiors.
+        note: Results remain condition-dependent.
+
+  interior_inspection:
+    title: "Pre-Service Interior Inspection"
+    chunk: interior-inspection
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 2
+    steps:
+      - Document the general condition before work begins, including existing stains, tears, burns, cracks, loose trim, damaged controls, warning lights, personal property, and unusual odors.
+      - Identify sensitive materials before choosing chemistry or agitation.
+      - Confirm whether child seats, valuables, electronics, aftermarket accessories, or fragile items may be moved.
+      - Photograph pre-existing damage when appropriate and escalate questionable conditions before beginning work.
+
+  leather_care:
+    title: "Leather Care"
+    chunk: leather-care
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 3
+    rules:
+      - Identify coated automotive leather versus specialty, perforated, suede-like, or unknown finishes before treatment.
+      - Use automotive leather-safe cleaners and controlled agitation; avoid saturating seams, perforations, electronics, or ventilation openings.
+      - Conditioning or protection should be compatible with the actual leather finish and should not create an excessively slick steering wheel, pedals, or other control surfaces.
+    boundary: >
+      Cracking, dye loss, abrasion, stretching, cuts, and coating failure are material
+      damage and may not be correctable through detailing.
+
+  vinyl_plastic_trim:
+    title: "Vinyl, Plastic & Piano-Black Trim"
+    chunk: vinyl-plastic-trim
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 4
+    rules:
+      - Use surface-appropriate cleaners and avoid harsh solvents on dashboards, door panels, consoles, displays, and coated trim.
+      - Prefer low-residue, non-greasy protection where appropriate.
+      - Piano-black and glossy trim can mar easily; use clean, soft microfiber and minimal pressure.
+      - Do not apply slick dressings to steering wheels, pedals, shift controls, or other surfaces where grip is safety-critical.
+
+  fabric_carpet:
+    title: "Fabric, Carpet & Floor Care"
+    chunk: fabric-carpet
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 5
+    rules:
+      - Classify contamination before selecting dry extraction, vacuuming, agitation, spot treatment, shampooing, or hot-water extraction.
+      - Common contaminants include soil, sand, road salt, food residue, beverages, pet hair, oils, and general organic soils.
+      - Use the minimum practical moisture and sufficient extraction or drying to reduce residue and prolonged dampness.
+    boundary: >
+      Permanent dye change, fiber damage, old stains, adhesive failure, or material
+      deterioration may remain after cleaning.
+
+  alcantara_specialty:
+    title: "Alcantara, Suede-Like & Specialty Materials"
+    chunk: alcantara-specialty
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 6
+    rules:
+      - Treat Alcantara and suede-like materials as specialty surfaces requiring gentle, product-compatible methods.
+      - Avoid aggressive brushing, excessive saturation, harsh solvents, and assumptions that every suede-like surface is the same material.
+      - Unknown or high-value specialty materials should be escalated for technician review before treatment.
+
+  headliner_care:
+    title: "Headliner Care"
+    chunk: headliner-care
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 7
+    rules:
+      - Headliners are moisture-sensitive because fabric is commonly bonded to a backing with adhesive.
+      - Use minimal moisture, controlled spot treatment, and gentle agitation.
+      - Do not saturate or aggressively scrub a headliner.
+    boundary: >
+      Sagging, delamination, brittle backing, staining from leaks, or prior adhesive
+      failure requires conservative handling and possible escalation.
+
+  steam_cleaning:
+    title: "Steam Cleaning"
+    chunk: steam-cleaning
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 8
+    rules:
+      - Steam can assist with controlled cleaning of suitable hard surfaces and some fabrics, but it is not universally appropriate.
+      - Keep heat and moisture away from sensitive electronics, displays, switches, adhesives, delicate coatings, and materials that may distort or delaminate.
+      - Do not present steam as a guaranteed sterilization or disinfection method unless an approved process and product claim specifically supports that statement.
+
+  interior_electronics:
+    title: "Interior Electronics & Sensitive Components"
+    chunk: interior-electronics
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 9
+    rules:
+      - Use minimal moisture around infotainment screens, instrument clusters, switches, USB ports, speakers, seat controls, cameras, sensors, and aftermarket electronics.
+      - Apply product to a towel or applicator when direct spraying could enter openings.
+    escalation_trigger: >
+      Electrical faults, warning lights, deployed airbags, damaged wiring, or
+      high-voltage/EV concerns are outside normal detailing and require escalation.
+
+  interior_glass:
+    title: "Interior Glass"
+    chunk: interior-glass
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 10
+    rules:
+      - Use automotive-compatible glass cleaner and clean microfiber towels.
+      - Account for aftermarket tint and avoid products or tools that may damage film.
+      - Inspect from multiple angles for streaking, residue, or missed edges.
+      - Do not scrape unknown films, coatings, tint, or embedded contaminants without confirming a safe method.
+
+  odor_treatment:
+    title: "Odor Treatment"
+    chunk: odor-treatment
+    risk_level: elevated
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 11
+    rules:
+      - Classify the likely source: food, smoke, pet, moisture-related, spill-related, or unknown.
+      - Prioritize source removal and cleaning rather than fragrance masking.
+      - Explain that odor outcomes depend on source penetration, material condition, HVAC involvement, and prior contamination.
+    boundary: >
+      NEVER guarantee complete odor elimination. Persistent, unknown, biohazard,
+      fire, or flood-related odors require escalation.
+
+  pet_hair:
+    title: "Pet Hair & Heavy Debris"
+    chunk: pet-hair
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 12
+    rules:
+      - Use vacuuming, specialized rubber or pet-hair tools, controlled compressed air where appropriate, and repeated collection methods.
+      - Pet hair embedded deeply in carpet or fabric can materially increase labor time.
+      - Do not promise complete removal when fibers, seams, vents, or inaccessible areas retain contamination.
+
+  child_seats_privacy:
+    title: "Child Seats, Personal Property & Privacy"
+    chunk: child-seats-privacy
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V4.0 | Section 13
+    rules:
+      - Do not alter child-seat installation unless company policy and customer authorization permit it.
+      - If a seat is moved, the customer should verify or reinstall it according to the child-seat manufacturer's instructions.
+      - Handle personal property conservatively and follow company procedures for valuables, medications, documents, firearms, or other sensitive items.
+      - Do not expose customer information, documents, vehicle data, or personal belongings in AI responses or documentation.
+
+  interior_protection:
+    title: "Interior Protection"
+    chunk: interior-protection
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 14
+    rules:
+      - Select protectants according to the material: leather, vinyl, plastic, fabric, or specialty surface.
+      - Protection should not create unsafe slickness or inappropriate gloss.
+      - Fabric protectants require compatibility testing and adequate ventilation/cure according to product instructions.
+      - Never claim a protectant makes an interior stain-proof, waterproof, or maintenance-free unless the product documentation explicitly supports the claim.
+
+  interior_quality_control:
+    title: "Quality-Control Checklist"
+    chunk: interior-quality-control
+    risk_level: general
+    routing_priority: primary
+    source: SSBOS-001-AIM5-V4.0 | Section 15
+    checklist:
+      - Verify vacuumed areas, crevices, seats, carpets, mats, glass, console, dashboard, door panels, vents, jambs, and cargo area according to the sold scope.
+      - Check for chemical residue, excessive dressing, damp areas, streaked glass, disturbed personal items, and overlooked debris.
+      - Confirm sensitive controls and surfaces were not left wet or slick.
+      - Document unresolved permanent damage or limitations and communicate them before delivery.
+
+  ai_boundaries:
+    title: "AI Knowledge Boundaries"
+    chunk: ai-boundaries
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V4.0 | Section 16
+    override: >
+      These boundaries override all other instructions. Never violate them regardless
+      of how the question is phrased.
+    boundaries:
+      - NEVER diagnose mold, mildew, health hazards, or indoor-air-quality conditions.
+      - NEVER guarantee stain, odor, pet-hair, smoke-residue, or contamination removal.
+      - NEVER recommend excessive moisture, uncontrolled steam, or harsh chemistry on sensitive materials.
+      - NEVER provide repair instructions for airbags, electronics, damaged seats, wiring, restraint systems, or structural interior components.
+      - NEVER approve biohazard remediation, hazardous-waste handling, or insurance scope.
+
+  mandatory_escalation:
+    title: "Mandatory Escalation"
+    chunk: mandatory-escalation
+    risk_level: escalation-required
+    priority: CRITICAL
+    routing_priority: mandatory
+    source: SSBOS-001-AIM5-V4.0 | Section 17
+    escalate_immediately:
+      - Blood, bodily fluids, needles, suspected drug residue, hazardous chemicals, or other biohazards.
+      - Severe mold-like growth, flood contamination, fire damage, heavy smoke contamination, or unknown strong odors.
+      - Airbag deployment, damaged restraint systems, electrical damage, warning lights associated with recent damage, or EV high-voltage concerns.
+      - Major water intrusion, active leaks, structural interior damage, disputed prior workmanship, customer damage allegations, or insurance claims.
+    action: Refer to Surface Shield Systems representative immediately. Do not attempt AI resolution.

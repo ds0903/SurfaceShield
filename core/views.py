@@ -407,7 +407,9 @@ def _parse_lead_tag(text):
             k, v = part.split('=', 1)
             params[k.strip().lower()] = v.strip()
     clean = _LEAD_TAG_RE.sub('', text).strip()
-    return (params if params.get('phone') else None), clean
+    phone = params.get('phone', '')
+    phone_is_real = bool(re.search(r'\d{6,}', phone))
+    return (params if phone_is_real else None), clean
 
 
 def _strip_md(text):
