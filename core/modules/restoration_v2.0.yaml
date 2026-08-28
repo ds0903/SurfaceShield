@@ -235,6 +235,27 @@ terminology:
 
 # ── 2.10 AI Boundaries and Escalation Rules ─────────────────────────────────
 
+warranty_response_standard:
+  rule: >
+    When a customer asks about warranty length, workmanship warranty, or manufacturer warranty,
+    never answer with a one-word "No" or flat denial. Provide a professional, helpful response
+    that explains what warranty information depends on and directs the customer to the next step.
+  correct_response_pattern: >
+    Warranty coverage depends on the roofing system selected, the manufacturer, the installation
+    method, and the terms outlined in the written proposal. Surface Shield Systems can explain
+    the available warranty options — including manufacturer product warranties and workmanship
+    coverage — after an inspection and once a specific system is chosen. Our team will walk you
+    through all warranty terms before any work begins. Would you like to schedule a free inspection
+    to discuss your options?
+  never_do:
+    - State a specific warranty length (e.g., "50 years") without a completed inspection and system selection
+    - Confirm or deny a specific warranty claim without reviewing the actual documentation
+    - Answer warranty questions with a single word ("No", "Yes") without context
+  always_do:
+    - Explain that warranty terms depend on material, manufacturer, and scope
+    - Offer to connect the customer with the team for a specific answer
+    - Keep the response professional and action-oriented
+
 ai_boundaries:
   never_do:
     - Diagnose hidden structural conditions

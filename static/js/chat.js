@@ -180,7 +180,7 @@
       .ss-chat-header-text { flex: 1; }
       .ss-chat-header-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #fff; }
       .ss-chat-header-status { font-size: 11px; color: rgba(255,255,255,0.55); }
-      .ss-chat-online { display: inline-block; width: 7px; height: 7px; background: #4caf50; border-radius: 50%; margin-right: 4px; }
+      .ss-chat-online { display: inline-block; width: 7px; height: 7px; background: #4caf50; border-radius: 50%; margin-right: 4px; transition: background 0.4s; }
 
       .ss-chat-msgs {
         flex: 1; overflow-y: auto; padding: 14px 12px; display: flex; flex-direction: column; gap: 10px;
@@ -336,10 +336,33 @@
     });
   }
 
+  function setStatus(online) {
+    const dot = document.querySelector('.ss-chat-online');
+    const label = document.querySelector('.ss-chat-header-status');
+    if (!dot || !label) return;
+    dot.style.background = online ? '#4caf50' : '#f44336';
+    label.innerHTML = `<span class="ss-chat-online" style="background:${online ? '#4caf50' : '#f44336'}"></span>${online ? 'Online' : 'Temporarily unavailable'}`;
+  }
+
+  async function checkHealth() {
+    try {
+      const res = await fetch('/api/health/', { credentials: 'same-origin', cache: 'no-store' });
+      setStatus(res.ok);
+    } catch {
+      setStatus(false);
+    }
+  }
+
   async function sendMessage(text) {
     if (isTyping || !text.trim()) return;
-    isTyping = true;
 
+    const csrf = getCsrf();
+    if (!csrf) {
+      addMessage('bot', 'Your session needs to be refreshed. Please reload the page and try again.');
+      return;
+    }
+
+    isTyping = true;
     addMessage('user', text);
     document.getElementById('ss-chat-input').value = '';
     document.getElementById('ss-chat-send').disabled = true;
@@ -349,18 +372,41 @@
     try {
       const res = await fetch('/api/chat/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrf() },
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf },
         body: JSON.stringify({ message: text, history, ..._trackingPayload() })
       });
-      const data = await res.json();
+
       hideTyping();
-      const reply = data.reply || data.error || 'Sorry, something went wrong.';
-      addMessage('bot', reply);
-      history.push({ role: 'user', text }, { role: 'bot', text: reply });
-      storageSave();
-    } catch {
+
+      if (!res.ok) {
+        let msg;
+        if (res.status === 403) {
+          msg = 'Session expired — please refresh the page to continue.';
+        } else if (res.status === 429) {
+          msg = 'Too many messages. Please wait a moment and try again.';
+        } else if (res.status >= 500) {
+          setStatus(false);
+          msg = 'Our assistant is temporarily unavailable. Please call us at <a href="tel:+12162801855">+1 (216) 280-1855</a> or <a href="/request-information/">leave a request</a>.';
+        } else {
+          msg = 'Something went wrong. Please try again or call +1 (216) 280-1855.';
+        }
+        addMessage('bot', msg);
+      } else {
+        const data = await res.json();
+        const reply = data.reply || data.error || 'Sorry, something went wrong.';
+        addMessage('bot', reply);
+        history.push({ role: 'user', text }, { role: 'bot', text: reply });
+        storageSave();
+      }
+    } catch (err) {
       hideTyping();
-      addMessage('bot', 'Connection issue. Please try again or call us at +1 (216) 280-1855.');
+      if (!navigator.onLine) {
+        addMessage('bot', 'No internet connection. Please check your connection and try again.');
+      } else {
+        setStatus(false);
+        addMessage('bot', 'Connection issue. Please try again or call us at +1 (216) 280-1855.');
+      }
     }
 
     isTyping = false;
@@ -389,6 +435,9 @@
 
     const win = document.getElementById('ss-chat-win');
     initResize(win);
+
+    // Check API health and set Online/Offline status
+    checkHealth();
 
     // Restore or show greeting
     if (storageLoad() && history.length > 0) {

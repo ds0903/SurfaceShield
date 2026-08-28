@@ -13,7 +13,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
 from .models import ContactMessage, Newsletter, ChatLead
@@ -168,10 +168,23 @@ def _meta_block(request):
     )
 
 
+def csrf_failure(request, reason=''):
+    return JsonResponse(
+        {'error': 'csrf_failed', 'message': 'Session expired. Please refresh the page and try again.'},
+        status=403,
+    )
+
+
+def health(request):
+    return JsonResponse({'status': 'ok'})
+
+
+@ensure_csrf_cookie
 def home(request):
     return render(request, 'core/home.html')
 
 
+@ensure_csrf_cookie
 def about(request):
     return render(request, 'core/about.html')
 
