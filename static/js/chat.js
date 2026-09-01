@@ -221,9 +221,14 @@
       .ss-chat-footer {
         padding: 10px 12px; background: #fff; border-top: 1px solid #eef1f7;
         display: flex; gap: 8px; align-items: center; flex-shrink: 0;
-        border-radius: 0 0 16px 16px;
         overflow: hidden;
       }
+      .ss-chat-privacy {
+        text-align: center; font-size: 10px; color: rgba(0,0,0,0.32);
+        padding: 3px 12px 9px; background: #fff;
+        border-radius: 0 0 16px 16px; flex-shrink: 0;
+      }
+      .ss-chat-privacy a { color: rgba(58,142,230,0.75); text-decoration: none; }
       #ss-chat-input {
         flex: 1; border: 1px solid #d8e0ee; border-radius: 20px;
         padding: 8px 14px; font-size: 13px; outline: none; resize: none;
@@ -277,6 +282,7 @@
           <textarea id="ss-chat-input" placeholder="Ask about our services…" rows="1"></textarea>
           <button id="ss-chat-send"><i class="fas fa-paper-plane"></i></button>
         </div>
+        <div class="ss-chat-privacy">By chatting, you agree to our <a href="/privacy-policy/" target="_blank">Privacy Policy</a></div>
       </div>
     `);
   }
@@ -448,6 +454,7 @@
 
     // Check API health and set Online/Offline status
     checkHealth();
+    setInterval(checkHealth, 30000);
 
     // Restore or show greeting
     if (storageLoad() && history.length > 0) {

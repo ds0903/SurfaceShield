@@ -479,9 +479,11 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     utm_medium = params.get('utm_medium', '')
     utm_campaign = params.get('utm_campaign', '')
 
+    do_not_call = preferred_contact.lower() in ('email',) or params.get('do_not_call', '').lower() == 'true'
+
     lead = ChatLead.objects.create(
         name=name, phone=phone, email=email, service_interest=service,
-        preferred_contact=preferred_contact,
+        preferred_contact=preferred_contact, do_not_call=do_not_call,
         page_url=page_url, referrer=referrer,
         utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
         conversation=conversation,
@@ -499,6 +501,7 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
         f'Phone: {phone or "—"}\n'
         f'Email: {email or "—"}\n'
         f'Preferred Contact: {preferred_contact or "—"}\n'
+        f'Do Not Call: {"YES — contact by email only" if do_not_call else "No"}\n'
         f'Service: {service}\n'
         f'\n— Technical Info —\n'
         f'Date/Time: {now}\n'

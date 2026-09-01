@@ -48,6 +48,7 @@ class ChatLead(models.Model):
     service_interest = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     preferred_contact = models.CharField(max_length=100, blank=True)
+    do_not_call = models.BooleanField(default=False)
     call_time = models.CharField(max_length=100, blank=True)
     page_url = models.CharField(max_length=500, blank=True)
     referrer = models.CharField(max_length=500, blank=True)
