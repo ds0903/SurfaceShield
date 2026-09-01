@@ -145,9 +145,10 @@ def _division_from_service(service):
     return service.title() if service else 'General'
 
 
-def _lead_subject(name, service):
+def _lead_subject(name, service, urgent=False):
     division = _division_from_service(service)
-    return f'New Website Lead | {division} | {name}'
+    prefix = '[URGENT] ' if urgent else ''
+    return f'{prefix}New Website Lead | {division} | {name}'
 
 
 def _meta_block(request):
@@ -413,6 +414,23 @@ def _load_prompt():
 _SYSTEM_PROMPT = _load_prompt()
 
 _LEAD_TAG_RE = re.compile(r'\[LEAD:([^\]]+)\]', re.IGNORECASE)
+_EMAIL_EXTRACT_RE = re.compile(r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}')
+_PHONE_EXTRACT_RE = re.compile(r'(\+?\d[\d\s\-().]{7,}\d)')
+_NAME_FROM_BOT_RE = re.compile(r'(?:Thank you|Thanks|Hello|Hi|Great)[,!\s]+([A-Z][a-z]{1,20})\b')
+_EMAIL_PREF_DETECT_RE = re.compile(
+    r'prefer.{0,25}email|email.{0,15}only|don.t call|do not call|contact.{0,15}email',
+    re.IGNORECASE,
+)
+_SERVICE_KEYWORDS = [
+    ('restoration', ['roof', 'roofing', 'storm', 'hail', 'wind damage', 'shingle', 'gutter',
+                     'siding', 'restoration', 'inspection', 'insurance claim']),
+    ('exterior',    ['exterior clean', 'soft wash', 'pressure wash', 'house wash',
+                     'window clean', 'power wash']),
+    ('auto',        ['car detail', 'auto detail', 'vehicle detail', 'ceramic coat',
+                     'paint correction', 'detailing']),
+    ('interior',    ['interior clean', 'deep clean', 'carpet clean', 'office clean',
+                     'move-in', 'move-out', 'move in', 'move out']),
+]
 
 
 def _parse_lead_tag(text):
@@ -493,9 +511,11 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     leads_in_session.append(lead.pk)
     request.session['chat_lead_ids'] = leads_in_session
 
+    is_urgent = params.get('urgency', '').lower() == 'urgent'
     now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
-    subject = _lead_subject(name, service)
+    subject = _lead_subject(name, service, urgent=is_urgent)
     body = (
+        f'{"🚨 URGENT — Active water intrusion or emergency reported\n\n" if is_urgent else ""}'
         f'New Chat Lead (AI-detected)\n\n'
         f'Name: {name}\n'
         f'Phone: {phone or "—"}\n'
@@ -538,6 +558,62 @@ def _update_lead_conversations(request, history, user_message, clean_reply):
         pass
 
 
+def _extract_lead_from_history(history, current_user_msg, current_bot_reply=''):
+    """Scan full conversation for name+contact without relying on AI [LEAD:] tag.
+    Returns (name, phone, email, preferred_contact, service) — all strings, may be empty.
+    """
+    # Build list of all turns including current exchange
+    all_turns = list(history) + [
+        {'role': 'user', 'text': current_user_msg},
+        {'role': 'bot',  'text': current_bot_reply},
+    ]
+
+    email, phone, name, preferred_contact, service = '', '', '', '', 'general'
+
+    # Email — scan user messages only
+    for turn in all_turns:
+        if turn.get('role') == 'user':
+            m = _EMAIL_EXTRACT_RE.search(turn.get('text', ''))
+            if m:
+                email = m.group(0)
+                break
+
+    # Phone — scan user messages, skip if text also contains email (avoid false match)
+    for turn in all_turns:
+        if turn.get('role') == 'user':
+            txt = turn.get('text', '')
+            if _EMAIL_EXTRACT_RE.search(txt):
+                continue  # this turn is about email, not phone
+            m = _PHONE_EXTRACT_RE.search(txt)
+            if m:
+                phone = m.group(1).strip()
+                break
+
+    # Name — bot typically says "Thank you, Max." or "Hello, John!"
+    for turn in all_turns:
+        if turn.get('role') == 'bot':
+            m = _NAME_FROM_BOT_RE.search(turn.get('text', ''))
+            if m:
+                name = m.group(1)
+                break
+
+    # Preferred contact
+    for turn in all_turns:
+        if turn.get('role') == 'user':
+            if _EMAIL_PREF_DETECT_RE.search(turn.get('text', '')):
+                preferred_contact = 'email'
+                break
+
+    # Service — scan all text combined
+    all_text = ' '.join(t.get('text', '').lower() for t in all_turns)
+    for svc, keywords in _SERVICE_KEYWORDS:
+        if any(k in all_text for k in keywords):
+            service = svc
+            break
+
+    return name, phone, email, preferred_contact, service
+
+
 @require_POST
 def chat_api(request):
     model = django_settings.GEMINI_MODEL
@@ -563,37 +639,42 @@ def chat_api(request):
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request'}, status=400)
 
-    # Extract already-collected visitor data from full history (not just last 20)
-    # Scan all user messages for phone and name hints so AI doesn't ask twice
-    _phone_re = re.compile(r'(\+?\d[\d\s\-().]{7,}\d)')
-    collected_phone, collected_name = '', ''
+    # Extract already-collected visitor data from full history
+    collected_phone, collected_name, collected_email, collected_pref = '', '', '', ''
     for turn in history:
-        if turn.get('role') != 'user':
-            continue
         txt = turn.get('text', '')
-        if not collected_phone:
-            m = _phone_re.search(txt)
-            if m:
-                collected_phone = m.group(1).strip()
-        # Simple name hint: if bot addressed visitor by name, extract it
-    for turn in history:
-        if turn.get('role') == 'bot':
-            m = re.search(r'\b([А-ЯІЇЄA-Z][а-яіїєa-z]{2,})[,!]', turn.get('text', ''))
+        role = turn.get('role', '')
+        if role == 'user':
+            if not collected_email:
+                m = _EMAIL_EXTRACT_RE.search(txt)
+                if m:
+                    collected_email = m.group(0)
+            if not collected_phone and not _EMAIL_EXTRACT_RE.search(txt):
+                m = _PHONE_EXTRACT_RE.search(txt)
+                if m:
+                    collected_phone = m.group(1).strip()
+            if not collected_pref and _EMAIL_PREF_DETECT_RE.search(txt):
+                collected_pref = 'email'
+        elif role == 'bot' and not collected_name:
+            m = _NAME_FROM_BOT_RE.search(txt)
             if m:
                 collected_name = m.group(1)
-                break
 
-    # Build context summary if we have collected data
+    # Build context note injected into system prompt so AI doesn't re-ask
     context_note = ''
-    if collected_phone or collected_name:
-        parts_note = []
-        if collected_name:
-            parts_note.append(f'name={collected_name}')
-        if collected_phone:
-            parts_note.append(f'phone={collected_phone}')
+    parts_note = []
+    if collected_name:
+        parts_note.append(f'name={collected_name}')
+    if collected_phone:
+        parts_note.append(f'phone={collected_phone}')
+    if collected_email:
+        parts_note.append(f'email={collected_email}')
+    if collected_pref:
+        parts_note.append(f'preferred_contact={collected_pref}')
+    if parts_note:
         context_note = (
             f'\n\n[SYSTEM NOTE: Visitor already provided {", ".join(parts_note)}. '
-            f'Do NOT ask for this information again.]'
+            f'Do NOT ask for any of this information again in this conversation.]'
         )
 
     contents = []
@@ -629,20 +710,90 @@ def chat_api(request):
 
     def _process_reply(raw_reply):
         lead_params, clean_reply = _parse_lead_tag(raw_reply)
+        tag_found = bool(lead_params)
         if lead_params:
             lead_params.update(tracking)
             try:
                 _save_chat_lead_from_tag(lead_params, history, user_message, clean_reply, request)
             except Exception:
                 pass
+
+        # FALLBACK: AI emitted no tag → scan history for name+contact and save lead.
+        # DB dedup in _save_chat_lead_from_tag prevents duplicates.
+        if not tag_found:
+            try:
+                fb_name, fb_phone, fb_email, fb_pref, fb_service = _extract_lead_from_history(
+                    history, user_message, raw_reply
+                )
+                if fb_name and (fb_phone or fb_email):
+                    fb_params = {
+                        'name': fb_name,
+                        'phone': fb_phone or 'none',
+                        'email': fb_email,
+                        'service': fb_service,
+                        'preferred_contact': fb_pref,
+                    }
+                    fb_params.update(tracking)
+                    visible_reply = clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip()
+                    _save_chat_lead_from_tag(
+                        fb_params, history, user_message, visible_reply, request
+                    )
+            except Exception:
+                pass
+
         # Update conversation for all leads already saved in this session
         try:
             _update_lead_conversations(request, history, user_message,
                                        clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip())
         except Exception:
             pass
-        # If AI wrote only the tag with no message text, return raw without tag
-        return clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip()
+        # If AI wrote only the tag with no message text, return a confirmation
+        final = clean_reply if clean_reply else _LEAD_TAG_RE.sub('', raw_reply).strip()
+        if not final:
+            final = "Thank you! We've received your information and will be in touch shortly. You can also call us at +1 (216) 280-1855."
+
+        # Intercept generic "Is there anything else" when we know the visitor's name+contact
+        # Replace with contextual follow-up
+        _generic_re = re.compile(
+            r'is there (anything|something) else i can (help|assist)',
+            re.IGNORECASE,
+        )
+        _all_hist_text = ' '.join(t.get('text', '').lower() for t in history) + ' ' + user_message.lower()
+        _intercept_svc_info = {
+            'restoration': ('roof inspection',   'gutters, siding, or exterior soft washing'),
+            'exterior':    ('exterior cleaning', 'roof cleaning or window washing'),
+            'auto':        ('auto detailing',    'ceramic coating or interior detailing'),
+            'interior':    ('interior cleaning', 'deep cleaning or move-in/out service'),
+        }
+        _detected_svc = 'general'
+        for _svc_key, _kw_list in _SERVICE_KEYWORDS:
+            if any(k in _all_hist_text for k in _kw_list):
+                _detected_svc = _svc_key
+                break
+        _svc_label, _related = _intercept_svc_info.get(
+            _detected_svc, ('your request', 'our full range of services')
+        )
+        # prefer email if visitor stated that preference, regardless of phone in history
+        _contact_method = 'email' if (collected_pref == 'email' or (collected_email and not collected_phone)) else 'phone'
+
+        # Intercept 1: generic "Is there anything else" → contextual follow-up
+        if _generic_re.search(final) and collected_name and (collected_phone or collected_email):
+            final = (
+                f"No problem, {collected_name}! Our team will reach out to you via {_contact_method} "
+                f"regarding your {_svc_label}. By the way — many of our customers also appreciate "
+                f"our {_related}. Would either of those be of interest to you?"
+            )
+
+        # Intercept 2: bot asks for name when we already know it → replace with contextual reply
+        _ask_name_re = re.compile(r'provide your name|your name and|what.s your name', re.IGNORECASE)
+        if _ask_name_re.search(final) and collected_name and (collected_phone or collected_email):
+            final = (
+                f"Of course, {collected_name}! I already have your details on file. "
+                f"For your {_svc_label}, our team will contact you via {_contact_method}. "
+                f"Is there anything specific about the {_svc_label} you'd like to know?"
+            )
+
+        return final
 
     # Try primary model — rotate through ALL keys on any error
     keys = django_settings.GEMINI_KEYS or [django_settings.GEMINI_API_KEY]
