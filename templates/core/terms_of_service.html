@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Terms of Service | Surface Shield Systems LLC{% endblock %}
+{% block meta_description %}Terms of Service for Surface Shield Systems LLC. Review our terms before using our website or requesting services.{% endblock %}
+{% block canonical_path %}/terms-of-service/{% endblock %}
+{% block og_title %}Terms of Service | Surface Shield Systems LLC{% endblock %}
+{% block og_description %}Terms of Service for Surface Shield Systems LLC.{% endblock %}
+{% block og_url %}/terms-of-service/{% endblock %}
+
+{% block content %}
+<section class="legal-page-section">
+<div class="container legal-container">
+
+<h1>Terms of Service</h1>
+<p class="legal-updated">Last updated: June 1, 2026</p>
+
+<p>These Terms of Service govern your use of the Surface Shield Systems LLC website located at surfaceshieldsystems.com and any related services. By accessing or using this website, you agree to be bound by these terms.</p>
+
+<h2>1. Use of This Website</h2>
+<p>You may use this website for lawful purposes only. You agree not to:</p>
+<ul>
+  <li>Submit false, misleading, or fraudulent information through any form or chat</li>
+  <li>Attempt to disrupt, damage, or gain unauthorized access to the website or its systems</li>
+  <li>Use automated tools to scrape, index, or extract content without our written permission</li>
+  <li>Violate any applicable local, state, or federal laws in connection with your use of this site</li>
+</ul>
+
+<h2>2. Information and Estimates</h2>
+<p>Information provided through this website, including responses from our AI chat assistant, is for general informational purposes only. It does not constitute a binding estimate, contract, warranty, or guarantee of any kind.</p>
+<p>All pricing, availability, scheduling, and project scope must be confirmed in writing by an authorized Surface Shield Systems LLC representative. No AI-generated response, website content, or chat interaction creates a binding commitment on behalf of the company.</p>
+
+<h2>3. AI Chat Assistant</h2>
+<p>Our website features an AI-powered chat assistant designed to answer general questions and help connect you with our team. Please be aware that:</p>
+<ul>
+  <li>The assistant does not have the authority to approve insurance claims, confirm coverage, issue warranties, or finalize any contract</li>
+  <li>Responses are intended to be helpful but may not reflect the most current pricing, availability, or service scope</li>
+  <li>For urgent matters or binding commitments, always contact our team directly at <a href="tel:+12162801855">+1 (216) 280-1855</a></li>
+</ul>
+
+<h2>4. Insurance and Claims</h2>
+<p>Surface Shield Systems LLC assists homeowners with storm damage documentation and coordinates with insurance companies on their behalf when authorized. We do not guarantee insurance claim approval, coverage determinations, or settlement amounts. Coverage decisions are made solely by the insurance carrier under the applicable policy.</p>
+
+<h2>5. Limitation of Liability</h2>
+<p>To the maximum extent permitted by applicable law, Surface Shield Systems LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website, reliance on any information provided here, or any service inquiry or estimate communicated through this website.</p>
+
+<h2>6. Intellectual Property</h2>
+<p>All content on this website, including text, images, logos, and design, is the property of Surface Shield Systems LLC and is protected by applicable copyright and trademark laws. You may not reproduce, distribute, or modify any content without our prior written consent.</p>
+
+<h2>7. Privacy</h2>
+<p>Your use of this website is also governed by our <a href="{% url 'privacy_policy' %}">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+
+<h2>8. Third-Party Links</h2>
+<p>This website may contain links to third-party websites. We are not responsible for the content, privacy practices, or availability of those external sites.</p>
+
+<h2>9. Changes to These Terms</h2>
+<p>We reserve the right to update these Terms of Service at any time. The "Last updated" date at the top reflects the most recent revision. Continued use of this website after changes constitutes your acceptance of the updated terms.</p>
+
+<h2>10. Governing Law</h2>
+<p>These Terms of Service are governed by the laws of the State of Ohio, without regard to its conflict of law provisions. Any disputes shall be resolved in the appropriate courts located in Cuyahoga County, Ohio.</p>
+
+<h2>11. Contact Us</h2>
+<p>Surface Shield Systems LLC<br>
+26250 Euclid Avenue, 9th Floor<br>
+Euclid, Ohio 44132<br>
+Phone: <a href="tel:+12162801855">+1 (216) 280-1855</a><br>
+Email: <a href="mailto:info@surfaceshieldsystems.com">info@surfaceshieldsystems.com</a></p>
+
+</div>
+</section>
+
+<style>
+.legal-page-section { padding: 80px 0 100px; background: #f7f9fc; }
+.legal-container { max-width: 800px; background: #fff; padding: 60px; border-radius: 12px; box-shadow: 0 2px 20px rgba(5,12,35,0.08); }
+.legal-container h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; color: #050c23; margin-bottom: 6px; }
+.legal-updated { color: #888; font-size: 13px; margin-bottom: 32px; }
+.legal-container h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: #1a3a6b; margin: 32px 0 10px; }
+.legal-container p, .legal-container li { font-size: 15px; line-height: 1.75; color: #333; }
+.legal-container ul { padding-left: 20px; margin: 10px 0 16px; }
+.legal-container li { margin-bottom: 6px; }
+.legal-container a { color: #3a8ee6; }
+@media (max-width: 640px) { .legal-container { padding: 32px 20px; } }
+</style>
+{% endblock %}

@@ -11,4 +11,6 @@ urlpatterns = [
     path('api/chat/', views.chat_api, name='chat_api'),
     path('api/save-lead/', views.save_lead, name='save_lead'),
     path('api/health/', views.health, name='health'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    path('terms-of-service/', views.terms_of_service, name='terms_of_service'),
 ]

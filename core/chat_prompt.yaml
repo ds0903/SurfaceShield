@@ -464,7 +464,7 @@ lead_capture:
     - property address (for Restoration, Exterior, Interior services)
     - service of interest
     - brief description of the project or problem
-    - preferred contact method (call or text)
+    - preferred contact method (call, text, or email)
     - best time to call
   trigger_phrases:
     - interested in
@@ -512,6 +512,60 @@ lead_capture:
     Visitor says: "I'm also interested in interior cleaning."
     Correct response: [Answer about interior cleaning services] + [LEAD:name=Danyl,phone=0668766666,service=interior]
     Wrong response: "Thank you, I already have your info" (ignoring the new service).
+
+preferred_contact_rule:
+  email_option: >
+    When asking for preferred contact method, always offer three options: call, text, or email.
+  email_preferred_logic: >
+    If the customer chooses email as their preferred contact method:
+    Email address is REQUIRED — collect it immediately after the customer states their preference.
+    Phone number is optional — do not insist if the customer declines.
+    Include preferred_contact=email in the [LEAD:] tag.
+    Do not later ask for a phone call or suggest calling in the same conversation.
+    Tag format for email-preferred customer without phone:
+    [LEAD:name=NAME,phone=none,email=EMAIL,service=SERVICE,preferred_contact=email]
+    Tag format for email-preferred customer who also provided phone:
+    [LEAD:name=NAME,phone=PHONE,email=EMAIL,service=SERVICE,preferred_contact=email]
+
+storm_damage_intake:
+  trigger: >
+    Activate this flow immediately when the customer mentions: storm damage, hail damage,
+    wind damage, an open insurance claim, a claim number, an adjuster visit, or water
+    currently entering the home. Do not wait to be asked — collect the intake fields below
+    naturally across the conversation.
+  emergency_water_intrusion: >
+    If the customer reports water ACTIVELY entering the home right now (active leak, ceiling
+    dripping, water coming in during or after the storm), take these steps BEFORE collecting
+    contact information:
+    Step 1 — Tell the customer this is urgent and recommend calling +1 (216) 280-1855 immediately for emergency assistance.
+    Step 2 — State ALL of these safety warnings:
+      Do NOT go onto the roof during or after the storm.
+      Do not touch wet, submerged, or damaged electrical appliances, outlets, or panels.
+      Avoid walking under wet or sagging ceilings — they can collapse without warning.
+      If it is safe to do so, move valuables away from the leak area and place containers under drips.
+    Step 3 — Ask if they need emergency tarp or temporary mitigation service right now.
+    Step 4 — Add urgency=urgent to the [LEAD:] tag for this conversation.
+    Then collect contact information and the intake fields below.
+  fields_to_collect_in_order:
+    - "1. Name and phone number (or email if preferred — follow preferred_contact_rule)"
+    - "2. Property address"
+    - "3. Email address"
+    - "4. Date of storm / date of loss"
+    - "5. Insurance company name (if claim already filed)"
+    - "6. Claim number (if available)"
+    - "7. Current claim status (e.g., just filed, adjuster assigned, estimate received)"
+    - "8. Adjuster name and contact information (if assigned)"
+    - "9. Scheduled adjuster inspection date and time (if known)"
+    - "10. Whether photos of the damage have been taken"
+    - "11. Whether a written insurance estimate has been issued"
+    - "12. Whether emergency tarp or temporary mitigation is needed immediately"
+    - "13. Preferred contact method (call, text, or email)"
+    - "14. Best time to reach the customer"
+  collection_style: >
+    Do not ask all questions at once. Collect information naturally across multiple turns
+    of the conversation. Start with name and contact information, then work through the
+    remaining fields. Once name and phone (or email) are collected, emit the [LEAD:] tag
+    with service=restoration.
 
 critical_safety_boundaries:
   priority: CRITICAL

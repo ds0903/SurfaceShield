@@ -372,6 +372,14 @@ def save_lead(request):
     return JsonResponse({'status': 'saved'})
 
 
+def privacy_policy(request):
+    return render(request, 'core/privacy_policy.html')
+
+
+def terms_of_service(request):
+    return render(request, 'core/terms_of_service.html')
+
+
 def sitemap(request):
     return render(request, 'sitemap.xml', content_type='application/xml')
 
@@ -422,7 +430,9 @@ def _parse_lead_tag(text):
     clean = _LEAD_TAG_RE.sub('', text).strip()
     phone = params.get('phone', '')
     phone_is_real = bool(re.search(r'\d{6,}', phone))
-    return (params if phone_is_real else None), clean
+    email_val = params.get('email', '')
+    email_is_real = bool(re.match(r'[^@\s]+@[^@\s]+\.[^@\s]+', email_val))
+    return (params if (phone_is_real or email_is_real) else None), clean
 
 
 def _strip_md(text):
@@ -445,12 +455,22 @@ def _build_conversation(history, user_message, clean_reply):
 def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request):
     name = params.get('name', 'Unknown')
     phone = params.get('phone', '')
+    email = params.get('email', '')
+    preferred_contact = params.get('preferred_contact', '')
     service = params.get('service', 'general')
 
-    # Deduplicate: same phone + service within last 24h
+    # Normalize phone=none placeholder from email-preferred customers
+    if phone.lower() in ('none', 'n/a', '-', ''):
+        phone = ''
+
+    # Deduplicate: same phone+service or email+service within last 24h
     day_ago = timezone.now() - timedelta(hours=24)
-    if ChatLead.objects.filter(phone=phone, service_interest=service, created_at__gte=day_ago).exists():
-        return
+    if phone:
+        if ChatLead.objects.filter(phone=phone, service_interest=service, created_at__gte=day_ago).exists():
+            return
+    elif email:
+        if ChatLead.objects.filter(email=email, service_interest=service, created_at__gte=day_ago).exists():
+            return
 
     conversation = _build_conversation(history, user_message, clean_reply)
     page_url = params.get('page_url', '')
@@ -460,7 +480,8 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     utm_campaign = params.get('utm_campaign', '')
 
     lead = ChatLead.objects.create(
-        name=name, phone=phone, service_interest=service,
+        name=name, phone=phone, email=email, service_interest=service,
+        preferred_contact=preferred_contact,
         page_url=page_url, referrer=referrer,
         utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
         conversation=conversation,
@@ -475,7 +496,9 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     body = (
         f'New Chat Lead (AI-detected)\n\n'
         f'Name: {name}\n'
-        f'Phone: {phone}\n'
+        f'Phone: {phone or "—"}\n'
+        f'Email: {email or "—"}\n'
+        f'Preferred Contact: {preferred_contact or "—"}\n'
         f'Service: {service}\n'
         f'\n— Technical Info —\n'
         f'Date/Time: {now}\n'

@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   const GREETING = "Hi! I'm the Surface Shield assistant. How can I help you today? 😊\n\nI can answer questions about our roofing, exterior cleaning, auto detailing, or interior cleaning services — or connect you with our team for a free estimate.";
@@ -269,7 +269,7 @@
           <img src="${faviconSrc}" alt="">
           <div class="ss-chat-header-text">
             <div class="ss-chat-header-name">Surface Shield Assistant</div>
-            <div class="ss-chat-header-status"><span class="ss-chat-online"></span>Online</div>
+            <div class="ss-chat-header-status"><span class="ss-chat-online" style="background:#9bacc8"></span>Checking…</div>
           </div>
         </div>
         <div class="ss-chat-msgs" id="ss-chat-msgs"></div>
@@ -380,22 +380,32 @@
       hideTyping();
 
       if (!res.ok) {
-        let msg;
         if (res.status === 403) {
-          msg = 'Session expired — please refresh the page to continue.';
+          addMessage('bot', 'Session expired — please refresh the page to continue.');
         } else if (res.status === 429) {
-          msg = 'Too many messages. Please wait a moment and try again.';
+          addMessage('bot', 'Too many messages. Please wait a moment and try again.');
         } else if (res.status >= 500) {
           setStatus(false);
-          msg = 'Our assistant is temporarily unavailable. Please call us at <a href="tel:+12162801855">+1 (216) 280-1855</a> or <a href="/request-information/">leave a request</a>.';
+          const errDiv = addMessage('bot', 'Our assistant is temporarily unavailable. Please contact us:');
+          const bubble = errDiv.querySelector('.ss-msg-bubble');
+          const a1 = document.createElement('a');
+          a1.href = 'tel:+12162801855';
+          a1.textContent = '+1 (216) 280-1855';
+          a1.style.cssText = 'color:#3a8ee6;display:block;margin-top:6px;text-decoration:none';
+          const a2 = document.createElement('a');
+          a2.href = '/request-information/';
+          a2.textContent = 'Leave a request';
+          a2.style.cssText = 'color:#3a8ee6;display:block;margin-top:4px;text-decoration:none';
+          bubble.appendChild(a1);
+          bubble.appendChild(a2);
         } else {
-          msg = 'Something went wrong. Please try again or call +1 (216) 280-1855.';
+          addMessage('bot', 'Something went wrong. Please try again or call +1 (216) 280-1855.');
         }
-        addMessage('bot', msg);
       } else {
         const data = await res.json();
         const reply = data.reply || data.error || 'Sorry, something went wrong.';
         addMessage('bot', reply);
+        setStatus(true);
         history.push({ role: 'user', text }, { role: 'bot', text: reply });
         storageSave();
       }
