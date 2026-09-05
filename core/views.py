@@ -502,7 +502,7 @@ def _push_to_quoteiq(name, phone, email, address, service, message, is_urgent):
         'data': {
             '1788607942134000_0': first,
             '1788607942134000_1': last,
-            '1788607942134000_2': email or '',
+            '1788607942134000_2': email or 'noreply@surfaceshieldsystems.com',
             '1788607942134000_3': phone or '',
             '1788607942134000_4': f'{label}Service: {service}\n\n{message}'[:2000],
             '1788608922698_0':    addr_obj,
