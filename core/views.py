@@ -87,12 +87,12 @@ def _get_client_ip(request):
 
 
 def _verify_turnstile(request):
+    secret = django_settings.TURNSTILE_SECRET_KEY
+    if not secret or django_settings.DEBUG:
+        return True  # dev — no key or debug mode, skip
     token = request.POST.get('cf-turnstile-response', '')
     if not token:
         return False
-    secret = django_settings.TURNSTILE_SECRET_KEY
-    if not secret:
-        return True  # dev — no key, skip
     data = urllib.parse.urlencode({'secret': secret, 'response': token}).encode()
     try:
         with urllib.request.urlopen(
@@ -226,6 +226,11 @@ def contact(request):
                     + _meta_block(request)
                 ),
             )
+            threading.Thread(
+                target=_push_to_quoteiq,
+                args=(name, phone, email, '', 'contact', msg, False),
+                daemon=True,
+            ).start()
             messages.success(request, 'Your message has been sent! We will contact you shortly.')
             return redirect('contact')
         else:
@@ -297,6 +302,11 @@ def request_information(request):
                     + _meta_block(request)
                 ),
             )
+            threading.Thread(
+                target=_push_to_quoteiq,
+                args=(name, phone, email, full_address, service, full_msg, False),
+                daemon=True,
+            ).start()
             messages.success(request, 'Thank you! We will get back to you soon.')
             return redirect('request_information')
         else:
@@ -470,12 +480,57 @@ def _build_conversation(history, user_message, clean_reply):
     return '\n'.join(lines)
 
 
+def _push_to_quoteiq(name, phone, email, address, service, message, is_urgent):
+    api_key = django_settings.QUOTEIQ_API_KEY
+    if not api_key:
+        return
+    parts = name.strip().split(' ', 1)
+    first = parts[0]
+    last = parts[1] if len(parts) > 1 else ''
+    label = '[URGENT] ' if is_urgent else ''
+    # Address field expects object; if string provided put it all in street
+    addr_parts = str(address).split(',') if address else []
+    addr_obj = {'street': addr_parts[0].strip() if addr_parts else '',
+                'city':   addr_parts[1].strip() if len(addr_parts) > 1 else '',
+                'state':  addr_parts[2].strip() if len(addr_parts) > 2 else '',
+                'zip':    addr_parts[3].strip() if len(addr_parts) > 3 else ''}
+    payload = json.dumps({
+        'user_id':    django_settings.QUOTEIQ_USER_ID,
+        'company_id': django_settings.QUOTEIQ_COMPANY_ID,
+        'form_id':    django_settings.QUOTEIQ_FORM_ID,
+        '_hp': '',
+        'data': {
+            '1788607942134000_0': first,
+            '1788607942134000_1': last,
+            '1788607942134000_2': email or '',
+            '1788607942134000_3': phone or '',
+            '1788607942134000_4': f'{label}Service: {service}\n\n{message}'[:2000],
+            '1788608922698_0':    addr_obj,
+        },
+    }).encode()
+    req = urllib.request.Request(
+        'https://us-central1-quoteiq-2.cloudfunctions.net/submitFormV2Api',
+        data=payload,
+        headers={
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type':  'application/json',
+        },
+        method='POST',
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=8) as r:
+            print(f'[QuoteIQ] submitted status={r.status}')
+    except Exception as exc:
+        print(f'[QuoteIQ] ERROR: {exc}')
+
+
 def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request):
     name = params.get('name', 'Unknown')
     phone = params.get('phone', '')
     email = params.get('email', '')
     preferred_contact = params.get('preferred_contact', '')
     service = params.get('service', 'general')
+    address = params.get('address', '')
 
     # Normalize phone=none placeholder from email-preferred customers
     if phone.lower() in ('none', 'n/a', '-', ''):
@@ -498,10 +553,11 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     utm_campaign = params.get('utm_campaign', '')
 
     do_not_call = preferred_contact.lower() in ('email',) or params.get('do_not_call', '').lower() == 'true'
+    is_urgent = params.get('urgency', '').lower() == 'urgent'
 
     lead = ChatLead.objects.create(
-        name=name, phone=phone, email=email, service_interest=service,
-        preferred_contact=preferred_contact, do_not_call=do_not_call,
+        name=name, phone=phone, email=email, address=address, service_interest=service,
+        preferred_contact=preferred_contact, do_not_call=do_not_call, urgency=is_urgent,
         page_url=page_url, referrer=referrer,
         utm_source=utm_source, utm_medium=utm_medium, utm_campaign=utm_campaign,
         conversation=conversation,
@@ -511,7 +567,13 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
     leads_in_session.append(lead.pk)
     request.session['chat_lead_ids'] = leads_in_session
 
-    is_urgent = params.get('urgency', '').lower() == 'urgent'
+    # Push to QuoteIQ CRM in background thread (non-blocking)
+    threading.Thread(
+        target=_push_to_quoteiq,
+        args=(name, phone, email, address, service, clean_reply, is_urgent),
+        daemon=True,
+    ).start()
+
     now = timezone.now().strftime('%Y-%m-%d %H:%M:%S UTC')
     subject = _lead_subject(name, service, urgent=is_urgent)
     body = (
@@ -547,13 +609,33 @@ def _save_chat_lead_from_tag(params, history, user_message, clean_reply, request
 
 
 def _update_lead_conversations(request, history, user_message, clean_reply):
-    """Update conversation field for all leads saved in this session."""
+    """Update conversation + late-arriving contact fields for all leads in this session."""
     lead_ids = request.session.get('chat_lead_ids', [])
     if not lead_ids:
         return
     conversation = _build_conversation(history, user_message, clean_reply)
     try:
-        ChatLead.objects.filter(pk__in=lead_ids).update(conversation=conversation)
+        # Scan full history for any new email / preference info that arrived after lead was saved
+        all_turns = list(history) + [{'role': 'user', 'text': user_message}]
+        late_email, late_pref = '', ''
+        for turn in all_turns:
+            if turn.get('role') == 'user':
+                txt = turn.get('text', '')
+                if not late_email:
+                    m = _EMAIL_EXTRACT_RE.search(txt)
+                    if m:
+                        late_email = m.group(0)
+                if not late_pref and _EMAIL_PREF_DETECT_RE.search(txt):
+                    late_pref = 'email'
+
+        update_fields = {'conversation': conversation}
+        if late_email:
+            update_fields['email'] = late_email
+        if late_pref:
+            update_fields['preferred_contact'] = late_pref
+            update_fields['do_not_call'] = True
+
+        ChatLead.objects.filter(pk__in=lead_ids).update(**update_fields)
     except Exception:
         pass
 

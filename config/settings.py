@@ -131,6 +131,12 @@ _raw_keys = [
 ]
 GEMINI_KEYS = [k for k in _raw_keys if k] or ([GEMINI_API_KEY] if GEMINI_API_KEY else [])
 
+# ── QuoteIQ CRM ──
+QUOTEIQ_API_KEY     = os.environ.get('QUOTEIQ_API_KEY', '')
+QUOTEIQ_USER_ID     = os.environ.get('QUOTEIQ_USER_ID',     'gOPokKZvdzX4ZBTeIRwpjBztIiW2')
+QUOTEIQ_COMPANY_ID  = os.environ.get('QUOTEIQ_COMPANY_ID',  'gOPokKZvdzX4ZBTeIRwpjBztIiW2')
+QUOTEIQ_FORM_ID     = os.environ.get('QUOTEIQ_FORM_ID',     'rjligTxXVlkId9wzSBDT')
+
 # ── Jazzmin ──
 JAZZMIN_SETTINGS = {
     "site_title": "Surface Shield Admin",
