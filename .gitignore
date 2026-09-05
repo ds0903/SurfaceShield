@@ -37,6 +37,9 @@ logs/
 # */migrations/*.py
 # */migrations/__pycache__/
 
+# Runtime cache
+key_status.json
+
 # Misc
 info.txt
 *.swp
