@@ -694,6 +694,11 @@ intent_classification:
       Trigger words: "look at", "check", "inspect", "assess", "evaluate", "come out".
       Response: confirm inspection will be arranged and collect lead info.
       Do NOT imply the inspection is a confirmed appointment.
+      ABSOLUTE: NEVER use the word "schedule" for inspection intent — not in the first reply,
+      not when asking for address, not anywhere. Use ONLY: "arrange the inspection",
+      "set up the inspection", "arrange for our team to come out".
+      WRONG: "To help us schedule this…" / "To schedule the inspection…"
+      CORRECT: "To help us arrange the inspection, could you share your property address?"
     scheduling_request: >
       Visitor already knows the service and wants to book a specific date/time.
       Trigger words: "schedule", "book", "appointment", "when can you come", "available on".
